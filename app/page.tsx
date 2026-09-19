@@ -203,8 +203,9 @@ export default function HomePage() {
               <span>03</span>
               <h3>Instructor perspective</h3>
               <p>
-                Learn with the perspective of a Florida real estate
-                instructor who understands the path students are navigating.
+                Learn with the perspective of a Florida real estate broker and
+                instructor who understands both the licensing process and the
+                realities of the business.
               </p>
             </article>
           </div>
@@ -215,10 +216,10 @@ export default function HomePage() {
         <div className="container instructor-panel">
           <div
             className="portrait-placeholder"
-            aria-label="Instructor portrait placeholder"
+            aria-label="Brian Smith portrait placeholder"
           >
             <span>
-              INSTRUCTOR
+              BRIAN SMITH
               <br />
               PORTRAIT
             </span>
@@ -227,24 +228,46 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">YOUR INSTRUCTOR</p>
 
-            <h2>
-              Real estate education with an instructor’s perspective.
-            </h2>
+            <h2>Brian Smith</h2>
 
-            <p>
-              Greyson Institute was founded by a Florida real estate
-              instructor with a simple goal: make online real estate
-              education easier to understand, more professional, and more
-              personal from the very first step.
+            <p
+              style={{
+                fontFamily: "var(--font-serif), Georgia, serif",
+                fontSize: "1.2rem",
+                lineHeight: 1.45,
+                marginBottom: "4px",
+              }}
+            >
+              Licensed Florida Real Estate Broker & Instructor
             </p>
 
-            <p className="muted">
-              Instructor biography, credentials, and portrait will be added
-              before launch.
+            <p
+              style={{
+                color: "#9b7a52",
+                fontSize: "0.8rem",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                marginTop: 0,
+                marginBottom: "28px",
+              }}
+            >
+              Founder, Greyson Institute
+            </p>
+
+            <p>
+              Licensed in real estate since 1997, Brian brings experience in
+              sales, listings, buyer representation, brokerage operations,
+              agent training, and real estate company ownership.
+            </p>
+
+            <p>
+              His focus is practical, real-world education designed to help
+              students understand both the licensing material and the business
+              that follows.
             </p>
 
             <Link className="text-link" href="/about">
-              About Greyson Institute <span>→</span>
+              About Brian Smith <span>→</span>
             </Link>
           </div>
         </div>
