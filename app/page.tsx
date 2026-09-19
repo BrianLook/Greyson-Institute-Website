@@ -36,9 +36,7 @@ export default function HomePage() {
           <div className="hero-copy">
             <p className="eyebrow">ONLINE REAL ESTATE EDUCATION</p>
 
-            <h1>
-              A stronger foundation for your real estate career.
-            </h1>
+            <h1>A stronger foundation for your real estate career.</h1>
 
             <p className="hero-lead">
               Greyson Institute brings clarity and professional guidance to
@@ -58,7 +56,7 @@ export default function HomePage() {
           </div>
 
           <div
-            className="hero-art"
+            aria-label="Greyson Institute education paths"
             style={{
               minHeight: "500px",
               display: "flex",
@@ -69,25 +67,75 @@ export default function HomePage() {
             <div
               style={{
                 width: "100%",
-                maxWidth: "520px",
-                padding: "64px 48px",
+                maxWidth: "500px",
                 borderTop: "1px solid rgba(155, 122, 82, 0.35)",
                 borderBottom: "1px solid rgba(155, 122, 82, 0.35)",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                padding: "54px 20px",
               }}
             >
-              <img
-                src="/brand/greyson-stacked-color.png"
-                alt="Greyson Institute — Real Estate Education"
+              <p className="eyebrow">EDUCATION PATHS</p>
+
+              <h3
                 style={{
-                  display: "block",
-                  width: "100%",
-                  maxWidth: "430px",
-                  height: "auto",
+                  fontSize: "2.25rem",
+                  lineHeight: 1.15,
+                  marginBottom: "2rem",
                 }}
-              />
+              >
+                Clear direction for every stage of your real estate education.
+              </h3>
+
+              <div
+                style={{
+                  borderTop: "1px solid rgba(17, 23, 23, 0.14)",
+                }}
+              >
+                {[
+                  "Pre-Licensing",
+                  "Post-License",
+                  "Continuing Education",
+                  "Broker Education",
+                  "Exam Preparation",
+                ].map((item, index) => (
+                  <div
+                    key={item}
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "42px 1fr",
+                      gap: "18px",
+                      alignItems: "center",
+                      padding: "15px 0",
+                      borderBottom:
+                        "1px solid rgba(17, 23, 23, 0.14)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "0.68rem",
+                        letterSpacing: "0.16em",
+                        color: "#9b7a52",
+                      }}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <span
+                      style={{
+                        fontFamily: "var(--font-serif), Georgia, serif",
+                        fontSize: "1.18rem",
+                      }}
+                    >
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ marginTop: "28px" }}>
+                <Link className="text-link" href="/courses">
+                  Explore Education Paths <span>→</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -122,7 +170,9 @@ export default function HomePage() {
       <section className="section section--dark">
         <div className="container split-layout">
           <div>
-            <p className="eyebrow eyebrow--light">THE GREYSON STANDARD</p>
+            <p className="eyebrow eyebrow--light">
+              THE GREYSON STANDARD
+            </p>
 
             <h2 className="light-heading">
               Real estate education should feel clear, credible, and
@@ -135,8 +185,8 @@ export default function HomePage() {
               <span>01</span>
               <h3>Clear direction</h3>
               <p>
-                Understand which education applies to your stage of licensure
-                without sorting through an overwhelming catalog.
+                Understand which education applies to your stage of
+                licensure without sorting through an overwhelming catalog.
               </p>
             </article>
 
@@ -153,8 +203,8 @@ export default function HomePage() {
               <span>03</span>
               <h3>Instructor perspective</h3>
               <p>
-                Learn with the perspective of a Florida real estate instructor
-                who understands the path students are navigating.
+                Learn with the perspective of a Florida real estate
+                instructor who understands the path students are navigating.
               </p>
             </article>
           </div>
@@ -183,9 +233,9 @@ export default function HomePage() {
 
             <p>
               Greyson Institute was founded by a Florida real estate
-              instructor with a simple goal: make online real estate education
-              easier to understand, more professional, and more personal from
-              the very first step.
+              instructor with a simple goal: make online real estate
+              education easier to understand, more professional, and more
+              personal from the very first step.
             </p>
 
             <p className="muted">
@@ -219,8 +269,9 @@ export default function HomePage() {
           <h2>Find the education that fits your next step.</h2>
 
           <p>
-            Explore real estate education paths for licensing, post-license,
-            continuing education, broker education, and exam preparation.
+            Explore real estate education paths for licensing,
+            post-license, continuing education, broker education, and exam
+            preparation.
           </p>
 
           <Link className="button" href="/courses">
