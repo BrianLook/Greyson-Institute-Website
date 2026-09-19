@@ -215,14 +215,25 @@ export default function HomePage() {
       <section className="section">
         <div className="container instructor-panel">
           <div
-            className="portrait-placeholder"
-            aria-label="Brian Smith portrait placeholder"
+            style={{
+              minHeight: "520px",
+              overflow: "hidden",
+              border: "1px solid rgba(17, 23, 23, 0.16)",
+              background: "#eee6d9",
+            }}
           >
-            <span>
-              BRIAN SMITH
-              <br />
-              PORTRAIT
-            </span>
+            <img
+              src="/ChatGPT Image Sep 19, 2026, 06_28_39 PM.png"
+              alt="Brian Smith, Licensed Florida Real Estate Broker and Instructor"
+              style={{
+                width: "100%",
+                height: "100%",
+                minHeight: "520px",
+                objectFit: "cover",
+                objectPosition: "center top",
+                display: "block",
+              }}
+            />
           </div>
 
           <div>
