@@ -8,7 +8,7 @@ const courses = [
   {
     eyebrow: "PRE-LICENSING",
     title: "Sales Associate Pre-Licensing",
-    body: "For students beginning the path toward a Florida real estate sales associate license.",
+    body: "For students beginning the path toward a real estate sales associate license.",
   },
   {
     eyebrow: "POST-LICENSE",
@@ -23,7 +23,7 @@ const courses = [
   {
     eyebrow: "BROKER",
     title: "Broker Pre-Licensing",
-    body: "For experienced real estate professionals preparing to advance to Florida broker licensure.",
+    body: "For experienced real estate professionals preparing to advance to broker licensure.",
   },
   {
     eyebrow: "REACTIVATION",
@@ -40,16 +40,46 @@ const courses = [
 export default function CoursesPage() {
   return (
     <section className="page-hero">
-      <div className="container narrow">
-        <p className="eyebrow">REAL ESTATE EDUCATION</p>
+      <div
+        className="container about-grid"
+        style={{
+          marginBottom: "88px",
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <p className="eyebrow">REAL ESTATE EDUCATION</p>
 
-        <h1>Find the course that matches your next step.</h1>
+          <h1>Find the course that matches your next step.</h1>
 
-        <p className="page-lead">
-          From your first license through continuing education and broker
-          preparation, Greyson Institute is designed to make it easier to
-          understand where you are and what comes next.
-        </p>
+          <p className="page-lead">
+            From your first license through continuing education and broker
+            preparation, Greyson Institute makes it easier to understand where
+            you are and what comes next.
+          </p>
+        </div>
+
+        <div
+          style={{
+            minHeight: "430px",
+            overflow: "hidden",
+            border: "1px solid rgba(17, 23, 23, 0.14)",
+            background: "#eee6d9",
+          }}
+        >
+          <img
+            src="/greyson-courses-study.png"
+            alt="Greyson Institute real estate study workspace"
+            style={{
+              width: "100%",
+              height: "100%",
+              minHeight: "430px",
+              objectFit: "cover",
+              objectPosition: "center",
+              display: "block",
+            }}
+          />
+        </div>
       </div>
 
       <div className="container course-list">
@@ -86,8 +116,9 @@ export default function CoursesPage() {
             lineHeight: 1.7,
           }}
         >
-          Course availability, pricing, enrollment links, and provider details
-          will be displayed on each course page before enrollment opens.
+          Course availability, pricing, enrollment links, state-specific
+          requirements, and provider details will be displayed on each course
+          page before enrollment opens.
         </p>
       </div>
     </section>
