@@ -744,3 +744,28 @@ p {
     padding-right: clamp(40px, 5vw, 90px);
   }
 }
+/* DESKTOP SIZE BALANCE */
+
+@media (min-width: 981px) {
+  .header-inner {
+    min-height: 90px;
+  }
+
+  .brand-lockup {
+    width: 345px;
+  }
+
+  .hero-grid {
+    min-height: 620px;
+    grid-template-columns: 1fr 1.2fr;
+  }
+
+  .hero-copy {
+    padding-left: clamp(40px, 4vw, 70px);
+    padding-right: clamp(30px, 3vw, 55px);
+  }
+
+  h1 {
+    font-size: clamp(50px, 4.8vw, 72px);
+  }
+}
