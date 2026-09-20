@@ -12,6 +12,18 @@ export function SiteFooter() {
             A clearer path through real estate education — from first license
             to what comes next.
           </p>
+
+          <a
+            href="mailto:support@greysoninstitute.com"
+            style={{
+              display: "inline-block",
+              marginTop: "10px",
+              color: "rgba(245, 240, 231, 0.82)",
+              fontSize: "13px",
+            }}
+          >
+            support@greysoninstitute.com
+          </a>
         </div>
 
         <div className="footer-links">
