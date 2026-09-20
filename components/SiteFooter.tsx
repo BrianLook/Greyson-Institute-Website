@@ -1,51 +1,36 @@
 import Link from "next/link";
 import { BrandLockup } from "./BrandMark";
 
-export function SiteHeader() {
+export function SiteFooter() {
   return (
-    <header className="site-header">
-      <div className="container header-inner">
-        <Link
-          href="/"
-          className="header-brand"
-          aria-label="Greyson Institute home"
-        >
-          <BrandLockup />
-        </Link>
+    <footer className="site-footer">
+      <div className="container footer-grid">
+        <div>
+          <BrandLockup inverse />
 
-        <nav className="desktop-nav" aria-label="Primary navigation">
+          <p className="footer-copy">
+            A clearer path through real estate education — from first license
+            to what comes next.
+          </p>
+        </div>
+
+        <div className="footer-links">
           <Link href="/courses">Courses</Link>
           <Link href="/about">About</Link>
           <Link href="/faq">FAQ</Link>
           <Link href="/contact">Contact</Link>
-        </nav>
+        </div>
 
-        <Link className="button button--small" href="/courses">
-          Explore Courses
-        </Link>
-
-        <details className="mobile-menu">
-          <summary aria-label="Open navigation menu">
-            <span className="mobile-menu__icon" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </span>
-          </summary>
-
-          <nav
-            className="mobile-menu__panel"
-            aria-label="Mobile navigation"
-          >
-            <Link href="/courses">Courses</Link>
-            <Link href="/about">About</Link>
-            <Link href="/faq">FAQ</Link>
-            <Link href="/contact">Contact</Link>
-            <Link href="/privacy">Privacy</Link>
-            <Link href="/terms">Terms</Link>
-          </nav>
-        </details>
+        <div className="footer-links">
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
+          <span>BrightPath Education Group, LLC</span>
+        </div>
       </div>
-    </header>
+
+      <div className="container footer-bottom">
+        © {new Date().getFullYear()} Greyson Institute. All rights reserved.
+      </div>
+    </footer>
   );
 }
