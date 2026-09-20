@@ -11,21 +11,22 @@ const team = [
     secondary: "Founder, Greyson Institute",
     image: "/brian-smith.png",
     bio:
-      "A licensed Florida Real Estate Instructor with extensive expertise in real estate law and education. Responsible for developing engaging, up-to-date courses that align with FREC standards and meet the evolving needs of real estate professionals. Committed to delivering high-quality, practical instruction that helps agents stay compliant and excel in their careers.",
+      "Brian is a licensed Florida Real Estate Broker and Instructor with extensive experience in real estate law, brokerage, sales, agent training, and education. He brings a practical, real-world perspective to Greyson Institute, helping shape student guidance with a focus on clarity, professionalism, and the knowledge real estate professionals need to move confidently into the next stage of their careers.",
   },
   {
     name: "Jessica Smith",
     title: "Technology Manager & Sales Manager",
+    secondary: "Co-Founder, Greyson Institute",
     image: "/jessica-smith.png",
     bio:
-      "A licensed real estate professional with a passion for education, blending sales leadership with tech-savvy expertise. Specializes in streamlining course delivery, enhancing student engagement, and driving enrollment growth through innovative platforms and strategic outreach.",
+      "Jessica is a licensed real estate professional and Co-Founder of Greyson Institute who combines sales leadership with a strong focus on technology and student experience. She helps streamline course delivery, improve digital systems, support enrollment growth, and make the learning experience easier to navigate. Her role connects the technology, communication, and sales sides of Greyson Institute so students have a smoother path from interest to enrollment.",
   },
   {
     name: "Jennifer Wilson",
     title: "Customer Support Specialist & HR Coordinator",
     image: "/jennifer-wilson.png",
     bio:
-      "Provides exceptional support to students and staff, ensuring a seamless and positive experience from enrollment through course completion. Handles inquiries, resolves issues promptly, and manages internal HR processes to maintain a supportive and efficient learning environment. Dedicated to upholding a high standard of service and fostering student success.",
+      "Jennifer supports students and staff throughout the learning experience, from initial questions through course completion. She manages customer support, helps resolve issues quickly, and coordinates internal HR processes that keep the organization running smoothly. Her focus is creating a responsive, organized, and supportive environment where students feel taken care of and the team can operate efficiently.",
   },
 ];
 
