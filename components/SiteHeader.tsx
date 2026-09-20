@@ -1,7 +1,46 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { BrandLockup } from "./BrandMark";
 
 export function SiteHeader() {
+  const menuRef = useRef<HTMLDetailsElement>(null);
+
+  function closeMenu() {
+    if (menuRef.current) {
+      menuRef.current.open = false;
+    }
+  }
+
+  useEffect(() => {
+    function handleOutsideClick(event: PointerEvent) {
+      const menu = menuRef.current;
+
+      if (
+        menu?.open &&
+        event.target instanceof Node &&
+        !menu.contains(event.target)
+      ) {
+        menu.open = false;
+      }
+    }
+
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    }
+
+    document.addEventListener("pointerdown", handleOutsideClick);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
+
   return (
     <header className="site-header">
       <div className="container header-inner">
@@ -9,6 +48,7 @@ export function SiteHeader() {
           href="/"
           className="header-brand"
           aria-label="Greyson Institute home"
+          onClick={closeMenu}
         >
           <BrandLockup />
         </Link>
@@ -24,7 +64,7 @@ export function SiteHeader() {
           Explore Courses
         </Link>
 
-        <details className="mobile-menu">
+        <details className="mobile-menu" ref={menuRef}>
           <summary aria-label="Open navigation menu">
             <span className="mobile-menu__icon" aria-hidden="true">
               <span />
@@ -37,12 +77,24 @@ export function SiteHeader() {
             className="mobile-menu__panel"
             aria-label="Mobile navigation"
           >
-            <Link href="/courses">Courses</Link>
-            <Link href="/about">About</Link>
-            <Link href="/faq">FAQ</Link>
-            <Link href="/contact">Contact</Link>
-            <Link href="/privacy">Privacy</Link>
-            <Link href="/terms">Terms</Link>
+            <Link href="/courses" onClick={closeMenu}>
+              Courses
+            </Link>
+            <Link href="/about" onClick={closeMenu}>
+              About
+            </Link>
+            <Link href="/faq" onClick={closeMenu}>
+              FAQ
+            </Link>
+            <Link href="/contact" onClick={closeMenu}>
+              Contact
+            </Link>
+            <Link href="/privacy" onClick={closeMenu}>
+              Privacy
+            </Link>
+            <Link href="/terms" onClick={closeMenu}>
+              Terms
+            </Link>
           </nav>
         </details>
       </div>
