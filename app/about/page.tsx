@@ -24,6 +24,7 @@ const team = [
   {
     name: "Jennifer Wilson",
     title: "Customer Support Specialist & HR Coordinator",
+    secondary: "Student Support & Operations",
     image: "/jennifer-wilson.png",
     bio:
       "Jennifer supports students and staff throughout the learning experience, from initial questions through course completion. She manages customer support, helps resolve issues quickly, and coordinates internal HR processes that keep the organization running smoothly. Her focus is creating a responsive, organized, and supportive environment where students feel taken care of and the team can operate efficiently.",
