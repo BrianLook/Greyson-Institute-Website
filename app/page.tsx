@@ -36,107 +36,44 @@ export default function HomePage() {
           <div className="hero-copy">
             <p className="eyebrow">ONLINE REAL ESTATE EDUCATION</p>
 
-            <h1>A stronger foundation for your real estate career.</h1>
+            <h1>
+              Get licensed.
+              <br />
+              Understand what comes next.
+            </h1>
 
             <p className="hero-lead">
-              Greyson Institute brings clarity and professional guidance to
-              every stage of your real estate education, from your first
-              license through the next step in your career.
+              Online real estate education, at your pace.
             </p>
 
             <div className="button-row">
               <Link className="button" href="/courses">
                 Explore Courses
               </Link>
-
-              <Link className="text-link" href="/about">
-                Meet the Instructor <span>→</span>
-              </Link>
             </div>
           </div>
 
           <div
-            aria-label="Greyson Institute education paths"
             style={{
-              minHeight: "500px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              minHeight: "560px",
+              height: "100%",
+              overflow: "hidden",
+              border: "1px solid rgba(17, 23, 23, 0.12)",
+              background: "#eee6d9",
             }}
           >
-            <div
+            <img
+              src="/greyson-hero-study.png"
+              alt="Professional real estate study workspace"
               style={{
                 width: "100%",
-                maxWidth: "500px",
-                borderTop: "1px solid rgba(155, 122, 82, 0.35)",
-                borderBottom: "1px solid rgba(155, 122, 82, 0.35)",
-                padding: "54px 20px",
+                height: "100%",
+                minHeight: "560px",
+                objectFit: "cover",
+                objectPosition: "center",
+                display: "block",
               }}
-            >
-              <p className="eyebrow">EDUCATION PATHS</p>
-
-              <h3
-                style={{
-                  fontSize: "2.25rem",
-                  lineHeight: 1.15,
-                  marginBottom: "2rem",
-                }}
-              >
-                Clear direction for every stage of your real estate education.
-              </h3>
-
-              <div
-                style={{
-                  borderTop: "1px solid rgba(17, 23, 23, 0.14)",
-                }}
-              >
-                {[
-                  "Pre-Licensing",
-                  "Post-License",
-                  "Continuing Education",
-                  "Broker Education",
-                  "Exam Preparation",
-                ].map((item, index) => (
-                  <div
-                    key={item}
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "42px 1fr",
-                      gap: "18px",
-                      alignItems: "center",
-                      padding: "15px 0",
-                      borderBottom:
-                        "1px solid rgba(17, 23, 23, 0.14)",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "0.68rem",
-                        letterSpacing: "0.16em",
-                        color: "#9b7a52",
-                      }}
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-
-                    <span
-                      style={{
-                        fontFamily: "var(--font-serif), Georgia, serif",
-                        fontSize: "1.18rem",
-                      }}
-                    >
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ marginTop: "28px" }}>
-                <Link className="text-link" href="/courses">
-                  Explore Education Paths <span>→</span>
-                </Link>
-              </div>
-            </div>
+            />
           </div>
         </div>
       </section>
@@ -223,7 +160,7 @@ export default function HomePage() {
             }}
           >
             <img
-              src="/ChatGPT Image Sep 19, 2026, 06_28_39 PM.png"
+              src="/brian-smith.png"
               alt="Brian Smith, Licensed Florida Real Estate Broker and Instructor"
               style={{
                 width: "100%",
@@ -278,7 +215,7 @@ export default function HomePage() {
             </p>
 
             <Link className="text-link" href="/about">
-              About Brian Smith <span>→</span>
+              Meet the Greyson Institute Team <span>→</span>
             </Link>
           </div>
         </div>
