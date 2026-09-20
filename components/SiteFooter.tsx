@@ -1,27 +1,51 @@
 import Link from "next/link";
 import { BrandLockup } from "./BrandMark";
 
-export function SiteFooter() {
+export function SiteHeader() {
   return (
-    <footer className="site-footer">
-      <div className="container footer-grid">
-        <div>
-          <BrandLockup inverse />
-          <p className="footer-copy">A clearer path through real estate education — from first license to what comes next.</p>
-        </div>
-        <div className="footer-links">
+    <header className="site-header">
+      <div className="container header-inner">
+        <Link
+          href="/"
+          className="header-brand"
+          aria-label="Greyson Institute home"
+        >
+          <BrandLockup />
+        </Link>
+
+        <nav className="desktop-nav" aria-label="Primary navigation">
           <Link href="/courses">Courses</Link>
           <Link href="/about">About</Link>
           <Link href="/faq">FAQ</Link>
           <Link href="/contact">Contact</Link>
-        </div>
-        <div className="footer-links">
-          <Link href="/privacy">Privacy</Link>
-          <Link href="/terms">Terms</Link>
-          <span>BrightPath Education Group, LLC</span>
-        </div>
+        </nav>
+
+        <Link className="button button--small" href="/courses">
+          Explore Courses
+        </Link>
+
+        <details className="mobile-menu">
+          <summary aria-label="Open navigation menu">
+            <span className="mobile-menu__icon" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+          </summary>
+
+          <nav
+            className="mobile-menu__panel"
+            aria-label="Mobile navigation"
+          >
+            <Link href="/courses">Courses</Link>
+            <Link href="/about">About</Link>
+            <Link href="/faq">FAQ</Link>
+            <Link href="/contact">Contact</Link>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+          </nav>
+        </details>
       </div>
-      <div className="container footer-bottom">© {new Date().getFullYear()} Greyson Institute. All rights reserved.</div>
-    </footer>
+    </header>
   );
 }
