@@ -19,7 +19,7 @@ const team = [
     secondary: "Co-Founder, Greyson Institute",
     image: "/jessica-smith.png",
     bio:
-      "Jessica is a licensed real estate professional and Co-Founder of Greyson Institute who combines sales leadership with a strong focus on technology and student experience. She helps streamline course delivery, improve digital systems, support enrollment growth, and make the learning experience easier to navigate. Her role connects the technology, communication, and sales sides of Greyson Institute so students have a smoother path from interest to enrollment.",
+      "Jessica is a licensed Florida real estate professional and Co-Founder of Greyson Institute who combines sales leadership with a strong focus on technology and student experience. She helps streamline course delivery, improve digital systems, support enrollment growth, and make the learning experience easier to navigate. Her role connects the technology, communication, and sales sides of Greyson Institute so students have a smoother path from interest to enrollment.",
   },
   {
     name: "Jennifer Wilson",
@@ -239,7 +239,9 @@ export default function AboutPage() {
               >
                 01
               </p>
+
               <h3 style={{ color: "#f5f0e7" }}>Clear direction</h3>
+
               <p style={{ color: "rgba(245, 240, 231, 0.7)" }}>
                 Helping students understand which education fits where they
                 are in their real estate journey.
@@ -261,7 +263,9 @@ export default function AboutPage() {
               >
                 02
               </p>
+
               <h3 style={{ color: "#f5f0e7" }}>Practical education</h3>
+
               <p style={{ color: "rgba(245, 240, 231, 0.7)" }}>
                 Presenting real estate education in a way that feels useful,
                 professional, and connected to the work itself.
@@ -283,7 +287,9 @@ export default function AboutPage() {
               >
                 03
               </p>
+
               <h3 style={{ color: "#f5f0e7" }}>Student support</h3>
+
               <p style={{ color: "rgba(245, 240, 231, 0.7)" }}>
                 Creating a straightforward experience from choosing a course
                 through completing the next step.
