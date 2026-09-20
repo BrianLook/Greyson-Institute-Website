@@ -43,6 +43,46 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
+      <div
+        style={{
+          background: "#1f2d30",
+          color: "#f5f0e7",
+          borderBottom: "1px solid rgba(245, 240, 231, 0.14)",
+        }}
+      >
+        <div
+          className="container"
+          style={{
+            minHeight: "36px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+            textAlign: "center",
+            fontSize: "12px",
+            lineHeight: 1.4,
+            paddingTop: "7px",
+            paddingBottom: "7px",
+          }}
+        >
+          <span>
+            Not sure which course you need? We’ll point you to the right one.
+          </span>
+
+          <Link
+            href="/courses"
+            style={{
+              color: "#c6aa85",
+              fontWeight: 600,
+              whiteSpace: "nowrap",
+            }}
+            onClick={closeMenu}
+          >
+            Find your path →
+          </Link>
+        </div>
+      </div>
+
       <div className="container header-inner">
         <Link
           href="/"
