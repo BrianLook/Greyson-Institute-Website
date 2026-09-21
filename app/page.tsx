@@ -1,31 +1,36 @@
 import Link from "next/link";
 
 const paths = [
-  [
-    "Get Licensed",
-    "Start with the education required to begin your real estate career.",
-    "Pre-Licensing",
-  ],
-  [
-    "Post-License",
-    "Stay on track after licensure with the next required education step.",
-    "Post-License",
-  ],
-  [
-    "Continuing Education",
-    "Keep your license current with clear, convenient education options.",
-    "CE",
-  ],
-  [
-    "Become a Broker",
-    "Prepare for the next level of your real estate career.",
-    "Broker",
-  ],
-  [
-    "Exam Preparation",
-    "Study with focus and walk into exam day better prepared.",
-    "Exam Prep",
-  ],
+  {
+    title: "Get Licensed",
+    body: "Start with the education required to begin your real estate career.",
+    meta: "Pre-Licensing",
+    href: "/courses#pre-licensing",
+  },
+  {
+    title: "Post-License",
+    body: "Stay on track after licensure with the next required education step.",
+    meta: "Post-License",
+    href: "/courses#post-license",
+  },
+  {
+    title: "Continuing Education",
+    body: "Keep your license current with clear, convenient education options.",
+    meta: "CE",
+    href: "/courses#continuing-education",
+  },
+  {
+    title: "Become a Broker",
+    body: "Prepare for the next level of your real estate career.",
+    meta: "Broker",
+    href: "/courses#broker",
+  },
+  {
+    title: "Exam Preparation",
+    body: "Study with focus and walk into exam day better prepared.",
+    meta: "Exam Prep",
+    href: "/courses#exam-prep",
+  },
 ];
 
 export default function HomePage() {
@@ -93,13 +98,20 @@ export default function HomePage() {
         </div>
 
         <div className="container path-grid">
-          {paths.map(([title, body, meta]) => (
-            <Link className="path-card" href="/courses" key={title}>
-              <span className="path-meta">{meta}</span>
-              <h3>{title}</h3>
-              <p>{body}</p>
+          {paths.map((path) => (
+            <a
+              className="path-card"
+              href={path.href}
+              key={path.title}
+            >
+              <span className="path-meta">{path.meta}</span>
+
+              <h3>{path.title}</h3>
+
+              <p>{path.body}</p>
+
               <span className="card-arrow">Explore →</span>
-            </Link>
+            </a>
           ))}
         </div>
       </section>
@@ -245,9 +257,12 @@ export default function HomePage() {
             preparation.
           </p>
 
-          <Link className="button" href="/courses">
-            Explore Courses
-          </Link>
+          <a
+            className="button"
+            href="/courses#find-your-path"
+          >
+            Find Your Path
+          </a>
         </div>
       </section>
     </>
