@@ -69,7 +69,7 @@ export function SiteHeader() {
             Not sure which course you need? We’ll point you to the right one.
           </span>
 
-          <Link
+          <a
             href="/courses#find-your-path"
             style={{
               color: "#c6aa85",
@@ -79,7 +79,7 @@ export function SiteHeader() {
             onClick={closeMenu}
           >
             Find your path →
-          </Link>
+          </a>
         </div>
       </div>
 
@@ -113,7 +113,10 @@ export function SiteHeader() {
             </span>
           </summary>
 
-          <nav className="mobile-menu__panel" aria-label="Mobile navigation">
+          <nav
+            className="mobile-menu__panel"
+            aria-label="Mobile navigation"
+          >
             <Link href="/courses" onClick={closeMenu}>
               Courses
             </Link>
