@@ -36,7 +36,10 @@ export function SiteFooter() {
         <div className="footer-links">
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
-          <span>BrightPath Education Group, LLC</span>
+
+          <span>
+            Greyson Institute is operated by BrightPath Education Group, LLC
+          </span>
         </div>
       </div>
 
