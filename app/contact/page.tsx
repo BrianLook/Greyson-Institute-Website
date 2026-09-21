@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { ContactForm } from "../../components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
+  description:
+    "Contact Greyson Institute for help choosing the right real estate education path.",
 };
 
 export default function ContactPage() {
@@ -15,26 +18,37 @@ export default function ContactPage() {
       <div
         className="container"
         style={{
+          marginBottom: "72px",
+        }}
+      >
+        <p className="eyebrow">CONTACT GREYSON INSTITUTE</p>
+
+        <h1
+          style={{
+            maxWidth: "850px",
+          }}
+        >
+          Questions about your next step?
+        </h1>
+
+        <p className="page-lead">
+          If you are unsure which real estate education path applies to you,
+          Greyson Institute is here to help you understand your options.
+        </p>
+      </div>
+
+      <div
+        className="container"
+        style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "70px",
+          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gap: "42px",
           alignItems: "start",
         }}
       >
-        <div>
-          <p className="eyebrow">CONTACT GREYSON INSTITUTE</p>
-
-          <h1>Questions about your next step?</h1>
-
-          <p className="page-lead">
-            If you are unsure which real estate education path applies to you,
-            Greyson Institute is here to help you understand your options.
-          </p>
-        </div>
-
         <div
           style={{
-            background: "#f5f0e7",
+            background: "#fbf8f2",
             border: "1px solid rgba(17, 23, 23, 0.14)",
             padding: "clamp(32px, 5vw, 52px)",
           }}
@@ -44,11 +58,22 @@ export default function ContactPage() {
           <h2
             style={{
               fontSize: "clamp(2rem, 4vw, 3rem)",
-              marginBottom: "30px",
+              marginBottom: "18px",
             }}
           >
             We’re here to help.
           </h2>
+
+          <p
+            style={{
+              color: "#6e6b65",
+              lineHeight: 1.75,
+              marginBottom: "34px",
+            }}
+          >
+            Send us a message and tell us where you are in your real estate
+            journey. We’ll help point you toward the most relevant next step.
+          </p>
 
           <div
             style={{
@@ -68,6 +93,7 @@ export default function ContactPage() {
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                   color: "#9b7a52",
+                  fontWeight: 700,
                 }}
               >
                 Email
@@ -77,7 +103,7 @@ export default function ContactPage() {
                 href="mailto:support@greysoninstitute.com"
                 style={{
                   fontFamily: "var(--font-serif), Georgia, serif",
-                  fontSize: "1.35rem",
+                  fontSize: "1.25rem",
                 }}
               >
                 support@greysoninstitute.com
@@ -97,6 +123,7 @@ export default function ContactPage() {
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                   color: "#9b7a52",
+                  fontWeight: 700,
                 }}
               >
                 Business
@@ -106,10 +133,41 @@ export default function ContactPage() {
                 style={{
                   margin: 0,
                   fontFamily: "var(--font-serif), Georgia, serif",
-                  fontSize: "1.2rem",
+                  fontSize: "1.15rem",
+                  lineHeight: 1.5,
                 }}
               >
                 BrightPath Education Group, LLC
+              </p>
+            </div>
+
+            <div
+              style={{
+                padding: "24px 0",
+                borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
+              }}
+            >
+              <p
+                style={{
+                  margin: "0 0 6px",
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.16em",
+                  textTransform: "uppercase",
+                  color: "#9b7a52",
+                  fontWeight: 700,
+                }}
+              >
+                Website
+              </p>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontFamily: "var(--font-serif), Georgia, serif",
+                  fontSize: "1.15rem",
+                }}
+              >
+                greysoninstitute.com
               </p>
             </div>
 
@@ -125,45 +183,48 @@ export default function ContactPage() {
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                   color: "#9b7a52",
+                  fontWeight: 700,
                 }}
               >
-                Website
+                Need help choosing?
               </p>
 
-              <p
+              <a
+                href="/courses#find-your-path"
                 style={{
-                  margin: 0,
                   fontFamily: "var(--font-serif), Georgia, serif",
-                  fontSize: "1.2rem",
+                  fontSize: "1.15rem",
                 }}
               >
-                greysoninstitute.com
-              </p>
+                Find Your Path →
+              </a>
             </div>
           </div>
         </div>
+
+        <ContactForm />
       </div>
 
       <div
         className="container"
         style={{
-          marginTop: "80px",
-          paddingTop: "34px",
+          marginTop: "72px",
+          paddingTop: "32px",
           borderTop: "1px solid rgba(17, 23, 23, 0.18)",
         }}
       >
         <p
           style={{
-            maxWidth: "760px",
+            maxWidth: "820px",
             color: "#6e6b65",
-            fontSize: "0.95rem",
+            fontSize: "0.9rem",
             lineHeight: 1.75,
             margin: 0,
           }}
         >
           Course-specific enrollment, technical support, completion
-          requirements, and provider questions will be directed to the
-          appropriate resource when applicable.
+          requirements, and provider questions may be directed to the
+          appropriate education provider when applicable.
         </p>
       </div>
     </section>
