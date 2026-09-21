@@ -69,9 +69,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body>
+        <a className="skip-link" href="#main-content">
+          Skip to main content
+        </a>
+
         <SiteHeader />
 
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
 
         <SiteFooter />
 
