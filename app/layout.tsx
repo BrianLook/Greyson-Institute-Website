@@ -18,6 +18,8 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://greysoninstitute.com"),
+
   title: {
     default: "Greyson Institute | Real Estate Education",
     template: "%s | Greyson Institute",
@@ -30,6 +32,31 @@ export const metadata: Metadata = {
     icon: "/brand/greyson-icon-color.png",
     shortcut: "/brand/greyson-icon-color.png",
     apple: "/brand/greyson-icon-color.png",
+  },
+
+  openGraph: {
+    type: "website",
+    url: "https://greysoninstitute.com",
+    siteName: "Greyson Institute",
+    title: "Greyson Institute | Real Estate Education",
+    description:
+      "A clearer path through real estate education, from first license to what comes next.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Greyson Institute — Real Estate Education",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Greyson Institute | Real Estate Education",
+    description:
+      "A clearer path through real estate education, from first license to what comes next.",
+    images: ["/opengraph-image"],
   },
 };
 
