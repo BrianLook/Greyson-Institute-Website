@@ -118,18 +118,7 @@ export function ContactForm() {
         }}
       >
         <label>
-          <span
-            style={{
-              display: "block",
-              marginBottom: "8px",
-              fontSize: "0.78rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-            }}
-          >
-            Name
-          </span>
+          <span style={labelStyle}>Name</span>
 
           <input
             type="text"
@@ -141,18 +130,7 @@ export function ContactForm() {
         </label>
 
         <label>
-          <span
-            style={{
-              display: "block",
-              marginBottom: "8px",
-              fontSize: "0.78rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-            }}
-          >
-            Email
-          </span>
+          <span style={labelStyle}>Email</span>
 
           <input
             type="email"
@@ -164,18 +142,7 @@ export function ContactForm() {
         </label>
 
         <label>
-          <span
-            style={{
-              display: "block",
-              marginBottom: "8px",
-              fontSize: "0.78rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-            }}
-          >
-            State
-          </span>
+          <span style={labelStyle}>State</span>
 
           <input
             type="text"
@@ -187,16 +154,7 @@ export function ContactForm() {
         </label>
 
         <label>
-          <span
-            style={{
-              display: "block",
-              marginBottom: "8px",
-              fontSize: "0.78rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-            }}
-          >
+          <span style={labelStyle}>
             What do you need help with?
           </span>
 
@@ -241,18 +199,7 @@ export function ContactForm() {
         </label>
 
         <label>
-          <span
-            style={{
-              display: "block",
-              marginBottom: "8px",
-              fontSize: "0.78rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-            }}
-          >
-            Message
-          </span>
+          <span style={labelStyle}>Message</span>
 
           <textarea
             name="message"
@@ -305,17 +252,38 @@ export function ContactForm() {
           style={{
             color: "#6e6b65",
             fontSize: "0.78rem",
-            lineHeight: 1.6,
+            lineHeight: 1.65,
             margin: 0,
           }}
         >
           By submitting this form, you are contacting Greyson Institute about
-          real estate education and related support.
+          real estate education and related support. Information submitted
+          through this form is processed in accordance with our{" "}
+          <a
+            href="/privacy"
+            style={{
+              color: "#111717",
+              textDecoration: "underline",
+              textUnderlineOffset: "3px",
+            }}
+          >
+            Privacy Policy
+          </a>
+          .
         </p>
       </div>
     </form>
   );
 }
+
+const labelStyle = {
+  display: "block",
+  marginBottom: "8px",
+  fontSize: "0.78rem",
+  fontWeight: 700,
+  letterSpacing: "0.08em",
+  textTransform: "uppercase" as const,
+};
 
 const fieldStyle = {
   width: "100%",
