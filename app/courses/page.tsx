@@ -138,6 +138,7 @@ export default function CoursesPage() {
         id="find-your-path"
         className="container"
         style={{
+          maxWidth: "1080px",
           marginBottom: "100px",
           scrollMarginTop: "150px",
         }}
@@ -148,7 +149,7 @@ export default function CoursesPage() {
           style={{
             display: "grid",
             gridTemplateColumns:
-              "repeat(auto-fit, minmax(min(100%, 360px), 1fr))",
+              "repeat(auto-fit, minmax(320px, 1fr))",
             gap: "18px",
             marginBottom: "38px",
           }}
@@ -179,7 +180,7 @@ export default function CoursesPage() {
           style={{
             display: "grid",
             gridTemplateColumns:
-              "repeat(auto-fit, minmax(min(100%, 360px), 1fr))",
+              "repeat(auto-fit, minmax(320px, 1fr))",
             borderTop: "1px solid rgba(17, 23, 23, 0.16)",
             borderLeft: "1px solid rgba(17, 23, 23, 0.16)",
           }}
@@ -189,7 +190,7 @@ export default function CoursesPage() {
               key={path.label}
               href={path.href}
               style={{
-                minHeight: "205px",
+                minHeight: "220px",
                 padding: "28px",
                 borderRight: "1px solid rgba(17, 23, 23, 0.16)",
                 borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
