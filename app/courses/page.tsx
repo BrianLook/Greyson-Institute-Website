@@ -1,296 +1,276 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "Courses",
-};
 
 const paths = [
   {
-    label: "I need my first license",
-    detail:
-      "Start the education path toward becoming a real estate sales associate.",
-    href: "#pre-licensing",
+    title: "Get Licensed",
+    body: "Start with the education required to begin your real estate career.",
+    meta: "Pre-Licensing",
+    href: "/courses#pre-licensing",
   },
   {
-    label: "I’m preparing for the licensing exam",
-    detail:
-      "Review key concepts and prepare more confidently for exam day.",
-    href: "#exam-prep",
+    title: "Post-License",
+    body: "Stay on track after licensure with the next required education step.",
+    meta: "Post-License",
+    href: "/courses#post-license",
   },
   {
-    label: "I need post-license education",
-    detail:
-      "Continue with the education required after becoming licensed.",
-    href: "#post-license",
-  },
-  {
-    label: "I need continuing education",
-    detail:
-      "Find education for maintaining and renewing an active license.",
-    href: "#continuing-education",
-  },
-  {
-    label: "I want to become a broker",
-    detail:
-      "Explore the education path for advancing to broker licensure.",
-    href: "#broker",
-  },
-  {
-    label: "I need to reactivate my license",
-    detail:
-      "Find education associated with returning an inactive license to active status.",
-    href: "#reactivation",
-  },
-];
-
-const courses = [
-  {
-    id: "pre-licensing",
-    eyebrow: "PRE-LICENSING",
-    title: "Sales Associate Pre-Licensing",
-    body:
-      "For students beginning the path toward a real estate sales associate license.",
-  },
-  {
-    id: "post-license",
-    eyebrow: "POST-LICENSE",
-    title: "Sales Associate Post-License",
-    body:
-      "For newly licensed sales associates completing the education required for their first renewal period.",
-  },
-  {
-    id: "continuing-education",
-    eyebrow: "CONTINUING EDUCATION",
     title: "Continuing Education",
-    body:
-      "For active real estate professionals completing education for license renewal.",
+    body: "Keep your license current with clear, convenient education options.",
+    meta: "CE",
+    href: "/courses#continuing-education",
   },
   {
-    id: "broker",
-    eyebrow: "BROKER",
-    title: "Broker Pre-Licensing",
-    body:
-      "For experienced real estate professionals preparing to advance to broker licensure.",
+    title: "Become a Broker",
+    body: "Prepare for the next level of your real estate career.",
+    meta: "Broker",
+    href: "/courses#broker",
   },
   {
-    id: "reactivation",
-    eyebrow: "REACTIVATION",
-    title: "Reactivation Education",
-    body:
-      "For licensees completing education associated with returning an inactive license to active status.",
-  },
-  {
-    id: "exam-prep",
-    eyebrow: "EXAM PREP",
     title: "Exam Preparation",
-    body:
-      "Focused preparation designed to reinforce key concepts before a licensing examination.",
+    body: "Study with focus and walk into exam day better prepared.",
+    meta: "Exam Prep",
+    href: "/courses#exam-prep",
   },
 ];
 
-export default function CoursesPage() {
+export default function HomePage() {
   return (
-    <section className="page-hero">
-      <div
-        className="container about-grid"
-        style={{
-          marginBottom: "88px",
-          alignItems: "center",
-        }}
-      >
-        <div>
-          <p className="eyebrow">REAL ESTATE EDUCATION</p>
+    <>
+      <section className="hero">
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <p className="eyebrow">ONLINE REAL ESTATE EDUCATION</p>
 
-          <h1>Find the course that matches your next step.</h1>
+            <h1>
+              Get licensed.
+              <br />
+              Understand what comes next.
+            </h1>
 
-          <p className="page-lead">
-            From your first license through continuing education and broker
-            preparation, Greyson Institute makes it easier to understand where
-            you are and what comes next.
-          </p>
-        </div>
+            <p className="hero-lead">
+              Online real estate education, at your pace.
+            </p>
 
-        <div
-          style={{
-            minHeight: "430px",
-            overflow: "hidden",
-            border: "1px solid rgba(17, 23, 23, 0.14)",
-            background: "#eee6d9",
-          }}
-        >
-          <img
-            src="/greyson-courses-study.png"
-            alt="Greyson Institute real estate study workspace"
+            <div className="button-row">
+              <Link className="button" href="/courses">
+                Explore Courses
+              </Link>
+            </div>
+          </div>
+
+          <div
             style={{
-              width: "100%",
+              minHeight: "560px",
               height: "100%",
-              minHeight: "430px",
-              objectFit: "cover",
-              objectPosition: "center",
-              display: "block",
+              overflow: "hidden",
+              border: "1px solid rgba(17, 23, 23, 0.12)",
+              background: "#eee6d9",
             }}
-          />
+          >
+            <img
+              src="/greyson-hero-study.png"
+              alt="Professional real estate study workspace"
+              style={{
+                width: "100%",
+                height: "100%",
+                minHeight: "560px",
+                objectFit: "cover",
+                objectPosition: "center",
+                display: "block",
+              }}
+            />
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div
-        id="find-your-path"
-        className="container"
-        style={{
-          maxWidth: "1080px",
-          marginBottom: "100px",
-          scrollMarginTop: "150px",
-        }}
-      >
-        <p className="eyebrow">FIND YOUR PATH</p>
+      <section className="section section--cream-darkline">
+        <div className="container section-heading-row">
+          <div>
+            <p className="eyebrow">FIND YOUR NEXT STEP</p>
+            <h2>Where are you in your real estate career?</h2>
+          </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "18px",
-            marginBottom: "38px",
-          }}
-        >
-          <h2
-            style={{
-              maxWidth: "620px",
-              marginBottom: 0,
-            }}
-          >
-            What do you need?
-          </h2>
-
-          <p
-            style={{
-              color: "#6e6b65",
-              maxWidth: "520px",
-              margin: 0,
-              alignSelf: "end",
-            }}
-          >
-            Choose the description that best matches where you are today.
-            We’ll take you directly to the most relevant education path.
+          <p className="section-intro">
+            Whether you are preparing for your first license, completing
+            post-license education, renewing, or advancing toward a broker
+            license, start with the path that fits where you are today.
           </p>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(320px, 1fr))",
-            borderTop: "1px solid rgba(17, 23, 23, 0.16)",
-            borderLeft: "1px solid rgba(17, 23, 23, 0.16)",
-          }}
-        >
-          {paths.map((path, index) => (
-            <Link
-              key={path.label}
+        <div className="container path-grid">
+          {paths.map((path) => (
+            <a
+              className="path-card"
               href={path.href}
-              style={{
-                minHeight: "220px",
-                padding: "28px",
-                borderRight: "1px solid rgba(17, 23, 23, 0.16)",
-                borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
-                background: "#f5f0e7",
-                display: "flex",
-                flexDirection: "column",
-              }}
+              key={path.title}
             >
-              <span
-                style={{
-                  color: "#9b7a52",
-                  fontSize: "0.68rem",
-                  letterSpacing: "0.16em",
-                  marginBottom: "26px",
-                }}
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
+              <span className="path-meta">{path.meta}</span>
 
-              <h3
-                style={{
-                  fontSize: "1.55rem",
-                  marginBottom: "10px",
-                }}
-              >
-                {path.label}
-              </h3>
+              <h3>{path.title}</h3>
 
-              <p
-                style={{
-                  color: "#6e6b65",
-                  fontSize: "0.9rem",
-                  lineHeight: 1.65,
-                  margin: 0,
-                }}
-              >
-                {path.detail}
-              </p>
+              <p>{path.body}</p>
 
-              <span
-                style={{
-                  marginTop: "auto",
-                  paddingTop: "20px",
-                  fontSize: "0.8rem",
-                  fontWeight: 600,
-                }}
-              >
-                View path →
-              </span>
-            </Link>
+              <span className="card-arrow">Explore →</span>
+            </a>
           ))}
         </div>
-      </div>
+      </section>
 
-      <div className="container course-list">
-        {courses.map((course) => (
-          <article
-            id={course.id}
-            className="course-row"
-            key={course.title}
+      <section className="section section--dark">
+        <div className="container split-layout">
+          <div>
+            <p className="eyebrow eyebrow--light">
+              THE GREYSON STANDARD
+            </p>
+
+            <h2 className="light-heading">
+              Real estate education should feel clear, credible, and
+              professionally presented.
+            </h2>
+          </div>
+
+          <div className="principles">
+            <article>
+              <span>01</span>
+
+              <h3>Clear direction</h3>
+
+              <p>
+                Understand which education applies to your stage of
+                licensure without sorting through an overwhelming catalog.
+              </p>
+            </article>
+
+            <article>
+              <span>02</span>
+
+              <h3>Professional standard</h3>
+
+              <p>
+                Begin your real estate career with an education experience
+                designed to reflect the profession you are entering.
+              </p>
+            </article>
+
+            <article>
+              <span>03</span>
+
+              <h3>Instructor perspective</h3>
+
+              <p>
+                Learn with the perspective of a Florida real estate broker and
+                instructor who understands both the licensing process and the
+                realities of the business.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container instructor-panel">
+          <div
             style={{
-              scrollMarginTop: "150px",
+              minHeight: "520px",
+              overflow: "hidden",
+              border: "1px solid rgba(17, 23, 23, 0.16)",
+              background: "#eee6d9",
             }}
           >
-            <div>
-              <p className="eyebrow">{course.eyebrow}</p>
+            <img
+              src="/brian-smith.png"
+              alt="Brian Smith, Licensed Florida Real Estate Broker and Instructor"
+              style={{
+                width: "100%",
+                height: "100%",
+                minHeight: "520px",
+                objectFit: "cover",
+                objectPosition: "center top",
+                display: "block",
+              }}
+            />
+          </div>
 
-              <h2>{course.title}</h2>
+          <div>
+            <p className="eyebrow">YOUR INSTRUCTOR</p>
 
-              <p>{course.body}</p>
-            </div>
+            <h2>Brian Smith</h2>
 
-            <span className="coming-soon">
-              Course details available soon
-            </span>
-          </article>
-        ))}
-      </div>
+            <p
+              style={{
+                fontFamily: "var(--font-serif), Georgia, serif",
+                fontSize: "1.2rem",
+                lineHeight: 1.45,
+                marginBottom: "4px",
+              }}
+            >
+              Licensed Florida Real Estate Broker & Instructor
+            </p>
 
-      <div
-        className="container"
-        style={{
-          marginTop: "64px",
-          paddingTop: "36px",
-          borderTop: "1px solid rgba(17, 23, 23, 0.18)",
-        }}
-      >
-        <p
-          style={{
-            maxWidth: "760px",
-            color: "#6e6b65",
-            fontSize: "0.95rem",
-            lineHeight: 1.7,
-          }}
-        >
-          Course availability, pricing, enrollment links, state-specific
-          requirements, and provider details will be displayed on each course
-          page before enrollment opens.
-        </p>
-      </div>
-    </section>
+            <p
+              style={{
+                color: "#9b7a52",
+                fontSize: "0.8rem",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                marginTop: 0,
+                marginBottom: "28px",
+              }}
+            >
+              Founder, Greyson Institute
+            </p>
+
+            <p>
+              Licensed in real estate since 1997, Brian brings experience in
+              sales, listings, buyer representation, brokerage operations,
+              agent training, and real estate company ownership.
+            </p>
+
+            <p>
+              His focus is practical, real-world education designed to help
+              students understand both the licensing material and the business
+              that follows.
+            </p>
+
+            <Link className="text-link" href="/about">
+              Meet the Greyson Institute Team <span>→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--soft">
+        <div className="container centered-callout">
+          <img
+            src="/brand/greyson-icon-color.png"
+            alt=""
+            aria-hidden="true"
+            style={{
+              width: "72px",
+              height: "auto",
+              display: "block",
+              marginBottom: "22px",
+            }}
+          />
+
+          <p className="eyebrow">GREYSON INSTITUTE</p>
+
+          <h2>Find the education that fits your next step.</h2>
+
+          <p>
+            Explore real estate education paths for licensing,
+            post-license, continuing education, broker education, and exam
+            preparation.
+          </p>
+
+          <a
+            className="button"
+            href="/courses#find-your-path"
+          >
+            Find Your Path
+          </a>
+        </div>
+      </section>
+    </>
   );
 }
