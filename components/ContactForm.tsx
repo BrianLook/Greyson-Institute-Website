@@ -4,6 +4,12 @@ import { FormEvent, useState } from "react";
 
 const FORM_ENDPOINT = "https://formspree.io/f/xgavkvzg";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 export function ContactForm() {
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
@@ -29,6 +35,10 @@ export function ContactForm() {
       if (!response.ok) {
         throw new Error("Form submission failed.");
       }
+
+      window.gtag?.("event", "generate_lead", {
+        method: "contact_form",
+      });
 
       form.reset();
       setStatus("success");
@@ -154,9 +164,7 @@ export function ContactForm() {
         </label>
 
         <label>
-          <span style={labelStyle}>
-            What do you need help with?
-          </span>
+          <span style={labelStyle}>What do you need help with?</span>
 
           <select
             name="help_with"
