@@ -70,7 +70,7 @@ export function SiteHeader() {
           </span>
 
           <Link
-            href="/courses"
+            href="/courses#find-your-path"
             style={{
               color: "#c6aa85",
               fontWeight: 600,
@@ -117,18 +117,23 @@ export function SiteHeader() {
             <Link href="/courses" onClick={closeMenu}>
               Courses
             </Link>
+
             <Link href="/about" onClick={closeMenu}>
               About
             </Link>
+
             <Link href="/faq" onClick={closeMenu}>
               FAQ
             </Link>
+
             <Link href="/contact" onClick={closeMenu}>
               Contact
             </Link>
+
             <Link href="/privacy" onClick={closeMenu}>
               Privacy
             </Link>
+
             <Link href="/terms" onClick={closeMenu}>
               Terms
             </Link>
