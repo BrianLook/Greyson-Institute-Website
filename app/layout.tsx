@@ -22,16 +22,29 @@ export const metadata: Metadata = {
     default: "Greyson Institute | Real Estate Education",
     template: "%s | Greyson Institute",
   },
+
   description:
     "Clear, modern real estate education guidance for licensing, post-license, continuing education, broker education, and exam preparation.",
+
+  icons: {
+    icon: "/brand/greyson-icon-color.png",
+    shortcut: "/brand/greyson-icon-color.png",
+    apple: "/brand/greyson-icon-color.png",
+  },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body>
         <SiteHeader />
+
         <main>{children}</main>
+
         <SiteFooter />
       </body>
     </html>
