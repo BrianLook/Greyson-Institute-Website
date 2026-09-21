@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Read the Greyson Institute Privacy Policy and learn how website inquiries and personal information are handled.",
+    "Read the Greyson Institute Privacy Policy and learn how website inquiries, analytics data, and personal information are handled.",
 };
 
 export default function PrivacyPage() {
@@ -33,10 +33,9 @@ export default function PrivacyPage() {
         </p>
 
         <p>
-          Our website hosting and service providers may also process limited
-          technical information necessary to operate and secure the website,
-          such as browser, device, IP address, request, and diagnostic
-          information.
+          Our website hosting, analytics, and service providers may also
+          process limited technical and usage information necessary to operate,
+          secure, measure, and improve the website.
         </p>
 
         <h2>Contact Form and Formspree</h2>
@@ -58,14 +57,52 @@ export default function PrivacyPage() {
           privacy and security practices.
         </p>
 
+        <h2>Google Analytics</h2>
+
+        <p>
+          Greyson Institute uses Google Analytics to understand how visitors
+          use our website and to help us improve website content, navigation,
+          and performance.
+        </p>
+
+        <p>
+          Google Analytics may collect information such as page views, website
+          interactions, session information, approximate geographic location,
+          browser type, device information, referral information, and other
+          website usage data.
+        </p>
+
+        <p>
+          Google Analytics may use first-party cookies and similar
+          technologies to distinguish users and sessions and to measure website
+          activity.
+        </p>
+
+        <p>
+          Information collected through Google Analytics is processed by
+          Google in accordance with Google's privacy and data practices.
+        </p>
+
+        <p>
+          You can learn more about how Google handles information by visiting{" "}
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google's Privacy Policy
+          </a>
+          .
+        </p>
+
         <h2>How We Use Information</h2>
 
         <p>
           Information may be used to respond to questions, help visitors
           understand real estate education options, provide
-          enrollment-related guidance, improve our website and services,
-          maintain business records, prevent abuse or fraud, and operate
-          Greyson Institute.
+          enrollment-related guidance, understand website traffic and usage,
+          improve our website and services, maintain business records, prevent
+          abuse or fraud, and operate Greyson Institute.
         </p>
 
         <h2>Course Providers and Third-Party Services</h2>
@@ -82,17 +119,18 @@ export default function PrivacyPage() {
           apply separately.
         </p>
 
-        <h2>Cookies and Analytics</h2>
+        <h2>Cookies and Similar Technologies</h2>
 
         <p>
-          Greyson Institute may use necessary website technologies and may use
-          analytics tools in the future to understand website traffic and
-          improve the user experience.
+          Greyson Institute and its service providers may use cookies and
+          similar technologies that are necessary for website operation,
+          security, analytics, and measurement.
         </p>
 
         <p>
-          If additional analytics, advertising, or tracking technologies are
-          implemented, this Privacy Policy will be updated as appropriate.
+          Browser settings may allow you to block, limit, or delete cookies.
+          Some website features or analytics measurements may function
+          differently when cookies are restricted.
         </p>
 
         <h2>Sharing of Information</h2>
@@ -103,9 +141,9 @@ export default function PrivacyPage() {
 
         <p>
           Information may be shared with service providers when reasonably
-          necessary to operate the website, process inquiries, support
-          enrollment or student services, maintain security, or comply with
-          legal obligations.
+          necessary to operate the website, process inquiries, analyze website
+          usage, support enrollment or student services, maintain security, or
+          comply with legal obligations.
         </p>
 
         <h2>Data Retention</h2>
@@ -117,6 +155,11 @@ export default function PrivacyPage() {
           requirements.
         </p>
 
+        <p>
+          Analytics information may be retained in accordance with our Google
+          Analytics settings and Google's applicable retention practices.
+        </p>
+
         <h2>Your Choices</h2>
 
         <p>
@@ -124,6 +167,11 @@ export default function PrivacyPage() {
           about personal information you previously submitted through the
           website or request that we review a deletion request where
           appropriate.
+        </p>
+
+        <p>
+          You may also use your browser's privacy and cookie controls to limit
+          certain website tracking technologies.
         </p>
 
         <h2>Contact</h2>
@@ -140,8 +188,8 @@ export default function PrivacyPage() {
 
         <p className="muted">
           Greyson Institute is operated by BrightPath Education Group, LLC.
-          This policy may be updated as additional enrollment, analytics,
-          advertising, and student-service systems are implemented.
+          This Privacy Policy may be updated as additional enrollment,
+          advertising, analytics, and student-service systems are implemented.
         </p>
       </div>
     </section>
