@@ -8,32 +8,38 @@ export const metadata: Metadata = {
 const paths = [
   {
     label: "I need my first license",
-    detail: "Start the education path toward becoming a real estate sales associate.",
+    detail:
+      "Start the education path toward becoming a real estate sales associate.",
     href: "#pre-licensing",
   },
   {
     label: "I’m preparing for the licensing exam",
-    detail: "Review key concepts and prepare more confidently for exam day.",
+    detail:
+      "Review key concepts and prepare more confidently for exam day.",
     href: "#exam-prep",
   },
   {
     label: "I need post-license education",
-    detail: "Continue with the education required after becoming licensed.",
+    detail:
+      "Continue with the education required after becoming licensed.",
     href: "#post-license",
   },
   {
     label: "I need continuing education",
-    detail: "Find education for maintaining and renewing an active license.",
+    detail:
+      "Find education for maintaining and renewing an active license.",
     href: "#continuing-education",
   },
   {
     label: "I want to become a broker",
-    detail: "Explore the education path for advancing to broker licensure.",
+    detail:
+      "Explore the education path for advancing to broker licensure.",
     href: "#broker",
   },
   {
     label: "I need to reactivate my license",
-    detail: "Find education associated with returning an inactive license to active status.",
+    detail:
+      "Find education associated with returning an inactive license to active status.",
     href: "#reactivation",
   },
 ];
@@ -43,37 +49,43 @@ const courses = [
     id: "pre-licensing",
     eyebrow: "PRE-LICENSING",
     title: "Sales Associate Pre-Licensing",
-    body: "For students beginning the path toward a real estate sales associate license.",
+    body:
+      "For students beginning the path toward a real estate sales associate license.",
   },
   {
     id: "post-license",
     eyebrow: "POST-LICENSE",
     title: "Sales Associate Post-License",
-    body: "For newly licensed sales associates completing the education required for their first renewal period.",
+    body:
+      "For newly licensed sales associates completing the education required for their first renewal period.",
   },
   {
     id: "continuing-education",
     eyebrow: "CONTINUING EDUCATION",
     title: "Continuing Education",
-    body: "For active real estate professionals completing education for license renewal.",
+    body:
+      "For active real estate professionals completing education for license renewal.",
   },
   {
     id: "broker",
     eyebrow: "BROKER",
     title: "Broker Pre-Licensing",
-    body: "For experienced real estate professionals preparing to advance to broker licensure.",
+    body:
+      "For experienced real estate professionals preparing to advance to broker licensure.",
   },
   {
     id: "reactivation",
     eyebrow: "REACTIVATION",
     title: "Reactivation Education",
-    body: "For licensees completing education associated with returning an inactive license to active status.",
+    body:
+      "For licensees completing education associated with returning an inactive license to active status.",
   },
   {
     id: "exam-prep",
     eyebrow: "EXAM PREP",
     title: "Exam Preparation",
-    body: "Focused preparation designed to reinforce key concepts before a licensing examination.",
+    body:
+      "Focused preparation designed to reinforce key concepts before a licensing examination.",
   },
 ];
 
@@ -135,7 +147,8 @@ export default function CoursesPage() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 360px), 1fr))",
             gap: "18px",
             marginBottom: "38px",
           }}
@@ -165,7 +178,8 @@ export default function CoursesPage() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 360px), 1fr))",
             borderTop: "1px solid rgba(17, 23, 23, 0.16)",
             borderLeft: "1px solid rgba(17, 23, 23, 0.16)",
           }}
@@ -175,8 +189,8 @@ export default function CoursesPage() {
               key={path.label}
               href={path.href}
               style={{
-                minHeight: "190px",
-                padding: "26px",
+                minHeight: "205px",
+                padding: "28px",
                 borderRight: "1px solid rgba(17, 23, 23, 0.16)",
                 borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
                 background: "#f5f0e7",
