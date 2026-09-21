@@ -769,3 +769,124 @@ p {
     font-size: clamp(50px, 4.8vw, 72px);
   }
 }
+
+/* WCAG 2.2 AA ACCESSIBILITY FOUNDATION */
+
+:root {
+  --bronze-text: #7d5f3a;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 10000;
+  padding: 12px 18px;
+  background: #111717;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+/* Strong visible keyboard focus */
+
+:where(
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  summary,
+  [tabindex]
+):focus-visible {
+  outline: 3px solid #ffffff !important;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #111717 !important;
+}
+
+/* Keep focused controls clear of the sticky header and fixed banner */
+
+:where(
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  summary,
+  [tabindex]
+) {
+  scroll-margin-top: 160px;
+  scroll-margin-bottom: 240px;
+}
+/* Accessible form focus and typography */
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #ffffff !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px #111717 !important;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Accessible bronze for small text */
+
+.eyebrow,
+.path-meta,
+.coming-soon {
+  color: var(--bronze-text);
+}
+
+.eyebrow--light {
+  color: #d6bd9c;
+}
+/* Inline prose links should not rely on color alone */
+
+.prose-card a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+/* Ensure common navigation links meet minimum interactive height */
+
+.desktop-nav a,
+.footer-links a,
+.text-link {
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Better keyboard indication for FAQ disclosure controls */
+
+.faq-list summary {
+  min-height: 44px;
+}
+/* Respect operating-system reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
