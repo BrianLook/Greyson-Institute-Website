@@ -72,15 +72,18 @@ export default function FAQPage() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
             gap: "55px",
             alignItems: "end",
+            minWidth: 0,
           }}
         >
           <h1
             style={{
               maxWidth: "700px",
               marginBottom: 0,
+              minWidth: 0,
             }}
           >
             Clear answers before you enroll.
@@ -91,6 +94,7 @@ export default function FAQPage() {
             style={{
               margin: 0,
               maxWidth: "520px",
+              minWidth: 0,
             }}
           >
             Real estate education comes with requirements, deadlines, and
@@ -104,6 +108,7 @@ export default function FAQPage() {
         className="container"
         style={{
           maxWidth: "1000px",
+          minWidth: 0,
         }}
       >
         <div
@@ -116,13 +121,12 @@ export default function FAQPage() {
               key={faq.question}
               style={{
                 borderBottom: "1px solid rgba(17, 23, 23, 0.18)",
-                padding: "0",
+                padding: 0,
               }}
             >
               <summary
                 style={{
                   cursor: "pointer",
-                  listStylePosition: "outside",
                   padding: "28px 0",
                   fontFamily: "var(--font-serif), Georgia, serif",
                   fontSize: "clamp(1.35rem, 2vw, 1.75rem)",
@@ -131,23 +135,41 @@ export default function FAQPage() {
               >
                 <span
                   style={{
-                    color: "#9b7a52",
-                    fontFamily: "var(--font-sans), Arial, sans-serif",
-                    fontSize: "0.68rem",
-                    letterSpacing: "0.16em",
-                    marginRight: "18px",
-                    verticalAlign: "middle",
+                    display: "inline-grid",
+                    gridTemplateColumns: "40px minmax(0, 1fr)",
+                    columnGap: "16px",
+                    width: "calc(100% - 22px)",
+                    verticalAlign: "top",
+                    minWidth: 0,
                   }}
                 >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                  <span
+                    style={{
+                      color: "#7d5f3a",
+                      fontFamily: "var(--font-sans), Arial, sans-serif",
+                      fontSize: "0.68rem",
+                      letterSpacing: "0.16em",
+                      lineHeight: 1.6,
+                      paddingTop: "3px",
+                    }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
 
-                {faq.question}
+                  <span
+                    style={{
+                      minWidth: 0,
+                      overflowWrap: "anywhere",
+                    }}
+                  >
+                    {faq.question}
+                  </span>
+                </span>
               </summary>
 
               <div
                 style={{
-                  padding: "0 0 30px 43px",
+                  padding: "0 0 30px 56px",
                 }}
               >
                 <p
@@ -172,6 +194,7 @@ export default function FAQPage() {
         style={{
           marginTop: "90px",
           maxWidth: "1000px",
+          minWidth: 0,
         }}
       >
         <div
@@ -180,12 +203,14 @@ export default function FAQPage() {
             border: "1px solid rgba(17, 23, 23, 0.14)",
             padding: "clamp(34px, 5vw, 60px)",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
             gap: "35px",
             alignItems: "center",
+            minWidth: 0,
           }}
         >
-          <div>
+          <div style={{ minWidth: 0 }}>
             <p className="eyebrow">STILL NOT SURE?</p>
 
             <h2
@@ -213,6 +238,7 @@ export default function FAQPage() {
               display: "flex",
               justifyContent: "flex-end",
               alignItems: "center",
+              minWidth: 0,
             }}
           >
             <Link className="button" href="/contact">
