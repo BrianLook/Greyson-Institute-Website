@@ -1,16 +1,45 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { BrandLockup } from "./BrandMark";
 
 export function SiteHeader() {
   const menuRef = useRef<HTMLDetailsElement>(null);
+  const summaryRef = useRef<HTMLElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
-  function closeMenu() {
-    if (menuRef.current) {
-      menuRef.current.open = false;
+  function closeMenu(returnFocus = false) {
+    const menu = menuRef.current;
+
+    if (menu) {
+      menu.open = false;
+      setIsOpen(false);
     }
+
+    if (returnFocus) {
+      window.requestAnimationFrame(() => {
+        summaryRef.current?.focus();
+      });
+    }
+  }
+
+  function handleToggle() {
+    setIsOpen(Boolean(menuRef.current?.open));
+  }
+
+  function handleNavClick() {
+    closeMenu(false);
+  }
+
+  function isCurrentPage(href: string) {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return pathname === href || pathname.startsWith(`${href}/`);
   }
 
   useEffect(() => {
@@ -22,13 +51,14 @@ export function SiteHeader() {
         event.target instanceof Node &&
         !menu.contains(event.target)
       ) {
-        menu.open = false;
+        closeMenu(false);
       }
     }
 
     function handleEscape(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        closeMenu();
+      if (event.key === "Escape" && menuRef.current?.open) {
+        event.preventDefault();
+        closeMenu(true);
       }
     }
 
@@ -63,6 +93,7 @@ export function SiteHeader() {
             lineHeight: 1.4,
             paddingTop: "7px",
             paddingBottom: "7px",
+            flexWrap: "wrap",
           }}
         >
           <span>
@@ -72,11 +103,13 @@ export function SiteHeader() {
           <a
             href="/courses#find-your-path"
             style={{
-              color: "#c6aa85",
+              color: "#d6bd9c",
               fontWeight: 600,
               whiteSpace: "nowrap",
+              textDecoration: "underline",
+              textUnderlineOffset: "3px",
             }}
-            onClick={closeMenu}
+            onClick={handleNavClick}
           >
             Find your path →
           </a>
@@ -88,24 +121,61 @@ export function SiteHeader() {
           href="/"
           className="header-brand"
           aria-label="Greyson Institute home"
-          onClick={closeMenu}
+          aria-current={isCurrentPage("/") ? "page" : undefined}
+          onClick={handleNavClick}
         >
           <BrandLockup />
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
-          <Link href="/courses">Courses</Link>
-          <Link href="/about">About</Link>
-          <Link href="/faq">FAQ</Link>
-          <Link href="/contact">Contact</Link>
+          <Link
+            href="/courses"
+            aria-current={isCurrentPage("/courses") ? "page" : undefined}
+          >
+            Courses
+          </Link>
+
+          <Link
+            href="/about"
+            aria-current={isCurrentPage("/about") ? "page" : undefined}
+          >
+            About
+          </Link>
+
+          <Link
+            href="/faq"
+            aria-current={isCurrentPage("/faq") ? "page" : undefined}
+          >
+            FAQ
+          </Link>
+
+          <Link
+            href="/contact"
+            aria-current={isCurrentPage("/contact") ? "page" : undefined}
+          >
+            Contact
+          </Link>
         </nav>
 
-        <Link className="button button--small" href="/courses">
+        <Link
+          className="button button--small"
+          href="/courses"
+          aria-current={isCurrentPage("/courses") ? "page" : undefined}
+        >
           Explore Courses
         </Link>
 
-        <details className="mobile-menu" ref={menuRef}>
-          <summary aria-label="Open navigation menu">
+        <details
+          className="mobile-menu"
+          ref={menuRef}
+          onToggle={handleToggle}
+        >
+          <summary
+            ref={summaryRef}
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+          >
             <span className="mobile-menu__icon" aria-hidden="true">
               <span />
               <span />
@@ -114,30 +184,55 @@ export function SiteHeader() {
           </summary>
 
           <nav
+            id="mobile-navigation"
             className="mobile-menu__panel"
             aria-label="Mobile navigation"
           >
-            <Link href="/courses" onClick={closeMenu}>
+            <Link
+              href="/courses"
+              aria-current={isCurrentPage("/courses") ? "page" : undefined}
+              onClick={handleNavClick}
+            >
               Courses
             </Link>
 
-            <Link href="/about" onClick={closeMenu}>
+            <Link
+              href="/about"
+              aria-current={isCurrentPage("/about") ? "page" : undefined}
+              onClick={handleNavClick}
+            >
               About
             </Link>
 
-            <Link href="/faq" onClick={closeMenu}>
+            <Link
+              href="/faq"
+              aria-current={isCurrentPage("/faq") ? "page" : undefined}
+              onClick={handleNavClick}
+            >
               FAQ
             </Link>
 
-            <Link href="/contact" onClick={closeMenu}>
+            <Link
+              href="/contact"
+              aria-current={isCurrentPage("/contact") ? "page" : undefined}
+              onClick={handleNavClick}
+            >
               Contact
             </Link>
 
-            <Link href="/privacy" onClick={closeMenu}>
+            <Link
+              href="/privacy"
+              aria-current={isCurrentPage("/privacy") ? "page" : undefined}
+              onClick={handleNavClick}
+            >
               Privacy
             </Link>
 
-            <Link href="/terms" onClick={closeMenu}>
+            <Link
+              href="/terms"
+              aria-current={isCurrentPage("/terms") ? "page" : undefined}
+              onClick={handleNavClick}
+            >
               Terms
             </Link>
           </nav>
