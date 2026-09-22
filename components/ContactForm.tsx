@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 const FORM_ENDPOINT = "https://formspree.io/f/xgavkvzg";
 
@@ -14,6 +14,14 @@ export function ContactForm() {
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
+
+  const successRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status === "success") {
+      successRef.current?.focus();
+    }
+  }, [status]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -50,6 +58,11 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div
+        ref={successRef}
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        tabIndex={-1}
         style={{
           border: "1px solid rgba(17, 23, 23, 0.16)",
           background: "#f5f0e7",
@@ -92,6 +105,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
+      aria-busy={status === "submitting"}
       style={{
         border: "1px solid rgba(17, 23, 23, 0.16)",
         background: "#f5f0e7",
@@ -224,6 +238,7 @@ export function ContactForm() {
         {status === "error" && (
           <p
             role="alert"
+            aria-live="assertive"
             style={{
               color: "#8d2f2f",
               margin: 0,
@@ -247,6 +262,7 @@ export function ContactForm() {
           className="button"
           type="submit"
           disabled={status === "submitting"}
+          aria-disabled={status === "submitting"}
           style={{
             width: "fit-content",
             opacity: status === "submitting" ? 0.65 : 1,
