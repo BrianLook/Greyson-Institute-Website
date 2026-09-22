@@ -97,12 +97,23 @@ export default function CoursesPage() {
         style={{
           marginBottom: "88px",
           alignItems: "center",
+          minWidth: 0,
         }}
       >
-        <div>
+        <div
+          style={{
+            minWidth: 0,
+          }}
+        >
           <p className="eyebrow">REAL ESTATE EDUCATION</p>
 
-          <h1>Find the course that matches your next step.</h1>
+          <h1
+            style={{
+              overflowWrap: "anywhere",
+            }}
+          >
+            Find the course that matches your next step.
+          </h1>
 
           <p className="page-lead">
             From your first license through continuing education and broker
@@ -117,6 +128,7 @@ export default function CoursesPage() {
             overflow: "hidden",
             border: "1px solid rgba(17, 23, 23, 0.14)",
             background: "#eee6d9",
+            minWidth: 0,
           }}
         >
           <img
@@ -141,6 +153,7 @@ export default function CoursesPage() {
           maxWidth: "1080px",
           marginBottom: "100px",
           scrollMarginTop: "150px",
+          minWidth: 0,
         }}
       >
         <p className="eyebrow">FIND YOUR PATH</p>
@@ -149,15 +162,18 @@ export default function CoursesPage() {
           style={{
             display: "grid",
             gridTemplateColumns:
-              "repeat(auto-fit, minmax(320px, 1fr))",
+              "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
             gap: "18px",
             marginBottom: "38px",
+            minWidth: 0,
           }}
         >
           <h2
             style={{
               maxWidth: "620px",
               marginBottom: 0,
+              minWidth: 0,
+              overflowWrap: "anywhere",
             }}
           >
             What do you need?
@@ -169,6 +185,7 @@ export default function CoursesPage() {
               maxWidth: "520px",
               margin: 0,
               alignSelf: "end",
+              minWidth: 0,
             }}
           >
             Choose the description that best matches where you are today.
@@ -180,9 +197,10 @@ export default function CoursesPage() {
           style={{
             display: "grid",
             gridTemplateColumns:
-              "repeat(auto-fit, minmax(320px, 1fr))",
+              "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
             borderTop: "1px solid rgba(17, 23, 23, 0.16)",
             borderLeft: "1px solid rgba(17, 23, 23, 0.16)",
+            minWidth: 0,
           }}
         >
           {paths.map((path, index) => (
@@ -197,11 +215,13 @@ export default function CoursesPage() {
                 background: "#f5f0e7",
                 display: "flex",
                 flexDirection: "column",
+                minWidth: 0,
+                overflowWrap: "anywhere",
               }}
             >
               <span
                 style={{
-                  color: "#9b7a52",
+                  color: "#7d5f3a",
                   fontSize: "0.68rem",
                   letterSpacing: "0.16em",
                   marginBottom: "26px",
@@ -214,6 +234,7 @@ export default function CoursesPage() {
                 style={{
                   fontSize: "1.55rem",
                   marginBottom: "10px",
+                  minWidth: 0,
                 }}
               >
                 {path.label}
@@ -225,6 +246,7 @@ export default function CoursesPage() {
                   fontSize: "0.9rem",
                   lineHeight: 1.65,
                   margin: 0,
+                  minWidth: 0,
                 }}
               >
                 {path.detail}
@@ -245,7 +267,12 @@ export default function CoursesPage() {
         </div>
       </div>
 
-      <div className="container course-list">
+      <div
+        className="container course-list"
+        style={{
+          minWidth: 0,
+        }}
+      >
         {courses.map((course) => (
           <article
             id={course.id}
@@ -253,12 +280,23 @@ export default function CoursesPage() {
             key={course.title}
             style={{
               scrollMarginTop: "150px",
+              minWidth: 0,
             }}
           >
-            <div>
+            <div
+              style={{
+                minWidth: 0,
+              }}
+            >
               <p className="eyebrow">{course.eyebrow}</p>
 
-              <h2>{course.title}</h2>
+              <h2
+                style={{
+                  overflowWrap: "anywhere",
+                }}
+              >
+                {course.title}
+              </h2>
 
               <p>{course.body}</p>
             </div>
@@ -276,6 +314,7 @@ export default function CoursesPage() {
           marginTop: "64px",
           paddingTop: "36px",
           borderTop: "1px solid rgba(17, 23, 23, 0.18)",
+          minWidth: 0,
         }}
       >
         <p
@@ -284,6 +323,7 @@ export default function CoursesPage() {
             color: "#6e6b65",
             fontSize: "0.95rem",
             lineHeight: 1.7,
+            overflowWrap: "anywhere",
           }}
         >
           Course availability, pricing, enrollment links, state-specific
