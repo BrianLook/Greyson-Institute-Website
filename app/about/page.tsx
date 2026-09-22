@@ -31,6 +31,27 @@ const team = [
   },
 ];
 
+const approachItems = [
+  {
+    number: "01",
+    title: "Clear direction",
+    body:
+      "Helping students understand which education fits where they are in their real estate journey.",
+  },
+  {
+    number: "02",
+    title: "Practical education",
+    body:
+      "Presenting real estate education in a way that feels useful, professional, and connected to the work itself.",
+  },
+  {
+    number: "03",
+    title: "Student support",
+    body:
+      "Creating a straightforward experience from choosing a course through completing the next step.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <section
@@ -160,11 +181,11 @@ export default function AboutPage() {
               {member.secondary && (
                 <p
                   style={{
-                    color: "#9b7a52",
+                    color: "#7d5f3a",
                     fontSize: "0.74rem",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    margin: "0",
+                    margin: 0,
                   }}
                 >
                   {member.secondary}
@@ -172,6 +193,7 @@ export default function AboutPage() {
               )}
 
               <div
+                aria-hidden="true"
                 style={{
                   width: "42px",
                   height: "1px",
@@ -221,80 +243,50 @@ export default function AboutPage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "28px",
               borderTop: "1px solid rgba(245, 240, 231, 0.22)",
             }}
           >
-            <div
-              style={{
-                padding: "28px 28px 0 0",
-              }}
-            >
-              <p
+            {approachItems.map((item) => (
+              <div
+                key={item.number}
                 style={{
-                  color: "#c6aa85",
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.18em",
-                  marginTop: 0,
+                  padding: "28px 0",
+                  borderBottom: "1px solid rgba(245, 240, 231, 0.16)",
+                  minWidth: 0,
                 }}
               >
-                01
-              </p>
+                <p
+                  style={{
+                    color: "#d6bd9c",
+                    fontSize: "0.72rem",
+                    letterSpacing: "0.18em",
+                    margin: "0 0 28px",
+                  }}
+                >
+                  {item.number}
+                </p>
 
-              <h3 style={{ color: "#f5f0e7" }}>Clear direction</h3>
+                <h3
+                  style={{
+                    color: "#f5f0e7",
+                    marginBottom: "18px",
+                  }}
+                >
+                  {item.title}
+                </h3>
 
-              <p style={{ color: "rgba(245, 240, 231, 0.7)" }}>
-                Helping students understand which education fits where they
-                are in their real estate journey.
-              </p>
-            </div>
-
-            <div
-              style={{
-                padding: "28px",
-              }}
-            >
-              <p
-                style={{
-                  color: "#c6aa85",
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.18em",
-                  marginTop: 0,
-                }}
-              >
-                02
-              </p>
-
-              <h3 style={{ color: "#f5f0e7" }}>Practical education</h3>
-
-              <p style={{ color: "rgba(245, 240, 231, 0.7)" }}>
-                Presenting real estate education in a way that feels useful,
-                professional, and connected to the work itself.
-              </p>
-            </div>
-
-            <div
-              style={{
-                padding: "28px 0 0 28px",
-              }}
-            >
-              <p
-                style={{
-                  color: "#c6aa85",
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.18em",
-                  marginTop: 0,
-                }}
-              >
-                03
-              </p>
-
-              <h3 style={{ color: "#f5f0e7" }}>Student support</h3>
-
-              <p style={{ color: "rgba(245, 240, 231, 0.7)" }}>
-                Creating a straightforward experience from choosing a course
-                through completing the next step.
-              </p>
-            </div>
+                <p
+                  style={{
+                    color: "rgba(245, 240, 231, 0.82)",
+                    margin: 0,
+                    lineHeight: 1.75,
+                  }}
+                >
+                  {item.body}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
