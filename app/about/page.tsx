@@ -243,7 +243,8 @@ export default function AboutPage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: "28px",
+              columnGap: "28px",
+              rowGap: 0,
               borderTop: "1px solid rgba(245, 240, 231, 0.22)",
             }}
           >
