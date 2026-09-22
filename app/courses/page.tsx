@@ -100,18 +100,10 @@ export default function CoursesPage() {
           minWidth: 0,
         }}
       >
-        <div
-          style={{
-            minWidth: 0,
-          }}
-        >
+        <div style={{ minWidth: 0 }}>
           <p className="eyebrow">REAL ESTATE EDUCATION</p>
 
-          <h1
-            style={{
-              overflowWrap: "anywhere",
-            }}
-          >
+          <h1 style={{ overflowWrap: "anywhere" }}>
             Find the course that matches your next step.
           </h1>
 
@@ -207,12 +199,12 @@ export default function CoursesPage() {
             <Link
               key={path.label}
               href={path.href}
+              className="path-card"
               style={{
                 minHeight: "220px",
                 padding: "28px",
                 borderRight: "1px solid rgba(17, 23, 23, 0.16)",
                 borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
-                background: "#f5f0e7",
                 display: "flex",
                 flexDirection: "column",
                 minWidth: 0,
@@ -269,9 +261,7 @@ export default function CoursesPage() {
 
       <div
         className="container course-list"
-        style={{
-          minWidth: 0,
-        }}
+        style={{ minWidth: 0 }}
       >
         {courses.map((course) => (
           <article
@@ -283,18 +273,10 @@ export default function CoursesPage() {
               minWidth: 0,
             }}
           >
-            <div
-              style={{
-                minWidth: 0,
-              }}
-            >
+            <div style={{ minWidth: 0 }}>
               <p className="eyebrow">{course.eyebrow}</p>
 
-              <h2
-                style={{
-                  overflowWrap: "anywhere",
-                }}
-              >
+              <h2 style={{ overflowWrap: "anywhere" }}>
                 {course.title}
               </h2>
 
