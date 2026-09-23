@@ -343,7 +343,14 @@ export default function HomePage() {
             }}
           />
 
-          <p className="eyebrow">GREYSON INSTITUTE</p>
+          <p
+            className="eyebrow"
+            style={{
+              color: "#7d5f3a",
+            }}
+          >
+            GREYSON INSTITUTE
+          </p>
 
           <h2
             style={{
@@ -353,7 +360,11 @@ export default function HomePage() {
             Find the education that fits your next step.
           </h2>
 
-          <p>
+          <p
+            style={{
+              color: "#4d4b46",
+            }}
+          >
             Explore real estate education paths for licensing, post-license,
             continuing education, broker education, and exam preparation.
           </p>
