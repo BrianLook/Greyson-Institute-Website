@@ -87,6 +87,7 @@ export default function HomePage() {
         <div className="container section-heading-row">
           <div>
             <p className="eyebrow">FIND YOUR NEXT STEP</p>
+
             <h2>Where are you in your real estate career?</h2>
           </div>
 
