@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
+  description:
+    "Read the Greyson Institute Terms of Use covering website information, course enrollment, licensing requirements, third-party services, refunds, and intellectual property.",
 };
 
 export default function TermsPage() {
@@ -15,6 +17,10 @@ export default function TermsPage() {
         <p className="page-lead">
           These Terms of Use govern your use of the Greyson Institute website
           and the information provided through it.
+        </p>
+
+        <p className="muted">
+          Last updated: September 23, 2026
         </p>
 
         <h2>Website Information</h2>
