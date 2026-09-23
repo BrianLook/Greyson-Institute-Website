@@ -9,7 +9,7 @@ const team = [
     name: "Brian Smith",
     title: "Licensed Florida Real Estate Broker & Instructor",
     secondary: "Founder, Greyson Institute",
-    image: "/brian-smith.png",
+    image: "/smith-brian.png",
     bio:
       "Brian is a licensed Florida Real Estate Broker and Instructor with extensive experience in real estate law, brokerage, sales, agent training, and education. He brings a practical, real-world perspective to Greyson Institute, helping shape student guidance with a focus on clarity, professionalism, and the knowledge real estate professionals need to move confidently into the next stage of their careers.",
   },
