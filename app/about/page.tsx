@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About",
@@ -130,6 +131,7 @@ export default function AboutPage() {
           >
             <div
               style={{
+                position: "relative",
                 aspectRatio: "4 / 5",
                 overflow: "hidden",
                 background: "#eee6d9",
@@ -137,15 +139,14 @@ export default function AboutPage() {
                 minWidth: 0,
               }}
             >
-              <img
+              <Image
                 src={member.image}
                 alt={member.name}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw"
                 style={{
-                  width: "100%",
-                  height: "100%",
                   objectFit: "cover",
                   objectPosition: "center top",
-                  display: "block",
                 }}
               />
             </div>
