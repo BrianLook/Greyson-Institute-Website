@@ -20,6 +20,8 @@ export function SiteFooter() {
               marginTop: "10px",
               color: "rgba(245, 240, 231, 0.82)",
               fontSize: "13px",
+              textDecoration: "underline",
+              textUnderlineOffset: "3px",
             }}
           >
             support@greysoninstitute.com
@@ -43,7 +45,12 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="container footer-bottom">
+      <div
+        className="container footer-bottom"
+        style={{
+          color: "#a8a39a",
+        }}
+      >
         © {new Date().getFullYear()} Greyson Institute. All rights reserved.
       </div>
     </footer>
