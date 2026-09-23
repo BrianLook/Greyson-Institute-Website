@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const paths = [
@@ -74,6 +75,7 @@ export default function HomePage() {
 
           <div
             style={{
+              position: "relative",
               minHeight: "clamp(320px, 50vw, 560px)",
               height: "100%",
               overflow: "hidden",
@@ -82,17 +84,15 @@ export default function HomePage() {
               minWidth: 0,
             }}
           >
-            <img
+            <Image
               src="/greyson-hero-study.png"
               alt="Professional real estate study workspace"
+              fill
+              priority
+              sizes="(max-width: 980px) 100vw, 55vw"
               style={{
-                width: "100%",
-                height: "100%",
-                minHeight: "clamp(320px, 50vw, 560px)",
                 objectFit: "cover",
                 objectPosition: "center",
-                display: "block",
-                maxWidth: "100%",
               }}
             />
           </div>
@@ -241,6 +241,7 @@ export default function HomePage() {
         >
           <div
             style={{
+              position: "relative",
               minHeight: "clamp(320px, 50vw, 520px)",
               overflow: "hidden",
               border: "1px solid rgba(17, 23, 23, 0.16)",
@@ -248,17 +249,14 @@ export default function HomePage() {
               minWidth: 0,
             }}
           >
-            <img
+            <Image
               src="/smith-brian.png"
               alt="Brian Smith, Licensed Florida Real Estate Broker and Instructor"
+              fill
+              sizes="(max-width: 980px) 100vw, 40vw"
               style={{
-                width: "100%",
-                height: "100%",
-                minHeight: "clamp(320px, 50vw, 520px)",
                 objectFit: "cover",
                 objectPosition: "center top",
-                display: "block",
-                maxWidth: "100%",
               }}
             />
           </div>
@@ -330,10 +328,13 @@ export default function HomePage() {
             minWidth: 0,
           }}
         >
-          <img
+          <Image
             src="/brand/greyson-icon-color.png"
             alt=""
             aria-hidden="true"
+            width={72}
+            height={72}
+            sizes="72px"
             style={{
               width: "72px",
               maxWidth: "100%",
