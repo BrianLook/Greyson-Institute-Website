@@ -73,6 +73,21 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
+      <style>
+        {`
+          /*
+            At narrow effective viewport widths, including desktop browsers
+            zoomed to 400%, the header becomes part of the normal page flow
+            instead of remaining pinned over the content.
+          */
+          @media (max-width: 640px) {
+            .site-header {
+              position: static;
+            }
+          }
+        `}
+      </style>
+
       <div
         style={{
           background: "#1f2d30",
@@ -172,7 +187,9 @@ export function SiteHeader() {
         >
           <summary
             ref={summaryRef}
-            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={
+              isOpen ? "Close navigation menu" : "Open navigation menu"
+            }
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
           >
