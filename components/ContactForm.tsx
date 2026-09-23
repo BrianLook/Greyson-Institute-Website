@@ -129,11 +129,22 @@ export function ContactForm() {
       <h2
         style={{
           fontSize: "clamp(2rem, 4vw, 3rem)",
-          marginBottom: "30px",
+          marginBottom: "14px",
         }}
       >
         How can we help?
       </h2>
+
+      <p
+        style={{
+          color: "#6e6b65",
+          fontSize: "0.85rem",
+          lineHeight: 1.6,
+          margin: "0 0 30px",
+        }}
+      >
+        Fields identified as required must be completed before submitting.
+      </p>
 
       <div
         style={{
@@ -142,7 +153,10 @@ export function ContactForm() {
         }}
       >
         <label>
-          <span style={labelStyle}>Name</span>
+          <span style={labelStyle}>
+            Name{" "}
+            <span style={requiredStyle}>(required)</span>
+          </span>
 
           <input
             type="text"
@@ -154,7 +168,10 @@ export function ContactForm() {
         </label>
 
         <label>
-          <span style={labelStyle}>Email</span>
+          <span style={labelStyle}>
+            Email{" "}
+            <span style={requiredStyle}>(required)</span>
+          </span>
 
           <input
             type="email"
@@ -166,19 +183,24 @@ export function ContactForm() {
         </label>
 
         <label>
-          <span style={labelStyle}>State</span>
+          <span style={labelStyle}>
+            State{" "}
+            <span style={optionalStyle}>(optional)</span>
+          </span>
 
           <input
             type="text"
             name="state"
             autoComplete="address-level1"
-            placeholder="Florida"
             style={fieldStyle}
           />
         </label>
 
         <label>
-          <span style={labelStyle}>What do you need help with?</span>
+          <span style={labelStyle}>
+            What do you need help with?{" "}
+            <span style={requiredStyle}>(required)</span>
+          </span>
 
           <select
             name="help_with"
@@ -221,7 +243,10 @@ export function ContactForm() {
         </label>
 
         <label>
-          <span style={labelStyle}>Message</span>
+          <span style={labelStyle}>
+            Message{" "}
+            <span style={requiredStyle}>(required)</span>
+          </span>
 
           <textarea
             name="message"
@@ -308,6 +333,22 @@ const labelStyle = {
   fontWeight: 700,
   letterSpacing: "0.08em",
   textTransform: "uppercase" as const,
+};
+
+const requiredStyle = {
+  color: "#5d5043",
+  fontSize: "0.72rem",
+  fontWeight: 600,
+  letterSpacing: "0.04em",
+  textTransform: "none" as const,
+};
+
+const optionalStyle = {
+  color: "#5d5043",
+  fontSize: "0.72rem",
+  fontWeight: 600,
+  letterSpacing: "0.04em",
+  textTransform: "none" as const,
 };
 
 const fieldStyle = {
