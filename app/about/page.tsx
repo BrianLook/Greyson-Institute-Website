@@ -65,6 +65,7 @@ export default function AboutPage() {
         style={{
           maxWidth: "1180px",
           marginBottom: "72px",
+          minWidth: 0,
         }}
       >
         <p className="eyebrow">ABOUT GREYSON INSTITUTE</p>
@@ -72,15 +73,19 @@ export default function AboutPage() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
             gap: "48px",
             alignItems: "end",
+            minWidth: 0,
           }}
         >
           <h1
             style={{
               maxWidth: "700px",
               marginBottom: 0,
+              minWidth: 0,
+              overflowWrap: "anywhere",
             }}
           >
             The people behind Greyson Institute.
@@ -91,6 +96,7 @@ export default function AboutPage() {
             style={{
               margin: 0,
               maxWidth: "520px",
+              minWidth: 0,
             }}
           >
             Experienced leadership, thoughtful technology, and responsive
@@ -104,9 +110,11 @@ export default function AboutPage() {
         className="container"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gridTemplateColumns:
+            "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
           gap: "28px",
           alignItems: "stretch",
+          minWidth: 0,
         }}
       >
         {team.map((member) => (
@@ -126,6 +134,7 @@ export default function AboutPage() {
                 overflow: "hidden",
                 background: "#eee6d9",
                 borderBottom: "1px solid rgba(17, 23, 23, 0.14)",
+                minWidth: 0,
               }}
             >
               <img
@@ -147,6 +156,7 @@ export default function AboutPage() {
                 display: "flex",
                 flexDirection: "column",
                 flex: 1,
+                minWidth: 0,
               }}
             >
               <p
@@ -162,6 +172,8 @@ export default function AboutPage() {
                 style={{
                   fontSize: "2.15rem",
                   marginBottom: "8px",
+                  minWidth: 0,
+                  overflowWrap: "anywhere",
                 }}
               >
                 {member.name}
@@ -173,6 +185,7 @@ export default function AboutPage() {
                   fontSize: "1.12rem",
                   lineHeight: 1.4,
                   margin: "0 0 5px",
+                  overflowWrap: "anywhere",
                 }}
               >
                 {member.title}
@@ -186,6 +199,7 @@ export default function AboutPage() {
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     margin: 0,
+                    overflowWrap: "anywhere",
                   }}
                 >
                   {member.secondary}
@@ -208,6 +222,7 @@ export default function AboutPage() {
                   fontSize: "0.95rem",
                   lineHeight: 1.75,
                   margin: 0,
+                  overflowWrap: "anywhere",
                 }}
               >
                 {member.bio}
@@ -225,7 +240,12 @@ export default function AboutPage() {
           padding: "90px 0",
         }}
       >
-        <div className="container">
+        <div
+          className="container"
+          style={{
+            minWidth: 0,
+          }}
+        >
           <p className="eyebrow eyebrow--light">THE GREYSON APPROACH</p>
 
           <h2
@@ -233,6 +253,8 @@ export default function AboutPage() {
             style={{
               maxWidth: "760px",
               marginBottom: "55px",
+              minWidth: 0,
+              overflowWrap: "anywhere",
             }}
           >
             A professional education experience built around clarity and
@@ -242,10 +264,12 @@ export default function AboutPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
               columnGap: "28px",
               rowGap: 0,
               borderTop: "1px solid rgba(245, 240, 231, 0.22)",
+              minWidth: 0,
             }}
           >
             {approachItems.map((item) => (
@@ -272,6 +296,7 @@ export default function AboutPage() {
                   style={{
                     color: "#f5f0e7",
                     marginBottom: "18px",
+                    overflowWrap: "anywhere",
                   }}
                 >
                   {item.title}
@@ -282,6 +307,7 @@ export default function AboutPage() {
                     color: "rgba(245, 240, 231, 0.82)",
                     margin: 0,
                     lineHeight: 1.75,
+                    overflowWrap: "anywhere",
                   }}
                 >
                   {item.body}
