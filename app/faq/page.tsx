@@ -3,6 +3,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "FAQ",
+  description:
+    "Find answers to common Greyson Institute questions about online real estate education, licensing paths, course requirements, completion, and student support.",
 };
 
 const faqs = [
