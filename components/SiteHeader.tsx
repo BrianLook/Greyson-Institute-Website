@@ -252,6 +252,16 @@ export function SiteHeader() {
             >
               Terms
             </Link>
+
+            <Link
+              href="/accessibility"
+              aria-current={
+                isCurrentPage("/accessibility") ? "page" : undefined
+              }
+              onClick={handleNavClick}
+            >
+              Accessibility
+            </Link>
           </nav>
         </details>
       </div>
