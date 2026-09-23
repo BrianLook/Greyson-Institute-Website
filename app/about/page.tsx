@@ -3,6 +3,8 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About",
+  description:
+    "Meet the Greyson Institute team and learn how experienced real estate leadership, technology, and student support shape our online education experience.",
 };
 
 const team = [
