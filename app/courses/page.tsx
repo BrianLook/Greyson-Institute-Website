@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -116,6 +117,7 @@ export default function CoursesPage() {
 
         <div
           style={{
+            position: "relative",
             minHeight: "430px",
             overflow: "hidden",
             border: "1px solid rgba(17, 23, 23, 0.14)",
@@ -123,16 +125,15 @@ export default function CoursesPage() {
             minWidth: 0,
           }}
         >
-          <img
+          <Image
             src="/greyson-courses-study.png"
             alt="Greyson Institute real estate study workspace"
+            fill
+            priority
+            sizes="(max-width: 980px) 100vw, 55vw"
             style={{
-              width: "100%",
-              height: "100%",
-              minHeight: "430px",
               objectFit: "cover",
               objectPosition: "center",
-              display: "block",
             }}
           />
         </div>
