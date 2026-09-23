@@ -19,6 +19,7 @@ export default function ContactPage() {
         className="container"
         style={{
           marginBottom: "72px",
+          minWidth: 0,
         }}
       >
         <p className="eyebrow">CONTACT GREYSON INSTITUTE</p>
@@ -26,6 +27,7 @@ export default function ContactPage() {
         <h1
           style={{
             maxWidth: "850px",
+            overflowWrap: "anywhere",
           }}
         >
           Questions about your next step?
@@ -41,9 +43,11 @@ export default function ContactPage() {
         className="container"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gridTemplateColumns:
+            "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
           gap: "42px",
           alignItems: "start",
+          minWidth: 0,
         }}
       >
         <div
@@ -51,6 +55,7 @@ export default function ContactPage() {
             background: "#fbf8f2",
             border: "1px solid rgba(17, 23, 23, 0.14)",
             padding: "clamp(32px, 5vw, 52px)",
+            minWidth: 0,
           }}
         >
           <p className="eyebrow">GET IN TOUCH</p>
@@ -59,6 +64,7 @@ export default function ContactPage() {
             style={{
               fontSize: "clamp(2rem, 4vw, 3rem)",
               marginBottom: "18px",
+              overflowWrap: "anywhere",
             }}
           >
             We’re here to help.
@@ -78,12 +84,14 @@ export default function ContactPage() {
           <div
             style={{
               borderTop: "1px solid rgba(17, 23, 23, 0.16)",
+              minWidth: 0,
             }}
           >
             <div
               style={{
                 padding: "24px 0",
                 borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
+                minWidth: 0,
               }}
             >
               <p
@@ -92,7 +100,7 @@ export default function ContactPage() {
                   fontSize: "0.72rem",
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
-                  color: "#9b7a52",
+                  color: "#7d5f3a",
                   fontWeight: 700,
                 }}
               >
@@ -104,6 +112,10 @@ export default function ContactPage() {
                 style={{
                   fontFamily: "var(--font-serif), Georgia, serif",
                   fontSize: "1.25rem",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "3px",
+                  overflowWrap: "anywhere",
+                  wordBreak: "break-word",
                 }}
               >
                 support@greysoninstitute.com
@@ -114,6 +126,7 @@ export default function ContactPage() {
               style={{
                 padding: "24px 0",
                 borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
+                minWidth: 0,
               }}
             >
               <p
@@ -122,7 +135,7 @@ export default function ContactPage() {
                   fontSize: "0.72rem",
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
-                  color: "#9b7a52",
+                  color: "#7d5f3a",
                   fontWeight: 700,
                 }}
               >
@@ -135,6 +148,7 @@ export default function ContactPage() {
                   fontFamily: "var(--font-serif), Georgia, serif",
                   fontSize: "1.15rem",
                   lineHeight: 1.5,
+                  overflowWrap: "anywhere",
                 }}
               >
                 BrightPath Education Group, LLC
@@ -145,6 +159,7 @@ export default function ContactPage() {
               style={{
                 padding: "24px 0",
                 borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
+                minWidth: 0,
               }}
             >
               <p
@@ -153,7 +168,7 @@ export default function ContactPage() {
                   fontSize: "0.72rem",
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
-                  color: "#9b7a52",
+                  color: "#7d5f3a",
                   fontWeight: 700,
                 }}
               >
@@ -165,6 +180,8 @@ export default function ContactPage() {
                   margin: 0,
                   fontFamily: "var(--font-serif), Georgia, serif",
                   fontSize: "1.15rem",
+                  overflowWrap: "anywhere",
+                  wordBreak: "break-word",
                 }}
               >
                 greysoninstitute.com
@@ -174,6 +191,7 @@ export default function ContactPage() {
             <div
               style={{
                 padding: "24px 0 0",
+                minWidth: 0,
               }}
             >
               <p
@@ -182,7 +200,7 @@ export default function ContactPage() {
                   fontSize: "0.72rem",
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
-                  color: "#9b7a52",
+                  color: "#7d5f3a",
                   fontWeight: 700,
                 }}
               >
@@ -194,6 +212,9 @@ export default function ContactPage() {
                 style={{
                   fontFamily: "var(--font-serif), Georgia, serif",
                   fontSize: "1.15rem",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "3px",
+                  overflowWrap: "anywhere",
                 }}
               >
                 Find Your Path →
@@ -202,7 +223,13 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <ContactForm />
+        <div
+          style={{
+            minWidth: 0,
+          }}
+        >
+          <ContactForm />
+        </div>
       </div>
 
       <div
@@ -211,6 +238,7 @@ export default function ContactPage() {
           marginTop: "72px",
           paddingTop: "32px",
           borderTop: "1px solid rgba(17, 23, 23, 0.18)",
+          minWidth: 0,
         }}
       >
         <p
@@ -220,6 +248,7 @@ export default function ContactPage() {
             fontSize: "0.9rem",
             lineHeight: 1.75,
             margin: 0,
+            overflowWrap: "anywhere",
           }}
         >
           Course-specific enrollment, technical support, completion
