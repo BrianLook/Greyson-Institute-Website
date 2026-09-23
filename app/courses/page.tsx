@@ -4,6 +4,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Courses",
+  description:
+    "Explore Greyson Institute online real estate education for pre-licensing, post-license, continuing education, broker education, reactivation, and exam preparation.",
 };
 
 const paths = [
