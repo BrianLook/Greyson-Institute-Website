@@ -65,6 +65,7 @@ export default function FAQPage() {
         className="container"
         style={{
           marginBottom: "78px",
+          minWidth: 0,
         }}
       >
         <p className="eyebrow">FREQUENTLY ASKED QUESTIONS</p>
@@ -84,6 +85,7 @@ export default function FAQPage() {
               maxWidth: "700px",
               marginBottom: 0,
               minWidth: 0,
+              overflowWrap: "anywhere",
             }}
           >
             Clear answers before you enroll.
@@ -95,6 +97,7 @@ export default function FAQPage() {
               margin: 0,
               maxWidth: "520px",
               minWidth: 0,
+              overflowWrap: "anywhere",
             }}
           >
             Real estate education comes with requirements, deadlines, and
@@ -114,6 +117,7 @@ export default function FAQPage() {
         <div
           style={{
             borderTop: "1px solid rgba(17, 23, 23, 0.18)",
+            minWidth: 0,
           }}
         >
           {faqs.map((faq, index) => (
@@ -122,6 +126,7 @@ export default function FAQPage() {
               style={{
                 borderBottom: "1px solid rgba(17, 23, 23, 0.18)",
                 padding: 0,
+                minWidth: 0,
               }}
             >
               <summary
@@ -131,6 +136,7 @@ export default function FAQPage() {
                   fontFamily: "var(--font-serif), Georgia, serif",
                   fontSize: "clamp(1.35rem, 2vw, 1.75rem)",
                   lineHeight: 1.25,
+                  minWidth: 0,
                 }}
               >
                 <span
@@ -169,7 +175,9 @@ export default function FAQPage() {
 
               <div
                 style={{
-                  padding: "0 0 30px 56px",
+                  padding:
+                    "0 0 30px clamp(20px, 6vw, 56px)",
+                  minWidth: 0,
                 }}
               >
                 <p
@@ -179,6 +187,7 @@ export default function FAQPage() {
                     color: "#6e6b65",
                     fontSize: "0.97rem",
                     lineHeight: 1.8,
+                    overflowWrap: "anywhere",
                   }}
                 >
                   {faq.answer}
@@ -210,13 +219,18 @@ export default function FAQPage() {
             minWidth: 0,
           }}
         >
-          <div style={{ minWidth: 0 }}>
+          <div
+            style={{
+              minWidth: 0,
+            }}
+          >
             <p className="eyebrow">STILL NOT SURE?</p>
 
             <h2
               style={{
                 fontSize: "clamp(2rem, 4vw, 3rem)",
                 marginBottom: "12px",
+                overflowWrap: "anywhere",
               }}
             >
               We’ll help you find the right path.
@@ -226,6 +240,7 @@ export default function FAQPage() {
               style={{
                 color: "#6e6b65",
                 marginBottom: 0,
+                overflowWrap: "anywhere",
               }}
             >
               Tell us where you are in your real estate journey and we’ll help
@@ -241,7 +256,15 @@ export default function FAQPage() {
               minWidth: 0,
             }}
           >
-            <Link className="button" href="/contact">
+            <Link
+              className="button"
+              href="/contact"
+              style={{
+                maxWidth: "100%",
+                whiteSpace: "normal",
+                textAlign: "center",
+              }}
+            >
               Contact Greyson Institute
             </Link>
           </div>
