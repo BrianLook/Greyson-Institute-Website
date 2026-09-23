@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function AccessibilityPage() {
   return (
-    <section className="page-hero">
+    <section className="page-hero accessibility-page">
       <div className="container narrow prose-card">
         <p className="eyebrow">ACCESSIBILITY</p>
 
@@ -47,18 +47,23 @@ export default function AccessibilityPage() {
           <li>A skip-to-main-content link</li>
           <li>Visible keyboard focus indicators</li>
           <li>Responsive layouts designed to support high zoom levels</li>
-          <li>Accessible form labels, required-field identification, and status messages</li>
+          <li>
+            Accessible form labels, required-field identification, and status
+            messages
+          </li>
           <li>Appropriate color contrast for text and interactive elements</li>
           <li>Alternative text for meaningful images</li>
           <li>Reduced-motion support for users who request it</li>
-          <li>Screen-reader-friendly headings, landmarks, links, and navigation</li>
+          <li>
+            Screen-reader-friendly headings, landmarks, links, and navigation
+          </li>
         </ul>
 
         <h2>Testing and Review</h2>
 
         <p>
-          Greyson Institute performs automated and manual accessibility
-          reviews as the website evolves.
+          Greyson Institute performs automated and manual accessibility reviews
+          as the website evolves.
         </p>
 
         <p>
@@ -98,9 +103,9 @@ export default function AccessibilityPage() {
         </p>
 
         <p>
-          Please describe the page or feature you were trying to access and
-          the difficulty you experienced. We will review accessibility
-          feedback and make reasonable efforts to address identified barriers.
+          Please describe the page or feature you were trying to access and the
+          difficulty you experienced. We will review accessibility feedback and
+          make reasonable efforts to address identified barriers.
         </p>
 
         <h2>Ongoing Commitment</h2>
