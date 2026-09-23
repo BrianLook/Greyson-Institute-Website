@@ -1,33 +1,78 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
 
 const MEASUREMENT_ID = "G-PSR0D5H2CR";
 const STORAGE_KEY = "greyson-analytics-consent";
+const OPEN_SETTINGS_EVENT = "greyson-open-analytics-settings";
+const GA_DISABLE_KEY = `ga-disable-${MEASUREMENT_ID}`;
 
 type ConsentState = "loading" | "accepted" | "declined" | "undecided";
 
 export function AnalyticsConsent() {
   const [consent, setConsent] = useState<ConsentState>("loading");
+  const [shouldFocusBanner, setShouldFocusBanner] = useState(false);
+  const bannerRef = useRef<HTMLElement>(null);
+
+  function setAnalyticsDisabled(disabled: boolean) {
+    (
+      window as unknown as Record<string, boolean>
+    )[GA_DISABLE_KEY] = disabled;
+  }
 
   useEffect(() => {
     try {
       const savedConsent = window.localStorage.getItem(STORAGE_KEY);
 
       if (savedConsent === "accepted") {
+        setAnalyticsDisabled(false);
         setConsent("accepted");
       } else if (savedConsent === "declined") {
+        setAnalyticsDisabled(true);
         setConsent("declined");
       } else {
+        setAnalyticsDisabled(true);
         setConsent("undecided");
       }
     } catch {
+      setAnalyticsDisabled(true);
       setConsent("undecided");
     }
   }, []);
 
+  useEffect(() => {
+    function openAnalyticsSettings() {
+      setAnalyticsDisabled(true);
+      setShouldFocusBanner(true);
+      setConsent("undecided");
+    }
+
+    window.addEventListener(
+      OPEN_SETTINGS_EVENT,
+      openAnalyticsSettings
+    );
+
+    return () => {
+      window.removeEventListener(
+        OPEN_SETTINGS_EVENT,
+        openAnalyticsSettings
+      );
+    };
+  }, []);
+
+  useEffect(() => {
+    if (consent === "undecided" && shouldFocusBanner) {
+      window.requestAnimationFrame(() => {
+        bannerRef.current?.focus();
+        setShouldFocusBanner(false);
+      });
+    }
+  }, [consent, shouldFocusBanner]);
+
   function saveConsent(value: "accepted" | "declined") {
+    setAnalyticsDisabled(value === "declined");
+
     try {
       window.localStorage.setItem(STORAGE_KEY, value);
     } catch {
@@ -68,9 +113,11 @@ export function AnalyticsConsent() {
 
       {consent === "undecided" && (
         <aside
+          ref={bannerRef}
           role="region"
           aria-labelledby="analytics-consent-heading"
           aria-describedby="analytics-consent-description"
+          tabIndex={-1}
           style={{
             position: "fixed",
             left: "clamp(12px, 3vw, 24px)",
