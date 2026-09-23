@@ -1,325 +1,383 @@
-import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "Meet the Greyson Institute team and learn how experienced real estate leadership, technology, and student support shape our online education experience.",
-};
-
-const team = [
+const paths = [
   {
-    name: "Brian Smith",
-    title: "Licensed Florida Real Estate Broker & Instructor",
-    secondary: "Founder, Greyson Institute",
-    image: "/smith-brian.png",
-    bio:
-      "Brian is a licensed Florida Real Estate Broker and Instructor with extensive experience in real estate law, brokerage, sales, agent training, and education. He brings a practical, real-world perspective to Greyson Institute, helping shape student guidance with a focus on clarity, professionalism, and the knowledge real estate professionals need to move confidently into the next stage of their careers.",
+    title: "Get Licensed",
+    body: "Start with the education required to begin your real estate career.",
+    meta: "Pre-Licensing",
+    href: "/courses#pre-licensing",
   },
   {
-    name: "Jessica Smith",
-    title: "Technology Manager & Sales Manager",
-    secondary: "Co-Founder, Greyson Institute",
-    image: "/jessica-smith.png",
-    bio:
-      "Jessica is a licensed Florida real estate professional and Co-Founder of Greyson Institute who combines sales leadership with a strong focus on technology and student experience. She helps streamline course delivery, improve digital systems, support enrollment growth, and make the learning experience easier to navigate. Her role connects the technology, communication, and sales sides of Greyson Institute so students have a smoother path from interest to enrollment.",
+    title: "Post-License",
+    body: "Stay on track after licensure with the next required education step.",
+    meta: "Post-License",
+    href: "/courses#post-license",
   },
   {
-    name: "Jennifer Wilson",
-    title: "Customer Support Specialist & HR Coordinator",
-    secondary: "Student Support & Operations",
-    image: "/jennifer-wilson.png",
-    bio:
-      "Jennifer supports students and staff throughout the learning experience, from initial questions through course completion. She manages customer support, helps resolve issues quickly, and coordinates internal HR processes that keep the organization running smoothly. Her focus is creating a responsive, organized, and supportive environment where students feel taken care of and the team can operate efficiently.",
+    title: "Continuing Education",
+    body: "Keep your license current with clear, convenient education options.",
+    meta: "CE",
+    href: "/courses#continuing-education",
+  },
+  {
+    title: "Become a Broker",
+    body: "Prepare for the next level of your real estate career.",
+    meta: "Broker",
+    href: "/courses#broker",
+  },
+  {
+    title: "Exam Preparation",
+    body: "Study with focus and walk into exam day better prepared.",
+    meta: "Exam Prep",
+    href: "/courses#exam-prep",
   },
 ];
 
-const approachItems = [
-  {
-    number: "01",
-    title: "Clear direction",
-    body:
-      "Helping students understand which education fits where they are in their real estate journey.",
-  },
-  {
-    number: "02",
-    title: "Practical education",
-    body:
-      "Presenting real estate education in a way that feels useful, professional, and connected to the work itself.",
-  },
-  {
-    number: "03",
-    title: "Student support",
-    body:
-      "Creating a straightforward experience from choosing a course through completing the next step.",
-  },
-];
-
-export default function AboutPage() {
+export default function HomePage() {
   return (
-    <section
-      className="page-hero"
-      style={{
-        paddingBottom: 0,
-      }}
-    >
-      <div
-        className="container"
-        style={{
-          maxWidth: "1180px",
-          marginBottom: "72px",
-          minWidth: 0,
-        }}
-      >
-        <p className="eyebrow">ABOUT GREYSON INSTITUTE</p>
-
+    <>
+      <section className="hero">
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
-            gap: "48px",
-            alignItems: "end",
-            minWidth: 0,
-          }}
-        >
-          <h1
-            style={{
-              maxWidth: "700px",
-              marginBottom: 0,
-              minWidth: 0,
-              overflowWrap: "anywhere",
-            }}
-          >
-            The people behind Greyson Institute.
-          </h1>
-
-          <p
-            className="page-lead"
-            style={{
-              margin: 0,
-              maxWidth: "520px",
-              minWidth: 0,
-            }}
-          >
-            Experienced leadership, thoughtful technology, and responsive
-            student support work together to make real estate education easier
-            to navigate.
-          </p>
-        </div>
-      </div>
-
-      <div
-        className="container"
-        style={{
-          display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
-          gap: "28px",
-          alignItems: "stretch",
-          minWidth: 0,
-        }}
-      >
-        {team.map((member) => (
-          <article
-            key={member.name}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              background: "#f5f0e7",
-              border: "1px solid rgba(17, 23, 23, 0.14)",
-              minWidth: 0,
-            }}
-          >
-            <div
-              style={{
-                position: "relative",
-                aspectRatio: "4 / 5",
-                overflow: "hidden",
-                background: "#eee6d9",
-                borderBottom: "1px solid rgba(17, 23, 23, 0.14)",
-                minWidth: 0,
-              }}
-            >
-              <Image
-                src={member.image}
-                alt={member.name}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw"
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "center top",
-                }}
-              />
-            </div>
-
-            <div
-              style={{
-                padding: "30px 28px 32px",
-                display: "flex",
-                flexDirection: "column",
-                flex: 1,
-                minWidth: 0,
-              }}
-            >
-              <p
-                className="eyebrow"
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
-                GREYSON INSTITUTE
-              </p>
-
-              <h2
-                style={{
-                  fontSize: "2.15rem",
-                  marginBottom: "8px",
-                  minWidth: 0,
-                  overflowWrap: "anywhere",
-                }}
-              >
-                {member.name}
-              </h2>
-
-              <p
-                style={{
-                  fontFamily: "var(--font-serif), Georgia, serif",
-                  fontSize: "1.12rem",
-                  lineHeight: 1.4,
-                  margin: "0 0 5px",
-                  overflowWrap: "anywhere",
-                }}
-              >
-                {member.title}
-              </p>
-
-              {member.secondary && (
-                <p
-                  style={{
-                    color: "#7d5f3a",
-                    fontSize: "0.74rem",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    margin: 0,
-                    overflowWrap: "anywhere",
-                  }}
-                >
-                  {member.secondary}
-                </p>
-              )}
-
-              <div
-                aria-hidden="true"
-                style={{
-                  width: "42px",
-                  height: "1px",
-                  background: "#9b7a52",
-                  margin: "22px 0",
-                }}
-              />
-
-              <p
-                style={{
-                  color: "#4d4b46",
-                  fontSize: "0.95rem",
-                  lineHeight: 1.75,
-                  margin: 0,
-                  overflowWrap: "anywhere",
-                }}
-              >
-                {member.bio}
-              </p>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div
-        style={{
-          marginTop: "100px",
-          background: "#1f2d30",
-          color: "#f5f0e7",
-          padding: "90px 0",
-        }}
-      >
-        <div
-          className="container"
+          className="container hero-grid"
           style={{
             minWidth: 0,
           }}
         >
-          <p className="eyebrow eyebrow--light">THE GREYSON APPROACH</p>
-
-          <h2
-            className="light-heading"
+          <div
+            className="hero-copy"
             style={{
-              maxWidth: "760px",
-              marginBottom: "55px",
               minWidth: 0,
-              overflowWrap: "anywhere",
             }}
           >
-            A professional education experience built around clarity and
-            support.
-          </h2>
+            <p className="eyebrow">ONLINE REAL ESTATE EDUCATION</p>
+
+            <h1
+              style={{
+                overflowWrap: "anywhere",
+              }}
+            >
+              Get licensed.
+              <br />
+              Understand what comes next.
+            </h1>
+
+            <p className="hero-lead">
+              Online real estate education, at your pace.
+            </p>
+
+            <div className="button-row">
+              <Link className="button" href="/courses">
+                Explore Courses
+              </Link>
+            </div>
+          </div>
 
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
-              columnGap: "28px",
-              rowGap: 0,
-              borderTop: "1px solid rgba(245, 240, 231, 0.22)",
+              position: "relative",
+              minHeight: "clamp(320px, 50vw, 560px)",
+              height: "100%",
+              overflow: "hidden",
+              border: "1px solid rgba(17, 23, 23, 0.12)",
+              background: "#eee6d9",
               minWidth: 0,
             }}
           >
-            {approachItems.map((item) => (
-              <div
-                key={item.number}
-                style={{
-                  padding: "28px 0",
-                  borderBottom: "1px solid rgba(245, 240, 231, 0.16)",
-                  minWidth: 0,
-                }}
-              >
-                <p
-                  style={{
-                    color: "#d6bd9c",
-                    fontSize: "0.72rem",
-                    letterSpacing: "0.18em",
-                    margin: "0 0 28px",
-                  }}
-                >
-                  {item.number}
-                </p>
-
-                <h3
-                  style={{
-                    color: "#f5f0e7",
-                    marginBottom: "18px",
-                    overflowWrap: "anywhere",
-                  }}
-                >
-                  {item.title}
-                </h3>
-
-                <p
-                  style={{
-                    color: "rgba(245, 240, 231, 0.82)",
-                    margin: 0,
-                    lineHeight: 1.75,
-                    overflowWrap: "anywhere",
-                  }}
-                >
-                  {item.body}
-                </p>
-              </div>
-            ))}
+            <Image
+              src="/greyson-hero-study.png"
+              alt="Professional real estate study workspace"
+              fill
+              priority
+              sizes="(max-width: 980px) 100vw, 55vw"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
+            />
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="section section--cream-darkline">
+        <div
+          className="container section-heading-row"
+          style={{
+            minWidth: 0,
+          }}
+        >
+          <div
+            style={{
+              minWidth: 0,
+            }}
+          >
+            <p className="eyebrow">FIND YOUR NEXT STEP</p>
+
+            <h2
+              style={{
+                overflowWrap: "anywhere",
+              }}
+            >
+              Where are you in your real estate career?
+            </h2>
+          </div>
+
+          <p
+            className="section-intro"
+            style={{
+              minWidth: 0,
+            }}
+          >
+            Whether you are preparing for your first license, completing
+            post-license education, renewing, or advancing toward a broker
+            license, start with the path that fits where you are today.
+          </p>
+        </div>
+
+        <div
+          className="container path-grid"
+          style={{
+            minWidth: 0,
+          }}
+        >
+          {paths.map((path) => (
+            <a
+              className="path-card"
+              href={path.href}
+              key={path.title}
+              style={{
+                minWidth: 0,
+                overflowWrap: "anywhere",
+              }}
+            >
+              <span className="path-meta">{path.meta}</span>
+
+              <h3>{path.title}</h3>
+
+              <p>{path.body}</p>
+
+              <span className="card-arrow">Explore →</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="section section--dark">
+        <div
+          className="container split-layout"
+          style={{
+            minWidth: 0,
+          }}
+        >
+          <div
+            style={{
+              minWidth: 0,
+            }}
+          >
+            <p className="eyebrow eyebrow--light">
+              THE GREYSON STANDARD
+            </p>
+
+            <h2
+              className="light-heading"
+              style={{
+                overflowWrap: "anywhere",
+              }}
+            >
+              Real estate education should feel clear, credible, and
+              professionally presented.
+            </h2>
+          </div>
+
+          <div
+            className="principles"
+            style={{
+              minWidth: 0,
+            }}
+          >
+            <article style={{ minWidth: 0 }}>
+              <span>01</span>
+
+              <h3>Clear direction</h3>
+
+              <p>
+                Understand which education applies to your stage of licensure
+                without sorting through an overwhelming catalog.
+              </p>
+            </article>
+
+            <article style={{ minWidth: 0 }}>
+              <span>02</span>
+
+              <h3>Professional standard</h3>
+
+              <p>
+                Begin your real estate career with an education experience
+                designed to reflect the profession you are entering.
+              </p>
+            </article>
+
+            <article style={{ minWidth: 0 }}>
+              <span>03</span>
+
+              <h3>Instructor perspective</h3>
+
+              <p>
+                Learn with the perspective of a Florida real estate broker and
+                instructor who understands both the licensing process and the
+                realities of the business.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div
+          className="container instructor-panel"
+          style={{
+            minWidth: 0,
+          }}
+        >
+          <div
+            style={{
+              position: "relative",
+              minHeight: "clamp(320px, 50vw, 520px)",
+              overflow: "hidden",
+              border: "1px solid rgba(17, 23, 23, 0.16)",
+              background: "#eee6d9",
+              minWidth: 0,
+            }}
+          >
+            <Image
+              src="/smith-brian.png"
+              alt="Brian Smith, Licensed Florida Real Estate Broker and Instructor"
+              fill
+              sizes="(max-width: 980px) 100vw, 40vw"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center top",
+              }}
+            />
+          </div>
+
+          <div
+            style={{
+              minWidth: 0,
+            }}
+          >
+            <p className="eyebrow">YOUR INSTRUCTOR</p>
+
+            <h2
+              style={{
+                overflowWrap: "anywhere",
+              }}
+            >
+              Brian Smith
+            </h2>
+
+            <p
+              style={{
+                fontFamily: "var(--font-serif), Georgia, serif",
+                fontSize: "1.2rem",
+                lineHeight: 1.45,
+                marginBottom: "4px",
+                overflowWrap: "anywhere",
+              }}
+            >
+              Licensed Florida Real Estate Broker & Instructor
+            </p>
+
+            <p
+              style={{
+                color: "#7d5f3a",
+                fontSize: "0.8rem",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                marginTop: 0,
+                marginBottom: "28px",
+                overflowWrap: "anywhere",
+              }}
+            >
+              Founder, Greyson Institute
+            </p>
+
+            <p>
+              Licensed in real estate since 1997, Brian brings experience in
+              sales, listings, buyer representation, brokerage operations,
+              agent training, and real estate company ownership.
+            </p>
+
+            <p>
+              His focus is practical, real-world education designed to help
+              students understand both the licensing material and the business
+              that follows.
+            </p>
+
+            <Link className="text-link" href="/about">
+              Meet the Greyson Institute Team <span>→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--soft">
+        <div
+          className="container centered-callout"
+          style={{
+            minWidth: 0,
+          }}
+        >
+          <Image
+            src="/brand/greyson-icon-color.png"
+            alt=""
+            aria-hidden="true"
+            width={72}
+            height={72}
+            sizes="72px"
+            style={{
+              width: "72px",
+              maxWidth: "100%",
+              height: "auto",
+              display: "block",
+              marginBottom: "22px",
+            }}
+          />
+
+          <p
+            className="eyebrow"
+            style={{
+              color: "#7d5f3a",
+            }}
+          >
+            GREYSON INSTITUTE
+          </p>
+
+          <h2
+            style={{
+              overflowWrap: "anywhere",
+            }}
+          >
+            Find the education that fits your next step.
+          </h2>
+
+          <p
+            style={{
+              color: "#4d4b46",
+            }}
+          >
+            Explore real estate education paths for licensing, post-license,
+            continuing education, broker education, and exam preparation.
+          </p>
+
+          <a
+            className="button"
+            href="/courses#find-your-path"
+          >
+            Find Your Path
+          </a>
+        </div>
+      </section>
+    </>
   );
 }
