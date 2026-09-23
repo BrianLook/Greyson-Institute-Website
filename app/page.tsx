@@ -87,6 +87,7 @@ export default function HomePage() {
         <div className="container section-heading-row">
           <div>
             <p className="eyebrow">FIND YOUR NEXT STEP</p>
+
             <h2>Where are you in your real estate career?</h2>
           </div>
 
@@ -132,7 +133,9 @@ export default function HomePage() {
           <div className="principles">
             <article>
               <span>01</span>
+
               <h3>Clear direction</h3>
+
               <p>
                 Understand which education applies to your stage of
                 licensure without sorting through an overwhelming catalog.
@@ -141,7 +144,9 @@ export default function HomePage() {
 
             <article>
               <span>02</span>
+
               <h3>Professional standard</h3>
+
               <p>
                 Begin your real estate career with an education experience
                 designed to reflect the profession you are entering.
@@ -150,7 +155,9 @@ export default function HomePage() {
 
             <article>
               <span>03</span>
+
               <h3>Instructor perspective</h3>
+
               <p>
                 Learn with the perspective of a Florida real estate broker and
                 instructor who understands both the licensing process and the
@@ -172,7 +179,7 @@ export default function HomePage() {
             }}
           >
             <img
-              src="/brian-smith.png"
+              src="/smith-brian.png"
               alt="Brian Smith, Licensed Florida Real Estate Broker and Instructor"
               style={{
                 width: "100%",
@@ -203,7 +210,7 @@ export default function HomePage() {
 
             <p
               style={{
-                color: "#9b7a52",
+                color: "#7d5f3a",
                 fontSize: "0.8rem",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
@@ -252,9 +259,8 @@ export default function HomePage() {
           <h2>Find the education that fits your next step.</h2>
 
           <p>
-            Explore real estate education paths for licensing,
-            post-license, continuing education, broker education, and exam
-            preparation.
+            Explore real estate education paths for licensing, post-license,
+            continuing education, broker education, and exam preparation.
           </p>
 
           <a
