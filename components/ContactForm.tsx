@@ -64,7 +64,7 @@ export function ContactForm() {
         aria-atomic="true"
         tabIndex={-1}
         style={{
-          border: "1px solid rgba(17, 23, 23, 0.16)",
+          border: "1px solid rgba(17, 23, 23, 0.28)",
           background: "#f5f0e7",
           padding: "clamp(32px, 5vw, 52px)",
         }}
@@ -107,7 +107,7 @@ export function ContactForm() {
       onSubmit={handleSubmit}
       aria-busy={status === "submitting"}
       style={{
-        border: "1px solid rgba(17, 23, 23, 0.16)",
+        border: "1px solid rgba(17, 23, 23, 0.28)",
         background: "#f5f0e7",
         padding: "clamp(32px, 5vw, 52px)",
       }}
@@ -250,6 +250,7 @@ export function ContactForm() {
               href="mailto:support@greysoninstitute.com"
               style={{
                 textDecoration: "underline",
+                textUnderlineOffset: "3px",
               }}
             >
               support@greysoninstitute.com
@@ -313,7 +314,7 @@ const fieldStyle = {
   width: "100%",
   minHeight: "50px",
   padding: "12px 14px",
-  border: "1px solid rgba(17, 23, 23, 0.22)",
+  border: "2px solid #6f6b64",
   background: "#fbf8f2",
   color: "#111717",
   borderRadius: 0,
