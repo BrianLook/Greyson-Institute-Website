@@ -259,9 +259,8 @@ export default function HomePage() {
           <h2>Find the education that fits your next step.</h2>
 
           <p>
-            Explore real estate education paths for licensing,
-            post-license, continuing education, broker education, and exam
-            preparation.
+            Explore real estate education paths for licensing, post-license,
+            continuing education, broker education, and exam preparation.
           </p>
 
           <a
