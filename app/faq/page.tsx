@@ -1,252 +1,276 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "FAQ",
-};
-
-const faqs = [
+const paths = [
   {
-    question: "Which course do I need?",
-    answer:
-      "That depends on where you are in your real estate journey. Greyson Institute is organized around the most common paths: getting licensed, completing post-license education, renewing your license, becoming a broker, reactivating a license, or preparing for an exam.",
+    title: "Get Licensed",
+    body: "Start with the education required to begin your real estate career.",
+    meta: "Pre-Licensing",
+    href: "/courses#pre-licensing",
   },
   {
-    question: "Are the courses online?",
-    answer:
-      "Yes. Greyson Institute is designed around online real estate education so students can learn at their own pace and work through the material on a schedule that fits their life.",
+    title: "Post-License",
+    body: "Stay on track after licensure with the next required education step.",
+    meta: "Post-License",
+    href: "/courses#post-license",
   },
   {
-    question: "Can you help me figure out what course I need?",
-    answer:
-      "Yes. If you are unsure which education requirement applies to you, Greyson Institute can help point you toward the appropriate course path and explain what to look for before enrolling.",
+    title: "Continuing Education",
+    body: "Keep your license current with clear, convenient education options.",
+    meta: "CE",
+    href: "/courses#continuing-education",
   },
   {
-    question: "Are courses available in every state?",
-    answer:
-      "Course availability and licensing requirements vary by state. Available states, course-specific requirements, provider information, and enrollment details will be clearly displayed before enrollment.",
+    title: "Become a Broker",
+    body: "Prepare for the next level of your real estate career.",
+    meta: "Broker",
+    href: "/courses#broker",
   },
   {
-    question: "Do I have to complete the course all at once?",
-    answer:
-      "Online coursework is designed for flexible, self-paced learning. Specific course timing, completion requirements, and access periods will be listed on each course page.",
-  },
-  {
-    question: "Will I receive proof of completion?",
-    answer:
-      "Completion documentation and any applicable reporting details will be explained clearly on each course page before enrollment.",
-  },
-  {
-    question: "What happens after I finish my course?",
-    answer:
-      "That depends on the course you are taking. Some students may be preparing for a licensing exam, while others may be completing post-license, continuing education, broker, or reactivation requirements. Greyson Institute will explain the next step for each course path.",
-  },
-  {
-    question: "Who is Brian Smith?",
-    answer:
-      "Brian Smith is a Licensed Florida Real Estate Broker & Instructor and the Founder of Greyson Institute. He has been licensed in real estate since 1997 and brings experience in sales, listings, buyer representation, brokerage operations, agent training, and real estate company ownership.",
-  },
-  {
-    question: "Can I contact Greyson Institute if I have questions?",
-    answer:
-      "Yes. Greyson Institute is built around clear guidance and practical support, so students have a place to turn when they are unsure what comes next.",
+    title: "Exam Preparation",
+    body: "Study with focus and walk into exam day better prepared.",
+    meta: "Exam Prep",
+    href: "/courses#exam-prep",
   },
 ];
 
-export default function FAQPage() {
+export default function HomePage() {
   return (
-    <section
-      className="page-hero"
-      style={{
-        paddingBottom: "100px",
-      }}
-    >
-      <div
-        className="container"
-        style={{
-          marginBottom: "78px",
-        }}
-      >
-        <p className="eyebrow">FREQUENTLY ASKED QUESTIONS</p>
+    <>
+      <section className="hero">
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <p className="eyebrow">ONLINE REAL ESTATE EDUCATION</p>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
-            gap: "55px",
-            alignItems: "end",
-            minWidth: 0,
-          }}
-        >
-          <h1
-            style={{
-              maxWidth: "700px",
-              marginBottom: 0,
-              minWidth: 0,
-            }}
-          >
-            Clear answers before you enroll.
-          </h1>
+            <h1>
+              Get licensed.
+              <br />
+              Understand what comes next.
+            </h1>
 
-          <p
-            className="page-lead"
-            style={{
-              margin: 0,
-              maxWidth: "520px",
-              minWidth: 0,
-            }}
-          >
-            Real estate education comes with requirements, deadlines, and
-            important next steps. Start here with answers to some of the most
-            common questions.
-          </p>
-        </div>
-      </div>
-
-      <div
-        className="container"
-        style={{
-          maxWidth: "1000px",
-          minWidth: 0,
-        }}
-      >
-        <div
-          style={{
-            borderTop: "1px solid rgba(17, 23, 23, 0.18)",
-          }}
-        >
-          {faqs.map((faq, index) => (
-            <details
-              key={faq.question}
-              style={{
-                borderBottom: "1px solid rgba(17, 23, 23, 0.18)",
-                padding: 0,
-              }}
-            >
-              <summary
-                style={{
-                  cursor: "pointer",
-                  padding: "28px 0",
-                  fontFamily: "var(--font-serif), Georgia, serif",
-                  fontSize: "clamp(1.35rem, 2vw, 1.75rem)",
-                  lineHeight: 1.25,
-                }}
-              >
-                <span
-                  style={{
-                    display: "inline-grid",
-                    gridTemplateColumns: "40px minmax(0, 1fr)",
-                    columnGap: "16px",
-                    width: "calc(100% - 22px)",
-                    verticalAlign: "top",
-                    minWidth: 0,
-                  }}
-                >
-                  <span
-                    style={{
-                      color: "#7d5f3a",
-                      fontFamily: "var(--font-sans), Arial, sans-serif",
-                      fontSize: "0.68rem",
-                      letterSpacing: "0.16em",
-                      lineHeight: 1.6,
-                      paddingTop: "3px",
-                    }}
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <span
-                    style={{
-                      minWidth: 0,
-                      overflowWrap: "anywhere",
-                    }}
-                  >
-                    {faq.question}
-                  </span>
-                </span>
-              </summary>
-
-              <div
-                style={{
-                  padding: "0 0 30px 56px",
-                }}
-              >
-                <p
-                  style={{
-                    maxWidth: "760px",
-                    margin: 0,
-                    color: "#6e6b65",
-                    fontSize: "0.97rem",
-                    lineHeight: 1.8,
-                  }}
-                >
-                  {faq.answer}
-                </p>
-              </div>
-            </details>
-          ))}
-        </div>
-      </div>
-
-      <div
-        className="container"
-        style={{
-          marginTop: "90px",
-          maxWidth: "1000px",
-          minWidth: 0,
-        }}
-      >
-        <div
-          style={{
-            background: "#eee6d9",
-            border: "1px solid rgba(17, 23, 23, 0.14)",
-            padding: "clamp(34px, 5vw, 60px)",
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
-            gap: "35px",
-            alignItems: "center",
-            minWidth: 0,
-          }}
-        >
-          <div style={{ minWidth: 0 }}>
-            <p className="eyebrow">STILL NOT SURE?</p>
-
-            <h2
-              style={{
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                marginBottom: "12px",
-              }}
-            >
-              We’ll help you find the right path.
-            </h2>
-
-            <p
-              style={{
-                color: "#6e6b65",
-                marginBottom: 0,
-              }}
-            >
-              Tell us where you are in your real estate journey and we’ll help
-              you understand what may come next.
+            <p className="hero-lead">
+              Online real estate education, at your pace.
             </p>
+
+            <div className="button-row">
+              <Link className="button" href="/courses">
+                Explore Courses
+              </Link>
+            </div>
           </div>
 
           <div
             style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "center",
-              minWidth: 0,
+              minHeight: "560px",
+              height: "100%",
+              overflow: "hidden",
+              border: "1px solid rgba(17, 23, 23, 0.12)",
+              background: "#eee6d9",
             }}
           >
-            <Link className="button" href="/contact">
-              Contact Greyson Institute
+            <img
+              src="/greyson-hero-study.png"
+              alt="Professional real estate study workspace"
+              style={{
+                width: "100%",
+                height: "100%",
+                minHeight: "560px",
+                objectFit: "cover",
+                objectPosition: "center",
+                display: "block",
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--cream-darkline">
+        <div className="container section-heading-row">
+          <div>
+            <p className="eyebrow">FIND YOUR NEXT STEP</p>
+            <h2>Where are you in your real estate career?</h2>
+          </div>
+
+          <p className="section-intro">
+            Whether you are preparing for your first license, completing
+            post-license education, renewing, or advancing toward a broker
+            license, start with the path that fits where you are today.
+          </p>
+        </div>
+
+        <div className="container path-grid">
+          {paths.map((path) => (
+            <a
+              className="path-card"
+              href={path.href}
+              key={path.title}
+            >
+              <span className="path-meta">{path.meta}</span>
+
+              <h3>{path.title}</h3>
+
+              <p>{path.body}</p>
+
+              <span className="card-arrow">Explore →</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="section section--dark">
+        <div className="container split-layout">
+          <div>
+            <p className="eyebrow eyebrow--light">
+              THE GREYSON STANDARD
+            </p>
+
+            <h2 className="light-heading">
+              Real estate education should feel clear, credible, and
+              professionally presented.
+            </h2>
+          </div>
+
+          <div className="principles">
+            <article>
+              <span>01</span>
+
+              <h3>Clear direction</h3>
+
+              <p>
+                Understand which education applies to your stage of
+                licensure without sorting through an overwhelming catalog.
+              </p>
+            </article>
+
+            <article>
+              <span>02</span>
+
+              <h3>Professional standard</h3>
+
+              <p>
+                Begin your real estate career with an education experience
+                designed to reflect the profession you are entering.
+              </p>
+            </article>
+
+            <article>
+              <span>03</span>
+
+              <h3>Instructor perspective</h3>
+
+              <p>
+                Learn with the perspective of a Florida real estate broker and
+                instructor who understands both the licensing process and the
+                realities of the business.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container instructor-panel">
+          <div
+            style={{
+              minHeight: "520px",
+              overflow: "hidden",
+              border: "1px solid rgba(17, 23, 23, 0.16)",
+              background: "#eee6d9",
+            }}
+          >
+            <img
+              src="/smith-brian.png"
+              alt="Brian Smith, Licensed Florida Real Estate Broker and Instructor"
+              style={{
+                width: "100%",
+                height: "100%",
+                minHeight: "520px",
+                objectFit: "cover",
+                objectPosition: "center top",
+                display: "block",
+              }}
+            />
+          </div>
+
+          <div>
+            <p className="eyebrow">YOUR INSTRUCTOR</p>
+
+            <h2>Brian Smith</h2>
+
+            <p
+              style={{
+                fontFamily: "var(--font-serif), Georgia, serif",
+                fontSize: "1.2rem",
+                lineHeight: 1.45,
+                marginBottom: "4px",
+              }}
+            >
+              Licensed Florida Real Estate Broker & Instructor
+            </p>
+
+            <p
+              style={{
+                color: "#7d5f3a",
+                fontSize: "0.8rem",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                marginTop: 0,
+                marginBottom: "28px",
+              }}
+            >
+              Founder, Greyson Institute
+            </p>
+
+            <p>
+              Licensed in real estate since 1997, Brian brings experience in
+              sales, listings, buyer representation, brokerage operations,
+              agent training, and real estate company ownership.
+            </p>
+
+            <p>
+              His focus is practical, real-world education designed to help
+              students understand both the licensing material and the business
+              that follows.
+            </p>
+
+            <Link className="text-link" href="/about">
+              Meet the Greyson Institute Team <span>→</span>
             </Link>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="section section--soft">
+        <div className="container centered-callout">
+          <img
+            src="/brand/greyson-icon-color.png"
+            alt=""
+            aria-hidden="true"
+            style={{
+              width: "72px",
+              height: "auto",
+              display: "block",
+              marginBottom: "22px",
+            }}
+          />
+
+          <p className="eyebrow">GREYSON INSTITUTE</p>
+
+          <h2>Find the education that fits your next step.</h2>
+
+          <p>
+            Explore real estate education paths for licensing,
+            post-license, continuing education, broker education, and exam
+            preparation.
+          </p>
+
+          <a
+            className="button"
+            href="/courses#find-your-path"
+          >
+            Find Your Path
+          </a>
+        </div>
+      </section>
+    </>
   );
 }
