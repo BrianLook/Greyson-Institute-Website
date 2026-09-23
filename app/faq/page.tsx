@@ -175,8 +175,7 @@ export default function FAQPage() {
 
               <div
                 style={{
-                  padding:
-                    "0 0 30px clamp(20px, 6vw, 56px)",
+                  padding: "0 0 30px clamp(20px, 6vw, 56px)",
                   minWidth: 0,
                 }}
               >
@@ -238,7 +237,7 @@ export default function FAQPage() {
 
             <p
               style={{
-                color: "#6e6b65",
+                color: "#4d4b46",
                 marginBottom: 0,
                 overflowWrap: "anywhere",
               }}
