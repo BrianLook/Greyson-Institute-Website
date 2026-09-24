@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { GuideStructuredData } from "@/components/GuideStructuredData";
+
+const guideTitle = "How to Get a Florida Real Estate License";
+const guideDescription =
+  "Learn how to get a Florida real estate sales associate license, including eligibility, the 63-hour pre-licensing course, fingerprints, the state exam, and license activation.";
+const guidePath = "/how-to-get-a-florida-real-estate-license";
 
 export const metadata: Metadata = {
-  title: "How to Get a Florida Real Estate License",
-  description:
-    "Learn how to get a Florida real estate sales associate license, including eligibility, the 63-hour pre-licensing course, fingerprints, the state exam, and license activation.",
+  title: guideTitle,
+  description: guideDescription,
 };
 
 const steps = [
@@ -87,6 +93,14 @@ export default function FloridaRealEstateLicenseGuidePage() {
         paddingBottom: "100px",
       }}
     >
+      <GuideStructuredData
+        title={guideTitle}
+        description={guideDescription}
+        path={guidePath}
+        datePublished="2026-09-24"
+        dateModified="2026-09-24"
+      />
+
       <div
         className="container"
         style={{
@@ -94,6 +108,24 @@ export default function FloridaRealEstateLicenseGuidePage() {
           minWidth: 0,
         }}
       >
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Guides",
+              href: "/guides",
+            },
+            {
+              label: guideTitle,
+              href: guidePath,
+              current: true,
+            },
+          ]}
+        />
+
         <div
           style={{
             maxWidth: "820px",
@@ -121,9 +153,7 @@ export default function FloridaRealEstateLicenseGuidePage() {
             the state exam and license activation.
           </p>
 
-          <p className="muted">
-            Last reviewed: September 24, 2026
-          </p>
+          <p className="muted">Last reviewed: September 24, 2026</p>
         </div>
 
         <div
@@ -324,9 +354,9 @@ export default function FloridaRealEstateLicenseGuidePage() {
               maxWidth: "820px",
             }}
           >
-            Florida sales associates are generally required to complete
-            45 hours of approved post-licensing education before the expiration
-            of their initial license period. After that, ongoing continuing
+            Florida sales associates are generally required to complete 45
+            hours of approved post-licensing education before the expiration of
+            their initial license period. After that, ongoing continuing
             education requirements apply.
           </p>
 
