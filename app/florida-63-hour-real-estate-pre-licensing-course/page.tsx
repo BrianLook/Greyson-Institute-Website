@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { GuideStructuredData } from "@/components/GuideStructuredData";
+
+const guideTitle = "Florida 63-Hour Real Estate Pre-Licensing Course";
+const guideDescription =
+  "Learn what the Florida 63-hour real estate pre-licensing course covers, how the course works, who must take it, the end-of-course exam, and what happens after completion.";
+const guidePath = "/florida-63-hour-real-estate-pre-licensing-course";
 
 export const metadata: Metadata = {
-  title: "Florida 63-Hour Real Estate Pre-Licensing Course",
-  description:
-    "Learn what the Florida 63-hour real estate pre-licensing course covers, how the course works, who must take it, the end-of-course exam, and what happens after completion.",
+  title: guideTitle,
+  description: guideDescription,
 };
 
 const courseTopics = [
@@ -99,6 +105,14 @@ export default function Florida63HourPreLicensingCoursePage() {
         paddingBottom: "100px",
       }}
     >
+      <GuideStructuredData
+        title={guideTitle}
+        description={guideDescription}
+        path={guidePath}
+        datePublished="2026-09-24"
+        dateModified="2026-09-24"
+      />
+
       <div
         className="container"
         style={{
@@ -106,6 +120,24 @@ export default function Florida63HourPreLicensingCoursePage() {
           minWidth: 0,
         }}
       >
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Guides",
+              href: "/guides",
+            },
+            {
+              label: guideTitle,
+              href: guidePath,
+              current: true,
+            },
+          ]}
+        />
+
         <div
           style={{
             maxWidth: "860px",
@@ -134,9 +166,7 @@ export default function Florida63HourPreLicensingCoursePage() {
             it covers, and what happens after you finish it.
           </p>
 
-          <p className="muted">
-            Last reviewed: September 24, 2026
-          </p>
+          <p className="muted">Last reviewed: September 24, 2026</p>
         </div>
 
         <div
@@ -194,10 +224,10 @@ export default function Florida63HourPreLicensingCoursePage() {
           </p>
 
           <p>
-            The curriculum is based on the Florida Real Estate Commission&apos;s
-            Sales Associate Course Syllabus, commonly referred to as FREC
-            Course I. Approved schools design their courses around that
-            state-prescribed curriculum.
+            The curriculum is based on the Florida Real Estate
+            Commission&apos;s Sales Associate Course Syllabus, commonly
+            referred to as FREC Course I. Approved schools design their courses
+            around that state-prescribed curriculum.
           </p>
 
           <p>
@@ -233,8 +263,8 @@ export default function Florida63HourPreLicensingCoursePage() {
               maxWidth: "820px",
             }}
           >
-            The current FREC Sales Associate Course Syllabus provides for
-            60 hours of course instruction followed by a 3-hour end-of-course
+            The current FREC Sales Associate Course Syllabus provides for 60
+            hours of course instruction followed by a 3-hour end-of-course
             examination. That examination is part of completing the
             pre-licensing course and is separate from the Florida state
             licensing examination.
@@ -356,10 +386,10 @@ export default function Florida63HourPreLicensingCoursePage() {
           <h2>The course is one step in the licensing process.</h2>
 
           <p>
-            After successfully completing the required pre-licensing
-            education, you still need to complete the remaining Florida
-            licensing requirements, including the application and
-            fingerprinting process and the state licensing examination.
+            After successfully completing the required pre-licensing education,
+            you still need to complete the remaining Florida licensing
+            requirements, including the application and fingerprinting process
+            and the state licensing examination.
           </p>
 
           <p>
@@ -550,10 +580,9 @@ export default function Florida63HourPreLicensingCoursePage() {
               maxWidth: "800px",
             }}
           >
-            Education rules and course requirements can change. Students
-            should verify current requirements with the Florida Department of
-            Business and Professional Regulation and the Florida Real Estate
-            Commission.
+            Education rules and course requirements can change. Students should
+            verify current requirements with the Florida Department of Business
+            and Professional Regulation and the Florida Real Estate Commission.
           </p>
 
           <div
