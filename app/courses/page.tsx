@@ -528,6 +528,29 @@ export default function CoursesPage() {
                 </div>
               )}
 
+              {course.id === "continuing-education" && (
+                <div
+                  style={{
+                    marginTop: "14px",
+                  }}
+                >
+                  <p style={{ margin: 0 }}>
+                    <Link
+                      href="/florida-14-hour-real-estate-continuing-education"
+                      style={{
+                        textDecoration: "underline",
+                        textUnderlineOffset: "3px",
+                        fontWeight: 600,
+                        color: "#111717",
+                      }}
+                    >
+                      Florida 14-Hour Real Estate Continuing Education
+                      Requirements →
+                    </Link>
+                  </p>
+                </div>
+              )}
+
               {course.id === "exam-prep" && (
                 <div
                   style={{
