@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { GuideStructuredData } from "@/components/GuideStructuredData";
+
+const guideTitle =
+  "What Happens After You Pass the Florida Real Estate Exam?";
+const guideDescription =
+  "Learn what happens after you pass the Florida real estate exam, including license issuance, inactive status, choosing a broker, activating your license, and completing 45-hour post-license education.";
+const guidePath =
+  "/what-happens-after-you-pass-the-florida-real-estate-exam";
 
 export const metadata: Metadata = {
-  title: "What Happens After You Pass the Florida Real Estate Exam?",
-  description:
-    "Learn what happens after you pass the Florida real estate exam, including license issuance, inactive status, choosing a broker, activating your license, and completing 45-hour post-license education.",
+  title: guideTitle,
+  description: guideDescription,
 };
 
 const nextSteps = [
@@ -129,6 +137,14 @@ export default function AfterPassingFloridaRealEstateExamPage() {
         paddingBottom: "100px",
       }}
     >
+      <GuideStructuredData
+        title={guideTitle}
+        description={guideDescription}
+        path={guidePath}
+        datePublished="2026-09-24"
+        dateModified="2026-09-24"
+      />
+
       <div
         className="container"
         style={{
@@ -136,6 +152,24 @@ export default function AfterPassingFloridaRealEstateExamPage() {
           minWidth: 0,
         }}
       >
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Guides",
+              href: "/guides",
+            },
+            {
+              label: guideTitle,
+              href: guidePath,
+              current: true,
+            },
+          ]}
+        />
+
         <div
           style={{
             maxWidth: "860px",
