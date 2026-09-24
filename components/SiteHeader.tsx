@@ -5,6 +5,18 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BrandLockup } from "./BrandMark";
 
+const guidePaths = [
+  "/guides",
+  "/how-to-get-a-florida-real-estate-license",
+  "/how-much-does-a-florida-real-estate-license-cost",
+  "/how-long-does-it-take-to-get-a-florida-real-estate-license",
+  "/florida-63-hour-real-estate-pre-licensing-course",
+  "/florida-real-estate-exam",
+  "/what-happens-after-you-pass-the-florida-real-estate-exam",
+  "/florida-45-hour-post-license-requirements",
+  "/florida-14-hour-real-estate-continuing-education",
+];
+
 export function SiteHeader() {
   const menuRef = useRef<HTMLDetailsElement>(null);
   const summaryRef = useRef<HTMLElement>(null);
@@ -40,6 +52,12 @@ export function SiteHeader() {
     }
 
     return pathname === href || pathname.startsWith(`${href}/`);
+  }
+
+  function isGuidesSection() {
+    return guidePaths.some(
+      (path) => pathname === path || pathname.startsWith(`${path}/`),
+    );
   }
 
   useEffect(() => {
@@ -151,6 +169,13 @@ export function SiteHeader() {
           </Link>
 
           <Link
+            href="/guides"
+            aria-current={isGuidesSection() ? "page" : undefined}
+          >
+            Guides
+          </Link>
+
+          <Link
             href="/about"
             aria-current={isCurrentPage("/about") ? "page" : undefined}
           >
@@ -211,6 +236,14 @@ export function SiteHeader() {
               onClick={handleNavClick}
             >
               Courses
+            </Link>
+
+            <Link
+              href="/guides"
+              aria-current={isGuidesSection() ? "page" : undefined}
+              onClick={handleNavClick}
+            >
+              Guides
             </Link>
 
             <Link
