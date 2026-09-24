@@ -405,10 +405,7 @@ export default function CoursesPage() {
         </div>
       </div>
 
-      <div
-        className="container course-list"
-        style={{ minWidth: 0 }}
-      >
+      <div className="container course-list" style={{ minWidth: 0 }}>
         {courses.map((course) => (
           <article
             id={course.id}
@@ -422,9 +419,7 @@ export default function CoursesPage() {
             <div style={{ minWidth: 0 }}>
               <p className="eyebrow">{course.eyebrow}</p>
 
-              <h2 style={{ overflowWrap: "anywhere" }}>
-                {course.title}
-              </h2>
+              <h2 style={{ overflowWrap: "anywhere" }}>{course.title}</h2>
 
               <p>{course.body}</p>
 
@@ -488,8 +483,8 @@ export default function CoursesPage() {
                         color: "#111717",
                       }}
                     >
-                      How long does it take to get a Florida real estate
-                      license? →
+                      How long does it take to get a Florida real estate license?
+                      →
                     </Link>
                   </p>
                 </div>
@@ -499,8 +494,24 @@ export default function CoursesPage() {
                 <div
                   style={{
                     marginTop: "14px",
+                    display: "grid",
+                    gap: "8px",
                   }}
                 >
+                  <p style={{ margin: 0 }}>
+                    <Link
+                      href="/florida-45-hour-post-license-requirements"
+                      style={{
+                        textDecoration: "underline",
+                        textUnderlineOffset: "3px",
+                        fontWeight: 600,
+                        color: "#111717",
+                      }}
+                    >
+                      Florida 45-Hour Post-License Requirements →
+                    </Link>
+                  </p>
+
                   <p style={{ margin: 0 }}>
                     <Link
                       href="/what-happens-after-you-pass-the-florida-real-estate-exam"
