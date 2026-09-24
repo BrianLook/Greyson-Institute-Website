@@ -164,9 +164,7 @@ export default function AfterPassingFloridaRealEstateExamPage() {
             your first post-license education requirement.
           </p>
 
-          <p className="muted">
-            Last reviewed: September 24, 2026
-          </p>
+          <p className="muted">Last reviewed: September 24, 2026</p>
         </div>
 
         <div
@@ -196,20 +194,16 @@ export default function AfterPassingFloridaRealEstateExamPage() {
               marginBottom: 0,
             }}
           >
-            After you pass the Florida Real Estate Sales Associate
-            Examination and satisfy the applicable licensing requirements,
-            your sales associate license can be issued. Unless it is activated
-            with a qualifying broker, the license is issued in inactive
-            status. You must become active under a broker before working as an
-            active sales associate.
+            After you pass the Florida Real Estate Sales Associate Examination
+            and satisfy the applicable licensing requirements, your sales
+            associate license can be issued. Unless it is activated with a
+            qualifying broker, the license is issued in inactive status. You
+            must become active under a broker before working as an active sales
+            associate.
           </p>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">WHAT HAPPENS NEXT?</p>
 
           <h2
@@ -269,6 +263,22 @@ export default function AfterPassingFloridaRealEstateExamPage() {
                   >
                     {step.body}
                   </p>
+
+                  {step.number === "06" && (
+                    <Link
+                      href="/florida-45-hour-post-license-requirements"
+                      style={{
+                        display: "inline-block",
+                        marginTop: "14px",
+                        textDecoration: "underline",
+                        textUnderlineOffset: "4px",
+                        fontWeight: 600,
+                      }}
+                    >
+                      Learn about Florida&apos;s 45-hour post-license
+                      requirements →
+                    </Link>
+                  )}
                 </div>
               </article>
             ))}
@@ -320,18 +330,10 @@ export default function AfterPassingFloridaRealEstateExamPage() {
           </p>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">CHOOSING A BROKER</p>
 
-          <h2
-            style={{
-              maxWidth: "800px",
-            }}
-          >
+          <h2 style={{ maxWidth: "800px" }}>
             Your first brokerage can shape your early real estate experience.
           </h2>
 
@@ -374,14 +376,7 @@ export default function AfterPassingFloridaRealEstateExamPage() {
                   {item.title}
                 </h3>
 
-                <p
-                  style={{
-                    color: "#4d4b46",
-                    margin: 0,
-                  }}
-                >
-                  {item.body}
-                </p>
+                <p style={{ color: "#4d4b46", margin: 0 }}>{item.body}</p>
               </div>
             ))}
           </div>
@@ -420,11 +415,7 @@ export default function AfterPassingFloridaRealEstateExamPage() {
             broker&apos;s DBPR online account.
           </p>
 
-          <div
-            style={{
-              marginTop: "22px",
-            }}
-          >
+          <div style={{ marginTop: "22px" }}>
             <a
               href="https://www.myfloridalicense.com/CheckListDetail.asp?SID=&XACT_DEFN_ID=1101&clientCode=2501&xactCode=3020"
               target="_blank"
@@ -454,26 +445,18 @@ export default function AfterPassingFloridaRealEstateExamPage() {
           </div>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">YOUR NEXT EDUCATION REQUIREMENT</p>
 
-          <h2
-            style={{
-              maxWidth: "820px",
-            }}
-          >
+          <h2 style={{ maxWidth: "820px" }}>
             Do not forget the 45-hour Florida post-license requirement.
           </h2>
 
           <p>
             Your education requirements do not end when you pass the state
-            examination. Florida sales associates must generally complete
-            45 hours of approved post-license education before the expiration
-            of the initial sales associate license.
+            examination. Florida sales associates must generally complete 45
+            hours of approved post-license education before the expiration of
+            the initial sales associate license.
           </p>
 
           <p>
@@ -487,32 +470,47 @@ export default function AfterPassingFloridaRealEstateExamPage() {
             license to become null and void.
           </p>
 
-          <Link
-            href="/courses#post-license"
+          <div
             style={{
-              display: "inline-block",
-              marginTop: "8px",
-              textDecoration: "underline",
-              textUnderlineOffset: "4px",
-              fontWeight: 600,
+              display: "grid",
+              gap: "12px",
+              marginTop: "20px",
             }}
           >
-            Explore the Florida post-license education path →
-          </Link>
+            <Link
+              href="/florida-45-hour-post-license-requirements"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              Florida 45-Hour Post-License Requirements →
+            </Link>
+
+            <Link
+              href="/courses#post-license"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              Explore the Florida post-license education path →
+            </Link>
+          </div>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">AFTER YOUR FIRST RENEWAL</p>
 
-          <h2>Post-license education eventually becomes continuing education.</h2>
+          <h2>
+            Post-license education eventually becomes continuing education.
+          </h2>
 
           <p>
-            The 45-hour post-license requirement applies to the initial
-            renewal period for Florida sales associates. After satisfying that
+            The 45-hour post-license requirement applies to the initial renewal
+            period for Florida sales associates. After satisfying that
             first-renewal requirement, Florida&apos;s regular continuing
             education requirements apply during later renewal periods.
           </p>
@@ -540,7 +538,7 @@ export default function AfterPassingFloridaRealEstateExamPage() {
               marginBottom: "18px",
             }}
           >
-            Review the steps that brought you here.
+            Continue from licensure into your first renewal.
           </h2>
 
           <div
@@ -550,6 +548,17 @@ export default function AfterPassingFloridaRealEstateExamPage() {
               marginTop: "24px",
             }}
           >
+            <Link
+              href="/florida-45-hour-post-license-requirements"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              Florida 45-Hour Post-License Requirements →
+            </Link>
+
             <Link
               href="/florida-real-estate-exam"
               style={{
@@ -607,18 +616,10 @@ export default function AfterPassingFloridaRealEstateExamPage() {
           </div>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">COMMON QUESTIONS</p>
 
-          <h2
-            style={{
-              marginBottom: "36px",
-            }}
-          >
+          <h2 style={{ marginBottom: "36px" }}>
             After the Florida real estate exam FAQ
           </h2>
 
@@ -661,20 +662,12 @@ export default function AfterPassingFloridaRealEstateExamPage() {
           </div>
         </div>
 
-        <div
-          style={{
-            marginBottom: "76px",
-          }}
-        >
+        <div style={{ marginBottom: "76px" }}>
           <p className="eyebrow">OFFICIAL FLORIDA RESOURCES</p>
 
           <h2>Verify your license status and requirements with DBPR.</h2>
 
-          <p
-            style={{
-              maxWidth: "800px",
-            }}
-          >
+          <p style={{ maxWidth: "800px" }}>
             License issuance, activation procedures, forms, education
             requirements, and renewal rules can change. Confirm your current
             status and obligations with the Florida Department of Business and
@@ -802,8 +795,8 @@ export default function AfterPassingFloridaRealEstateExamPage() {
               marginRight: "auto",
             }}
           >
-            Explore the post-license education path and understand what comes
-            after earning your Florida sales associate license.
+            Understand Florida&apos;s 45-hour post-license requirement and
+            explore the education path that follows licensure.
           </p>
 
           <div
@@ -812,12 +805,15 @@ export default function AfterPassingFloridaRealEstateExamPage() {
               justifyContent: "center",
             }}
           >
-            <Link className="button" href="/courses#post-license">
-              Explore Post-License Education
+            <Link
+              className="button"
+              href="/florida-45-hour-post-license-requirements"
+            >
+              Understand the 45-Hour Requirement
             </Link>
 
             <Link
-              href="/contact"
+              href="/courses#post-license"
               style={{
                 minHeight: "48px",
                 padding: "0 20px",
@@ -830,7 +826,7 @@ export default function AfterPassingFloridaRealEstateExamPage() {
                 letterSpacing: "0.04em",
               }}
             >
-              Ask a Question
+              Explore Post-License Education
             </Link>
           </div>
         </div>
