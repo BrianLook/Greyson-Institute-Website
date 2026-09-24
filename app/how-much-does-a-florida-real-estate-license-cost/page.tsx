@@ -299,41 +299,62 @@ export default function FloridaRealEstateLicenseCostPage() {
 
         <div
           style={{
+            background: "#eee6d9",
+            border: "1px solid rgba(17, 23, 23, 0.14)",
+            padding: "clamp(30px, 5vw, 48px)",
             marginBottom: "82px",
           }}
         >
-          <p className="eyebrow">RELATED GUIDE</p>
+          <p className="eyebrow">RELATED GUIDES</p>
 
           <h2
             style={{
-              maxWidth: "760px",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              marginBottom: "18px",
             }}
           >
-            Need the full licensing process?
+            Continue planning your Florida licensing path.
           </h2>
 
           <p
             style={{
               color: "#4d4b46",
               maxWidth: "760px",
+              marginBottom: "24px",
             }}
           >
-            If you are starting from the beginning, our step-by-step Florida
-            licensing guide explains the eligibility requirements, education,
-            application, fingerprints, state examination, and license
-            activation process.
+            Review the full licensing process and learn how long the major
+            steps may take.
           </p>
 
-          <Link
-            href="/how-to-get-a-florida-real-estate-license"
+          <div
             style={{
-              textDecoration: "underline",
-              textUnderlineOffset: "4px",
-              fontWeight: 600,
+              display: "grid",
+              gap: "14px",
             }}
           >
-            Read: How to Get a Florida Real Estate License →
-          </Link>
+            <Link
+              href="/how-to-get-a-florida-real-estate-license"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              How to Get a Florida Real Estate License →
+            </Link>
+
+            <Link
+              href="/how-long-does-it-take-to-get-a-florida-real-estate-license"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              How Long Does It Take to Get a Florida Real Estate License? →
+            </Link>
+          </div>
         </div>
 
         <div
