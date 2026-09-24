@@ -183,7 +183,7 @@ export function SiteHeader() {
                 : undefined
             }
           >
-            License Check
+            Florida License Check
           </Link>
 
           <Link
@@ -266,7 +266,7 @@ export function SiteHeader() {
               }
               onClick={handleNavClick}
             >
-              License Check
+              Florida License Check
             </Link>
 
             <Link
