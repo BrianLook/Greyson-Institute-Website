@@ -183,8 +183,8 @@ export default function CoursesPage() {
               }}
             >
               Start with our Florida licensing guides to understand the
-              step-by-step process, what it may cost, and how long the major
-              licensing steps can take.
+              step-by-step process, the required 63-hour course, what the
+              licensing process may cost, and how long the major steps can take.
             </p>
           </div>
 
@@ -206,6 +206,24 @@ export default function CoursesPage() {
               }}
             >
               How to Get a Florida License
+            </Link>
+
+            <Link
+              href="/florida-63-hour-real-estate-pre-licensing-course"
+              style={{
+                minHeight: "48px",
+                padding: "0 20px",
+                border: "1px solid #111717",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "14px",
+                fontWeight: 600,
+                letterSpacing: "0.04em",
+                textAlign: "center",
+              }}
+            >
+              Florida 63-Hour Course Guide
             </Link>
 
             <Link
@@ -399,6 +417,20 @@ export default function CoursesPage() {
                     gap: "8px",
                   }}
                 >
+                  <p style={{ margin: 0 }}>
+                    <Link
+                      href="/florida-63-hour-real-estate-pre-licensing-course"
+                      style={{
+                        textDecoration: "underline",
+                        textUnderlineOffset: "3px",
+                        fontWeight: 600,
+                        color: "#111717",
+                      }}
+                    >
+                      What does the Florida 63-hour pre-licensing course cover? →
+                    </Link>
+                  </p>
+
                   <p style={{ margin: 0 }}>
                     <Link
                       href="/how-to-get-a-florida-real-estate-license"
