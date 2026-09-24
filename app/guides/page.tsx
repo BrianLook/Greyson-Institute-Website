@@ -109,6 +109,28 @@ export default function GuidesPage() {
         paddingBottom: "100px",
       }}
     >
+      <style>
+        {`
+          .guides-path-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+          }
+
+          @media (max-width: 900px) {
+            .guides-path-grid {
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+          }
+
+          @media (max-width: 600px) {
+            .guides-path-grid {
+              grid-template-columns: 1fr;
+            }
+          }
+        `}
+      </style>
+
       <div
         className="container"
         style={{
@@ -176,14 +198,7 @@ export default function GuidesPage() {
             through the major education and licensing stages in order.
           </p>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(min(100%, 240px), 1fr))",
-              gap: "12px",
-            }}
-          >
+          <div className="guides-path-grid">
             {pathSteps.map((step, index) => (
               <Link
                 key={step.label}
@@ -192,11 +207,12 @@ export default function GuidesPage() {
                   border: "1px solid rgba(245, 240, 231, 0.24)",
                   padding: "22px",
                   color: "#f5f0e7",
-                  minHeight: "120px",
+                  minHeight: "130px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
                   textDecoration: "none",
+                  minWidth: 0,
                 }}
               >
                 <span
