@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
 
 export const metadata: Metadata = {
   title: "Courses",
@@ -268,6 +269,21 @@ export default function CoursesPage() {
             </Link>
           </div>
         </div>
+      </div>
+
+      <div
+        className="container"
+        style={{
+          maxWidth: "1080px",
+          marginBottom: "88px",
+          minWidth: 0,
+        }}
+      >
+        <LicenseExpirationPromo
+          eyebrow="ALREADY LICENSED IN FLORIDA?"
+          title="Check when your Florida real estate license expires."
+          text="Before choosing post-license, continuing education, or reactivation education, verify your official DBPR license record. Your license type, status, expiration date, and whether this is your first renewal can affect which education requirement applies."
+        />
       </div>
 
       <div
