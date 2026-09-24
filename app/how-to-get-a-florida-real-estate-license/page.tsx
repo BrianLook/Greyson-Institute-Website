@@ -257,6 +257,19 @@ export default function FloridaRealEstateLicenseGuidePage() {
             certain applicants with an eligible four-year degree in real
             estate.
           </p>
+
+          <Link
+            href="/florida-63-hour-real-estate-pre-licensing-course"
+            style={{
+              display: "inline-block",
+              marginTop: "8px",
+              textDecoration: "underline",
+              textUnderlineOffset: "4px",
+              fontWeight: 600,
+            }}
+          >
+            Learn what the Florida 63-hour pre-licensing course covers →
+          </Link>
         </div>
 
         <div
@@ -356,8 +369,8 @@ export default function FloridaRealEstateLicenseGuidePage() {
               marginBottom: "24px",
             }}
           >
-            Learn what the licensing process may cost and how long the major
-            steps can take.
+            Go deeper into the required pre-licensing course, what the
+            licensing process may cost, and how long the major steps can take.
           </p>
 
           <div
@@ -366,6 +379,17 @@ export default function FloridaRealEstateLicenseGuidePage() {
               gap: "14px",
             }}
           >
+            <Link
+              href="/florida-63-hour-real-estate-pre-licensing-course"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              Florida 63-Hour Real Estate Pre-Licensing Course →
+            </Link>
+
             <Link
               href="/how-much-does-a-florida-real-estate-license-cost"
               style={{
