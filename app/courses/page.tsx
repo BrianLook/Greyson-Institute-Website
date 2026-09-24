@@ -132,6 +132,7 @@ export default function CoursesPage() {
             alt="Greyson Institute real estate study workspace"
             fill
             priority
+            unoptimized
             sizes="(max-width: 980px) 100vw, 55vw"
             style={{
               objectFit: "cover",
