@@ -176,6 +176,17 @@ export function SiteHeader() {
           </Link>
 
           <Link
+            href="/check-florida-real-estate-license-expiration"
+            aria-current={
+              isCurrentPage("/check-florida-real-estate-license-expiration")
+                ? "page"
+                : undefined
+            }
+          >
+            License Check
+          </Link>
+
+          <Link
             href="/about"
             aria-current={isCurrentPage("/about") ? "page" : undefined}
           >
@@ -244,6 +255,18 @@ export function SiteHeader() {
               onClick={handleNavClick}
             >
               Guides
+            </Link>
+
+            <Link
+              href="/check-florida-real-estate-license-expiration"
+              aria-current={
+                isCurrentPage("/check-florida-real-estate-license-expiration")
+                  ? "page"
+                  : undefined
+              }
+              onClick={handleNavClick}
+            >
+              License Check
             </Link>
 
             <Link
