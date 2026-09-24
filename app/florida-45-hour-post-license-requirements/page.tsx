@@ -403,6 +403,22 @@ export default function Florida45HourPostLicenseRequirementsPage() {
                   >
                     {step.body}
                   </p>
+
+                  {step.number === "06" && (
+                    <Link
+                      href="/florida-14-hour-real-estate-continuing-education"
+                      style={{
+                        display: "inline-block",
+                        marginTop: "14px",
+                        textDecoration: "underline",
+                        textUnderlineOffset: "4px",
+                        fontWeight: 600,
+                      }}
+                    >
+                      Learn about Florida&apos;s 14-hour continuing education
+                      requirements →
+                    </Link>
+                  )}
                 </div>
               </article>
             ))}
@@ -604,6 +620,19 @@ export default function Florida45HourPostLicenseRequirementsPage() {
               </p>
             </div>
           </div>
+
+          <Link
+            href="/florida-14-hour-real-estate-continuing-education"
+            style={{
+              display: "inline-block",
+              marginTop: "24px",
+              textDecoration: "underline",
+              textUnderlineOffset: "4px",
+              fontWeight: 600,
+            }}
+          >
+            Florida 14-Hour Real Estate Continuing Education Requirements →
+          </Link>
         </div>
 
         <div
@@ -622,7 +651,7 @@ export default function Florida45HourPostLicenseRequirementsPage() {
               marginBottom: "18px",
             }}
           >
-            Follow the Florida licensing path from beginning to first renewal.
+            Follow your Florida education path beyond the first renewal.
           </h2>
 
           <div
@@ -632,6 +661,17 @@ export default function Florida45HourPostLicenseRequirementsPage() {
               marginTop: "24px",
             }}
           >
+            <Link
+              href="/florida-14-hour-real-estate-continuing-education"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              Florida 14-Hour Real Estate Continuing Education Requirements →
+            </Link>
+
             <Link
               href="/what-happens-after-you-pass-the-florida-real-estate-exam"
               style={{
@@ -873,8 +913,8 @@ export default function Florida45HourPostLicenseRequirementsPage() {
             }}
           >
             Understand where Florida&apos;s 45-hour post-license requirement
-            fits into your first renewal and the education that follows
-            licensure.
+            fits into your first renewal and what continuing education comes
+            next.
           </p>
 
           <div
@@ -888,7 +928,7 @@ export default function Florida45HourPostLicenseRequirementsPage() {
             </Link>
 
             <Link
-              href="/contact"
+              href="/florida-14-hour-real-estate-continuing-education"
               style={{
                 minHeight: "48px",
                 padding: "0 20px",
@@ -899,9 +939,10 @@ export default function Florida45HourPostLicenseRequirementsPage() {
                 fontSize: "14px",
                 fontWeight: 600,
                 letterSpacing: "0.04em",
+                textAlign: "center",
               }}
             >
-              Ask a Question
+              See 14-Hour Continuing Education
             </Link>
           </div>
         </div>
