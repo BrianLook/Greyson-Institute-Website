@@ -125,6 +125,29 @@ export default function GuidesPage() {
               box-shadow 0.2s ease;
           }
 
+          .guides-cta {
+            transition:
+              transform 0.2s ease,
+              background-color 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.2s ease;
+          }
+
+          .guides-cta--secondary {
+            min-height: 48px;
+            padding: 0 20px;
+            border: 1px solid #111717;
+            background: transparent;
+            color: #111717;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-align: center;
+          }
+
           @media (hover: hover) and (pointer: fine) {
             .guide-card:hover {
               transform: translateY(-5px);
@@ -132,6 +155,20 @@ export default function GuidesPage() {
               box-shadow: 0 20px 50px rgba(17, 23, 23, 0.08);
               position: relative;
               z-index: 2;
+            }
+
+            .guides-cta:hover {
+              transform: translateY(-3px);
+              box-shadow: 0 12px 28px rgba(17, 23, 23, 0.12);
+            }
+
+            .guides-cta--primary:hover {
+              background: #1f2d30;
+            }
+
+            .guides-cta--secondary:hover {
+              background: #111717;
+              color: #f5f0e7;
             }
           }
 
@@ -498,23 +535,16 @@ export default function GuidesPage() {
               justifyContent: "center",
             }}
           >
-            <Link className="button" href="/courses">
+            <Link
+              className="button guides-cta guides-cta--primary"
+              href="/courses"
+            >
               Explore Courses
             </Link>
 
             <Link
+              className="guides-cta guides-cta--secondary"
               href="/contact"
-              style={{
-                minHeight: "48px",
-                padding: "0 20px",
-                border: "1px solid #111717",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "14px",
-                fontWeight: 600,
-                letterSpacing: "0.04em",
-              }}
             >
               Ask a Question
             </Link>
