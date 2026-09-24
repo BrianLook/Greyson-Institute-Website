@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { GuideStructuredData } from "@/components/GuideStructuredData";
+
+const guideTitle = "Florida 45-Hour Post-License Requirements";
+const guideDescription =
+  "Learn Florida's 45-hour sales associate post-license requirements, including who must complete the education, the deadline, active and inactive licenses, exemptions, and what happens if you miss the requirement.";
+const guidePath = "/florida-45-hour-post-license-requirements";
 
 export const metadata: Metadata = {
-  title: "Florida 45-Hour Post-License Requirements",
-  description:
-    "Learn Florida's 45-hour sales associate post-license requirements, including who must complete the education, the deadline, active and inactive licenses, exemptions, and what happens if you miss the requirement.",
+  title: guideTitle,
+  description: guideDescription,
 };
 
 const requirementSteps = [
@@ -128,6 +134,14 @@ export default function Florida45HourPostLicenseRequirementsPage() {
         paddingBottom: "100px",
       }}
     >
+      <GuideStructuredData
+        title={guideTitle}
+        description={guideDescription}
+        path={guidePath}
+        datePublished="2026-09-24"
+        dateModified="2026-09-24"
+      />
+
       <div
         className="container"
         style={{
@@ -135,6 +149,24 @@ export default function Florida45HourPostLicenseRequirementsPage() {
           minWidth: 0,
         }}
       >
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Guides",
+              href: "/guides",
+            },
+            {
+              label: guideTitle,
+              href: guidePath,
+              current: true,
+            },
+          ]}
+        />
+
         <div
           style={{
             maxWidth: "860px",
@@ -163,9 +195,7 @@ export default function Florida45HourPostLicenseRequirementsPage() {
             first license renewal.
           </p>
 
-          <p className="muted">
-            Last reviewed: September 24, 2026
-          </p>
+          <p className="muted">Last reviewed: September 24, 2026</p>
         </div>
 
         <div
