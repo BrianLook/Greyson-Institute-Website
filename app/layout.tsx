@@ -61,6 +61,33 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://greysoninstitute.com/#organization",
+  name: "Greyson Institute",
+  legalName: "BrightPath Education Group, LLC",
+  url: "https://greysoninstitute.com",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://greysoninstitute.com/brand/greyson-icon-color.png",
+  },
+  email: "support@greysoninstitute.com",
+  description:
+    "Greyson Institute provides clear, modern real estate education guidance for licensing, post-license, continuing education, broker education, and exam preparation.",
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://greysoninstitute.com/#website",
+  url: "https://greysoninstitute.com",
+  name: "Greyson Institute",
+  publisher: {
+    "@id": "https://greysoninstitute.com/#organization",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -69,6 +96,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
+
         <a className="skip-link" href="#main-content">
           Skip to main content
         </a>
