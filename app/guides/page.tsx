@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Florida Real Estate Guides",
   description:
     "Explore Greyson Institute's Florida real estate licensing and education guides, from getting licensed and preparing for the state exam through post-license and continuing education.",
 };
+
+const baseUrl = "https://greysoninstitute.com";
 
 const guides = [
   {
@@ -101,6 +104,36 @@ const pathSteps = [
   },
 ];
 
+const guidesCollectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${baseUrl}/guides#webpage`,
+  url: `${baseUrl}/guides`,
+  name: "Florida Real Estate Guides",
+  description:
+    "Greyson Institute's Florida real estate licensing and education guide library.",
+  isPartOf: {
+    "@id": `${baseUrl}/#website`,
+  },
+  about: {
+    "@id": `${baseUrl}/#organization`,
+  },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: guides.length,
+    itemListElement: guides.map((guide, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "WebPage",
+        "@id": `${baseUrl}${guide.href}`,
+        url: `${baseUrl}${guide.href}`,
+        name: guide.title,
+      },
+    })),
+  },
+};
+
 export default function GuidesPage() {
   return (
     <section
@@ -109,6 +142,13 @@ export default function GuidesPage() {
         paddingBottom: "100px",
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(guidesCollectionSchema),
+        }}
+      />
+
       <style>
         {`
           .guides-path-grid {
@@ -200,6 +240,20 @@ export default function GuidesPage() {
           minWidth: 0,
         }}
       >
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Guides",
+              href: "/guides",
+              current: true,
+            },
+          ]}
+        />
+
         <div
           style={{
             maxWidth: "860px",
@@ -532,9 +586,9 @@ export default function GuidesPage() {
               marginRight: "auto",
             }}
           >
-            Explore Greyson Institute&apos;s education paths for
-            pre-licensing, exam preparation, post-license education,
-            continuing education, broker education, and reactivation.
+            Explore Greyson Institute&apos;s education paths for pre-licensing,
+            exam preparation, post-license education, continuing education,
+            broker education, and reactivation.
           </p>
 
           <div
