@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
+import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
 
 const guideTitle = "Florida 45-Hour Post-License Requirements";
 const guideDescription =
@@ -229,6 +230,18 @@ export default function Florida45HourPostLicenseRequirementsPage() {
             initial license. The requirement applies whether the sales
             associate license is active or inactive.
           </p>
+        </div>
+
+        <div
+          style={{
+            marginBottom: "82px",
+          }}
+        >
+          <LicenseExpirationPromo
+            eyebrow="CHECK YOUR FIRST-RENEWAL DEADLINE"
+            title="Do you know when your initial Florida license expires?"
+            text="Your 45-hour post-license education must be completed before the expiration of your initial sales associate license. Check your official Florida DBPR record now so you know exactly which deadline you are working toward."
+          />
         </div>
 
         <div
