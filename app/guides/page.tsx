@@ -134,14 +134,6 @@ export default function GuidesPage() {
           }
 
           .guides-cta {
-            transition:
-              transform 0.2s ease,
-              background-color 0.2s ease,
-              color 0.2s ease,
-              box-shadow 0.2s ease;
-          }
-
-          .guides-cta--secondary {
             min-height: 48px;
             padding: 0 20px;
             border: 1px solid #111717;
@@ -154,6 +146,11 @@ export default function GuidesPage() {
             font-weight: 600;
             letter-spacing: 0.04em;
             text-align: center;
+            transition:
+              transform 0.2s ease,
+              background-color 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.2s ease;
           }
 
           @media (hover: hover) and (pointer: fine) {
@@ -175,17 +172,10 @@ export default function GuidesPage() {
             }
 
             .guides-cta:hover {
-              transform: translateY(-3px);
-              box-shadow: 0 12px 28px rgba(17, 23, 23, 0.12);
-            }
-
-            .guides-cta--primary:hover {
-              background: #1f2d30;
-            }
-
-            .guides-cta--secondary:hover {
               background: #111717;
               color: #f5f0e7;
+              transform: translateY(-3px);
+              box-shadow: 0 12px 28px rgba(17, 23, 23, 0.12);
             }
           }
 
@@ -553,17 +543,11 @@ export default function GuidesPage() {
               justifyContent: "center",
             }}
           >
-            <Link
-              className="button guides-cta guides-cta--primary"
-              href="/courses"
-            >
+            <Link className="guides-cta" href="/courses">
               Explore Courses
             </Link>
 
-            <Link
-              className="guides-cta guides-cta--secondary"
-              href="/contact"
-            >
+            <Link className="guides-cta" href="/contact">
               Ask a Question
             </Link>
           </div>
