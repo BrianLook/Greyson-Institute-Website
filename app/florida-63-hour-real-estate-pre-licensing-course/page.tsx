@@ -239,6 +239,18 @@ export default function Florida63HourPreLicensingCoursePage() {
             pre-licensing course and is separate from the Florida state
             licensing examination.
           </p>
+
+          <Link
+            href="/florida-real-estate-exam"
+            style={{
+              color: "#f5f0e7",
+              textDecoration: "underline",
+              textUnderlineOffset: "4px",
+              fontWeight: 600,
+            }}
+          >
+            See what to expect on the Florida real estate state exam →
+          </Link>
         </div>
 
         <div
@@ -356,16 +368,35 @@ export default function Florida63HourPreLicensingCoursePage() {
             years after the course completion date.
           </p>
 
-          <Link
-            href="/how-to-get-a-florida-real-estate-license"
+          <div
             style={{
-              textDecoration: "underline",
-              textUnderlineOffset: "4px",
-              fontWeight: 600,
+              display: "grid",
+              gap: "12px",
+              marginTop: "20px",
             }}
           >
-            See the complete Florida licensing process →
-          </Link>
+            <Link
+              href="/florida-real-estate-exam"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              Florida Real Estate Exam: What to Expect and How to Prepare →
+            </Link>
+
+            <Link
+              href="/how-to-get-a-florida-real-estate-license"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              See the complete Florida licensing process →
+            </Link>
+          </div>
         </div>
 
         <div
@@ -394,8 +425,9 @@ export default function Florida63HourPreLicensingCoursePage() {
               marginBottom: "24px",
             }}
           >
-            Learn the complete licensing process, what the major expenses may
-            be, and how long the steps can take.
+            Prepare for the state exam, review the complete licensing process,
+            understand the major costs, and see how long the licensing steps
+            can take.
           </p>
 
           <div
@@ -404,6 +436,17 @@ export default function Florida63HourPreLicensingCoursePage() {
               gap: "14px",
             }}
           >
+            <Link
+              href="/florida-real-estate-exam"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              Florida Real Estate Exam: What to Expect and How to Prepare →
+            </Link>
+
             <Link
               href="/how-to-get-a-florida-real-estate-license"
               style={{
