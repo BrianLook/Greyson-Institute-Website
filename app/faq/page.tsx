@@ -63,6 +63,28 @@ export default function FAQPage() {
         paddingBottom: "100px",
       }}
     >
+      <style>
+        {`
+          .faq-row {
+            position: relative;
+            background: transparent;
+            transition:
+              transform 0.2s ease,
+              background-color 0.2s ease,
+              box-shadow 0.2s ease;
+          }
+
+          @media (hover: hover) and (pointer: fine) {
+            .faq-row:hover {
+              background: #ffffff;
+              transform: translateY(-3px);
+              box-shadow: 0 16px 40px rgba(17, 23, 23, 0.07);
+              z-index: 2;
+            }
+          }
+        `}
+      </style>
+
       <div
         className="container"
         style={{
@@ -125,6 +147,7 @@ export default function FAQPage() {
           {faqs.map((faq, index) => (
             <details
               key={faq.question}
+              className="faq-row"
               style={{
                 borderBottom: "1px solid rgba(17, 23, 23, 0.18)",
                 padding: 0,
@@ -134,7 +157,7 @@ export default function FAQPage() {
               <summary
                 style={{
                   cursor: "pointer",
-                  padding: "28px 0",
+                  padding: "28px 20px",
                   fontFamily: "var(--font-serif), Georgia, serif",
                   fontSize: "clamp(1.35rem, 2vw, 1.75rem)",
                   lineHeight: 1.25,
@@ -177,7 +200,7 @@ export default function FAQPage() {
 
               <div
                 style={{
-                  padding: "0 0 30px clamp(20px, 6vw, 56px)",
+                  padding: "0 20px 30px clamp(60px, 8vw, 76px)",
                   minWidth: 0,
                 }}
               >
