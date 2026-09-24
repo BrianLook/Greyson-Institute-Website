@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "sync:florida-licenses": "node scripts/sync-florida-licenses.mjs",
+    "build": "npm run sync:florida-licenses && next build",
     "start": "next start",
     "lint": "next lint"
   },
