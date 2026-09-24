@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { GuideStructuredData } from "@/components/GuideStructuredData";
+
+const guideTitle =
+  "Florida Real Estate Exam: What to Expect and How to Prepare";
+const guideDescription =
+  "Learn what to expect on the Florida Real Estate Sales Associate Exam, including the 100-question format, 3.5-hour time limit, passing score, exam topics, test-day requirements, and preparation tips.";
+const guidePath = "/florida-real-estate-exam";
 
 export const metadata: Metadata = {
-  title: "Florida Real Estate Exam: What to Expect and How to Prepare",
-  description:
-    "Learn what to expect on the Florida Real Estate Sales Associate Exam, including the 100-question format, 3.5-hour time limit, passing score, exam topics, test-day requirements, and preparation tips.",
+  title: guideTitle,
+  description: guideDescription,
 };
 
 const examFacts = [
@@ -197,6 +204,14 @@ export default function FloridaRealEstateExamPage() {
         paddingBottom: "100px",
       }}
     >
+      <GuideStructuredData
+        title={guideTitle}
+        description={guideDescription}
+        path={guidePath}
+        datePublished="2026-09-24"
+        dateModified="2026-09-24"
+      />
+
       <div
         className="container"
         style={{
@@ -204,6 +219,24 @@ export default function FloridaRealEstateExamPage() {
           minWidth: 0,
         }}
       >
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Guides",
+              href: "/guides",
+            },
+            {
+              label: guideTitle,
+              href: guidePath,
+              current: true,
+            },
+          ]}
+        />
+
         <div
           style={{
             maxWidth: "860px",
@@ -231,9 +264,7 @@ export default function FloridaRealEstateExamPage() {
             subject areas, testing rules, and practical ways to prepare.
           </p>
 
-          <p className="muted">
-            Last reviewed: September 24, 2026
-          </p>
+          <p className="muted">Last reviewed: September 24, 2026</p>
         </div>
 
         <div
