@@ -270,18 +270,10 @@ export default function FloridaRealEstateExamPage() {
           </p>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">EXAM AT A GLANCE</p>
 
-          <h2
-            style={{
-              marginBottom: "36px",
-            }}
-          >
+          <h2 style={{ marginBottom: "36px" }}>
             What the Florida sales associate exam looks like
           </h2>
 
@@ -316,12 +308,7 @@ export default function FloridaRealEstateExamPage() {
                   {fact.value}
                 </div>
 
-                <p
-                  style={{
-                    color: "#6e6b65",
-                    margin: 0,
-                  }}
-                >
+                <p style={{ color: "#6e6b65", margin: 0 }}>
                   {fact.detail}
                 </p>
               </div>
@@ -329,18 +316,10 @@ export default function FloridaRealEstateExamPage() {
           </div>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">WHAT IS ON THE EXAM?</p>
 
-          <h2
-            style={{
-              maxWidth: "800px",
-            }}
-          >
+          <h2 style={{ maxWidth: "800px" }}>
             Florida tests law, real estate principles, practice, and
             mathematics.
           </h2>
@@ -358,11 +337,7 @@ export default function FloridaRealEstateExamPage() {
           </p>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">HIGHER-WEIGHTED CONTENT</p>
 
           <h2
@@ -482,11 +457,7 @@ export default function FloridaRealEstateExamPage() {
           </Link>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">HOW TO PREPARE</p>
 
           <h2
@@ -552,18 +523,10 @@ export default function FloridaRealEstateExamPage() {
           </div>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">TEST DAY</p>
 
-          <h2
-            style={{
-              marginBottom: "40px",
-            }}
-          >
+          <h2 style={{ marginBottom: "40px" }}>
             What to expect at the Pearson VUE test center
           </h2>
 
@@ -638,11 +601,7 @@ export default function FloridaRealEstateExamPage() {
             calendar day before the desired test date, subject to availability.
           </p>
 
-          <div
-            style={{
-              marginTop: "22px",
-            }}
-          >
+          <div style={{ marginTop: "22px" }}>
             <a
               href="https://www.pearsonvue.com/us/en/fl/realestate.html"
               target="_blank"
@@ -672,14 +631,10 @@ export default function FloridaRealEstateExamPage() {
           </div>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">AFTER THE EXAM</p>
 
-          <h2>What happens when you finish?</h2>
+          <h2>Passed? Here is what happens next.</h2>
 
           <p>
             Florida&apos;s current Candidate Information Booklet states that
@@ -688,22 +643,47 @@ export default function FloridaRealEstateExamPage() {
           </p>
 
           <p>
-            If you pass, your exam result is part of the remaining licensing
-            process. Passing the examination does not mean you can immediately
-            begin performing real estate services in active status without
-            completing the applicable license issuance and activation steps.
+            Passing the examination is a major milestone, but it does not
+            automatically place your sales associate license in active status.
+            The remaining process includes license issuance and, if you want to
+            work in active status, becoming associated with a qualifying
+            Florida real estate broker and activating the license.
           </p>
 
-          <Link
-            href="/how-to-get-a-florida-real-estate-license"
+          <p>
+            New Florida sales associates also need to plan for the required
+            45-hour post-license education before the initial license expires.
+          </p>
+
+          <div
             style={{
-              textDecoration: "underline",
-              textUnderlineOffset: "4px",
-              fontWeight: 600,
+              display: "grid",
+              gap: "12px",
+              marginTop: "20px",
             }}
           >
-            See the complete Florida licensing process →
-          </Link>
+            <Link
+              href="/what-happens-after-you-pass-the-florida-real-estate-exam"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              What Happens After You Pass the Florida Real Estate Exam? →
+            </Link>
+
+            <Link
+              href="/how-to-get-a-florida-real-estate-license"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              See the complete Florida licensing process →
+            </Link>
+          </div>
         </div>
 
         <div
@@ -732,6 +712,17 @@ export default function FloridaRealEstateExamPage() {
               marginTop: "24px",
             }}
           >
+            <Link
+              href="/what-happens-after-you-pass-the-florida-real-estate-exam"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 600,
+              }}
+            >
+              What Happens After You Pass the Florida Real Estate Exam? →
+            </Link>
+
             <Link
               href="/florida-63-hour-real-estate-pre-licensing-course"
               style={{
@@ -778,18 +769,10 @@ export default function FloridaRealEstateExamPage() {
           </div>
         </div>
 
-        <div
-          style={{
-            marginBottom: "82px",
-          }}
-        >
+        <div style={{ marginBottom: "82px" }}>
           <p className="eyebrow">COMMON QUESTIONS</p>
 
-          <h2
-            style={{
-              marginBottom: "36px",
-            }}
-          >
+          <h2 style={{ marginBottom: "36px" }}>
             Florida real estate exam FAQ
           </h2>
 
@@ -832,20 +815,12 @@ export default function FloridaRealEstateExamPage() {
           </div>
         </div>
 
-        <div
-          style={{
-            marginBottom: "76px",
-          }}
-        >
+        <div style={{ marginBottom: "76px" }}>
           <p className="eyebrow">OFFICIAL EXAM RESOURCES</p>
 
           <h2>Verify the current rules before test day.</h2>
 
-          <p
-            style={{
-              maxWidth: "800px",
-            }}
-          >
+          <p style={{ maxWidth: "800px" }}>
             Examination procedures, identification rules, fees, testing
             policies, and scheduling information can change. Review the current
             official information before your examination.
@@ -909,8 +884,8 @@ export default function FloridaRealEstateExamPage() {
                   fontSize: "0.82rem",
                 }}
               >
-                You&apos;re leaving the Greyson Institute website. Florida
-                DBPR will open in a new tab.
+                You&apos;re leaving the Greyson Institute website. Florida DBPR
+                will open in a new tab.
               </p>
             </div>
 
