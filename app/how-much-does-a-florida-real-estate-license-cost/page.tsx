@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { GuideStructuredData } from "@/components/GuideStructuredData";
+
+const guideTitle = "How Much Does a Florida Real Estate License Cost?";
+const guideDescription =
+  "Learn the costs involved in getting a Florida real estate sales associate license, including the DBPR application fee, fingerprints, pre-licensing education, and the state exam.";
+const guidePath = "/how-much-does-a-florida-real-estate-license-cost";
 
 export const metadata: Metadata = {
-  title: "How Much Does a Florida Real Estate License Cost?",
-  description:
-    "Learn the costs involved in getting a Florida real estate sales associate license, including the DBPR application fee, fingerprints, pre-licensing education, and the state exam.",
+  title: guideTitle,
+  description: guideDescription,
 };
 
 const costItems = [
@@ -74,6 +80,14 @@ export default function FloridaRealEstateLicenseCostPage() {
         paddingBottom: "100px",
       }}
     >
+      <GuideStructuredData
+        title={guideTitle}
+        description={guideDescription}
+        path={guidePath}
+        datePublished="2026-09-24"
+        dateModified="2026-09-24"
+      />
+
       <div
         className="container"
         style={{
@@ -81,6 +95,24 @@ export default function FloridaRealEstateLicenseCostPage() {
           minWidth: 0,
         }}
       >
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Guides",
+              href: "/guides",
+            },
+            {
+              label: guideTitle,
+              href: guidePath,
+              current: true,
+            },
+          ]}
+        />
+
         <div
           style={{
             maxWidth: "840px",
@@ -108,9 +140,7 @@ export default function FloridaRealEstateLicenseCostPage() {
             fingerprinting, education, and examination costs to plan for.
           </p>
 
-          <p className="muted">
-            Last reviewed: September 24, 2026
-          </p>
+          <p className="muted">Last reviewed: September 24, 2026</p>
         </div>
 
         <div
@@ -360,8 +390,8 @@ export default function FloridaRealEstateLicenseCostPage() {
               marginBottom: "24px",
             }}
           >
-            Review the full licensing process and learn how long the major
-            steps may take.
+            Review the full licensing process and learn how long the major steps
+            may take.
           </p>
 
           <div
