@@ -119,21 +119,12 @@ export default function CoursesPage() {
               box-shadow 0.2s ease;
           }
 
-          .licensing-guide-link--primary {
-            background: #111717;
-            color: #f5f0e7;
-          }
-
           @media (hover: hover) and (pointer: fine) {
             .licensing-guide-link:hover {
               background: #111717;
               color: #f5f0e7;
               transform: translateY(-3px);
               box-shadow: 0 12px 28px rgba(17, 23, 23, 0.12);
-            }
-
-            .licensing-guide-link--primary:hover {
-              background: #1f2d30;
             }
           }
         `}
@@ -242,7 +233,7 @@ export default function CoursesPage() {
             }}
           >
             <Link
-              className="licensing-guide-link licensing-guide-link--primary"
+              className="licensing-guide-link"
               href="/how-to-get-a-florida-real-estate-license"
             >
               How to Get a Florida License
