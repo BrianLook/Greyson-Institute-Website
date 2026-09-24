@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { GuideStructuredData } from "@/components/GuideStructuredData";
+
+const guideTitle =
+  "Florida 14-Hour Real Estate Continuing Education Requirements";
+const guideDescription =
+  "Learn Florida's 14-hour real estate continuing education requirements, including Core Law, Ethics and Business Practices, specialty education, renewal timing, online courses, and exemptions.";
+const guidePath = "/florida-14-hour-real-estate-continuing-education";
 
 export const metadata: Metadata = {
-  title: "Florida 14-Hour Real Estate Continuing Education Requirements",
-  description:
-    "Learn Florida's 14-hour real estate continuing education requirements, including Core Law, Ethics and Business Practices, specialty education, renewal timing, online courses, and exemptions.",
+  title: guideTitle,
+  description: guideDescription,
 };
 
 const ceBreakdown = [
@@ -89,7 +96,8 @@ const faqItems = [
       "Generally, no. Florida sales associates completing their first renewal are subject to the 45-hour post-license education requirement. The regular 14-hour continuing-education requirement applies after the initial renewal.",
   },
   {
-    question: "Can Florida real estate continuing education be completed online?",
+    question:
+      "Can Florida real estate continuing education be completed online?",
     answer:
       "Yes. Florida permits approved distance-learning continuing-education courses as well as classroom education.",
   },
@@ -120,6 +128,14 @@ export default function Florida14HourContinuingEducationPage() {
         paddingBottom: "100px",
       }}
     >
+      <GuideStructuredData
+        title={guideTitle}
+        description={guideDescription}
+        path={guidePath}
+        datePublished="2026-09-24"
+        dateModified="2026-09-24"
+      />
+
       <div
         className="container"
         style={{
@@ -127,6 +143,24 @@ export default function Florida14HourContinuingEducationPage() {
           minWidth: 0,
         }}
       >
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Guides",
+              href: "/guides",
+            },
+            {
+              label: guideTitle,
+              href: guidePath,
+              current: true,
+            },
+          ]}
+        />
+
         <div
           style={{
             maxWidth: "880px",
@@ -505,7 +539,9 @@ export default function Florida14HourContinuingEducationPage() {
         >
           <p className="eyebrow">SPECIALTY EDUCATION</p>
 
-          <h2>Eight hours can focus on approved real estate specialty topics.</h2>
+          <h2>
+            Eight hours can focus on approved real estate specialty topics.
+          </h2>
 
           <p>
             The remaining eight hours are completed through approved specialty
@@ -571,7 +607,9 @@ export default function Florida14HourContinuingEducationPage() {
         >
           <p className="eyebrow">INACTIVE LICENSES</p>
 
-          <h2>Do not assume the normal 14-hour rule applies to every status.</h2>
+          <h2>
+            Do not assume the normal 14-hour rule applies to every status.
+          </h2>
 
           <p>
             Florida has separate requirements for certain inactive and
