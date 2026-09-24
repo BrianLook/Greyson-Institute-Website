@@ -117,6 +117,14 @@ export default function GuidesPage() {
             gap: 12px;
           }
 
+          .guide-step-card {
+            transition:
+              transform 0.2s ease,
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
+          }
+
           .guide-card {
             background: transparent;
             transition:
@@ -149,6 +157,15 @@ export default function GuidesPage() {
           }
 
           @media (hover: hover) and (pointer: fine) {
+            .guide-step-card:hover {
+              transform: translateY(-4px);
+              background: #26383b;
+              border-color: #d6bd9c !important;
+              box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+              position: relative;
+              z-index: 2;
+            }
+
             .guide-card:hover {
               transform: translateY(-5px);
               background: #ffffff;
@@ -258,6 +275,7 @@ export default function GuidesPage() {
               <Link
                 key={step.label}
                 href={step.href}
+                className="guide-step-card"
                 style={{
                   border: "1px solid rgba(245, 240, 231, 0.24)",
                   padding: "22px",
