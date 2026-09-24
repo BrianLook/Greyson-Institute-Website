@@ -23,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/check-florida-real-estate-license-expiration`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/how-to-get-a-florida-real-estate-license`,
       lastModified: new Date(),
       changeFrequency: "monthly",
