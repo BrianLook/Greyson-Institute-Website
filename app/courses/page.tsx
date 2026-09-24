@@ -163,7 +163,7 @@ export default function CoursesPage() {
           }}
         >
           <div style={{ minWidth: 0 }}>
-            <p className="eyebrow">FLORIDA LICENSING GUIDE</p>
+            <p className="eyebrow">FLORIDA LICENSING GUIDES</p>
 
             <h2
               style={{
@@ -182,17 +182,17 @@ export default function CoursesPage() {
                 maxWidth: "650px",
               }}
             >
-              Start with our step-by-step guide to Florida real estate
-              licensing, including the 63-hour pre-licensing course,
-              fingerprints, the state exam, and license activation.
+              Start with our Florida licensing guides for the step-by-step
+              licensing process and a breakdown of the costs you should plan
+              for.
             </p>
           </div>
 
           <div
             style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "center",
+              display: "grid",
+              gap: "12px",
+              justifyItems: "stretch",
               minWidth: 0,
             }}
           >
@@ -205,7 +205,25 @@ export default function CoursesPage() {
                 textAlign: "center",
               }}
             >
-              Read the Florida Licensing Guide
+              How to Get a Florida License
+            </Link>
+
+            <Link
+              href="/how-much-does-a-florida-real-estate-license-cost"
+              style={{
+                minHeight: "48px",
+                padding: "0 20px",
+                border: "1px solid #111717",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "14px",
+                fontWeight: 600,
+                letterSpacing: "0.04em",
+                textAlign: "center",
+              }}
+            >
+              Florida License Cost Guide
             </Link>
           </div>
         </div>
@@ -356,24 +374,41 @@ export default function CoursesPage() {
               <p>{course.body}</p>
 
               {course.id === "pre-licensing" && (
-                <p
+                <div
                   style={{
                     marginTop: "14px",
-                    marginBottom: 0,
+                    display: "grid",
+                    gap: "8px",
                   }}
                 >
-                  <Link
-                    href="/how-to-get-a-florida-real-estate-license"
-                    style={{
-                      textDecoration: "underline",
-                      textUnderlineOffset: "3px",
-                      fontWeight: 600,
-                      color: "#111717",
-                    }}
-                  >
-                    How to get a Florida real estate license →
-                  </Link>
-                </p>
+                  <p style={{ margin: 0 }}>
+                    <Link
+                      href="/how-to-get-a-florida-real-estate-license"
+                      style={{
+                        textDecoration: "underline",
+                        textUnderlineOffset: "3px",
+                        fontWeight: 600,
+                        color: "#111717",
+                      }}
+                    >
+                      How to get a Florida real estate license →
+                    </Link>
+                  </p>
+
+                  <p style={{ margin: 0 }}>
+                    <Link
+                      href="/how-much-does-a-florida-real-estate-license-cost"
+                      style={{
+                        textDecoration: "underline",
+                        textUnderlineOffset: "3px",
+                        fontWeight: 600,
+                        color: "#111717",
+                      }}
+                    >
+                      How much does a Florida real estate license cost? →
+                    </Link>
+                  </p>
+                </div>
               )}
             </div>
 
