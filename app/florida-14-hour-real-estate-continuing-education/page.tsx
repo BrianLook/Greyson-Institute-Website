@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
+import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
 
 const guideTitle =
   "Florida 14-Hour Real Estate Continuing Education Requirements";
@@ -223,6 +224,18 @@ export default function Florida14HourContinuingEducationPage() {
             Business Practices, and eight hours of approved specialty
             education.
           </p>
+        </div>
+
+        <div
+          style={{
+            marginBottom: "82px",
+          }}
+        >
+          <LicenseExpirationPromo
+            eyebrow="CHECK BEFORE YOU ENROLL"
+            title="Not sure when your Florida real estate license expires?"
+            text="Check your official Florida license record before choosing renewal education. If this is your first renewal, you may need post-license education instead of the regular 14-hour continuing-education requirement."
+          />
         </div>
 
         <div
