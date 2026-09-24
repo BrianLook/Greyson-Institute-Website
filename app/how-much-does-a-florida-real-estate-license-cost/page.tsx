@@ -212,6 +212,43 @@ export default function FloridaRealEstateLicenseCostPage() {
                   >
                     {item.body}
                   </p>
+
+                  {item.number === "04" && (
+                    <div
+                      style={{
+                        marginTop: "16px",
+                      }}
+                    >
+                      <a
+                        href="https://www.pearsonvue.com/us/en/fl/realestate.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "inline-block",
+                          color: "#111717",
+                          textDecoration: "underline",
+                          textUnderlineOffset: "4px",
+                          fontWeight: 600,
+                          marginBottom: "6px",
+                        }}
+                      >
+                        View Florida real estate exam information on Pearson VUE
+                        ↗
+                      </a>
+
+                      <p
+                        style={{
+                          margin: 0,
+                          color: "#6e6b65",
+                          fontSize: "0.82rem",
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        You’re leaving the Greyson Institute website. Pearson
+                        VUE will open in a new tab.
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <div
