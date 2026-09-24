@@ -332,6 +332,48 @@ export default function FloridaRealEstateLicenseGuidePage() {
 
         <div
           style={{
+            background: "#eee6d9",
+            border: "1px solid rgba(17, 23, 23, 0.14)",
+            padding: "clamp(30px, 5vw, 48px)",
+            marginBottom: "82px",
+          }}
+        >
+          <p className="eyebrow">RELATED GUIDE</p>
+
+          <h2
+            style={{
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              marginBottom: "16px",
+            }}
+          >
+            How much does the Florida licensing process cost?
+          </h2>
+
+          <p
+            style={{
+              color: "#4d4b46",
+              maxWidth: "760px",
+            }}
+          >
+            See a breakdown of the Florida application fee, fingerprinting,
+            pre-licensing education, state examination, and the other costs you
+            should plan for.
+          </p>
+
+          <Link
+            href="/how-much-does-a-florida-real-estate-license-cost"
+            style={{
+              textDecoration: "underline",
+              textUnderlineOffset: "4px",
+              fontWeight: 600,
+            }}
+          >
+            Read the Florida real estate license cost guide →
+          </Link>
+        </div>
+
+        <div
+          style={{
             marginBottom: "82px",
           }}
         >
