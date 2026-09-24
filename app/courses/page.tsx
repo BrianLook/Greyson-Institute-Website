@@ -495,6 +495,28 @@ export default function CoursesPage() {
                 </div>
               )}
 
+              {course.id === "post-license" && (
+                <div
+                  style={{
+                    marginTop: "14px",
+                  }}
+                >
+                  <p style={{ margin: 0 }}>
+                    <Link
+                      href="/what-happens-after-you-pass-the-florida-real-estate-exam"
+                      style={{
+                        textDecoration: "underline",
+                        textUnderlineOffset: "3px",
+                        fontWeight: 600,
+                        color: "#111717",
+                      }}
+                    >
+                      What happens after you pass the Florida real estate exam? →
+                    </Link>
+                  </p>
+                </div>
+              )}
+
               {course.id === "exam-prep" && (
                 <div
                   style={{
