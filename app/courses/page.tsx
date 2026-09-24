@@ -98,7 +98,7 @@ export default function CoursesPage() {
       <div
         className="container about-grid"
         style={{
-          marginBottom: "88px",
+          marginBottom: "72px",
           alignItems: "center",
           minWidth: 0,
         }}
@@ -138,6 +138,75 @@ export default function CoursesPage() {
               objectPosition: "center",
             }}
           />
+        </div>
+      </div>
+
+      <div
+        className="container"
+        style={{
+          maxWidth: "1080px",
+          marginBottom: "88px",
+          minWidth: 0,
+        }}
+      >
+        <div
+          style={{
+            background: "#eee6d9",
+            border: "1px solid rgba(17, 23, 23, 0.14)",
+            padding: "clamp(28px, 5vw, 44px)",
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+            gap: "30px",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ minWidth: 0 }}>
+            <p className="eyebrow">FLORIDA LICENSING GUIDE</p>
+
+            <h2
+              style={{
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                marginBottom: "14px",
+                overflowWrap: "anywhere",
+              }}
+            >
+              New to Florida real estate?
+            </h2>
+
+            <p
+              style={{
+                color: "#4d4b46",
+                marginBottom: 0,
+                maxWidth: "650px",
+              }}
+            >
+              Start with our step-by-step guide to Florida real estate
+              licensing, including the 63-hour pre-licensing course,
+              fingerprints, the state exam, and license activation.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              minWidth: 0,
+            }}
+          >
+            <Link
+              className="button"
+              href="/how-to-get-a-florida-real-estate-license"
+              style={{
+                maxWidth: "100%",
+                whiteSpace: "normal",
+                textAlign: "center",
+              }}
+            >
+              Read the Florida Licensing Guide
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -284,6 +353,27 @@ export default function CoursesPage() {
               </h2>
 
               <p>{course.body}</p>
+
+              {course.id === "pre-licensing" && (
+                <p
+                  style={{
+                    marginTop: "14px",
+                    marginBottom: 0,
+                  }}
+                >
+                  <Link
+                    href="/how-to-get-a-florida-real-estate-license"
+                    style={{
+                      textDecoration: "underline",
+                      textUnderlineOffset: "3px",
+                      fontWeight: 600,
+                      color: "#111717",
+                    }}
+                  >
+                    How to get a Florida real estate license →
+                  </Link>
+                </p>
+              )}
             </div>
 
             <span className="coming-soon">
