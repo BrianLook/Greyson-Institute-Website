@@ -117,6 +117,24 @@ export default function GuidesPage() {
             gap: 12px;
           }
 
+          .guide-card {
+            background: transparent;
+            transition:
+              transform 0.2s ease,
+              background-color 0.2s ease,
+              box-shadow 0.2s ease;
+          }
+
+          @media (hover: hover) and (pointer: fine) {
+            .guide-card:hover {
+              transform: translateY(-5px);
+              background: #ffffff;
+              box-shadow: 0 20px 50px rgba(17, 23, 23, 0.08);
+              position: relative;
+              z-index: 2;
+            }
+          }
+
           @media (max-width: 900px) {
             .guides-path-grid {
               grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -258,6 +276,7 @@ export default function GuidesPage() {
               <Link
                 key={guide.href}
                 href={guide.href}
+                className="guide-card"
                 style={{
                   minHeight: "330px",
                   padding: "34px",
