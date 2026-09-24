@@ -31,11 +31,11 @@ export function FloridaLicenseExpirationCheck() {
       await navigator.clipboard.writeText(cleanedLicenseNumber);
 
       setMessage(
-        `License number ${cleanedLicenseNumber} copied. When DBPR opens, choose Search by License Number and paste it into the search field.`,
+        `License number ${cleanedLicenseNumber} copied. On the DBPR page, paste it into License Number, leave the optional additional search fields blank, and click Submit.`,
       );
     } catch {
       setMessage(
-        `When DBPR opens, choose Search by License Number and enter ${cleanedLicenseNumber}.`,
+        `On the DBPR page, enter ${cleanedLicenseNumber} in License Number, leave the optional additional search fields blank, and click Submit.`,
       );
     }
   }
@@ -91,6 +91,39 @@ export function FloridaLicenseExpirationCheck() {
             font-size: 0.84rem;
             line-height: 1.6;
             margin: 8px 0 0;
+          }
+
+          .fl-license-dbpr-steps {
+            max-width: 760px;
+            margin-top: 24px;
+            padding: 22px 24px;
+            border: 1px solid rgba(17, 23, 23, 0.14);
+            background: rgba(255, 255, 255, 0.38);
+          }
+
+          .fl-license-dbpr-steps-title {
+            margin: 0 0 14px;
+            color: #111717;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+          }
+
+          .fl-license-dbpr-steps ol {
+            margin: 0;
+            padding-left: 22px;
+            color: #4d4b46;
+          }
+
+          .fl-license-dbpr-steps li {
+            padding-left: 5px;
+            margin-bottom: 8px;
+            line-height: 1.6;
+          }
+
+          .fl-license-dbpr-steps li:last-child {
+            margin-bottom: 0;
           }
 
           .fl-license-actions {
@@ -208,9 +241,9 @@ export function FloridaLicenseExpirationCheck() {
           marginBottom: 0,
         }}
       >
-        Enter your Florida real estate license number below. We&apos;ll copy
-        it for you and open Florida DBPR&apos;s official live license search so
-        you can verify your current status and expiration date.
+        Enter your Florida real estate license number below. We&apos;ll copy it
+        for you and open Florida DBPR&apos;s official live license search so you
+        can verify your current status and expiration date.
       </p>
 
       <div className="fl-license-field-wrap">
@@ -242,8 +275,8 @@ export function FloridaLicenseExpirationCheck() {
           id="florida-license-number-help"
           className="fl-license-helper"
         >
-          Enter the license number shown on your Florida record, such as an
-          SL, BK, or BL license number.
+          Enter the license number shown on your Florida record, such as an SL,
+          BK, or BL license number.
         </p>
       </div>
 
@@ -252,6 +285,25 @@ export function FloridaLicenseExpirationCheck() {
           {error}
         </p>
       )}
+
+      <div className="fl-license-dbpr-steps">
+        <p className="fl-license-dbpr-steps-title">
+          When the DBPR page opens
+        </p>
+
+        <ol>
+          <li>Paste your copied number into the License Number field.</li>
+          <li>
+            Leave License Category, License Type, and Special Qualification
+            blank — those are optional search filters.
+          </li>
+          <li>
+            Leave Include Historic Licenses off unless you specifically need an
+            older license record.
+          </li>
+          <li>Click Submit.</li>
+        </ol>
+      </div>
 
       <div className="fl-license-actions">
         <a
