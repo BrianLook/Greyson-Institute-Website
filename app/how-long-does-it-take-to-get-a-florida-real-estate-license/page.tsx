@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { GuideStructuredData } from "@/components/GuideStructuredData";
+
+const guideTitle =
+  "How Long Does It Take to Get a Florida Real Estate License?";
+const guideDescription =
+  "Learn how long the Florida real estate licensing process can take, including the 63-hour pre-licensing course, DBPR application, fingerprints, state exam, and license activation.";
+const guidePath =
+  "/how-long-does-it-take-to-get-a-florida-real-estate-license";
 
 export const metadata: Metadata = {
-  title: "How Long Does It Take to Get a Florida Real Estate License?",
-  description:
-    "Learn how long the Florida real estate licensing process can take, including the 63-hour pre-licensing course, DBPR application, fingerprints, state exam, and license activation.",
+  title: guideTitle,
+  description: guideDescription,
 };
 
 const timelineSteps = [
@@ -93,6 +101,14 @@ export default function FloridaRealEstateLicenseTimelinePage() {
         paddingBottom: "100px",
       }}
     >
+      <GuideStructuredData
+        title={guideTitle}
+        description={guideDescription}
+        path={guidePath}
+        datePublished="2026-09-24"
+        dateModified="2026-09-24"
+      />
+
       <div
         className="container"
         style={{
@@ -100,6 +116,24 @@ export default function FloridaRealEstateLicenseTimelinePage() {
           minWidth: 0,
         }}
       >
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Guides",
+              href: "/guides",
+            },
+            {
+              label: guideTitle,
+              href: guidePath,
+              current: true,
+            },
+          ]}
+        />
+
         <div
           style={{
             maxWidth: "850px",
@@ -128,9 +162,7 @@ export default function FloridaRealEstateLicenseTimelinePage() {
             activation.
           </p>
 
-          <p className="muted">
-            Last reviewed: September 24, 2026
-          </p>
+          <p className="muted">Last reviewed: September 24, 2026</p>
         </div>
 
         <div
