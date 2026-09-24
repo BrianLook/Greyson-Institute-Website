@@ -1,731 +1,345 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { FloridaLicenseExpirationCheck } from "@/components/FloridaLicenseExpirationCheck";
+"use client";
 
-const pageTitle = "Check Your Florida Real Estate License Expiration";
-const pageDescription =
-  "Check when your Florida real estate license expires, verify your live license record with Florida DBPR, and understand which education requirement may apply before your renewal deadline.";
-const pagePath = "/check-florida-real-estate-license-expiration";
-const baseUrl = "https://greysoninstitute.com";
+import { useState, type MouseEvent } from "react";
 
-export const metadata: Metadata = {
-  title: pageTitle,
-  description: pageDescription,
-};
+const dbprLicenseNumberSearch =
+  "https://www.myfloridalicense.com/portalsearches/VerifyLicensee?Mode=0&SearchType=SearchByLicenseNumber";
 
-const pageSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": `${baseUrl}${pagePath}#webpage`,
-  url: `${baseUrl}${pagePath}`,
-  name: pageTitle,
-  description: pageDescription,
-  isPartOf: {
-    "@id": `${baseUrl}/#website`,
-  },
-  about: {
-    "@id": `${baseUrl}/#organization`,
-  },
-};
+const dbprGeneralSearch =
+  "https://www.myfloridalicense.com/portalsearches/VerifyLicensee";
 
-const renewalPaths = [
-  {
-    eyebrow: "FIRST RENEWAL",
-    title: "Florida Sales Associate",
-    requirement: "45-hour post-license education",
-    description:
-      "If this is the first renewal after receiving your Florida sales associate license, the standard requirement is 45 hours of approved post-license education before the initial license expires.",
-    href: "/florida-45-hour-post-license-requirements",
-    linkText: "Understand the 45-hour requirement",
-  },
-  {
-    eyebrow: "FIRST RENEWAL",
-    title: "Florida Broker or Broker Associate",
-    requirement: "60-hour broker post-license education",
-    description:
-      "Florida brokers and broker associates completing their first renewal generally must complete 60 hours of approved broker post-license education before the initial license expires.",
-    href: "/courses#broker",
-    linkText: "Explore the broker education path",
-  },
-  {
-    eyebrow: "LATER RENEWALS",
-    title: "Current Florida License",
-    requirement: "14-hour continuing education",
-    description:
-      "After the initial post-license renewal, active Florida real estate licensees generally move into the regular 14-hour continuing-education cycle.",
-    href: "/florida-14-hour-real-estate-continuing-education",
-    linkText: "Understand the 14-hour CE requirement",
-  },
-];
+export function FloridaLicenseExpirationCheck() {
+  const [licenseNumber, setLicenseNumber] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
-export default function FloridaLicenseExpirationPage() {
+  const cleanedLicenseNumber = licenseNumber.trim().toUpperCase();
+
+  async function handleDbprClick(
+    event: MouseEvent<HTMLAnchorElement>,
+  ) {
+    if (!cleanedLicenseNumber) {
+      event.preventDefault();
+      setMessage("");
+      setError("Enter your Florida real estate license number first.");
+      return;
+    }
+
+    setError("");
+
+    try {
+      await navigator.clipboard.writeText(cleanedLicenseNumber);
+
+      setMessage(
+        `License number ${cleanedLicenseNumber} copied. On the DBPR page, paste it into License Number, leave the optional additional search fields blank, and click Submit.`,
+      );
+    } catch {
+      setMessage(
+        `On the DBPR page, enter ${cleanedLicenseNumber} in License Number, leave the optional additional search fields blank, and click Submit.`,
+      );
+    }
+  }
+
   return (
-    <section
-      className="page-hero"
-      style={{
-        paddingBottom: "100px",
-      }}
-    >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pageSchema),
-        }}
-      />
-
+    <div className="fl-license-check">
       <style>
         {`
-          .license-path-card {
+          .fl-license-check {
+            background: #eee6d9;
             border: 1px solid rgba(17, 23, 23, 0.16);
-            padding: 30px;
-            min-width: 0;
-            background: transparent;
+            padding: clamp(30px, 5vw, 50px);
+          }
+
+          .fl-license-field-wrap {
+            max-width: 680px;
+            margin-top: 28px;
+          }
+
+          .fl-license-label {
+            display: block;
+            margin-bottom: 9px;
+            color: #111717;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+          }
+
+          .fl-license-input {
+            width: 100%;
+            min-height: 56px;
+            border: 1px solid rgba(17, 23, 23, 0.4);
+            background: #faf7f1;
+            color: #111717;
+            padding: 0 16px;
+            border-radius: 0;
+            font: inherit;
+            font-size: 1rem;
+            outline: none;
             transition:
-              transform 0.2s ease,
-              background-color 0.2s ease,
+              border-color 0.2s ease,
               box-shadow 0.2s ease;
           }
 
-          .license-path-link {
-            display: inline-block;
-            margin-top: 18px;
-            font-weight: 600;
-            text-decoration: underline;
-            text-underline-offset: 4px;
+          .fl-license-input:focus {
+            border-color: #111717;
+            box-shadow: 0 0 0 3px rgba(125, 95, 58, 0.16);
           }
 
-          .license-warning-box {
-            border: 1px solid rgba(17, 23, 23, 0.16);
-            padding: clamp(28px, 5vw, 42px);
+          .fl-license-helper {
+            color: #6e6b65;
+            font-size: 0.84rem;
+            line-height: 1.6;
+            margin: 8px 0 0;
+          }
+
+          .fl-license-dbpr-steps {
+            max-width: 760px;
+            margin-top: 24px;
+            padding: 22px 24px;
+            border: 1px solid rgba(17, 23, 23, 0.14);
+            background: rgba(255, 255, 255, 0.38);
+          }
+
+          .fl-license-dbpr-steps-title {
+            margin: 0 0 14px;
+            color: #111717;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+          }
+
+          .fl-license-dbpr-steps ol {
+            margin: 0;
+            padding-left: 22px;
+            color: #4d4b46;
+          }
+
+          .fl-license-dbpr-steps li {
+            padding-left: 5px;
+            margin-bottom: 8px;
+            line-height: 1.6;
+          }
+
+          .fl-license-dbpr-steps li:last-child {
+            margin-bottom: 0;
+          }
+
+          .fl-license-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+          }
+
+          .fl-license-primary,
+          .fl-license-secondary {
+            min-height: 50px;
+            padding: 0 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 650;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            transition:
+              transform 0.2s ease,
+              background-color 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.2s ease;
+          }
+
+          .fl-license-primary {
+            background: #111717;
+            border: 1px solid #111717;
+            color: #f5f0e7;
+          }
+
+          .fl-license-secondary {
+            background: transparent;
+            border: 1px solid #111717;
+            color: #111717;
+          }
+
+          .fl-license-message {
+            max-width: 760px;
+            margin: 18px 0 0;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.48);
+            border-left: 3px solid #7d5f3a;
+            color: #3f3d38;
+            font-size: 0.9rem;
+            line-height: 1.6;
+          }
+
+          .fl-license-error {
+            max-width: 680px;
+            margin: 12px 0 0;
+            color: #8a2d25;
+            font-size: 0.88rem;
+            font-weight: 600;
+          }
+
+          .fl-license-note {
+            max-width: 820px;
+            margin: 26px 0 0;
+            padding-top: 22px;
+            border-top: 1px solid rgba(17, 23, 23, 0.14);
+            color: #5f5c56;
+            font-size: 0.86rem;
+            line-height: 1.7;
           }
 
           @media (hover: hover) and (pointer: fine) {
-            .license-path-card:hover {
-              transform: translateY(-4px);
-              background: #ffffff;
-              box-shadow: 0 18px 42px rgba(17, 23, 23, 0.08);
+            .fl-license-primary:hover {
+              background: #1f2d30;
+              transform: translateY(-3px);
+              box-shadow: 0 12px 28px rgba(17, 23, 23, 0.14);
+            }
+
+            .fl-license-secondary:hover {
+              background: #111717;
+              color: #f5f0e7;
+              transform: translateY(-3px);
+              box-shadow: 0 12px 28px rgba(17, 23, 23, 0.1);
+            }
+          }
+
+          @media (max-width: 600px) {
+            .fl-license-actions {
+              display: grid;
+              grid-template-columns: 1fr;
+            }
+
+            .fl-license-primary,
+            .fl-license-secondary {
+              width: 100%;
             }
           }
         `}
       </style>
 
-      <div
-        className="container"
+      <p className="eyebrow">CHECK YOUR LICENSE</p>
+
+      <h2
         style={{
-          maxWidth: "1040px",
-          minWidth: 0,
+          fontSize: "clamp(2rem, 4vw, 3rem)",
+          maxWidth: "760px",
+          marginBottom: "14px",
         }}
       >
-        <Breadcrumbs
-          items={[
-            {
-              label: "Home",
-              href: "/",
-            },
-            {
-              label: "License Expiration Check",
-              href: pagePath,
-              current: true,
-            },
-          ]}
+        Find your official Florida real estate license expiration date.
+      </h2>
+
+      <p
+        style={{
+          color: "#4d4b46",
+          maxWidth: "800px",
+          marginBottom: 0,
+        }}
+      >
+        Enter your Florida real estate license number below. We&apos;ll copy it
+        for you and open Florida DBPR&apos;s official live license search so you
+        can verify your current status and expiration date.
+      </p>
+
+      <div className="fl-license-field-wrap">
+        <label
+          className="fl-license-label"
+          htmlFor="florida-license-number"
+        >
+          Florida license number
+        </label>
+
+        <input
+          id="florida-license-number"
+          className="fl-license-input"
+          type="text"
+          value={licenseNumber}
+          onChange={(event) => {
+            setLicenseNumber(event.target.value);
+            setError("");
+            setMessage("");
+          }}
+          placeholder="Example: SL1234567"
+          autoComplete="off"
+          autoCapitalize="characters"
+          spellCheck={false}
+          aria-describedby="florida-license-number-help"
         />
 
-        <div
-          style={{
-            maxWidth: "880px",
-            marginBottom: "64px",
-          }}
+        <p
+          id="florida-license-number-help"
+          className="fl-license-helper"
         >
-          <p className="eyebrow">FLORIDA LICENSE RENEWAL TOOL</p>
-
-          <h1
-            style={{
-              overflowWrap: "anywhere",
-            }}
-          >
-            Check Your Florida Real Estate License Expiration
-          </h1>
-
-          <p
-            className="page-lead"
-            style={{
-              maxWidth: "800px",
-            }}
-          >
-            Find the expiration date on your official Florida real estate
-            license record, then understand what education may be required
-            before that deadline.
-          </p>
-
-          <p
-            style={{
-              color: "#6e6b65",
-              maxWidth: "780px",
-              marginBottom: 0,
-            }}
-          >
-            Florida real estate licenses generally renew on March 31 or
-            September 30. Your exact expiration date and current license status
-            should always be confirmed on the official Florida DBPR record.
-          </p>
-        </div>
-
-        <div
-          style={{
-            marginBottom: "84px",
-          }}
-        >
-          <FloridaLicenseExpirationCheck />
-        </div>
-
-        <div
-          style={{
-            marginBottom: "84px",
-          }}
-        >
-          <p className="eyebrow">AFTER YOU CHECK YOUR LICENSE</p>
-
-          <h2
-            style={{
-              maxWidth: "820px",
-              marginBottom: "18px",
-            }}
-          >
-            Write down three things from the DBPR record.
-          </h2>
-
-          <p
-            style={{
-              color: "#4d4b46",
-              maxWidth: "810px",
-              marginBottom: "34px",
-            }}
-          >
-            Your expiration date is important, but it does not by itself tell
-            you which course you need. Your license type, current status, and
-            whether this is your first renewal also matter.
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(min(100%, 240px), 1fr))",
-              borderTop: "1px solid rgba(17, 23, 23, 0.18)",
-              borderLeft: "1px solid rgba(17, 23, 23, 0.18)",
-            }}
-          >
-            {[
-              {
-                number: "01",
-                title: "License type",
-                text: "Sales Associate, Broker, or Broker Associate.",
-              },
-              {
-                number: "02",
-                title: "Current status",
-                text: "For example, current/active, inactive, or involuntarily inactive.",
-              },
-              {
-                number: "03",
-                title: "Expiration date",
-                text: "The date shown on your current official DBPR license record.",
-              },
-              {
-                number: "04",
-                title: "Renewal history",
-                text: "Determine whether this is your first renewal or you have renewed before.",
-              },
-            ].map((item) => (
-              <div
-                key={item.number}
-                style={{
-                  padding: "28px",
-                  minHeight: "190px",
-                  borderRight: "1px solid rgba(17, 23, 23, 0.18)",
-                  borderBottom: "1px solid rgba(17, 23, 23, 0.18)",
-                }}
-              >
-                <p className="eyebrow">{item.number}</p>
-
-                <h3
-                  style={{
-                    fontSize: "1.45rem",
-                    marginBottom: "10px",
-                  }}
-                >
-                  {item.title}
-                </h3>
-
-                <p
-                  style={{
-                    color: "#5f5c56",
-                    margin: 0,
-                  }}
-                >
-                  {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div
-          style={{
-            background: "#1f2d30",
-            color: "#f5f0e7",
-            padding: "clamp(36px, 6vw, 62px)",
-            marginBottom: "84px",
-          }}
-        >
-          <p className="eyebrow eyebrow--light">WHAT DOES MY DATE MEAN?</p>
-
-          <h2
-            className="light-heading"
-            style={{
-              maxWidth: "820px",
-            }}
-          >
-            Your education requirement depends on where you are in the renewal
-            cycle.
-          </h2>
-
-          <p
-            style={{
-              color: "rgba(245, 240, 231, 0.82)",
-              maxWidth: "830px",
-              marginBottom: 0,
-            }}
-          >
-            Do not automatically assume you need 14-hour continuing education.
-            A newly licensed sales associate may need 45-hour post-license
-            education, a newly licensed broker may need 60-hour post-license
-            education, and an inactive license can have different reactivation
-            requirements.
-          </p>
-        </div>
-
-        <div
-          style={{
-            marginBottom: "84px",
-          }}
-        >
-          <p className="eyebrow">COMMON RENEWAL PATHS</p>
-
-          <h2
-            style={{
-              maxWidth: "820px",
-              marginBottom: "38px",
-            }}
-          >
-            Which situation sounds like yours?
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(min(100%, 290px), 1fr))",
-              gap: "18px",
-            }}
-          >
-            {renewalPaths.map((path) => (
-              <div className="license-path-card" key={path.title}>
-                <p className="eyebrow">{path.eyebrow}</p>
-
-                <h3
-                  style={{
-                    fontSize: "clamp(1.55rem, 3vw, 2rem)",
-                    marginBottom: "8px",
-                  }}
-                >
-                  {path.title}
-                </h3>
-
-                <p
-                  style={{
-                    fontWeight: 700,
-                    color: "#7d5f3a",
-                    marginBottom: "14px",
-                  }}
-                >
-                  {path.requirement}
-                </p>
-
-                <p
-                  style={{
-                    color: "#4d4b46",
-                    margin: 0,
-                  }}
-                >
-                  {path.description}
-                </p>
-
-                <Link className="license-path-link" href={path.href}>
-                  {path.linkText} →
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div
-          style={{
-            background: "#eee6d9",
-            border: "1px solid rgba(17, 23, 23, 0.14)",
-            padding: "clamp(32px, 5vw, 50px)",
-            marginBottom: "84px",
-          }}
-        >
-          <p className="eyebrow">FIRST RENEWAL?</p>
-
-          <h2
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              maxWidth: "820px",
-            }}
-          >
-            This is the question that prevents the biggest mistake.
-          </h2>
-
-          <p
-            style={{
-              color: "#4d4b46",
-              maxWidth: "830px",
-            }}
-          >
-            If you have never renewed this Florida license before, do not
-            automatically enroll in a 14-hour CE course.
-          </p>
-
-          <p
-            style={{
-              color: "#4d4b46",
-              maxWidth: "830px",
-            }}
-          >
-            A sales associate completing the first renewal generally needs
-            45-hour post-license education. A broker or broker associate
-            completing the first renewal generally needs 60 hours of broker
-            post-license education.
-          </p>
-
-          <p
-            style={{
-              color: "#4d4b46",
-              maxWidth: "830px",
-              marginBottom: 0,
-            }}
-          >
-            Missing the applicable first-renewal post-license requirement by
-            the license expiration date can result in the license becoming null
-            and void.
-          </p>
-        </div>
-
-        <div
-          style={{
-            marginBottom: "84px",
-          }}
-        >
-          <p className="eyebrow">INVOLUNTARILY INACTIVE?</p>
-
-          <h2
-            style={{
-              maxWidth: "820px",
-            }}
-          >
-            Reactivation rules depend on how long the license has been
-            inactive.
-          </h2>
-
-          <p
-            style={{
-              maxWidth: "830px",
-            }}
-          >
-            Florida law provides different reactivation requirements depending
-            on the length of involuntary inactivity.
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
-              gap: "18px",
-              marginTop: "30px",
-            }}
-          >
-            <div className="license-warning-box">
-              <p className="eyebrow">12 MONTHS OR LESS</p>
-
-              <h3
-                style={{
-                  fontSize: "1.6rem",
-                  marginBottom: "12px",
-                }}
-              >
-                At least 14 hours
-              </h3>
-
-              <p
-                style={{
-                  color: "#4d4b46",
-                  margin: 0,
-                }}
-              >
-                Florida law provides for reactivation of a license
-                involuntarily inactive for 12 months or less after completing
-                at least 14 hours of Commission-prescribed continuing
-                education, along with applicable renewal requirements.
-              </p>
-            </div>
-
-            <div className="license-warning-box">
-              <p className="eyebrow">MORE THAN 12, FEWER THAN 24 MONTHS</p>
-
-              <h3
-                style={{
-                  fontSize: "1.6rem",
-                  marginBottom: "12px",
-                }}
-              >
-                28-hour reactivation education
-              </h3>
-
-              <p
-                style={{
-                  color: "#4d4b46",
-                  margin: 0,
-                }}
-              >
-                A license involuntarily inactive for more than 12 months but
-                fewer than 24 months generally requires 28 hours of prescribed
-                reactivation education plus applicable renewal requirements.
-              </p>
-            </div>
-          </div>
-
-          <div
-            style={{
-              marginTop: "18px",
-              border: "1px solid rgba(17, 23, 23, 0.16)",
-              padding: "28px",
-              background: "#faf7f1",
-            }}
-          >
-            <strong>More than two years involuntarily inactive?</strong>
-
-            <p
-              style={{
-                color: "#4d4b46",
-                marginBottom: 0,
-                marginTop: "8px",
-              }}
-            >
-              Florida law states that a license involuntarily inactive for more
-              than two years automatically expires and becomes null and void.
-              Do not purchase a normal 14-hour CE course based only on the old
-              expiration date. Verify your record and next licensing path
-              directly with DBPR.
-            </p>
-          </div>
-        </div>
-
-        <div
-          style={{
-            background: "#1f2d30",
-            color: "#f5f0e7",
-            padding: "clamp(34px, 6vw, 58px)",
-            marginBottom: "84px",
-          }}
-        >
-          <p className="eyebrow eyebrow--light">NO RECORD FOUND?</p>
-
-          <h2
-            className="light-heading"
-            style={{
-              maxWidth: "800px",
-            }}
-          >
-            A missing result does not necessarily mean you were never licensed.
-          </h2>
-
-          <p
-            style={{
-              color: "rgba(245, 240, 231, 0.82)",
-              maxWidth: "830px",
-            }}
-          >
-            If you cannot locate your record, search again using your name and
-            verify directly with Florida DBPR. A license that has become null
-            and void requires a different path from a normal renewal.
-          </p>
-
-          <a
-            href="https://www.myfloridalicense.com/portalsearches/VerifyLicensee"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: "#f5f0e7",
-              textDecoration: "underline",
-              textUnderlineOffset: "4px",
-              fontWeight: 600,
-            }}
-          >
-            Search the official Florida DBPR license database ↗
-          </a>
-        </div>
-
-        <div
-          style={{
-            marginBottom: "84px",
-          }}
-        >
-          <p className="eyebrow">IMPORTANT EXEMPTIONS</p>
-
-          <h2
-            style={{
-              maxWidth: "820px",
-            }}
-          >
-            Some licensees have different education requirements.
-          </h2>
-
-          <p>
-            Florida DBPR currently states that an active Florida Bar member in
-            good standing is exempt from the regular 14-hour real estate
-            continuing-education requirement.
-          </p>
-
-          <p>
-            A qualifying four-year degree or higher in real estate from an
-            accredited institution can provide an exemption from applicable
-            post-license education when the required documentation is submitted
-            to DBPR.
-          </p>
-
-          <p
-            style={{
-              color: "#6e6b65",
-              fontSize: "0.92rem",
-            }}
-          >
-            Exemptions should be confirmed with DBPR before relying on them for
-            renewal.
-          </p>
-        </div>
-
-        <div
-          style={{
-            border: "1px solid rgba(17, 23, 23, 0.18)",
-            padding: "clamp(30px, 5vw, 48px)",
-            marginBottom: "84px",
-          }}
-        >
-          <p className="eyebrow">WHY VERIFY LIVE?</p>
-
-          <h2
-            style={{
-              maxWidth: "800px",
-            }}
-          >
-            DBPR is the official source for your current license record.
-          </h2>
-
-          <p
-            style={{
-              maxWidth: "820px",
-              color: "#4d4b46",
-            }}
-          >
-            Status changes, renewals, education reporting, and other updates can
-            affect what appears on your license record. Greyson Institute can
-            help you understand the education paths, but your official DBPR
-            record controls your current license status and expiration date.
-          </p>
-
-          <a
-            href="https://www.myfloridalicense.com/portalsearches/VerifyLicensee"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-block",
-              marginTop: "8px",
-              textDecoration: "underline",
-              textUnderlineOffset: "4px",
-              fontWeight: 600,
-            }}
-          >
-            Verify your license with Florida DBPR ↗
-          </a>
-        </div>
-
-        <div
-          style={{
-            background: "#eee6d9",
-            border: "1px solid rgba(17, 23, 23, 0.14)",
-            padding: "clamp(34px, 6vw, 58px)",
-            textAlign: "center",
-          }}
-        >
-          <p className="eyebrow">NOT SURE WHICH EDUCATION YOU NEED?</p>
-
-          <h2
-            style={{
-              maxWidth: "760px",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            Use your DBPR record to choose the right education path.
-          </h2>
-
-          <p
-            style={{
-              color: "#4d4b46",
-              maxWidth: "720px",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            Once you know your license type, status, expiration date, and
-            whether this is your first renewal, Greyson Institute can help you
-            understand what education path may apply.
-          </p>
-
-          <div
-            className="button-row"
-            style={{
-              justifyContent: "center",
-            }}
-          >
-            <Link className="button" href="/courses">
-              Find Your Education Path
-            </Link>
-
-            <Link
-              href="/contact"
-              style={{
-                minHeight: "48px",
-                padding: "0 20px",
-                border: "1px solid #111717",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "14px",
-                fontWeight: 600,
-                letterSpacing: "0.04em",
-                textAlign: "center",
-              }}
-            >
-              Ask Greyson Institute
-            </Link>
-          </div>
-        </div>
+          Enter the license number shown on your Florida record, such as an SL,
+          BK, or BL license number.
+        </p>
       </div>
-    </section>
+
+      {error && (
+        <p className="fl-license-error" role="alert">
+          {error}
+        </p>
+      )}
+
+      <div className="fl-license-dbpr-steps">
+        <p className="fl-license-dbpr-steps-title">
+          When the DBPR page opens
+        </p>
+
+        <ol>
+          <li>Paste your copied number into the License Number field.</li>
+          <li>
+            Leave License Category, License Type, and Special Qualification
+            blank — those are optional search filters.
+          </li>
+          <li>
+            Leave Include Historic Licenses off unless you specifically need an
+            older license record.
+          </li>
+          <li>Click Submit.</li>
+        </ol>
+      </div>
+
+      <div className="fl-license-actions">
+        <a
+          className="fl-license-primary"
+          href={dbprLicenseNumberSearch}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleDbprClick}
+        >
+          Verify Live on Florida DBPR ↗
+        </a>
+
+        <a
+          className="fl-license-secondary"
+          href={dbprGeneralSearch}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          I Don&apos;t Know My License Number ↗
+        </a>
+      </div>
+
+      {message && (
+        <p className="fl-license-message" aria-live="polite">
+          {message}
+        </p>
+      )}
+
+      <p className="fl-license-note">
+        <strong>Important:</strong> Greyson Institute is not the Florida
+        Department of Business and Professional Regulation. The official DBPR
+        license record is the source to confirm your current license status and
+        expiration date. In this first version, your license number is not
+        submitted to Greyson Institute; it is used only in your browser to help
+        you complete the official DBPR search.
+      </p>
+    </div>
   );
 }
