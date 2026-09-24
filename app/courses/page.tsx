@@ -95,6 +95,50 @@ const courses = [
 export default function CoursesPage() {
   return (
     <section className="page-hero">
+      <style>
+        {`
+          .licensing-guide-link {
+            min-height: 48px;
+            padding: 0 20px;
+            border: 1px solid #111717;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: #111717;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-align: center;
+            max-width: 100%;
+            white-space: normal;
+            transition:
+              background-color 0.2s ease,
+              color 0.2s ease,
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
+          }
+
+          .licensing-guide-link--primary {
+            background: #111717;
+            color: #f5f0e7;
+          }
+
+          @media (hover: hover) and (pointer: fine) {
+            .licensing-guide-link:hover {
+              background: #111717;
+              color: #f5f0e7;
+              transform: translateY(-3px);
+              box-shadow: 0 12px 28px rgba(17, 23, 23, 0.12);
+            }
+
+            .licensing-guide-link--primary:hover {
+              background: #1f2d30;
+            }
+          }
+        `}
+      </style>
+
       <div
         className="container about-grid"
         style={{
@@ -198,85 +242,36 @@ export default function CoursesPage() {
             }}
           >
             <Link
-              className="button"
+              className="licensing-guide-link licensing-guide-link--primary"
               href="/how-to-get-a-florida-real-estate-license"
-              style={{
-                maxWidth: "100%",
-                whiteSpace: "normal",
-                textAlign: "center",
-              }}
             >
               How to Get a Florida License
             </Link>
 
             <Link
+              className="licensing-guide-link"
               href="/florida-63-hour-real-estate-pre-licensing-course"
-              style={{
-                minHeight: "48px",
-                padding: "0 20px",
-                border: "1px solid #111717",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "14px",
-                fontWeight: 600,
-                letterSpacing: "0.04em",
-                textAlign: "center",
-              }}
             >
               Florida 63-Hour Course Guide
             </Link>
 
             <Link
+              className="licensing-guide-link"
               href="/florida-real-estate-exam"
-              style={{
-                minHeight: "48px",
-                padding: "0 20px",
-                border: "1px solid #111717",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "14px",
-                fontWeight: 600,
-                letterSpacing: "0.04em",
-                textAlign: "center",
-              }}
             >
               Florida Real Estate Exam Guide
             </Link>
 
             <Link
+              className="licensing-guide-link"
               href="/how-much-does-a-florida-real-estate-license-cost"
-              style={{
-                minHeight: "48px",
-                padding: "0 20px",
-                border: "1px solid #111717",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "14px",
-                fontWeight: 600,
-                letterSpacing: "0.04em",
-                textAlign: "center",
-              }}
             >
               Florida License Cost Guide
             </Link>
 
             <Link
+              className="licensing-guide-link"
               href="/how-long-does-it-take-to-get-a-florida-real-estate-license"
-              style={{
-                minHeight: "48px",
-                padding: "0 20px",
-                border: "1px solid #111717",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "14px",
-                fontWeight: 600,
-                letterSpacing: "0.04em",
-                textAlign: "center",
-              }}
             >
               Florida License Timeline Guide
             </Link>
