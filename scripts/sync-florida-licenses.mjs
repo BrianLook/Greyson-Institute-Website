@@ -7,16 +7,35 @@ const PUBLIC_RECORDS_URL =
 const SOURCE_URL =
   "https://www2.myfloridalicense.com/sto/file_download/extracts/REALESTATE2501LICENSE_1.csv";
 
-const OUTPUT_DIR = path.join(
+const PUBLIC_OUTPUT_DIR = path.join(
   process.cwd(),
   "public",
   "data",
   "florida-real-estate-licenses",
 );
 
-const META_FILE = path.join(OUTPUT_DIR, "meta.json");
+const PRIVATE_NAME_INDEX_DIR = path.join(
+  process.cwd(),
+  "data",
+  "florida-real-estate-name-index",
+);
 
-const buckets = new Map();
+const META_FILE = path.join(
+  PUBLIC_OUTPUT_DIR,
+  "meta.json",
+);
+
+const licenseBuckets = new Map();
+const nameBuckets = new Map();
+
+const suffixes = new Set([
+  "JR",
+  "SR",
+  "II",
+  "III",
+  "IV",
+  "V",
+]);
 
 const browserHeaders = {
   "User-Agent":
@@ -63,6 +82,102 @@ function clean(value) {
   return String(value ?? "").trim();
 }
 
+function normalizeSearchText(value) {
+  return clean(value)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toUpperCase()
+    .replace(/&/g, " AND ")
+    .replace(/[^A-Z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function removeSuffixTokens(tokens) {
+  return tokens.filter(
+    (token) => !suffixes.has(token),
+  );
+}
+
+function parseLicensedName(value) {
+  const originalName = clean(value);
+
+  if (!originalName) {
+    return null;
+  }
+
+  const commaParts = originalName
+    .split(",")
+    .map((part) => normalizeSearchText(part))
+    .filter(Boolean);
+
+  /*
+    DBPR commonly stores individual names in a format such as:
+
+    SMITH, BRIAN NEIL
+
+    When a comma is present, treat the first section as the
+    licensed last name and the remaining sections as the
+    given-name portion.
+  */
+  if (commaParts.length >= 2) {
+    const lastName = commaParts[0];
+
+    const givenTokens = removeSuffixTokens(
+      commaParts
+        .slice(1)
+        .join(" ")
+        .split(" ")
+        .filter(Boolean),
+    );
+
+    if (!lastName || givenTokens.length === 0) {
+      return null;
+    }
+
+    const firstName = givenTokens[0];
+
+    const middleInitial =
+      givenTokens.length > 1
+        ? givenTokens[1].charAt(0)
+        : "";
+
+    return {
+      firstName,
+      lastName,
+      middleInitial,
+    };
+  }
+
+  /*
+    Some records may not contain a comma. For those records,
+    use the conventional FIRST ... LAST interpretation.
+  */
+  const tokens = removeSuffixTokens(
+    normalizeSearchText(originalName)
+      .split(" ")
+      .filter(Boolean),
+  );
+
+  if (tokens.length < 2) {
+    return null;
+  }
+
+  const firstName = tokens[0];
+  const lastName = tokens[tokens.length - 1];
+
+  const middleInitial =
+    tokens.length > 2
+      ? tokens[1].charAt(0)
+      : "";
+
+  return {
+    firstName,
+    lastName,
+    middleInitial,
+  };
+}
+
 function normalizeLicenseCode(value) {
   return clean(value)
     .toUpperCase()
@@ -83,20 +198,67 @@ function inferLicenseCode(rank) {
   return "";
 }
 
-function getBucketKey(licenseNumber) {
+function getLicenseBucketKey(licenseNumber) {
   const digits = licenseNumber.replace(/\D/g, "");
 
   return digits.slice(-3).padStart(3, "0");
 }
 
-function addRecord(record) {
-  const bucketKey = getBucketKey(record.i);
+function getNameBucketKey(lastName) {
+  const compact = normalizeSearchText(lastName)
+    .replace(/[^A-Z0-9]/g, "");
 
-  if (!buckets.has(bucketKey)) {
-    buckets.set(bucketKey, []);
+  if (!compact) {
+    return "OTHER";
   }
 
-  buckets.get(bucketKey).push(record);
+  return compact.slice(0, 2).padEnd(2, "_");
+}
+
+function addLicenseRecord(record) {
+  const bucketKey =
+    getLicenseBucketKey(record.i);
+
+  if (!licenseBuckets.has(bucketKey)) {
+    licenseBuckets.set(bucketKey, []);
+  }
+
+  licenseBuckets.get(bucketKey).push(record);
+}
+
+function addNameRecord(record) {
+  const parsedName =
+    parseLicensedName(record.n);
+
+  if (!parsedName) {
+    return false;
+  }
+
+  const bucketKey =
+    getNameBucketKey(parsedName.lastName);
+
+  if (!nameBuckets.has(bucketKey)) {
+    nameBuckets.set(bucketKey, []);
+  }
+
+  /*
+    This private index intentionally contains only the
+    fields needed to help a licensee identify their own
+    record. No street address is retained.
+  */
+  nameBuckets.get(bucketKey).push({
+    i: record.i,
+    n: record.n,
+    r: record.r,
+    p: record.p,
+    s: record.s,
+    x: record.x,
+    f: parsedName.firstName,
+    l: parsedName.lastName,
+    m: parsedName.middleInitial,
+  });
+
+  return true;
 }
 
 async function writeMeta(data) {
@@ -110,10 +272,15 @@ async function writeMeta(data) {
 function extractCookies(response) {
   let cookies = [];
 
-  if (typeof response.headers.getSetCookie === "function") {
-    cookies = response.headers.getSetCookie();
+  if (
+    typeof response.headers.getSetCookie ===
+    "function"
+  ) {
+    cookies =
+      response.headers.getSetCookie();
   } else {
-    const singleCookie = response.headers.get("set-cookie");
+    const singleCookie =
+      response.headers.get("set-cookie");
 
     if (singleCookie) {
       cookies = [singleCookie];
@@ -127,28 +294,30 @@ function extractCookies(response) {
 }
 
 async function establishDbprSession() {
-  console.log("Opening Florida DBPR public records page...");
+  console.log(
+    "Opening Florida DBPR public records page...",
+  );
 
   try {
-    const response = await fetch(PUBLIC_RECORDS_URL, {
-      headers: {
-        ...browserHeaders,
-        Accept:
-          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    const response = await fetch(
+      PUBLIC_RECORDS_URL,
+      {
+        headers: {
+          ...browserHeaders,
+          Accept:
+            "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        },
+        redirect: "follow",
       },
-      redirect: "follow",
-    });
+    );
 
     console.log(
       `DBPR public records page returned HTTP ${response.status}.`,
     );
 
-    const cookies = extractCookies(response);
+    const cookies =
+      extractCookies(response);
 
-    /*
-      Consume the response so the request completes fully even though we
-      do not need to parse the page content.
-    */
     await response.text();
 
     return cookies;
@@ -162,12 +331,17 @@ async function establishDbprSession() {
   }
 }
 
-async function downloadLicenseFile(cookieHeader) {
-  console.log("Downloading Florida DBPR real estate license data...");
+async function downloadLicenseFile(
+  cookieHeader,
+) {
+  console.log(
+    "Downloading Florida DBPR real estate license data...",
+  );
 
   const headers = {
     ...browserHeaders,
-    Accept: "text/csv,text/plain;q=0.9,*/*;q=0.8",
+    Accept:
+      "text/csv,text/plain;q=0.9,*/*;q=0.8",
     Referer: PUBLIC_RECORDS_URL,
   };
 
@@ -175,10 +349,13 @@ async function downloadLicenseFile(cookieHeader) {
     headers.Cookie = cookieHeader;
   }
 
-  const response = await fetch(SOURCE_URL, {
-    headers,
-    redirect: "follow",
-  });
+  const response = await fetch(
+    SOURCE_URL,
+    {
+      headers,
+      redirect: "follow",
+    },
+  );
 
   if (!response.ok) {
     throw new Error(
@@ -189,22 +366,98 @@ async function downloadLicenseFile(cookieHeader) {
   return response;
 }
 
-async function syncFloridaLicenses() {
-  await fs.rm(OUTPUT_DIR, {
+async function prepareOutputDirectories() {
+  await fs.rm(PUBLIC_OUTPUT_DIR, {
     recursive: true,
     force: true,
   });
 
-  await fs.mkdir(OUTPUT_DIR, {
+  await fs.rm(PRIVATE_NAME_INDEX_DIR, {
+    recursive: true,
+    force: true,
+  });
+
+  await fs.mkdir(PUBLIC_OUTPUT_DIR, {
     recursive: true,
   });
 
-  const fetchedAt = new Date().toISOString();
+  await fs.mkdir(PRIVATE_NAME_INDEX_DIR, {
+    recursive: true,
+  });
+}
+
+async function writeLicenseBuckets() {
+  for (
+    const [bucketKey, records]
+    of licenseBuckets.entries()
+  ) {
+    records.sort((a, b) =>
+      a.i.localeCompare(b.i),
+    );
+
+    const bucketPath = path.join(
+      PUBLIC_OUTPUT_DIR,
+      `${bucketKey}.json`,
+    );
+
+    await fs.writeFile(
+      bucketPath,
+      JSON.stringify(records),
+      "utf8",
+    );
+  }
+}
+
+async function writeNameBuckets() {
+  for (
+    const [bucketKey, records]
+    of nameBuckets.entries()
+  ) {
+    records.sort((a, b) => {
+      const lastCompare =
+        a.l.localeCompare(b.l);
+
+      if (lastCompare !== 0) {
+        return lastCompare;
+      }
+
+      const firstCompare =
+        a.f.localeCompare(b.f);
+
+      if (firstCompare !== 0) {
+        return firstCompare;
+      }
+
+      return a.n.localeCompare(b.n);
+    });
+
+    const bucketPath = path.join(
+      PRIVATE_NAME_INDEX_DIR,
+      `${bucketKey}.json`,
+    );
+
+    await fs.writeFile(
+      bucketPath,
+      JSON.stringify(records),
+      "utf8",
+    );
+  }
+}
+
+async function syncFloridaLicenses() {
+  await prepareOutputDirectories();
+
+  const fetchedAt =
+    new Date().toISOString();
 
   try {
-    const cookieHeader = await establishDbprSession();
+    const cookieHeader =
+      await establishDbprSession();
 
-    const response = await downloadLicenseFile(cookieHeader);
+    const response =
+      await downloadLicenseFile(
+        cookieHeader,
+      );
 
     if (!response.body) {
       throw new Error(
@@ -216,40 +469,53 @@ async function syncFloridaLicenses() {
       `DBPR download succeeded with HTTP ${response.status}.`,
     );
 
-    const decoder = new TextDecoder("utf-8");
-    const reader = response.body.getReader();
+    const decoder =
+      new TextDecoder("utf-8");
+
+    const reader =
+      response.body.getReader();
 
     let buffer = "";
     let recordCount = 0;
     let skippedRows = 0;
+    let nameIndexRecordCount = 0;
 
     function processLine(rawLine) {
-      const line = rawLine.replace(/\r$/, "").trim();
+      const line = rawLine
+        .replace(/\r$/, "")
+        .trim();
 
       if (!line) {
         return;
       }
 
-      const fields = parseCsvLine(line);
+      const fields =
+        parseCsvLine(line);
 
       if (fields.length < 17) {
         skippedRows += 1;
         return;
       }
 
-      const licenseNumberField = clean(fields[11]);
+      const licenseNumberField =
+        clean(fields[11]);
 
       if (
         licenseNumberField
           .toLowerCase()
           .includes("license number") ||
-        licenseNumberField.toLowerCase().includes("lic #")
+        licenseNumberField
+          .toLowerCase()
+          .includes("lic #")
       ) {
         return;
       }
 
       const numericLicenseNumber =
-        licenseNumberField.replace(/\D/g, "");
+        licenseNumberField.replace(
+          /\D/g,
+          "",
+        );
 
       if (!numericLicenseNumber) {
         skippedRows += 1;
@@ -258,19 +524,27 @@ async function syncFloridaLicenses() {
 
       const rank = clean(fields[3]);
 
-      let licenseCode = normalizeLicenseCode(fields[0]);
+      let licenseCode =
+        normalizeLicenseCode(
+          fields[0],
+        );
 
-      if (!licenseCode || licenseCode.length > 3) {
-        licenseCode = inferLicenseCode(rank);
+      if (
+        !licenseCode ||
+        licenseCode.length > 3
+      ) {
+        licenseCode =
+          inferLicenseCode(rank);
       }
 
       const fullLicenseNumber =
         `${licenseCode}${numericLicenseNumber}`.toUpperCase();
 
       /*
-        Only retain the fields Greyson needs for the lookup.
-        Mailing addresses and other unnecessary public-record fields
-        are intentionally discarded.
+        The public license-number lookup retains only
+        the fields Greyson needs. Mailing addresses
+        and other unnecessary DBPR fields are
+        intentionally discarded.
       */
       const record = {
         i: fullLicenseNumber,
@@ -283,28 +557,51 @@ async function syncFloridaLicenses() {
         x: clean(fields[16]),
       };
 
-      addRecord(record);
+      addLicenseRecord(record);
+
+      if (addNameRecord(record)) {
+        nameIndexRecordCount += 1;
+      }
+
       recordCount += 1;
     }
 
     while (true) {
-      const { value, done } = await reader.read();
+      const {
+        value,
+        done,
+      } = await reader.read();
 
       if (value) {
-        buffer += decoder.decode(value, {
-          stream: !done,
-        });
+        buffer += decoder.decode(
+          value,
+          {
+            stream: !done,
+          },
+        );
       }
 
-      let newlineIndex = buffer.indexOf("\n");
+      let newlineIndex =
+        buffer.indexOf("\n");
 
-      while (newlineIndex !== -1) {
-        const line = buffer.slice(0, newlineIndex);
-        buffer = buffer.slice(newlineIndex + 1);
+      while (
+        newlineIndex !== -1
+      ) {
+        const line =
+          buffer.slice(
+            0,
+            newlineIndex,
+          );
+
+        buffer =
+          buffer.slice(
+            newlineIndex + 1,
+          );
 
         processLine(line);
 
-        newlineIndex = buffer.indexOf("\n");
+        newlineIndex =
+          buffer.indexOf("\n");
       }
 
       if (done) {
@@ -322,38 +619,46 @@ async function syncFloridaLicenses() {
       `Processed ${recordCount.toLocaleString()} Florida real estate license records.`,
     );
 
-    for (const [bucketKey, records] of buckets.entries()) {
-      records.sort((a, b) => a.i.localeCompare(b.i));
+    console.log(
+      `Indexed ${nameIndexRecordCount.toLocaleString()} records for private name search.`,
+    );
 
-      const bucketPath = path.join(
-        OUTPUT_DIR,
-        `${bucketKey}.json`,
-      );
-
-      await fs.writeFile(
-        bucketPath,
-        JSON.stringify(records),
-        "utf8",
-      );
-    }
+    await writeLicenseBuckets();
+    await writeNameBuckets();
 
     const lastModified =
-      response.headers.get("last-modified") || null;
+      response.headers.get(
+        "last-modified",
+      ) || null;
 
     const contentLength =
-      response.headers.get("content-length") || null;
+      response.headers.get(
+        "content-length",
+      ) || null;
 
     await writeMeta({
       available: true,
-      source: "Florida DBPR public records",
+      source:
+        "Florida DBPR public records",
       sourceUrl: SOURCE_URL,
       fetchedAt,
-      sourceLastModified: lastModified,
-      sourceContentLength: contentLength,
+      sourceLastModified:
+        lastModified,
+      sourceContentLength:
+        contentLength,
       recordCount,
-      bucketCount: buckets.size,
+      bucketCount:
+        licenseBuckets.size,
       skippedRows,
       nullAndVoidIncluded: false,
+      nameSearchIndex: {
+        available: true,
+        recordCount:
+          nameIndexRecordCount,
+        bucketCount:
+          nameBuckets.size,
+        public: false,
+      },
       fields: {
         i: "license number",
         n: "licensee name",
@@ -367,7 +672,11 @@ async function syncFloridaLicenses() {
     });
 
     console.log(
-      `Created ${buckets.size} lookup files in ${OUTPUT_DIR}.`,
+      `Created ${licenseBuckets.size} public license lookup files.`,
+    );
+
+    console.log(
+      `Created ${nameBuckets.size} private name-search files.`,
     );
   } catch (error) {
     console.error(
@@ -377,7 +686,8 @@ async function syncFloridaLicenses() {
 
     await writeMeta({
       available: false,
-      source: "Florida DBPR public records",
+      source:
+        "Florida DBPR public records",
       sourceUrl: SOURCE_URL,
       fetchedAt,
       error:
@@ -385,12 +695,17 @@ async function syncFloridaLicenses() {
           ? error.message
           : "Unknown DBPR download error",
       nullAndVoidIncluded: false,
+      nameSearchIndex: {
+        available: false,
+        public: false,
+      },
     });
 
     /*
-      Do not fail the Greyson Institute deployment if DBPR temporarily
-      blocks or interrupts its download server. The live DBPR search
-      remains available as the fallback.
+      Do not fail the Greyson Institute deployment if
+      DBPR temporarily blocks or interrupts its download
+      server. The live DBPR search remains available as
+      the fallback.
     */
   }
 }
