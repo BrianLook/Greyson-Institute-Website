@@ -8,6 +8,7 @@ import {
 } from "react";
 import Link from "next/link";
 import { LicenseRenewalCalendarButton } from "@/components/LicenseRenewalCalendarButton";
+import { LicenseExpirationCountdown } from "@/components/LicenseExpirationCountdown";
 
 const DATA_BASE =
   "/data/florida-real-estate-licenses";
@@ -2867,6 +2868,10 @@ export function FloridaLicenseExpirationCheck() {
                   result.x,
                 )}
               </p>
+
+              <LicenseExpirationCountdown
+                expirationDate={result.x}
+              />
             </div>
 
             <div className="fl-license-result-item">
