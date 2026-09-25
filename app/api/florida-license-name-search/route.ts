@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
@@ -12,6 +13,11 @@ const NAME_INDEX_DIR = path.join(
 );
 
 const MAX_VISIBLE_MATCHES = 8;
+
+const RATE_LIMIT_WINDOW_MS =
+  10 * 60 * 1000;
+
+const RATE_LIMIT_MAX_REQUESTS = 30;
 
 type NameIndexRecord = {
   i: string;
@@ -28,11 +34,40 @@ type NameIndexRecord = {
 type SearchRequest = {
   firstName?: string;
   lastName?: string;
-  licenseType?: "sales-associate" | "broker";
+  licenseType?:
+    | "sales-associate"
+    | "broker";
   middleInitial?: string;
 };
 
-function normalizeSearchText(value: string) {
+type RateLimitEntry = {
+  count: number;
+  resetAt: number;
+};
+
+type RateLimitResult = {
+  allowed: boolean;
+  retryAfterSeconds: number;
+};
+
+const globalRateLimit =
+  globalThis as typeof globalThis & {
+    __greysonFloridaNameSearchRateLimit?: Map<
+      string,
+      RateLimitEntry
+    >;
+  };
+
+const rateLimitStore =
+  globalRateLimit.__greysonFloridaNameSearchRateLimit ??
+  new Map<string, RateLimitEntry>();
+
+globalRateLimit.__greysonFloridaNameSearchRateLimit =
+  rateLimitStore;
+
+function normalizeSearchText(
+  value: string,
+) {
   return String(value ?? "")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -43,28 +78,32 @@ function normalizeSearchText(value: string) {
     .trim();
 }
 
-function normalizeFirstName(value: string) {
-  const normalized = normalizeSearchText(value);
+function normalizeFirstName(
+  value: string,
+) {
+  const normalized =
+    normalizeSearchText(value);
 
-  /*
-    If someone enters a compound given name such as
-    "Mary Ann", the private DBPR index stores the first
-    given-name token as the primary first name.
-  */
   return normalized.split(" ")[0] || "";
 }
 
-function normalizeLastName(value: string) {
+function normalizeLastName(
+  value: string,
+) {
   return normalizeSearchText(value);
 }
 
-function normalizeMiddleInitial(value: string) {
+function normalizeMiddleInitial(
+  value: string,
+) {
   return normalizeSearchText(value)
     .replace(/[^A-Z]/g, "")
     .charAt(0);
 }
 
-function getNameBucketKey(lastName: string) {
+function getNameBucketKey(
+  lastName: string,
+) {
   const compact = lastName.replace(
     /[^A-Z0-9]/g,
     "",
@@ -74,7 +113,9 @@ function getNameBucketKey(lastName: string) {
     return "OTHER";
   }
 
-  return compact.slice(0, 2).padEnd(2, "_");
+  return compact
+    .slice(0, 2)
+    .padEnd(2, "_");
 }
 
 function matchesLicenseType(
@@ -91,7 +132,9 @@ function matchesLicenseType(
   const rank =
     record.r.toUpperCase();
 
-  if (licenseType === "sales-associate") {
+  if (
+    licenseType === "sales-associate"
+  ) {
     return (
       licenseNumber.startsWith("SL") ||
       rank.includes("SALES ASSOCIATE")
@@ -108,7 +151,9 @@ function matchesLicenseType(
   return true;
 }
 
-function publicResult(record: NameIndexRecord) {
+function publicResult(
+  record: NameIndexRecord,
+) {
   return {
     id: record.i,
     name: record.n,
@@ -122,6 +167,9 @@ function publicResult(record: NameIndexRecord) {
 function json(
   body: unknown,
   status = 200,
+  extraHeaders:
+    | Record<string, string>
+    | undefined = undefined,
 ) {
   return NextResponse.json(body, {
     status,
@@ -130,13 +178,139 @@ function json(
         "no-store, max-age=0",
       "X-Robots-Tag":
         "noindex, nofollow",
+      ...extraHeaders,
     },
   });
+}
+
+function getClientIdentifier(
+  request: Request,
+) {
+  const forwardedFor =
+    request.headers.get(
+      "x-forwarded-for",
+    );
+
+  const ip =
+    forwardedFor
+      ?.split(",")[0]
+      ?.trim() ||
+    request.headers
+      .get("x-real-ip")
+      ?.trim() ||
+    "unknown";
+
+  /*
+    Store only a one-way hash in memory rather than
+    retaining the visitor's raw IP address.
+  */
+  return createHash("sha256")
+    .update(ip)
+    .digest("hex");
+}
+
+function cleanupRateLimitStore(
+  now: number,
+) {
+  if (rateLimitStore.size < 500) {
+    return;
+  }
+
+  for (
+    const [
+      key,
+      entry,
+    ] of rateLimitStore.entries()
+  ) {
+    if (entry.resetAt <= now) {
+      rateLimitStore.delete(key);
+    }
+  }
+}
+
+function checkRateLimit(
+  request: Request,
+): RateLimitResult {
+  const now = Date.now();
+
+  cleanupRateLimitStore(now);
+
+  const key =
+    getClientIdentifier(request);
+
+  const existing =
+    rateLimitStore.get(key);
+
+  if (
+    !existing ||
+    existing.resetAt <= now
+  ) {
+    rateLimitStore.set(key, {
+      count: 1,
+      resetAt:
+        now +
+        RATE_LIMIT_WINDOW_MS,
+    });
+
+    return {
+      allowed: true,
+      retryAfterSeconds: 0,
+    };
+  }
+
+  if (
+    existing.count >=
+    RATE_LIMIT_MAX_REQUESTS
+  ) {
+    return {
+      allowed: false,
+      retryAfterSeconds:
+        Math.max(
+          1,
+          Math.ceil(
+            (existing.resetAt -
+              now) /
+              1000,
+          ),
+        ),
+    };
+  }
+
+  existing.count += 1;
+
+  rateLimitStore.set(
+    key,
+    existing,
+  );
+
+  return {
+    allowed: true,
+    retryAfterSeconds: 0,
+  };
 }
 
 export async function POST(
   request: Request,
 ) {
+  const rateLimit =
+    checkRateLimit(request);
+
+  if (!rateLimit.allowed) {
+    return json(
+      {
+        ok: false,
+        error:
+          "Too many searches were submitted from this connection. Please wait a few minutes and try again.",
+      },
+      429,
+      {
+        "Retry-After": String(
+          rateLimit.retryAfterSeconds,
+        ),
+      },
+    );
+  }
+
   let body: SearchRequest;
 
   try {
@@ -154,10 +328,14 @@ export async function POST(
   }
 
   const firstName =
-    normalizeFirstName(body.firstName || "");
+    normalizeFirstName(
+      body.firstName || "",
+    );
 
   const lastName =
-    normalizeLastName(body.lastName || "");
+    normalizeLastName(
+      body.lastName || "",
+    );
 
   const middleInitial =
     normalizeMiddleInitial(
@@ -165,12 +343,13 @@ export async function POST(
     );
 
   /*
-    Requiring both names prevents this endpoint from
-    becoming a broad surname directory.
+    Requiring both first and last name prevents
+    broad surname-only browsing.
   */
   if (
     firstName.length < 2 ||
-    lastName.replace(/\s/g, "").length < 2
+    lastName.replace(/\s/g, "")
+      .length < 2
   ) {
     return json(
       {
@@ -186,7 +365,8 @@ export async function POST(
     body.licenseType &&
     body.licenseType !==
       "sales-associate" &&
-    body.licenseType !== "broker"
+    body.licenseType !==
+      "broker"
   ) {
     return json(
       {
@@ -216,12 +396,16 @@ export async function POST(
       );
 
     records =
-      JSON.parse(file) as NameIndexRecord[];
+      JSON.parse(
+        file,
+      ) as NameIndexRecord[];
   } catch (error) {
     const nodeError =
       error as NodeJS.ErrnoException;
 
-    if (nodeError.code === "ENOENT") {
+    if (
+      nodeError.code === "ENOENT"
+    ) {
       return json({
         ok: true,
         status: "no_matches",
@@ -251,20 +435,23 @@ export async function POST(
   );
 
   if (body.licenseType) {
-    matches = matches.filter(
-      (record) =>
-        matchesLicenseType(
-          record,
-          body.licenseType,
-        ),
-    );
+    matches =
+      matches.filter(
+        (record) =>
+          matchesLicenseType(
+            record,
+            body.licenseType,
+          ),
+      );
   }
 
   if (middleInitial) {
-    matches = matches.filter(
-      (record) =>
-        record.m === middleInitial,
-    );
+    matches =
+      matches.filter(
+        (record) =>
+          record.m ===
+          middleInitial,
+      );
   }
 
   if (matches.length === 0) {
@@ -275,11 +462,6 @@ export async function POST(
     });
   }
 
-  /*
-    If the first + last name produces too many people,
-    do not send the large list to the browser.
-    Ask the user for the easiest additional clue first.
-  */
   if (
     matches.length >
       MAX_VISIBLE_MATCHES &&
@@ -292,11 +474,6 @@ export async function POST(
     });
   }
 
-  /*
-    If license type still leaves too many people,
-    ask for a middle initial rather than dumping a
-    long list of unrelated licensees.
-  */
   if (
     matches.length >
       MAX_VISIBLE_MATCHES &&
@@ -309,26 +486,22 @@ export async function POST(
     });
   }
 
-  /*
-    Even after narrowing, never expose an unlimited
-    list. A very common name can fall back to the
-    official DBPR search rather than becoming a
-    browsable public directory.
-  */
   if (
     matches.length >
     MAX_VISIBLE_MATCHES
   ) {
     return json({
       ok: true,
-      status: "too_many_matches",
+      status:
+        "too_many_matches",
     });
   }
 
   return json({
     ok: true,
     status: "matches",
-    matches: matches.map(publicResult),
+    matches:
+      matches.map(publicResult),
   });
 }
 
