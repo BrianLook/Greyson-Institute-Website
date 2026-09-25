@@ -2974,7 +2974,7 @@ export function FloridaLicenseExpirationCheck() {
               </p>
 
               <Link href="/courses#reactivation">
-                Explore Reactivation Education →
+                Understand Inactive License Options →
               </Link>
             </div>
           ) : (
@@ -3138,7 +3138,7 @@ export function FloridaLicenseExpirationCheck() {
                     </p>
 
                     <Link href="/courses#reactivation">
-                      Explore Reactivation Education →
+                      Clarify inactive license guidance →
                     </Link>
                   </div>
                 )}
