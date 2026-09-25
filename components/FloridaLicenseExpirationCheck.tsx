@@ -7,6 +7,7 @@ import {
   type MouseEvent,
 } from "react";
 import Link from "next/link";
+import { LicenseRenewalCalendarButton } from "@/components/LicenseRenewalCalendarButton";
 
 const DATA_BASE =
   "/data/florida-real-estate-licenses";
@@ -2891,6 +2892,14 @@ export function FloridaLicenseExpirationCheck() {
             . This weekly file is a convenience
             reference and may lag recent changes.
           </div>
+
+          <LicenseRenewalCalendarButton
+            licenseNumber={result.i}
+            licenseeName={formatLicensedName(
+              result.n,
+            )}
+            expirationDate={result.x}
+          />
 
           <div className="fl-remember-panel">
             <p className="eyebrow">
