@@ -544,6 +544,11 @@ export function FloridaLicenseExpirationCheck() {
     );
 
   const [
+    copiedLicenseNumber,
+    setCopiedLicenseNumber,
+  ] = useState("");
+
+  const [
     nameSearchError,
     setNameSearchError,
   ] = useState("");
@@ -596,6 +601,7 @@ export function FloridaLicenseExpirationCheck() {
     setSelectedNameMatch(
       null,
     );
+    setCopiedLicenseNumber("");
     setNameSearchError("");
   }
 
@@ -698,6 +704,7 @@ export function FloridaLicenseExpirationCheck() {
     setError("");
     setMessage("");
     setSavedLicenseMessage("");
+    setCopiedLicenseNumber("");
     setResult(null);
     setRenewalChoice(null);
     setHasSearched(false);
@@ -926,6 +933,7 @@ export function FloridaLicenseExpirationCheck() {
     setSelectedNameMatch(
       null,
     );
+    setCopiedLicenseNumber("");
     setNameIsSearching(true);
 
     try {
@@ -1039,7 +1047,8 @@ export function FloridaLicenseExpirationCheck() {
         "needs_county"
       ) {
         setCountyOptions(
-          data.counties || [],
+          data.counties ||
+            [],
         );
 
         setNameStage(
@@ -1054,7 +1063,8 @@ export function FloridaLicenseExpirationCheck() {
         "matches"
       ) {
         setNameMatches(
-          data.matches || [],
+          data.matches ||
+            [],
         );
 
         setNameStage(
@@ -1128,6 +1138,7 @@ export function FloridaLicenseExpirationCheck() {
     setNameLicenseType(
       value,
     );
+
     setSkipLicenseType(false);
     setMiddleName("");
     setSkipMiddle(false);
@@ -1239,6 +1250,7 @@ export function FloridaLicenseExpirationCheck() {
 
   function countyUnknown() {
     setNameSearchError("");
+
     setNameStage(
       "too-many",
     );
@@ -1251,6 +1263,7 @@ export function FloridaLicenseExpirationCheck() {
       match,
     );
 
+    setCopiedLicenseNumber("");
     setNameSearchError("");
 
     setNameStage(
@@ -1263,6 +1276,7 @@ export function FloridaLicenseExpirationCheck() {
       null,
     );
 
+    setCopiedLicenseNumber("");
     setNameSearchError("");
 
     setNameStage(
@@ -1270,8 +1284,39 @@ export function FloridaLicenseExpirationCheck() {
     );
   }
 
+  async function copyLicenseNumber(
+    value: string,
+  ) {
+    const normalized =
+      normalizeLicenseNumber(
+        value,
+      );
+
+    if (!normalized) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(
+        normalized,
+      );
+
+      setCopiedLicenseNumber(
+        normalized,
+      );
+    } catch {
+      setCopiedLicenseNumber("");
+
+      setNameSearchError(
+        "Your browser could not copy the license number automatically. You can still select and copy it manually.",
+      );
+    }
+  }
+
   async function confirmNameMatch() {
-    if (!selectedNameMatch) {
+    if (
+      !selectedNameMatch
+    ) {
       return;
     }
 
@@ -1366,6 +1411,9 @@ export function FloridaLicenseExpirationCheck() {
             font: inherit;
             font-size: 1rem;
             outline: none;
+            transition:
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
           }
 
           .fl-license-input:focus {
@@ -1386,24 +1434,42 @@ export function FloridaLicenseExpirationCheck() {
             margin: 8px 0 0;
           }
 
-          .fl-license-search-button {
-            min-height: 52px;
-            margin-top: 20px;
-            padding: 0 22px;
+          .fl-license-search-button,
+          .fl-name-result-button,
+          .fl-remember-button,
+          .fl-license-primary,
+          .fl-license-secondary,
+          .fl-name-secondary-button,
+          .fl-forget-button,
+          .fl-license-renewal-button {
             border: 1px solid #111717;
-            background: #111717;
-            color: #f5f0e7;
+            background: #faf7f1;
+            color: #111717;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font: inherit;
-            font-size: 14px;
             font-weight: 650;
-            letter-spacing: 0.035em;
             cursor: pointer;
+            text-decoration: none;
+            transition:
+              background-color 0.2s ease,
+              color 0.2s ease,
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
           }
 
-          .fl-license-search-button:disabled {
+          .fl-license-search-button {
+            min-height: 52px;
+            margin-top: 20px;
+            padding: 0 22px;
+            font-size: 14px;
+            letter-spacing: 0.035em;
+          }
+
+          .fl-license-search-button:disabled,
+          .fl-name-result-button:disabled,
+          .fl-name-secondary-button:disabled {
             cursor: wait;
             opacity: 0.65;
           }
@@ -1441,13 +1507,7 @@ export function FloridaLicenseExpirationCheck() {
           .fl-forget-button {
             min-height: 46px;
             padding: 0 16px;
-            border: 1px solid rgba(17, 23, 23, 0.5);
-            background: transparent;
-            color: #111717;
-            font: inherit;
             font-size: 13px;
-            font-weight: 650;
-            cursor: pointer;
           }
 
           .fl-remember-panel {
@@ -1476,13 +1536,7 @@ export function FloridaLicenseExpirationCheck() {
             min-height: 46px;
             margin-top: 16px;
             padding: 0 18px;
-            border: 1px solid #111717;
-            background: #111717;
-            color: #f5f0e7;
-            font: inherit;
             font-size: 13px;
-            font-weight: 650;
-            cursor: pointer;
           }
 
           .fl-saved-confirmation {
@@ -1553,13 +1607,7 @@ export function FloridaLicenseExpirationCheck() {
           .fl-name-secondary-button {
             min-height: 46px;
             padding: 0 17px;
-            border: 1px solid #111717;
-            background: transparent;
-            color: #111717;
-            font: inherit;
             font-size: 13px;
-            font-weight: 650;
-            cursor: pointer;
           }
 
           .fl-name-prompt {
@@ -1607,13 +1655,7 @@ export function FloridaLicenseExpirationCheck() {
           .fl-name-result-button {
             min-height: 42px;
             padding: 0 15px;
-            border: 1px solid #111717;
-            background: #111717;
-            color: #f5f0e7;
-            font: inherit;
             font-size: 13px;
-            font-weight: 650;
-            cursor: pointer;
           }
 
           .fl-name-detail {
@@ -1637,9 +1679,27 @@ export function FloridaLicenseExpirationCheck() {
 
           .fl-name-detail-number {
             margin: 0;
-            color: rgba(245, 240, 231, 0.75);
+            color: rgba(245, 240, 231, 0.78);
             font-size: 1rem;
             font-weight: 650;
+          }
+
+          .fl-copy-license-button {
+            min-height: 38px;
+            margin-top: 14px;
+            padding: 0 14px;
+            border: 1px solid #f5f0e7;
+            background: #f5f0e7;
+            color: #111717;
+            font: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition:
+              background-color 0.2s ease,
+              color 0.2s ease,
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
           }
 
           .fl-name-detail-grid {
@@ -1721,7 +1781,7 @@ export function FloridaLicenseExpirationCheck() {
 
           .fl-license-result-license {
             margin: 0;
-            color: rgba(245, 240, 231, 0.72);
+            color: rgba(245, 240, 231, 0.75);
             font-size: 0.9rem;
           }
 
@@ -1781,18 +1841,13 @@ export function FloridaLicenseExpirationCheck() {
           .fl-license-renewal-button {
             min-height: 44px;
             padding: 0 16px;
-            border: 1px solid #111717;
-            background: transparent;
-            color: #111717;
-            font: inherit;
             font-size: 13px;
-            font-weight: 650;
-            cursor: pointer;
           }
 
           .fl-license-renewal-button[aria-pressed="true"] {
-            background: #111717;
-            color: #f5f0e7;
+            background: #eee6d9;
+            color: #111717;
+            border-color: #7d5f3a;
           }
 
           .fl-license-guidance {
@@ -1800,6 +1855,12 @@ export function FloridaLicenseExpirationCheck() {
             padding: 20px;
             background: #eee6d9;
             border-left: 3px solid #7d5f3a;
+          }
+
+          .fl-license-guidance a {
+            color: #111717;
+            font-weight: 650;
+            text-underline-offset: 4px;
           }
 
           .fl-license-actions {
@@ -1813,26 +1874,8 @@ export function FloridaLicenseExpirationCheck() {
           .fl-license-secondary {
             min-height: 50px;
             padding: 0 20px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
             font-size: 14px;
-            font-weight: 650;
             letter-spacing: 0.03em;
-            text-decoration: none;
-          }
-
-          .fl-license-primary {
-            background: #111717;
-            border: 1px solid #111717;
-            color: #f5f0e7;
-          }
-
-          .fl-license-secondary {
-            background: transparent;
-            border: 1px solid #111717;
-            color: #111717;
           }
 
           .fl-license-message,
@@ -1866,6 +1909,25 @@ export function FloridaLicenseExpirationCheck() {
             line-height: 1.7;
           }
 
+          @media (hover: hover) and (pointer: fine) {
+            .fl-license-search-button:hover:not(:disabled),
+            .fl-name-result-button:hover:not(:disabled),
+            .fl-remember-button:hover,
+            .fl-license-primary:hover,
+            .fl-license-secondary:hover,
+            .fl-name-secondary-button:hover:not(:disabled),
+            .fl-forget-button:hover,
+            .fl-license-renewal-button:hover,
+            .fl-copy-license-button:hover {
+              background: #111717;
+              color: #f5f0e7;
+              transform: translateY(-2px);
+              box-shadow:
+                0 10px 24px
+                rgba(17, 23, 23, 0.12);
+            }
+          }
+
           @media (max-width: 650px) {
             .fl-license-result-grid,
             .fl-name-grid,
@@ -1890,7 +1952,8 @@ export function FloridaLicenseExpirationCheck() {
             .fl-name-secondary-button,
             .fl-name-result-button,
             .fl-remember-button,
-            .fl-forget-button {
+            .fl-forget-button,
+            .fl-copy-license-button {
               width: 100%;
             }
 
@@ -2017,8 +2080,10 @@ export function FloridaLicenseExpirationCheck() {
                   setLicenseNumber(
                     event.target.value,
                   );
+
                   setError("");
                   setMessage("");
+                  setCopiedLicenseNumber("");
                   setResult(null);
                   setRenewalChoice(null);
                   setHasSearched(false);
@@ -2104,6 +2169,7 @@ export function FloridaLicenseExpirationCheck() {
                     setFirstName(
                       event.target.value,
                     );
+
                     resetNameProgress();
                   }}
                   autoComplete="given-name"
@@ -2129,6 +2195,7 @@ export function FloridaLicenseExpirationCheck() {
                     setLastName(
                       event.target.value,
                     );
+
                     resetNameProgress();
                   }}
                   autoComplete="family-name"
@@ -2175,6 +2242,9 @@ export function FloridaLicenseExpirationCheck() {
                         "sales-associate",
                       )
                     }
+                    disabled={
+                      nameIsSearching
+                    }
                   >
                     Sales Associate
                   </button>
@@ -2187,6 +2257,9 @@ export function FloridaLicenseExpirationCheck() {
                         "broker",
                       )
                     }
+                    disabled={
+                      nameIsSearching
+                    }
                   >
                     Broker / Broker Associate
                   </button>
@@ -2196,6 +2269,9 @@ export function FloridaLicenseExpirationCheck() {
                     className="fl-name-secondary-button"
                     onClick={
                       licenseTypeUnknown
+                    }
+                    disabled={
+                      nameIsSearching
                     }
                   >
                     I&apos;m Not Sure
@@ -2255,6 +2331,7 @@ export function FloridaLicenseExpirationCheck() {
                         setMiddleName(
                           event.target.value,
                         );
+
                         setNameSearchError(
                           "",
                         );
@@ -2271,8 +2348,13 @@ export function FloridaLicenseExpirationCheck() {
                       style={{
                         marginTop: 0,
                       }}
+                      disabled={
+                        nameIsSearching
+                      }
                     >
-                      Continue
+                      {nameIsSearching
+                        ? "Searching..."
+                        : "Continue"}
                     </button>
 
                     <button
@@ -2280,6 +2362,9 @@ export function FloridaLicenseExpirationCheck() {
                       className="fl-name-secondary-button"
                       onClick={
                         middleNameUnknown
+                      }
+                      disabled={
+                        nameIsSearching
                       }
                     >
                       I Don&apos;t Know
@@ -2339,6 +2424,7 @@ export function FloridaLicenseExpirationCheck() {
                         setCounty(
                           event.target.value,
                         );
+
                         setNameSearchError(
                           "",
                         );
@@ -2374,8 +2460,13 @@ export function FloridaLicenseExpirationCheck() {
                       style={{
                         marginTop: 0,
                       }}
+                      disabled={
+                        nameIsSearching
+                      }
                     >
-                      Continue
+                      {nameIsSearching
+                        ? "Searching..."
+                        : "Continue"}
                     </button>
 
                     <button
@@ -2502,6 +2593,23 @@ export function FloridaLicenseExpirationCheck() {
                     <p className="fl-name-detail-number">
                       {selectedNameMatch.id}
                     </p>
+
+                    <button
+                      type="button"
+                      className="fl-copy-license-button"
+                      onClick={() =>
+                        copyLicenseNumber(
+                          selectedNameMatch.id,
+                        )
+                      }
+                    >
+                      {copiedLicenseNumber ===
+                      normalizeLicenseNumber(
+                        selectedNameMatch.id,
+                      )
+                        ? "Copied!"
+                        : "Copy License Number"}
+                    </button>
                   </div>
 
                   <div className="fl-name-detail-grid">
@@ -2705,6 +2813,23 @@ export function FloridaLicenseExpirationCheck() {
             <p className="fl-license-result-license">
               {result.i}
             </p>
+
+            <button
+              type="button"
+              className="fl-copy-license-button"
+              onClick={() =>
+                copyLicenseNumber(
+                  result.i,
+                )
+              }
+            >
+              {copiedLicenseNumber ===
+              normalizeLicenseNumber(
+                result.i,
+              )
+                ? "Copied!"
+                : "Copy License Number"}
+            </button>
           </div>
 
           <div className="fl-license-result-grid">
