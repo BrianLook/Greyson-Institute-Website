@@ -169,6 +169,20 @@ function addDays(
   return copy;
 }
 
+function atNineAm(
+  date: Date,
+) {
+  return new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+    9,
+    0,
+    0,
+    0,
+  );
+}
+
 function formatIcsDate(
   date: Date,
 ) {
@@ -190,10 +204,9 @@ function formatIcsDate(
   return `${year}${month}${day}`;
 }
 
-function formatTimestamp() {
-  const date =
-    new Date();
-
+function formatIcsUtcDateTime(
+  date: Date,
+) {
   const year =
     String(
       date.getUTCFullYear(),
@@ -227,6 +240,12 @@ function formatTimestamp() {
   return `${year}${month}${day}T${hour}${minute}${second}Z`;
 }
 
+function formatTimestamp() {
+  return formatIcsUtcDateTime(
+    new Date(),
+  );
+}
+
 function escapeIcsText(
   value: string,
 ) {
@@ -244,17 +263,6 @@ function normalizeLicenseNumber(
     .trim()
     .toUpperCase()
     .replace(/[^A-Z0-9]/g, "");
-}
-
-function startOfToday() {
-  const now =
-    new Date();
-
-  return new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate(),
-  );
 }
 
 export function canCreateLicenseCalendar(
@@ -305,8 +313,8 @@ export function downloadLicenseRenewalCalendar({
       1,
     );
 
-  const today =
-    startOfToday();
+  const now =
+    new Date();
 
   const reminderDays = [
     120,
@@ -316,31 +324,48 @@ export function downloadLicenseRenewalCalendar({
     7,
   ];
 
-  const alarms =
+  const reminders =
     reminderDays
-      .filter((days) => {
+      .map((days) => {
         const reminderDate =
           addDays(
             expiration,
             -days,
           );
 
-        return (
-          reminderDate >=
-          today
-        );
+        const reminderAt =
+          atNineAm(
+            reminderDate,
+          );
+
+        return {
+          days,
+          reminderAt,
+        };
       })
-      .flatMap(
-        (days) => [
-          "BEGIN:VALARM",
-          `TRIGGER:-P${days}D`,
-          "ACTION:DISPLAY",
-          `DESCRIPTION:${escapeIcsText(
-            `Florida real estate license renewal deadline in ${days} days`,
-          )}`,
-          "END:VALARM",
-        ],
+      .filter(
+        ({ reminderAt }) =>
+          reminderAt.getTime() >
+          now.getTime(),
       );
+
+  const alarms =
+    reminders.flatMap(
+      ({
+        days,
+        reminderAt,
+      }) => [
+        "BEGIN:VALARM",
+        `TRIGGER;VALUE=DATE-TIME:${formatIcsUtcDateTime(
+          reminderAt,
+        )}`,
+        "ACTION:DISPLAY",
+        `DESCRIPTION:${escapeIcsText(
+          `Florida real estate license renewal deadline in ${days} days`,
+        )}`,
+        "END:VALARM",
+      ],
+    );
 
   const description =
     [
@@ -348,6 +373,8 @@ export function downloadLicenseRenewalCalendar({
       `Licensee: ${displayName}`,
       "",
       "This reminder reflects the expiration date shown in the DBPR record when the calendar file was created.",
+      "Greyson reminder alerts are scheduled for 9:00 AM local time at 120, 90, 60, 30, and 7 days before expiration when those dates are still in the future.",
+      "Your calendar app may also apply its own default event alert.",
       "Verify your current license status and expiration date with Florida DBPR before renewing or practicing.",
       "",
       "Greyson Institute",
