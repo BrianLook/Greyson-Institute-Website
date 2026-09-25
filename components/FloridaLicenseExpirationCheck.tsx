@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  useEffect,
   useState,
   type FormEvent,
   type MouseEvent,
@@ -12,6 +13,9 @@ const DATA_BASE =
 
 const NAME_SEARCH_ENDPOINT =
   "/api/florida-license-name-search";
+
+const SAVED_LICENSE_KEY =
+  "greyson-florida-license-number";
 
 const dbprLicenseNumberSearch =
   "https://www.myfloridalicense.com/portalsearches/VerifyLicensee?Mode=0&SearchType=SearchByLicenseNumber";
@@ -79,7 +83,9 @@ type NameSearchResponse = {
   error?: string;
 };
 
-function normalizeLicenseNumber(value: string) {
+function normalizeLicenseNumber(
+  value: string,
+) {
   return value
     .trim()
     .toUpperCase()
@@ -100,7 +106,9 @@ function titleCaseName(value: string) {
     );
 }
 
-function formatLicensedName(value: string) {
+function formatLicensedName(
+  value: string,
+) {
   const trimmed = value.trim();
 
   if (!trimmed) {
@@ -113,11 +121,13 @@ function formatLicensedName(value: string) {
     .filter(Boolean);
 
   if (commaParts.length >= 2) {
-    const lastName = commaParts[0];
+    const lastName =
+      commaParts[0];
 
-    const givenNames = commaParts
-      .slice(1)
-      .join(" ");
+    const givenNames =
+      commaParts
+        .slice(1)
+        .join(" ");
 
     return titleCaseName(
       `${givenNames} ${lastName}`,
@@ -137,7 +147,8 @@ function formatDbprDate(value: string) {
   );
 
   if (slashDate) {
-    const [, month, day, year] = slashDate;
+    const [, month, day, year] =
+      slashDate;
 
     const date = new Date(
       Number(year),
@@ -145,11 +156,14 @@ function formatDbprDate(value: string) {
       Number(day),
     );
 
-    return new Intl.DateTimeFormat("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    }).format(date);
+    return new Intl.DateTimeFormat(
+      "en-US",
+      {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      },
+    ).format(date);
   }
 
   const compactDate = value.match(
@@ -157,7 +171,8 @@ function formatDbprDate(value: string) {
   );
 
   if (compactDate) {
-    const [, year, month, day] = compactDate;
+    const [, year, month, day] =
+      compactDate;
 
     const date = new Date(
       Number(year),
@@ -165,26 +180,33 @@ function formatDbprDate(value: string) {
       Number(day),
     );
 
-    return new Intl.DateTimeFormat("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    }).format(date);
+    return new Intl.DateTimeFormat(
+      "en-US",
+      {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      },
+    ).format(date);
   }
 
-  /*
-    DBPR's weekly download can also use a format
-    such as 31-MAR-27.
-  */
-  const dbprShortDate = value.match(
-    /^(\d{1,2})-([A-Za-z]{3})-(\d{2}|\d{4})$/,
-  );
+  const dbprShortDate =
+    value.match(
+      /^(\d{1,2})-([A-Za-z]{3})-(\d{2}|\d{4})$/,
+    );
 
   if (dbprShortDate) {
-    const [, day, monthText, rawYear] =
-      dbprShortDate;
+    const [
+      ,
+      day,
+      monthText,
+      rawYear,
+    ] = dbprShortDate;
 
-    const months: Record<string, number> = {
+    const months: Record<
+      string,
+      number
+    > = {
       JAN: 0,
       FEB: 1,
       MAR: 2,
@@ -200,10 +222,13 @@ function formatDbprDate(value: string) {
     };
 
     const month =
-      months[monthText.toUpperCase()];
+      months[
+        monthText.toUpperCase()
+      ];
 
     if (month !== undefined) {
-      const shortYear = Number(rawYear);
+      const shortYear =
+        Number(rawYear);
 
       const year =
         rawYear.length === 2
@@ -218,11 +243,14 @@ function formatDbprDate(value: string) {
         Number(day),
       );
 
-      return new Intl.DateTimeFormat("en-US", {
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      }).format(date);
+      return new Intl.DateTimeFormat(
+        "en-US",
+        {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        },
+      ).format(date);
     }
   }
 
@@ -240,17 +268,25 @@ function formatSourceDate(
     return "the latest available weekly DBPR file";
   }
 
-  const date = new Date(sourceDate);
+  const date =
+    new Date(sourceDate);
 
-  if (Number.isNaN(date.getTime())) {
+  if (
+    Number.isNaN(
+      date.getTime(),
+    )
+  ) {
     return "the latest available weekly DBPR file";
   }
 
-  return new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  }).format(date);
+  return new Intl.DateTimeFormat(
+    "en-US",
+    {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    },
+  ).format(date);
 }
 
 function combinedStatus(
@@ -284,7 +320,9 @@ function isSalesAssociate(
 ) {
   return record.r
     .toLowerCase()
-    .includes("sales associate");
+    .includes(
+      "sales associate",
+    );
 }
 
 function isBroker(
@@ -305,7 +343,8 @@ function isActive(
     (value) =>
       value
         .trim()
-        .toLowerCase() === "active",
+        .toLowerCase() ===
+      "active",
   );
 }
 
@@ -316,8 +355,12 @@ function isInvoluntarilyInactive(
     `${record.p} ${record.s}`.toLowerCase();
 
   return (
-    status.includes("involuntary") ||
-    status.includes("involuntarily")
+    status.includes(
+      "involuntary",
+    ) ||
+    status.includes(
+      "involuntarily",
+    )
   );
 }
 
@@ -327,18 +370,38 @@ export function FloridaLicenseExpirationCheck() {
     setLicenseNumber,
   ] = useState("");
 
-  const [message, setMessage] =
-    useState("");
+  const [
+    savedLicenseNumber,
+    setSavedLicenseNumber,
+  ] = useState("");
 
-  const [error, setError] =
-    useState("");
+  const [
+    savedLicenseMessage,
+    setSavedLicenseMessage,
+  ] = useState("");
 
-  const [result, setResult] =
+  const [
+    message,
+    setMessage,
+  ] = useState("");
+
+  const [
+    error,
+    setError,
+  ] = useState("");
+
+  const [
+    result,
+    setResult,
+  ] =
     useState<LicenseRecord | null>(
       null,
     );
 
-  const [meta, setMeta] =
+  const [
+    meta,
+    setMeta,
+  ] =
     useState<LicenseMeta | null>(
       null,
     );
@@ -357,7 +420,9 @@ export function FloridaLicenseExpirationCheck() {
     renewalChoice,
     setRenewalChoice,
   ] =
-    useState<RenewalChoice>(null);
+    useState<RenewalChoice>(
+      null,
+    );
 
   const [
     nameMode,
@@ -391,13 +456,17 @@ export function FloridaLicenseExpirationCheck() {
     nameStage,
     setNameStage,
   ] =
-    useState<NameSearchStage>("form");
+    useState<NameSearchStage>(
+      "form",
+    );
 
   const [
     nameMatches,
     setNameMatches,
   ] =
-    useState<NameSearchMatch[]>([]);
+    useState<
+      NameSearchMatch[]
+    >([]);
 
   const [
     nameSearchError,
@@ -414,6 +483,36 @@ export function FloridaLicenseExpirationCheck() {
       licenseNumber,
     );
 
+  useEffect(() => {
+    try {
+      const stored =
+        window.localStorage.getItem(
+          SAVED_LICENSE_KEY,
+        );
+
+      if (!stored) {
+        return;
+      }
+
+      const normalized =
+        normalizeLicenseNumber(
+          stored,
+        );
+
+      if (normalized) {
+        setSavedLicenseNumber(
+          normalized,
+        );
+      }
+    } catch {
+      /*
+        Some browser privacy settings can
+        disable local storage. The checker
+        still works normally without it.
+      */
+    }
+  }, []);
+
   function resetNameProgress() {
     setNameLicenseType(null);
     setMiddleInitial("");
@@ -427,6 +526,7 @@ export function FloridaLicenseExpirationCheck() {
 
     setError("");
     setMessage("");
+    setSavedLicenseMessage("");
     setResult(null);
     setRenewalChoice(null);
     setHasSearched(false);
@@ -441,19 +541,86 @@ export function FloridaLicenseExpirationCheck() {
 
     setError("");
     setMessage("");
+    setSavedLicenseMessage("");
+  }
+
+  function rememberCurrentLicense() {
+    if (!result?.i) {
+      return;
+    }
+
+    const normalized =
+      normalizeLicenseNumber(
+        result.i,
+      );
+
+    try {
+      window.localStorage.setItem(
+        SAVED_LICENSE_KEY,
+        normalized,
+      );
+
+      setSavedLicenseNumber(
+        normalized,
+      );
+
+      setSavedLicenseMessage(
+        `${normalized} is now remembered in this browser. Greyson will use the license number to check the latest available DBPR record when you return.`,
+      );
+    } catch {
+      setSavedLicenseMessage(
+        "Your browser would not allow Greyson to save this license locally. The license checker will still work normally.",
+      );
+    }
+  }
+
+  function forgetSavedLicense() {
+    try {
+      window.localStorage.removeItem(
+        SAVED_LICENSE_KEY,
+      );
+    } catch {
+      /*
+        Clear the visible saved state even
+        if local storage is unavailable.
+      */
+    }
+
+    setSavedLicenseNumber("");
+    setSavedLicenseMessage(
+      "The saved license has been cleared from this browser.",
+    );
+  }
+
+  async function checkSavedLicense() {
+    if (!savedLicenseNumber) {
+      return;
+    }
+
+    setNameMode(false);
+    resetNameProgress();
+
+    setSavedLicenseMessage("");
+
+    await lookupLicenseNumber(
+      savedLicenseNumber,
+    );
   }
 
   async function lookupLicenseNumber(
     value: string,
   ) {
     const normalized =
-      normalizeLicenseNumber(value);
+      normalizeLicenseNumber(
+        value,
+      );
 
     const digits =
       numericPart(normalized);
 
     setError("");
     setMessage("");
+    setSavedLicenseMessage("");
     setResult(null);
     setRenewalChoice(null);
     setHasSearched(false);
@@ -469,7 +636,10 @@ export function FloridaLicenseExpirationCheck() {
       return;
     }
 
-    setLicenseNumber(normalized);
+    setLicenseNumber(
+      normalized,
+    );
+
     setIsSearching(true);
 
     try {
@@ -481,7 +651,9 @@ export function FloridaLicenseExpirationCheck() {
           },
         );
 
-      if (!metaResponse.ok) {
+      if (
+        !metaResponse.ok
+      ) {
         throw new Error(
           "Greyson could not load the Florida license index.",
         );
@@ -492,19 +664,24 @@ export function FloridaLicenseExpirationCheck() {
 
       setMeta(metaData);
 
-      if (!metaData.available) {
+      if (
+        !metaData.available
+      ) {
         setError(
           "The Greyson license index is temporarily unavailable. Please verify your license directly with Florida DBPR.",
         );
 
-        setHasSearched(true);
+        setHasSearched(
+          true,
+        );
 
         return;
       }
 
-      const bucketKey = digits
-        .slice(-3)
-        .padStart(3, "0");
+      const bucketKey =
+        digits
+          .slice(-3)
+          .padStart(3, "0");
 
       const bucketResponse =
         await fetch(
@@ -514,12 +691,16 @@ export function FloridaLicenseExpirationCheck() {
           },
         );
 
-      if (!bucketResponse.ok) {
+      if (
+        !bucketResponse.ok
+      ) {
         setError(
           "We could not find that license in the current weekly file. Please verify it with Florida DBPR.",
         );
 
-        setHasSearched(true);
+        setHasSearched(
+          true,
+        );
 
         return;
       }
@@ -532,12 +713,18 @@ export function FloridaLicenseExpirationCheck() {
           (record) =>
             normalizeLicenseNumber(
               record.i,
-            ) === normalized,
+            ) ===
+            normalized,
         );
 
       if (exactMatch) {
-        setResult(exactMatch);
-        setHasSearched(true);
+        setResult(
+          exactMatch,
+        );
+
+        setHasSearched(
+          true,
+        );
 
         return;
       }
@@ -545,30 +732,37 @@ export function FloridaLicenseExpirationCheck() {
       const numericMatches =
         records.filter(
           (record) =>
-            numericPart(record.i) ===
-            digits,
+            numericPart(
+              record.i,
+            ) === digits,
         );
 
       if (
-        numericMatches.length === 1
+        numericMatches.length ===
+        1
       ) {
         setResult(
           numericMatches[0],
         );
 
-        setHasSearched(true);
+        setHasSearched(
+          true,
+        );
 
         return;
       }
 
       if (
-        numericMatches.length > 1
+        numericMatches.length >
+        1
       ) {
         setError(
           "More than one Florida record matches those digits. Enter the complete license number, including the letters at the beginning.",
         );
 
-        setHasSearched(true);
+        setHasSearched(
+          true,
+        );
 
         return;
       }
@@ -585,7 +779,9 @@ export function FloridaLicenseExpirationCheck() {
 
       setHasSearched(true);
     } finally {
-      setIsSearching(false);
+      setIsSearching(
+        false,
+      );
     }
   }
 
@@ -614,8 +810,10 @@ export function FloridaLicenseExpirationCheck() {
       lastName.trim();
 
     if (
-      trimmedFirst.length < 2 ||
-      trimmedLast.length < 2
+      trimmedFirst.length <
+        2 ||
+      trimmedLast.length <
+        2
     ) {
       setNameSearchError(
         "Enter both your first and last name.",
@@ -625,12 +823,14 @@ export function FloridaLicenseExpirationCheck() {
     }
 
     const requestedLicenseType =
-      options?.licenseType !== undefined
+      options?.licenseType !==
+      undefined
         ? options.licenseType
         : nameLicenseType;
 
     const requestedMiddleInitial =
-      options?.middleInitial !== undefined
+      options?.middleInitial !==
+      undefined
         ? options.middleInitial
         : middleInitial;
 
@@ -645,11 +845,15 @@ export function FloridaLicenseExpirationCheck() {
         licenseType?: NameLicenseType;
         middleInitial?: string;
       } = {
-        firstName: trimmedFirst,
-        lastName: trimmedLast,
+        firstName:
+          trimmedFirst,
+        lastName:
+          trimmedLast,
       };
 
-      if (requestedLicenseType) {
+      if (
+        requestedLicenseType
+      ) {
         body.licenseType =
           requestedLicenseType;
       }
@@ -663,17 +867,20 @@ export function FloridaLicenseExpirationCheck() {
             .charAt(0);
       }
 
-      const response = await fetch(
-        NAME_SEARCH_ENDPOINT,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type":
-              "application/json",
+      const response =
+        await fetch(
+          NAME_SEARCH_ENDPOINT,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type":
+                "application/json",
+            },
+            body: JSON.stringify(
+              body,
+            ),
           },
-          body: JSON.stringify(body),
-        },
-      );
+        );
 
       const data =
         (await response.json()) as NameSearchResponse;
@@ -713,13 +920,16 @@ export function FloridaLicenseExpirationCheck() {
       }
 
       if (
-        data.status === "matches"
+        data.status ===
+        "matches"
       ) {
         setNameMatches(
           data.matches || [],
         );
 
-        setNameStage("results");
+        setNameStage(
+          "results",
+        );
 
         return;
       }
@@ -739,7 +949,9 @@ export function FloridaLicenseExpirationCheck() {
         data.status ===
         "too_many_matches"
       ) {
-        setNameStage("too-many");
+        setNameStage(
+          "too-many",
+        );
 
         return;
       }
@@ -752,7 +964,9 @@ export function FloridaLicenseExpirationCheck() {
         "We could not complete the name search right now. Please try again or use Florida DBPR's official search.",
       );
     } finally {
-      setNameIsSearching(false);
+      setNameIsSearching(
+        false,
+      );
     }
   }
 
@@ -761,7 +975,10 @@ export function FloridaLicenseExpirationCheck() {
   ) {
     event.preventDefault();
 
-    setNameLicenseType(null);
+    setNameLicenseType(
+      null,
+    );
+
     setMiddleInitial("");
 
     await runNameSearch({
@@ -773,7 +990,10 @@ export function FloridaLicenseExpirationCheck() {
   async function chooseLicenseType(
     value: NameLicenseType,
   ) {
-    setNameLicenseType(value);
+    setNameLicenseType(
+      value,
+    );
+
     setMiddleInitial("");
 
     await runNameSearch({
@@ -783,9 +1003,16 @@ export function FloridaLicenseExpirationCheck() {
   }
 
   function licenseTypeUnknown() {
-    setNameLicenseType(null);
+    setNameLicenseType(
+      null,
+    );
+
     setMiddleInitial("");
-    setNameSearchError("");
+
+    setNameSearchError(
+      "",
+    );
+
     setNameStage(
       "middle-initial",
     );
@@ -812,7 +1039,8 @@ export function FloridaLicenseExpirationCheck() {
     await runNameSearch({
       licenseType:
         nameLicenseType,
-      middleInitial: initial,
+      middleInitial:
+        initial,
     });
   }
 
@@ -820,6 +1048,7 @@ export function FloridaLicenseExpirationCheck() {
     match: NameSearchMatch,
   ) {
     setNameMode(false);
+
     resetNameProgress();
 
     await lookupLicenseNumber(
@@ -830,7 +1059,9 @@ export function FloridaLicenseExpirationCheck() {
   async function handleDbprClick(
     event: MouseEvent<HTMLAnchorElement>,
   ) {
-    if (!cleanedLicenseNumber) {
+    if (
+      !cleanedLicenseNumber
+    ) {
       event.preventDefault();
 
       setMessage("");
@@ -858,6 +1089,16 @@ export function FloridaLicenseExpirationCheck() {
       );
     }
   }
+
+  const currentLicenseIsSaved =
+    Boolean(
+      result?.i &&
+        savedLicenseNumber &&
+        normalizeLicenseNumber(
+          result.i,
+        ) ===
+          savedLicenseNumber,
+    );
 
   return (
     <div className="fl-license-check">
@@ -938,6 +1179,104 @@ export function FloridaLicenseExpirationCheck() {
           .fl-license-search-button:disabled {
             cursor: wait;
             opacity: 0.65;
+          }
+
+          .fl-saved-license {
+            max-width: 820px;
+            margin-top: 28px;
+            padding: 24px;
+            border: 1px solid rgba(17, 23, 23, 0.18);
+            background: #faf7f1;
+          }
+
+          .fl-saved-license-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            align-items: flex-start;
+          }
+
+          .fl-saved-license-number {
+            margin: 5px 0 0;
+            color: #111717;
+            font-family: var(--font-serif), Georgia, serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+          }
+
+          .fl-saved-license-copy {
+            margin: 10px 0 0;
+            max-width: 610px;
+            color: #5f5c56;
+            font-size: 0.86rem;
+            line-height: 1.65;
+          }
+
+          .fl-saved-license-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+          }
+
+          .fl-forget-button {
+            min-height: 46px;
+            padding: 0 16px;
+            border: 1px solid rgba(17, 23, 23, 0.5);
+            background: transparent;
+            color: #111717;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 650;
+            cursor: pointer;
+          }
+
+          .fl-remember-panel {
+            margin: 4px 28px 26px;
+            padding: 22px;
+            border: 1px solid rgba(17, 23, 23, 0.14);
+            background: #eee6d9;
+          }
+
+          .fl-remember-title {
+            margin: 0 0 7px;
+            color: #111717;
+            font-family: var(--font-serif), Georgia, serif;
+            font-size: 1.4rem;
+          }
+
+          .fl-remember-copy {
+            margin: 0;
+            max-width: 700px;
+            color: #4d4b46;
+            font-size: 0.87rem;
+            line-height: 1.65;
+          }
+
+          .fl-remember-button {
+            min-height: 46px;
+            margin-top: 16px;
+            padding: 0 18px;
+            border: 1px solid #111717;
+            background: #111717;
+            color: #f5f0e7;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 650;
+            cursor: pointer;
+            transition:
+              transform 0.2s ease,
+              background-color 0.2s ease,
+              box-shadow 0.2s ease;
+          }
+
+          .fl-saved-confirmation {
+            margin: 16px 0 0;
+            padding: 14px 16px;
+            border-left: 3px solid #7d5f3a;
+            background: rgba(255, 255, 255, 0.5);
+            color: #3f3d38;
+            font-size: 0.86rem;
+            line-height: 1.6;
           }
 
           .fl-name-toggle {
@@ -1275,7 +1614,8 @@ export function FloridaLicenseExpirationCheck() {
           @media (hover: hover) and (pointer: fine) {
             .fl-license-search-button:hover:not(:disabled),
             .fl-license-primary:hover,
-            .fl-name-result-button:hover {
+            .fl-name-result-button:hover,
+            .fl-remember-button:hover {
               background: #1f2d30;
               transform: translateY(-3px);
               box-shadow:
@@ -1285,7 +1625,8 @@ export function FloridaLicenseExpirationCheck() {
 
             .fl-license-secondary:hover,
             .fl-license-renewal-button:hover,
-            .fl-name-secondary-button:hover {
+            .fl-name-secondary-button:hover,
+            .fl-forget-button:hover {
               background: #111717;
               color: #f5f0e7;
               transform: translateY(-2px);
@@ -1301,7 +1642,8 @@ export function FloridaLicenseExpirationCheck() {
             .fl-license-actions,
             .fl-license-renewal-buttons,
             .fl-name-type-buttons,
-            .fl-name-actions {
+            .fl-name-actions,
+            .fl-saved-license-actions {
               display: grid;
               grid-template-columns: 1fr;
             }
@@ -1311,8 +1653,19 @@ export function FloridaLicenseExpirationCheck() {
             .fl-license-search-button,
             .fl-license-renewal-button,
             .fl-name-secondary-button,
-            .fl-name-result-button {
+            .fl-name-result-button,
+            .fl-remember-button,
+            .fl-forget-button {
               width: 100%;
+            }
+
+            .fl-saved-license-top {
+              display: block;
+            }
+
+            .fl-remember-panel {
+              margin-left: 18px;
+              margin-right: 18px;
             }
           }
         `}
@@ -1349,9 +1702,77 @@ export function FloridaLicenseExpirationCheck() {
         renewing or practicing.
       </p>
 
+      {savedLicenseNumber &&
+        !result &&
+        !nameMode && (
+          <div className="fl-saved-license">
+            <div className="fl-saved-license-top">
+              <div>
+                <p
+                  className="eyebrow"
+                  style={{
+                    marginBottom:
+                      "4px",
+                  }}
+                >
+                  SAVED IN THIS BROWSER
+                </p>
+
+                <p className="fl-saved-license-number">
+                  {savedLicenseNumber}
+                </p>
+
+                <p className="fl-saved-license-copy">
+                  Greyson remembers only this
+                  license number in this browser.
+                  Your current status and
+                  expiration date are checked
+                  again from the latest available
+                  DBPR weekly record each time
+                  you ask.
+                </p>
+              </div>
+            </div>
+
+            <div className="fl-saved-license-actions">
+              <button
+                type="button"
+                className="fl-license-search-button"
+                style={{
+                  marginTop: 0,
+                }}
+                onClick={
+                  checkSavedLicense
+                }
+                disabled={
+                  isSearching
+                }
+              >
+                {isSearching
+                  ? "Checking License..."
+                  : "Check My Current License →"}
+              </button>
+
+              <button
+                type="button"
+                className="fl-forget-button"
+                onClick={
+                  forgetSavedLicense
+                }
+              >
+                Forget This License
+              </button>
+            </div>
+          </div>
+        )}
+
       {!nameMode ? (
         <>
-          <form onSubmit={handleLookup}>
+          <form
+            onSubmit={
+              handleLookup
+            }
+          >
             <div className="fl-license-field-wrap">
               <label
                 className="fl-license-label"
@@ -1367,14 +1788,22 @@ export function FloridaLicenseExpirationCheck() {
                 value={licenseNumber}
                 onChange={(event) => {
                   setLicenseNumber(
-                    event.target.value,
+                    event.target
+                      .value,
                   );
 
                   setError("");
                   setMessage("");
+                  setSavedLicenseMessage(
+                    "",
+                  );
                   setResult(null);
-                  setRenewalChoice(null);
-                  setHasSearched(false);
+                  setRenewalChoice(
+                    null,
+                  );
+                  setHasSearched(
+                    false,
+                  );
                 }}
                 placeholder="Example: SL1234567"
                 autoComplete="off"
@@ -1398,7 +1827,9 @@ export function FloridaLicenseExpirationCheck() {
             <button
               className="fl-license-search-button"
               type="submit"
-              disabled={isSearching}
+              disabled={
+                isSearching
+              }
             >
               {isSearching
                 ? "Checking License..."
@@ -1410,8 +1841,12 @@ export function FloridaLicenseExpirationCheck() {
             <button
               type="button"
               className="fl-name-toggle-button"
-              onClick={openNameSearch}
-              aria-expanded={nameMode}
+              onClick={
+                openNameSearch
+              }
+              aria-expanded={
+                nameMode
+              }
             >
               I don&apos;t know my license number →
             </button>
@@ -1436,7 +1871,11 @@ export function FloridaLicenseExpirationCheck() {
             identify your record.
           </p>
 
-          <form onSubmit={handleNameSearch}>
+          <form
+            onSubmit={
+              handleNameSearch
+            }
+          >
             <div className="fl-name-grid">
               <div className="fl-name-field">
                 <label
@@ -1450,10 +1889,13 @@ export function FloridaLicenseExpirationCheck() {
                   id="fl-first-name"
                   className="fl-license-input"
                   type="text"
-                  value={firstName}
+                  value={
+                    firstName
+                  }
                   onChange={(event) => {
                     setFirstName(
-                      event.target.value,
+                      event.target
+                        .value,
                     );
 
                     resetNameProgress();
@@ -1474,10 +1916,13 @@ export function FloridaLicenseExpirationCheck() {
                   id="fl-last-name"
                   className="fl-license-input"
                   type="text"
-                  value={lastName}
+                  value={
+                    lastName
+                  }
                   onChange={(event) => {
                     setLastName(
-                      event.target.value,
+                      event.target
+                        .value,
                     );
 
                     resetNameProgress();
@@ -1490,7 +1935,9 @@ export function FloridaLicenseExpirationCheck() {
             <button
               className="fl-license-search-button"
               type="submit"
-              disabled={nameIsSearching}
+              disabled={
+                nameIsSearching
+              }
             >
               {nameIsSearching
                 ? "Searching..."
@@ -1507,8 +1954,10 @@ export function FloridaLicenseExpirationCheck() {
 
               <h4
                 style={{
-                  fontSize: "1.35rem",
-                  marginBottom: "8px",
+                  fontSize:
+                    "1.35rem",
+                  marginBottom:
+                    "8px",
                 }}
               >
                 We found several people with
@@ -1529,7 +1978,9 @@ export function FloridaLicenseExpirationCheck() {
                       "sales-associate",
                     )
                   }
-                  disabled={nameIsSearching}
+                  disabled={
+                    nameIsSearching
+                  }
                 >
                   Sales Associate
                 </button>
@@ -1542,7 +1993,9 @@ export function FloridaLicenseExpirationCheck() {
                       "broker",
                     )
                   }
-                  disabled={nameIsSearching}
+                  disabled={
+                    nameIsSearching
+                  }
                 >
                   Broker / Broker Associate
                 </button>
@@ -1569,8 +2022,10 @@ export function FloridaLicenseExpirationCheck() {
 
               <h4
                 style={{
-                  fontSize: "1.35rem",
-                  marginBottom: "8px",
+                  fontSize:
+                    "1.35rem",
+                  marginBottom:
+                    "8px",
                 }}
               >
                 What is your middle initial?
@@ -1590,8 +2045,10 @@ export function FloridaLicenseExpirationCheck() {
                 <div
                   className="fl-license-field-wrap"
                   style={{
-                    maxWidth: "180px",
-                    marginTop: "16px",
+                    maxWidth:
+                      "180px",
+                    marginTop:
+                      "16px",
                   }}
                 >
                   <label
@@ -1606,10 +2063,13 @@ export function FloridaLicenseExpirationCheck() {
                     className="fl-license-input"
                     type="text"
                     maxLength={1}
-                    value={middleInitial}
+                    value={
+                      middleInitial
+                    }
                     onChange={(event) => {
                       setMiddleInitial(
-                        event.target.value,
+                        event.target
+                          .value,
                       );
 
                       setNameSearchError(
@@ -1625,7 +2085,9 @@ export function FloridaLicenseExpirationCheck() {
                   <button
                     className="fl-license-search-button"
                     type="submit"
-                    disabled={nameIsSearching}
+                    disabled={
+                      nameIsSearching
+                    }
                     style={{
                       marginTop: 0,
                     }}
@@ -1651,78 +2113,84 @@ export function FloridaLicenseExpirationCheck() {
             </div>
           )}
 
-          {nameStage === "results" &&
-            nameMatches.length > 0 && (
-            <div className="fl-name-prompt">
-              <p className="eyebrow">
-                POSSIBLE MATCHES
-              </p>
+          {nameStage ===
+            "results" &&
+            nameMatches.length >
+              0 && (
+              <div className="fl-name-prompt">
+                <p className="eyebrow">
+                  POSSIBLE MATCHES
+                </p>
 
-              <h4
-                style={{
-                  fontSize: "1.35rem",
-                  marginBottom: "8px",
-                }}
-              >
-                Which record is yours?
-              </h4>
+                <h4
+                  style={{
+                    fontSize:
+                      "1.35rem",
+                    marginBottom:
+                      "8px",
+                  }}
+                >
+                  Which record is yours?
+                </h4>
 
-              <p className="fl-name-panel-copy">
-                Greyson will not assume which
-                person is you. Choose your
-                record below.
-              </p>
+                <p className="fl-name-panel-copy">
+                  Greyson will not assume which
+                  person is you. Choose your
+                  record below.
+                </p>
 
-              <div className="fl-name-results">
-                {nameMatches.map(
-                  (match) => (
-                    <div
-                      className="fl-name-result-card"
-                      key={match.id}
-                    >
-                      <h4>
-                        {formatLicensedName(
-                          match.name,
-                        )}
-                      </h4>
-
-                      <div className="fl-name-result-details">
-                        <span>
-                          {match.licenseType ||
-                            "License type not listed"}
-                        </span>
-
-                        <span>
-                          {nameMatchStatus(
-                            match,
-                          )}
-                        </span>
-
-                        <span>
-                          Expires{" "}
-                          {formatDbprDate(
-                            match.expirationDate,
-                          )}
-                        </span>
-                      </div>
-
-                      <button
-                        type="button"
-                        className="fl-name-result-button"
-                        onClick={() =>
-                          chooseNameMatch(
-                            match,
-                          )
+                <div className="fl-name-results">
+                  {nameMatches.map(
+                    (match) => (
+                      <div
+                        className="fl-name-result-card"
+                        key={
+                          match.id
                         }
                       >
-                        That&apos;s Me →
-                      </button>
-                    </div>
-                  ),
-                )}
+                        <h4>
+                          {formatLicensedName(
+                            match.name,
+                          )}
+                        </h4>
+
+                        <div className="fl-name-result-details">
+                          <span>
+                            {match.licenseType ||
+                              "License type not listed"}
+                          </span>
+
+                          <span>
+                            {nameMatchStatus(
+                              match,
+                            )}
+                          </span>
+
+                          <span>
+                            Expires{" "}
+                            {formatDbprDate(
+                              match.expirationDate,
+                            )}
+                          </span>
+                        </div>
+
+                        <button
+                          type="button"
+                          className="fl-name-result-button"
+                          onClick={() =>
+                            chooseNameMatch(
+                              match,
+                            )
+                          }
+                        >
+                          That&apos;s Me →
+                        </button>
+                      </div>
+                    ),
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
           {nameStage ===
             "no-matches" && (
@@ -1764,7 +2232,9 @@ export function FloridaLicenseExpirationCheck() {
               </p>
 
               <a
-                href={dbprGeneralSearch}
+                href={
+                  dbprGeneralSearch
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -1793,12 +2263,23 @@ export function FloridaLicenseExpirationCheck() {
             <button
               type="button"
               className="fl-name-secondary-button"
-              onClick={returnToNumberSearch}
+              onClick={
+                returnToNumberSearch
+              }
             >
               ← I Know My License Number
             </button>
           </div>
         </div>
+      )}
+
+      {savedLicenseMessage && (
+        <p
+          className="fl-saved-confirmation"
+          aria-live="polite"
+        >
+          {savedLicenseMessage}
+        </p>
       )}
 
       {error && (
@@ -1819,7 +2300,8 @@ export function FloridaLicenseExpirationCheck() {
             <p
               className="eyebrow eyebrow--light"
               style={{
-                marginBottom: "10px",
+                marginBottom:
+                  "10px",
               }}
             >
               FLORIDA DBPR WEEKLY RECORD
@@ -1888,10 +2370,58 @@ export function FloridaLicenseExpirationCheck() {
           <div className="fl-license-data-note">
             DBPR public-record data as of{" "}
             <strong>
-              {formatSourceDate(meta)}
+              {formatSourceDate(
+                meta,
+              )}
             </strong>
             . This weekly file is a convenience
             reference and may lag recent changes.
+          </div>
+
+          <div className="fl-remember-panel">
+            <p className="eyebrow">
+              {currentLicenseIsSaved
+                ? "REMEMBERED IN THIS BROWSER"
+                : "MAKE NEXT TIME EASIER"}
+            </p>
+
+            <h3 className="fl-remember-title">
+              {currentLicenseIsSaved
+                ? "Greyson remembers this license number."
+                : "Remember this license in this browser."}
+            </h3>
+
+            <p className="fl-remember-copy">
+              {currentLicenseIsSaved
+                ? "Only the license number is saved locally in this browser. Greyson still checks the latest available DBPR record when you return."
+                : "Save only this license number locally in this browser so you do not have to find or type it again next time. Greyson will not save the expiration date or status."}
+            </p>
+
+            {!currentLicenseIsSaved ? (
+              <button
+                type="button"
+                className="fl-remember-button"
+                onClick={
+                  rememberCurrentLicense
+                }
+              >
+                Remember This License in This Browser →
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="fl-forget-button"
+                style={{
+                  marginTop:
+                    "16px",
+                }}
+                onClick={
+                  forgetSavedLicense
+                }
+              >
+                Forget This License
+              </button>
+            )}
           </div>
 
           {isInvoluntarilyInactive(
@@ -1904,8 +2434,10 @@ export function FloridaLicenseExpirationCheck() {
 
               <h3
                 style={{
-                  fontSize: "1.65rem",
-                  marginBottom: "10px",
+                  fontSize:
+                    "1.65rem",
+                  marginBottom:
+                    "10px",
                 }}
               >
                 Your record appears to show an
@@ -1914,8 +2446,10 @@ export function FloridaLicenseExpirationCheck() {
 
               <p
                 style={{
-                  color: "#4d4b46",
-                  maxWidth: "760px",
+                  color:
+                    "#4d4b46",
+                  maxWidth:
+                    "760px",
                 }}
               >
                 Reactivation requirements can
@@ -1946,8 +2480,10 @@ export function FloridaLicenseExpirationCheck() {
 
               <h3
                 style={{
-                  fontSize: "1.65rem",
-                  marginBottom: "10px",
+                  fontSize:
+                    "1.65rem",
+                  marginBottom:
+                    "10px",
                 }}
               >
                 Is this your first renewal?
@@ -1955,9 +2491,12 @@ export function FloridaLicenseExpirationCheck() {
 
               <p
                 style={{
-                  color: "#4d4b46",
-                  maxWidth: "740px",
-                  marginBottom: 0,
+                  color:
+                    "#4d4b46",
+                  maxWidth:
+                    "740px",
+                  marginBottom:
+                    0,
                 }}
               >
                 Your expiration date alone does
@@ -2037,7 +2576,8 @@ export function FloridaLicenseExpirationCheck() {
                       <Link
                         href="/florida-45-hour-post-license-requirements"
                         style={{
-                          fontWeight: 600,
+                          fontWeight:
+                            600,
                           textDecoration:
                             "underline",
                           textUnderlineOffset:
@@ -2072,7 +2612,8 @@ export function FloridaLicenseExpirationCheck() {
                       <Link
                         href="/courses#broker"
                         style={{
-                          fontWeight: 600,
+                          fontWeight:
+                            600,
                           textDecoration:
                             "underline",
                           textUnderlineOffset:
@@ -2107,7 +2648,8 @@ export function FloridaLicenseExpirationCheck() {
                       <Link
                         href="/florida-14-hour-real-estate-continuing-education"
                         style={{
-                          fontWeight: 600,
+                          fontWeight:
+                            600,
                           textDecoration:
                             "underline",
                           textUnderlineOffset:
@@ -2149,7 +2691,8 @@ export function FloridaLicenseExpirationCheck() {
                       <Link
                         href="/courses#reactivation"
                         style={{
-                          fontWeight: 600,
+                          fontWeight:
+                            600,
                           textDecoration:
                             "underline",
                           textUnderlineOffset:
@@ -2185,7 +2728,8 @@ export function FloridaLicenseExpirationCheck() {
                     <Link
                       href="/contact"
                       style={{
-                        fontWeight: 600,
+                        fontWeight:
+                          600,
                         textDecoration:
                           "underline",
                         textUnderlineOffset:
@@ -2206,17 +2750,23 @@ export function FloridaLicenseExpirationCheck() {
         <div className="fl-license-actions">
           <a
             className="fl-license-primary"
-            href={dbprLicenseNumberSearch}
+            href={
+              dbprLicenseNumberSearch
+            }
             target="_blank"
             rel="noopener noreferrer"
-            onClick={handleDbprClick}
+            onClick={
+              handleDbprClick
+            }
           >
             Verify Live on Florida DBPR ↗
           </a>
 
           <a
             className="fl-license-secondary"
-            href={dbprGeneralSearch}
+            href={
+              dbprGeneralSearch
+            }
             target="_blank"
             rel="noopener noreferrer"
           >
