@@ -36,39 +36,41 @@ type NameIndexRecord = {
 type SearchRequest = {
   firstName?: string;
   lastName?: string;
+
   licenseType?:
     | "sales-associate"
     | "broker";
 
   /*
-    middleInitial remains supported so the
-    currently deployed Greyson page keeps working
-    while we upgrade the visible form next.
+    Lets someone continue when they do not know
+    whether they are a sales associate or broker.
+  */
+  skipLicenseType?: boolean;
+
+  /*
+    Kept temporarily for backward compatibility
+    with the currently deployed visible page.
   */
   middleInitial?: string;
 
   /*
-    New version can accept either a full middle
+    New search accepts either a complete middle
     name or a single initial.
   */
   middleName?: string;
 
   /*
-    When the user does not know or does not have
-    a middle name, the future UI can explicitly
-    skip this narrowing step.
+    Lets someone continue if they do not know
+    their middle name as DBPR has it recorded,
+    or DBPR has no middle name on the record.
   */
   skipMiddle?: boolean;
 
-  /*
-    County is a later fallback only when the
-    previous clues still leave too many records.
-  */
   county?: string;
 
   /*
-    Keeps the current live UI backward-compatible.
-    The upgraded UI will set this to true.
+    The upgraded visible form will set this so
+    the API knows it can ask for county.
   */
   supportsCounty?: boolean;
 };
@@ -177,9 +179,7 @@ function matchesLicenseType(
     "sales-associate"
   ) {
     return (
-      licenseNumber.startsWith(
-        "SL",
-      ) ||
+      licenseNumber.startsWith("SL") ||
       rank.includes(
         "SALES ASSOCIATE",
       )
@@ -190,28 +190,14 @@ function matchesLicenseType(
     licenseType === "broker"
   ) {
     return (
-      licenseNumber.startsWith(
-        "BK",
-      ) ||
-      rank.includes(
-        "BROKER",
-      )
+      licenseNumber.startsWith("BK") ||
+      rank.includes("BROKER")
     );
   }
 
   return true;
 }
 
-/*
-  IMPORTANT:
-
-  Middle-name information in DBPR can be complete,
-  an initial only, or blank.
-
-  A blank DBPR middle field must NOT eliminate the
-  person's record. Jessica's test exposed exactly
-  why that matters.
-*/
 function matchesMiddleClue(
   record: NameIndexRecord,
   middleClue: string,
@@ -228,16 +214,20 @@ function matchesMiddleClue(
     );
 
   /*
-    DBPR supplied no middle information.
-    Keep this record as a possible match rather
-    than incorrectly excluding the person.
+    Critical behavior:
+
+    If DBPR supplied no middle name or initial,
+    do not eliminate the record.
+
+    Jessica's DBPR record is an example of why
+    this matters.
   */
   if (!recordMiddle) {
     return true;
   }
 
   /*
-    User entered only an initial.
+    User supplied one initial.
   */
   if (
     middleClue.length === 1
@@ -249,8 +239,8 @@ function matchesMiddleClue(
   }
 
   /*
-    DBPR itself contains only an initial, while
-    the user entered their full middle name.
+    DBPR has only an initial but the user typed
+    their complete middle name.
   */
   if (
     recordMiddle.length === 1
@@ -262,16 +252,14 @@ function matchesMiddleClue(
   }
 
   if (
-    recordMiddle ===
-    middleClue
+    recordMiddle === middleClue
   ) {
     return true;
   }
 
   /*
-    Handles a DBPR record containing more than one
-    middle token without requiring the user to know
-    every token exactly.
+    Supports DBPR records with multiple middle
+    tokens without requiring every token.
   */
   if (
     recordMiddle.startsWith(
@@ -287,13 +275,6 @@ function matchesMiddleClue(
   return false;
 }
 
-/*
-  County follows the same safety rule.
-
-  If DBPR has county information, use it.
-  If DBPR left county blank, do not silently
-  eliminate that person's record.
-*/
 function matchesCounty(
   record: NameIndexRecord,
   county: string,
@@ -307,6 +288,10 @@ function matchesCounty(
       record.c || "",
     );
 
+  /*
+    Just like middle name, a blank DBPR county
+    should not silently eliminate a candidate.
+  */
   if (!recordCounty) {
     return true;
   }
@@ -331,15 +316,11 @@ function availableCounties(
       );
 
     if (county) {
-      counties.add(
-        county,
-      );
+      counties.add(county);
     }
   }
 
-  return Array.from(
-    counties,
-  )
+  return Array.from(counties)
     .sort()
     .slice(0, 20);
 }
@@ -350,14 +331,10 @@ function publicResult(
   return {
     id: record.i,
     name: record.n,
-    licenseType:
-      record.r,
-    primaryStatus:
-      record.p,
-    secondaryStatus:
-      record.s,
-    expirationDate:
-      record.x,
+    licenseType: record.r,
+    primaryStatus: record.p,
+    secondaryStatus: record.s,
+    expirationDate: record.x,
   };
 }
 
@@ -411,8 +388,7 @@ function cleanupRateLimitStore(
   now: number,
 ) {
   if (
-    rateLimitStore.size <
-    500
+    rateLimitStore.size < 500
   ) {
     return;
   }
@@ -424,12 +400,9 @@ function cleanupRateLimitStore(
     ] of rateLimitStore.entries()
   ) {
     if (
-      entry.resetAt <=
-      now
+      entry.resetAt <= now
     ) {
-      rateLimitStore.delete(
-        key,
-      );
+      rateLimitStore.delete(key);
     }
   }
 }
@@ -437,12 +410,9 @@ function cleanupRateLimitStore(
 function checkRateLimit(
   request: Request,
 ): RateLimitResult {
-  const now =
-    Date.now();
+  const now = Date.now();
 
-  cleanupRateLimitStore(
-    now,
-  );
+  cleanupRateLimitStore(now);
 
   const key =
     getClientIdentifier(
@@ -450,9 +420,7 @@ function checkRateLimit(
     );
 
   const existing =
-    rateLimitStore.get(
-      key,
-    );
+    rateLimitStore.get(key);
 
   if (
     !existing ||
@@ -514,9 +482,7 @@ export async function POST(
       request,
     );
 
-  if (
-    !rateLimit.allowed
-  ) {
+  if (!rateLimit.allowed) {
     return json(
       {
         ok: false,
@@ -551,21 +517,14 @@ export async function POST(
 
   const firstName =
     normalizeFirstName(
-      body.firstName ||
-        "",
+      body.firstName || "",
     );
 
   const lastName =
     normalizeLastName(
-      body.lastName ||
-        "",
+      body.lastName || "",
     );
 
-  /*
-    Prefer the new full middle-name field, but
-    continue accepting the old middleInitial field
-    until the visible checker is upgraded.
-  */
   const middleClue =
     normalizeMiddleClue(
       body.middleName ||
@@ -579,8 +538,7 @@ export async function POST(
     );
 
   if (
-    firstName.length <
-      2 ||
+    firstName.length < 2 ||
     lastName.replace(
       /\s/g,
       "",
@@ -670,8 +628,8 @@ export async function POST(
   }
 
   /*
-    Step 1:
-    exact normalized first + last name.
+    STEP 1:
+    First + last name.
   */
   let matches =
     records.filter(
@@ -694,12 +652,15 @@ export async function POST(
   }
 
   /*
-    Step 2:
-    license type, only when supplied.
+    STEP 2:
+    License type.
+
+    If the user explicitly says they do not know
+    the type, skipLicenseType lets the search
+    continue instead of asking the same question
+    again.
   */
-  if (
-    body.licenseType
-  ) {
+  if (body.licenseType) {
     matches =
       matches.filter(
         (record) =>
@@ -724,7 +685,8 @@ export async function POST(
   if (
     matches.length >
       MAX_VISIBLE_MATCHES &&
-    !body.licenseType
+    !body.licenseType &&
+    !body.skipLicenseType
   ) {
     return json({
       ok: true,
@@ -734,12 +696,12 @@ export async function POST(
   }
 
   /*
-    Step 3:
-    middle name OR middle initial.
+    STEP 3:
+    Full middle name OR initial.
 
-    This is intentionally a soft narrowing step:
-    records where DBPR supplied no middle name remain
-    possible candidates.
+    This is a soft filter: records with blank
+    DBPR middle information stay in the candidate
+    group.
   */
   if (middleClue) {
     matches =
@@ -763,14 +725,6 @@ export async function POST(
     });
   }
 
-  /*
-    Backward compatibility:
-    the currently deployed page expects
-    "needs_middle_initial".
-
-    The upgraded page will change the wording to
-    "Middle name or initial".
-  */
   if (
     matches.length >
       MAX_VISIBLE_MATCHES &&
@@ -785,9 +739,12 @@ export async function POST(
   }
 
   /*
-    Step 4:
-    county, but only after the easier clues have
-    failed to narrow the list enough.
+    STEP 4:
+    County.
+
+    The upgraded UI will only ask for this when
+    the earlier, easier clues still leave too
+    many candidates.
   */
   if (county) {
     matches =
@@ -829,9 +786,8 @@ export async function POST(
   }
 
   /*
-    While the old live page remains deployed,
-    preserve its existing behavior rather than
-    sending it a status it does not understand.
+    Backward compatibility for the currently
+    deployed UI until we upgrade it next.
   */
   if (
     matches.length >
