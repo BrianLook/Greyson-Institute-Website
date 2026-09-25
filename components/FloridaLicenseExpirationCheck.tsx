@@ -3136,10 +3136,9 @@ export function FloridaLicenseExpirationCheck() {
                       with DBPR before
                       purchasing education.
                     </p>
-
-                    <Link href="/courses#reactivation">
-                      Understand Inactive License Options →
-                    </Link>
+                    <Link href="/contact">
+                     Ask About Inactive License Options →
+                     </Link>
                   </div>
                 )}
 
