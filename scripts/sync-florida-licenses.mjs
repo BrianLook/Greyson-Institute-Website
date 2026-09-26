@@ -731,36 +731,42 @@ function processLine(
     fullLicenseNumber,
   );
 
-  const record = {
-    i:
-      fullLicenseNumber,
-    n:
-      clean(
-        fields[1],
-      ),
-    r:
-      rank,
-    p:
-      clean(
-        fields[12],
-      ),
-    s:
-      clean(
-        fields[13],
-      ),
-    o:
-      clean(
-        fields[14],
-      ),
-    e:
-      clean(
-        fields[15],
-      ),
-    x:
-      clean(
-        fields[16],
-      ),
-  };
+ const record = {
+  i:
+    fullLicenseNumber,
+  n:
+    clean(
+      fields[1],
+    ),
+  r:
+    rank
+      .toLowerCase()
+      .includes(
+        "instructor",
+      )
+      ? "Real Estate Instructor"
+      : rank,
+  p:
+    clean(
+      fields[12],
+    ),
+  s:
+    clean(
+      fields[13],
+    ),
+  o:
+    clean(
+      fields[14],
+    ),
+  e:
+    clean(
+      fields[15],
+    ),
+  x:
+    clean(
+      fields[16],
+    ),
+};
 
   addLicenseRecord(
     record,
