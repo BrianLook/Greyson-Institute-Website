@@ -37,7 +37,6 @@ type SearchRequest = {
   firstName?: string;
   lastName?: string;
   licenseType?:
-    licenseType?:
   | "sales-associate"
   | "broker"
   | "instructor";
