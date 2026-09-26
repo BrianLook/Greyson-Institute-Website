@@ -37,8 +37,10 @@ type SearchRequest = {
   firstName?: string;
   lastName?: string;
   licenseType?:
-    | "sales-associate"
-    | "broker";
+    licenseType?:
+  | "sales-associate"
+  | "broker"
+  | "instructor";
   skipLicenseType?: boolean;
   middleInitial?: string;
   middleName?: string;
@@ -185,7 +187,14 @@ function matchesLicenseType(
       )
     );
   }
-
+if (
+  licenseType ===
+  "instructor"
+) {
+  return rank.includes(
+    "INSTRUCTOR",
+  );
+}
   return true;
 }
 
@@ -552,13 +561,15 @@ export async function POST(
     );
   }
 
-  if (
-    body.licenseType &&
-    body.licenseType !==
-      "sales-associate" &&
-    body.licenseType !==
-      "broker"
-  ) {
+ if (
+  body.licenseType &&
+  body.licenseType !==
+    "sales-associate" &&
+  body.licenseType !==
+    "broker" &&
+  body.licenseType !==
+    "instructor"
+) {
     return json(
       {
         ok: false,
