@@ -401,14 +401,16 @@ function isInvoluntarilyInactive(
   record: LicenseRecord,
 ) {
   const status =
-    `${record.p} ${record.s}`.toLowerCase();
+    `${record.p} ${record.s}`
+      .trim()
+      .toLowerCase();
 
   return (
     status.includes(
-      "involuntary",
-    ) ||
+      "inactive",
+    ) &&
     status.includes(
-      "involuntarily",
+      "invol",
     )
   );
 }
@@ -2870,9 +2872,13 @@ export function FloridaLicenseExpirationCheck() {
                 )}
               </p>
 
-              <LicenseExpirationCountdown
-                expirationDate={result.x}
-              />
+              {!isInvoluntarilyInactive(
+  result,
+) && (
+  <LicenseExpirationCountdown
+    expirationDate={result.x}
+  />
+)}
             </div>
 
             <div className="fl-license-result-item">
@@ -2908,13 +2914,17 @@ export function FloridaLicenseExpirationCheck() {
             expirationDate={result.x}
           />
 
-          <LicenseRenewalCalendarButton
-            licenseNumber={result.i}
-            licenseeName={formatLicensedName(
-              result.n,
-            )}
-            expirationDate={result.x}
-          />
+          {!isInvoluntarilyInactive(
+  result,
+) && (
+  <LicenseRenewalCalendarButton
+    licenseNumber={result.i}
+    licenseeName={formatLicensedName(
+      result.n,
+    )}
+    expirationDate={result.x}
+  />
+)}
 
           <div className="fl-remember-panel">
             <p className="eyebrow">
