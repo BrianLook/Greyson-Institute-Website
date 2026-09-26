@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import { LicenseRenewalCalendarButton } from "@/components/LicenseRenewalCalendarButton";
 import { LicenseExpirationCountdown } from "@/components/LicenseExpirationCountdown";
+import { LicenseRescuePanel } from "@/components/LicenseRescuePanel";
 
 const DATA_BASE =
   "/data/florida-real-estate-licenses";
@@ -2898,6 +2899,15 @@ export function FloridaLicenseExpirationCheck() {
             reference and may lag recent changes.
           </div>
 
+          <LicenseRescuePanel
+            licenseNumber={result.i}
+            licenseType={result.r}
+            primaryStatus={result.p}
+            secondaryStatus={result.s}
+            statusEffectiveDate={result.e}
+            expirationDate={result.x}
+          />
+
           <LicenseRenewalCalendarButton
             licenseNumber={result.i}
             licenseeName={formatLicensedName(
@@ -2952,32 +2962,9 @@ export function FloridaLicenseExpirationCheck() {
             )}
           </div>
 
-          {isInvoluntarilyInactive(
+          {!isInvoluntarilyInactive(
             result,
-          ) ? (
-            <div className="fl-license-renewal-question">
-              <p className="eyebrow">
-                IMPORTANT STATUS
-              </p>
-
-              <h3>
-                Your record appears to show an
-                involuntarily inactive status.
-              </h3>
-
-              <p>
-                Reactivation requirements can
-                differ depending on how long the
-                license has been inactive. Verify
-                the live DBPR record before
-                selecting education.
-              </p>
-
-              <Link href="/courses#reactivation">
-                Understand Inactive License Options →
-              </Link>
-            </div>
-          ) : (
+          ) && (
             <div className="fl-license-renewal-question">
               <p className="eyebrow">
                 HELP ME FIND MY EDUCATION PATH
@@ -3136,9 +3123,10 @@ export function FloridaLicenseExpirationCheck() {
                       with DBPR before
                       purchasing education.
                     </p>
+
                     <Link href="/contact">
-                     Ask About Inactive License Options →
-                     </Link>
+                      Ask About Inactive License Options →
+                    </Link>
                   </div>
                 )}
 
