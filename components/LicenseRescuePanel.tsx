@@ -661,7 +661,11 @@ export function LicenseRescuePanel({
               transform 0.2s ease,
               box-shadow 0.2s ease;
           }
-
+.license-rescue-action--primary {
+  background: #7a2c25;
+  border-color: #7a2c25;
+  color: #fffaf5;
+}
           .license-rescue-checklist {
             margin-top: 20px;
             padding: 22px;
@@ -1004,7 +1008,7 @@ this weekly DBPR record:{" "}
         </button>
 
         <a
-          className="license-rescue-action"
+          className="license-rescue-action license-rescue-action--primary"
           href="https://www.myfloridalicense.com/portalsearches/VerifyLicensee"
           target="_blank"
           rel="noopener noreferrer"
