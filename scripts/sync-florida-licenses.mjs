@@ -7,6 +7,9 @@ const PUBLIC_RECORDS_URL =
 const SOURCE_URL =
   "https://www2.myfloridalicense.com/sto/file_download/extracts/REALESTATE2501LICENSE_1.csv";
 
+const INSTRUCTOR_SOURCE_URL =
+  "https://www2.myfloridalicense.com/sto/file_download/extracts/RealEstateSchoolLicense.csv";
+
 const PUBLIC_OUTPUT_DIR = path.join(
   process.cwd(),
   "public",
@@ -27,6 +30,7 @@ const META_FILE = path.join(
 
 const licenseBuckets = new Map();
 const nameBuckets = new Map();
+const seenLicenseNumbers = new Set();
 
 const suffixes = new Set([
   "JR",
@@ -54,10 +58,7 @@ function parseCsvLine(line) {
     const character = line[i];
 
     if (character === '"') {
-      if (
-        inQuotes &&
-        line[i + 1] === '"'
-      ) {
+      if (inQuotes && line[i + 1] === '"') {
         current += '"';
         i += 1;
       } else {
@@ -67,99 +68,57 @@ function parseCsvLine(line) {
       continue;
     }
 
-    if (
-      character === "," &&
-      !inQuotes
-    ) {
-      fields.push(
-        current.trim(),
-      );
-
+    if (character === "," && !inQuotes) {
+      fields.push(current.trim());
       current = "";
-
       continue;
     }
 
     current += character;
   }
 
-  fields.push(
-    current.trim(),
-  );
+  fields.push(current.trim());
 
   return fields;
 }
 
 function clean(value) {
-  return String(
-    value ?? "",
-  ).trim();
+  return String(value ?? "").trim();
 }
 
-function normalizeSearchText(
-  value,
-) {
+function normalizeSearchText(value) {
   return clean(value)
     .normalize("NFD")
-    .replace(
-      /[\u0300-\u036f]/g,
-      "",
-    )
+    .replace(/[\u0300-\u036f]/g, "")
     .toUpperCase()
     .replace(/&/g, " AND ")
-    .replace(
-      /[^A-Z0-9]+/g,
-      " ",
-    )
+    .replace(/[^A-Z0-9]+/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
 
-function removeSuffixTokens(
-  tokens,
-) {
+function removeSuffixTokens(tokens) {
   return tokens.filter(
-    (token) =>
-      !suffixes.has(token),
+    (token) => !suffixes.has(token),
   );
 }
 
-function parseLicensedName(
-  value,
-) {
-  const originalName =
-    clean(value);
+function parseLicensedName(value) {
+  const originalName = clean(value);
 
   if (!originalName) {
     return null;
   }
 
-  const commaParts =
-    originalName
-      .split(",")
-      .map((part) =>
-        normalizeSearchText(
-          part,
-        ),
-      )
-      .filter(Boolean);
+  const commaParts = originalName
+    .split(",")
+    .map((part) =>
+      normalizeSearchText(part),
+    )
+    .filter(Boolean);
 
-  /*
-    DBPR commonly stores individual names as:
-
-    SMITH, BRIAN NEIL
-    SMITH, BRIAN N
-    SMITH, JESSICA
-
-    The first comma-separated section is treated
-    as the licensed last name. Everything after
-    that is the given-name portion.
-  */
-  if (
-    commaParts.length >= 2
-  ) {
-    const lastName =
-      commaParts[0];
+  if (commaParts.length >= 2) {
+    const lastName = commaParts[0];
 
     const givenTokens =
       removeSuffixTokens(
@@ -198,10 +157,6 @@ function parseLicensedName(
     };
   }
 
-  /*
-    Some records may not contain a comma.
-    Use a conventional FIRST ... LAST fallback.
-  */
   const tokens =
     removeSuffixTokens(
       normalizeSearchText(
@@ -211,9 +166,7 @@ function parseLicensedName(
         .filter(Boolean),
     );
 
-  if (
-    tokens.length < 2
-  ) {
+  if (tokens.length < 2) {
     return null;
   }
 
@@ -243,20 +196,13 @@ function parseLicensedName(
   };
 }
 
-function normalizeLicenseCode(
-  value,
-) {
+function normalizeLicenseCode(value) {
   return clean(value)
     .toUpperCase()
-    .replace(
-      /[^A-Z]/g,
-      "",
-    );
+    .replace(/[^A-Z]/g, "");
 }
 
-function inferLicenseCode(
-  rank,
-) {
+function inferLicenseCode(rank) {
   const normalizedRank =
     clean(rank).toLowerCase();
 
@@ -276,7 +222,32 @@ function inferLicenseCode(
     return "BK";
   }
 
+  if (
+    normalizedRank.includes(
+      "instructor",
+    )
+  ) {
+    return "ZH";
+  }
+
   return "";
+}
+
+function isSupportedRank(rank) {
+  const normalizedRank =
+    clean(rank).toLowerCase();
+
+  return (
+    normalizedRank.includes(
+      "sales associate",
+    ) ||
+    normalizedRank.includes(
+      "broker",
+    ) ||
+    normalizedRank.includes(
+      "instructor",
+    )
+  );
 }
 
 function getLicenseBucketKey(
@@ -366,15 +337,6 @@ function addNameRecord(
     );
   }
 
-  /*
-    Private search index only.
-
-    No mailing/street address is retained.
-
-    mn = middle name as supplied by DBPR
-    m  = middle initial
-    c  = county name
-  */
   nameBuckets
     .get(bucketKey)
     .push({
@@ -491,10 +453,12 @@ async function establishDbprSession() {
 }
 
 async function downloadLicenseFile(
+  sourceUrl,
+  label,
   cookieHeader,
 ) {
   console.log(
-    "Downloading Florida DBPR real estate license data...",
+    `Downloading Florida DBPR ${label} data...`,
   );
 
   const headers = {
@@ -512,7 +476,7 @@ async function downloadLicenseFile(
 
   const response =
     await fetch(
-      SOURCE_URL,
+      sourceUrl,
       {
         headers,
         redirect:
@@ -522,7 +486,7 @@ async function downloadLicenseFile(
 
   if (!response.ok) {
     throw new Error(
-      `DBPR download returned HTTP ${response.status}`,
+      `DBPR ${label} download returned HTTP ${response.status}`,
     );
   }
 
@@ -566,8 +530,7 @@ async function writeLicenseBuckets() {
     const [
       bucketKey,
       records,
-    ] of
-    licenseBuckets.entries()
+    ] of licenseBuckets
   ) {
     records.sort(
       (a, b) =>
@@ -597,8 +560,7 @@ async function writeNameBuckets() {
     const [
       bucketKey,
       records,
-    ] of
-    nameBuckets.entries()
+    ] of nameBuckets
   ) {
     records.sort(
       (a, b) => {
@@ -646,9 +608,265 @@ async function writeNameBuckets() {
   }
 }
 
-async function syncFloridaLicenses() {
-  await prepareOutputDirectories();
+function createSyncState() {
+  return {
+    recordCount: 0,
+    skippedRows: 0,
+    nameIndexRecordCount: 0,
+  };
+}
 
+function processLine(
+  rawLine,
+  state,
+) {
+  const line =
+    rawLine
+      .replace(
+        /\r$/,
+        "",
+      )
+      .trim();
+
+  if (!line) {
+    return;
+  }
+
+  const fields =
+    parseCsvLine(
+      line,
+    );
+
+  if (
+    fields.length < 17
+  ) {
+    state.skippedRows += 1;
+    return;
+  }
+
+  const licenseNumberField =
+    clean(
+      fields[11],
+    );
+
+  const loweredLicenseField =
+    licenseNumberField
+      .toLowerCase();
+
+  if (
+    loweredLicenseField.includes(
+      "license number",
+    ) ||
+    loweredLicenseField.includes(
+      "lic #",
+    )
+  ) {
+    return;
+  }
+
+  const numericLicenseNumber =
+    licenseNumberField.replace(
+      /\D/g,
+      "",
+    );
+
+  if (
+    !numericLicenseNumber
+  ) {
+    state.skippedRows += 1;
+    return;
+  }
+
+  const rank =
+    clean(
+      fields[3],
+    );
+
+  if (
+    !isSupportedRank(
+      rank,
+    )
+  ) {
+    return;
+  }
+
+  const countyName =
+    clean(
+      fields[10],
+    );
+
+  let licenseCode =
+    normalizeLicenseCode(
+      fields[0],
+    );
+
+  if (
+    !licenseCode ||
+    licenseCode.length > 3
+  ) {
+    licenseCode =
+      inferLicenseCode(
+        rank,
+      );
+  }
+
+  if (!licenseCode) {
+    state.skippedRows += 1;
+    return;
+  }
+
+  const fullLicenseNumber =
+    `${licenseCode}${numericLicenseNumber}`
+      .toUpperCase();
+
+  if (
+    seenLicenseNumbers.has(
+      fullLicenseNumber,
+    )
+  ) {
+    return;
+  }
+
+  seenLicenseNumbers.add(
+    fullLicenseNumber,
+  );
+
+  const record = {
+    i:
+      fullLicenseNumber,
+    n:
+      clean(
+        fields[1],
+      ),
+    r:
+      rank,
+    p:
+      clean(
+        fields[12],
+      ),
+    s:
+      clean(
+        fields[13],
+      ),
+    o:
+      clean(
+        fields[14],
+      ),
+    e:
+      clean(
+        fields[15],
+      ),
+    x:
+      clean(
+        fields[16],
+      ),
+  };
+
+  addLicenseRecord(
+    record,
+  );
+
+  if (
+    addNameRecord(
+      record,
+      countyName,
+    )
+  ) {
+    state.nameIndexRecordCount +=
+      1;
+  }
+
+  state.recordCount += 1;
+}
+
+async function processResponseBody(
+  response,
+  state,
+) {
+  if (!response.body) {
+    throw new Error(
+      "DBPR response did not contain a readable body.",
+    );
+  }
+
+  const decoder =
+    new TextDecoder(
+      "utf-8",
+    );
+
+  const reader =
+    response.body.getReader();
+
+  let buffer = "";
+
+  while (true) {
+    const {
+      value,
+      done,
+    } =
+      await reader.read();
+
+    if (value) {
+      buffer +=
+        decoder.decode(
+          value,
+          {
+            stream:
+              !done,
+          },
+        );
+    }
+
+    let newlineIndex =
+      buffer.indexOf(
+        "\n",
+      );
+
+    while (
+      newlineIndex !==
+      -1
+    ) {
+      const line =
+        buffer.slice(
+          0,
+          newlineIndex,
+        );
+
+      buffer =
+        buffer.slice(
+          newlineIndex + 1,
+        );
+
+      processLine(
+        line,
+        state,
+      );
+
+      newlineIndex =
+        buffer.indexOf(
+          "\n",
+        );
+    }
+
+    if (done) {
+      break;
+    }
+  }
+
+  buffer +=
+    decoder.decode();
+
+  if (
+    buffer.trim()
+  ) {
+    processLine(
+      buffer,
+      state,
+    );
+  }
+}
+
+async function syncFloridaLicenses() {
   const fetchedAt =
     new Date().toISOString();
 
@@ -658,220 +876,61 @@ async function syncFloridaLicenses() {
 
     const response =
       await downloadLicenseFile(
+        SOURCE_URL,
+        "real estate license",
         cookieHeader,
       );
 
-    if (!response.body) {
-      throw new Error(
-        "DBPR response did not contain a readable body.",
+    let instructorResponse =
+      null;
+
+    let instructorSourceError =
+      null;
+
+    try {
+      instructorResponse =
+        await downloadLicenseFile(
+          INSTRUCTOR_SOURCE_URL,
+          "real estate instructor",
+          cookieHeader,
+        );
+    } catch (error) {
+      instructorSourceError =
+        error instanceof Error
+          ? error.message
+          : "Unknown instructor download error";
+
+      console.warn(
+        "Florida DBPR instructor download failed. Continuing with the main license file.",
+        error,
       );
     }
 
-    console.log(
-      `DBPR download succeeded with HTTP ${response.status}.`,
+    await prepareOutputDirectories();
+
+    const state =
+      createSyncState();
+
+    await processResponseBody(
+      response,
+      state,
     );
-
-    const decoder =
-      new TextDecoder(
-        "utf-8",
-      );
-
-    const reader =
-      response.body.getReader();
-
-    let buffer = "";
-    let recordCount = 0;
-    let skippedRows = 0;
-    let nameIndexRecordCount =
-      0;
-
-    function processLine(
-      rawLine,
-    ) {
-      const line =
-        rawLine
-          .replace(
-            /\r$/,
-            "",
-          )
-          .trim();
-
-      if (!line) {
-        return;
-      }
-
-      const fields =
-        parseCsvLine(
-          line,
-        );
-
-      if (
-        fields.length < 17
-      ) {
-        skippedRows += 1;
-
-        return;
-      }
-
-      const licenseNumberField =
-        clean(fields[11]);
-
-      if (
-        licenseNumberField
-          .toLowerCase()
-          .includes(
-            "license number",
-          ) ||
-        licenseNumberField
-          .toLowerCase()
-          .includes(
-            "lic #",
-          )
-      ) {
-        return;
-      }
-
-      const numericLicenseNumber =
-        licenseNumberField.replace(
-          /\D/g,
-          "",
-        );
-
-      if (
-        !numericLicenseNumber
-      ) {
-        skippedRows += 1;
-
-        return;
-      }
-
-      const rank =
-        clean(fields[3]);
-
-      const countyName =
-        clean(fields[10]);
-
-      let licenseCode =
-        normalizeLicenseCode(
-          fields[0],
-        );
-
-      if (
-        !licenseCode ||
-        licenseCode.length >
-          3
-      ) {
-        licenseCode =
-          inferLicenseCode(
-            rank,
-          );
-      }
-
-      const fullLicenseNumber =
-        `${licenseCode}${numericLicenseNumber}`.toUpperCase();
-
-      /*
-        Public number lookup.
-        Addresses and county remain excluded.
-      */
-      const record = {
-        i: fullLicenseNumber,
-        n: clean(fields[1]),
-        r: rank,
-        p: clean(fields[12]),
-        s: clean(fields[13]),
-        o: clean(fields[14]),
-        e: clean(fields[15]),
-        x: clean(fields[16]),
-      };
-
-      addLicenseRecord(
-        record,
-      );
-
-      if (
-        addNameRecord(
-          record,
-          countyName,
-        )
-      ) {
-        nameIndexRecordCount +=
-          1;
-      }
-
-      recordCount += 1;
-    }
-
-    while (true) {
-      const {
-        value,
-        done,
-      } =
-        await reader.read();
-
-      if (value) {
-        buffer +=
-          decoder.decode(
-            value,
-            {
-              stream:
-                !done,
-            },
-          );
-      }
-
-      let newlineIndex =
-        buffer.indexOf(
-          "\n",
-        );
-
-      while (
-        newlineIndex !==
-        -1
-      ) {
-        const line =
-          buffer.slice(
-            0,
-            newlineIndex,
-          );
-
-        buffer =
-          buffer.slice(
-            newlineIndex + 1,
-          );
-
-        processLine(
-          line,
-        );
-
-        newlineIndex =
-          buffer.indexOf(
-            "\n",
-          );
-      }
-
-      if (done) {
-        break;
-      }
-    }
-
-    buffer +=
-      decoder.decode();
 
     if (
-      buffer.trim()
+      instructorResponse
     ) {
-      processLine(
-        buffer,
+      await processResponseBody(
+        instructorResponse,
+        state,
       );
     }
 
     console.log(
-      `Processed ${recordCount.toLocaleString()} Florida real estate license records.`,
+      `Processed ${state.recordCount.toLocaleString()} supported Florida real estate records.`,
     );
 
     console.log(
-      `Indexed ${nameIndexRecordCount.toLocaleString()} records for private name search.`,
+      `Indexed ${state.nameIndexRecordCount.toLocaleString()} records for private name search.`,
     );
 
     await writeLicenseBuckets();
@@ -888,34 +947,68 @@ async function syncFloridaLicenses() {
         "content-length",
       ) || null;
 
+    const instructorLastModified =
+      instructorResponse
+        ?.headers
+        .get(
+          "last-modified",
+        ) || null;
+
+    const instructorContentLength =
+      instructorResponse
+        ?.headers
+        .get(
+          "content-length",
+        ) || null;
+
     await writeMeta({
-      available: true,
+      available:
+        true,
       source:
         "Florida DBPR public records",
       sourceUrl:
         SOURCE_URL,
+      instructorSourceUrl:
+        INSTRUCTOR_SOURCE_URL,
+      instructorSourceAvailable:
+        Boolean(
+          instructorResponse,
+        ),
+      instructorSourceError,
       fetchedAt,
       sourceLastModified:
         lastModified,
       sourceContentLength:
         contentLength,
-      recordCount,
+      instructorSourceLastModified:
+        instructorLastModified,
+      instructorSourceContentLength:
+        instructorContentLength,
+      recordCount:
+        state.recordCount,
       bucketCount:
         licenseBuckets.size,
-      skippedRows,
+      skippedRows:
+        state.skippedRows,
       nullAndVoidIncluded:
         false,
       nameSearchIndex: {
-        available: true,
+        available:
+          true,
         recordCount:
-          nameIndexRecordCount,
+          state.nameIndexRecordCount,
         bucketCount:
           nameBuckets.size,
-        public: false,
+        public:
+          false,
         middleNameAvailable:
           true,
         countyAvailable:
           true,
+        instructorRecordsIncluded:
+          Boolean(
+            instructorResponse,
+          ),
       },
       fields: {
         i:
@@ -950,12 +1043,23 @@ async function syncFloridaLicenses() {
       error,
     );
 
+    await fs.mkdir(
+      PUBLIC_OUTPUT_DIR,
+      {
+        recursive:
+          true,
+      },
+    );
+
     await writeMeta({
-      available: false,
+      available:
+        false,
       source:
         "Florida DBPR public records",
       sourceUrl:
         SOURCE_URL,
+      instructorSourceUrl:
+        INSTRUCTOR_SOURCE_URL,
       fetchedAt,
       error:
         error instanceof Error
@@ -964,8 +1068,10 @@ async function syncFloridaLicenses() {
       nullAndVoidIncluded:
         false,
       nameSearchIndex: {
-        available: false,
-        public: false,
+        available:
+          false,
+        public:
+          false,
       },
     });
   }
