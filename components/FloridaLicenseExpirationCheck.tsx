@@ -2246,6 +2246,7 @@ export function FloridaLicenseExpirationCheck() {
                 <p className="fl-name-panel-copy">
                   What kind of Florida real
                   estate license do you have?
+                </p>
 <div className="fl-name-type-buttons">
   <button
     type="button"
