@@ -55,7 +55,8 @@ type RenewalChoice =
 
 type NameLicenseType =
   | "sales-associate"
-  | "broker";
+  | "broker"
+  | "instructor";
 
 type NameSearchStage =
   | "form"
@@ -2245,54 +2246,67 @@ export function FloridaLicenseExpirationCheck() {
                 <p className="fl-name-panel-copy">
                   What kind of Florida real
                   estate license do you have?
-                </p>
+<div className="fl-name-type-buttons">
+  <button
+    type="button"
+    className="fl-name-secondary-button"
+    onClick={() =>
+      chooseLicenseType(
+        "sales-associate",
+      )
+    }
+    disabled={
+      nameIsSearching
+    }
+  >
+    Sales Associate
+  </button>
 
-                <div className="fl-name-type-buttons">
-                  <button
-                    type="button"
-                    className="fl-name-secondary-button"
-                    onClick={() =>
-                      chooseLicenseType(
-                        "sales-associate",
-                      )
-                    }
-                    disabled={
-                      nameIsSearching
-                    }
-                  >
-                    Sales Associate
-                  </button>
+  <button
+    type="button"
+    className="fl-name-secondary-button"
+    onClick={() =>
+      chooseLicenseType(
+        "broker",
+      )
+    }
+    disabled={
+      nameIsSearching
+    }
+  >
+    Broker / Broker Associate
+  </button>
 
-                  <button
-                    type="button"
-                    className="fl-name-secondary-button"
-                    onClick={() =>
-                      chooseLicenseType(
-                        "broker",
-                      )
-                    }
-                    disabled={
-                      nameIsSearching
-                    }
-                  >
-                    Broker / Broker Associate
-                  </button>
+  <button
+    type="button"
+    className="fl-name-secondary-button"
+    onClick={() =>
+      chooseLicenseType(
+        "instructor",
+      )
+    }
+    disabled={
+      nameIsSearching
+    }
+  >
+    Real Estate Instructor
+  </button>
 
-                  <button
-                    type="button"
-                    className="fl-name-secondary-button"
-                    onClick={
-                      licenseTypeUnknown
-                    }
-                    disabled={
-                      nameIsSearching
-                    }
-                  >
-                    I&apos;m Not Sure
-                  </button>
-                </div>
-              </div>
-            )}
+  <button
+    type="button"
+    className="fl-name-secondary-button"
+    onClick={
+      licenseTypeUnknown
+    }
+    disabled={
+      nameIsSearching
+    }
+  >
+    I&apos;m Not Sure
+  </button>
+</div>
+</div>
+)}
 
           {nameStage ===
             "middle-name" && (
