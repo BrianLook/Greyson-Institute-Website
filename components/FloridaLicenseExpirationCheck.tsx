@@ -381,7 +381,16 @@ function isBroker(
     .toLowerCase()
     .includes("broker");
 }
-
+function isInstructor(
+  record: LicenseRecord,
+) {
+  return record.r
+    .trim()
+    .toLowerCase()
+    .includes(
+      "instructor",
+    );
+}
 function isActive(
   record: LicenseRecord,
 ) {
@@ -2905,16 +2914,109 @@ export function FloridaLicenseExpirationCheck() {
             reference and may lag recent changes.
           </div>
 
-          <LicenseRescuePanel
-            licenseNumber={result.i}
-            licenseType={result.r}
-            primaryStatus={result.p}
-            secondaryStatus={result.s}
-            statusEffectiveDate={result.e}
-            expirationDate={result.x}
-          />
+          {!isInstructor(
+  result,
+) && (
+  <LicenseRescuePanel
+    licenseNumber={result.i}
+    licenseType={result.r}
+    primaryStatus={result.p}
+    secondaryStatus={result.s}
+    statusEffectiveDate={result.e}
+    expirationDate={result.x}
+  />
+)}
+{isInstructor(
+  result,
+) && (
+  <div className="fl-license-renewal-question">
+    <p className="eyebrow">
+      INSTRUCTOR PERMIT EDUCATION PATH
+    </p>
 
-          {!isInvoluntarilyInactive(
+    {isInvoluntarilyInactive(
+      result,
+    ) ? (
+      <>
+        <h3>
+          Your instructor permit has a
+          different reactivation requirement.
+        </h3>
+
+        <p>
+          DBPR currently requires two Core Law
+          courses and two Teaching Techniques
+          courses for an involuntarily inactive
+          real estate instructor permit.
+        </p>
+
+        <div className="fl-license-guidance">
+          <p>
+            <strong>
+              One Core Law + Teaching Techniques
+              set applies to the missed renewal
+              cycle, and another set applies to
+              the current renewal cycle.
+            </strong>
+          </p>
+
+          <p>
+            Verify the live DBPR record before
+            enrolling.
+          </p>
+
+          <Link href="/contact">
+            Ask About Instructor Reactivation →
+          </Link>
+        </div>
+      </>
+    ) : (
+      <>
+        <h3>
+          Real Estate Instructor Permit
+        </h3>
+
+        <p>
+          Florida real estate school instructors
+          generally renew their instructor
+          permit with 7 hours of continuing
+          education.
+        </p>
+
+        <div className="fl-license-guidance">
+          <p>
+            <strong>
+              3 hours Core Law + 4 hours
+              Teaching Techniques
+            </strong>
+          </p>
+
+          <p>
+            The Core Law course may also satisfy
+            the Core Law portion of your regular
+            real estate license renewal when
+            completed in the appropriate renewal
+            cycle. Teaching Techniques must be
+            taken through another instructor.
+          </p>
+
+          <Link href="/contact">
+            Ask About Instructor CE →
+          </Link>
+        </div>
+
+        <p>
+          If your initial instructor permit was
+          issued fewer than six months before
+          its first expiration date, the
+          instructor continuing-education
+          requirement does not apply to that
+          first renewal.
+        </p>
+      </>
+    )}
+  </div>
+)}          {!isInvoluntarilyInactive(
   result,
 ) && (
   <LicenseRenewalCalendarButton
@@ -2973,10 +3075,12 @@ export function FloridaLicenseExpirationCheck() {
           </div>
 
           {!isInvoluntarilyInactive(
-            result,
-          ) && (
-            <div className="fl-license-renewal-question">
-              <p className="eyebrow">
+  result,
+) &&
+  !isInstructor(
+    result,
+  ) && (
+<div className="fl-license-renewal-question">              <p className="eyebrow">
                 HELP ME FIND MY EDUCATION PATH
               </p>
 
