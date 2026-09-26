@@ -526,7 +526,7 @@ export default function FloridaLicenseExpirationPage() {
     }}
   >
     Your instructor permit has its own
-    continuing-education requirement.
+    continuing education requirement.
   </h2>
 
   <p
@@ -618,7 +618,7 @@ export default function FloridaLicenseExpirationPage() {
     }}
   >
     <strong>
-      Two important exceptions
+      Important instructor renewal notes
     </strong>
 
     <p
@@ -628,10 +628,11 @@ export default function FloridaLicenseExpirationPage() {
       }}
     >
       If your initial instructor permit was
-      issued less than six months before the
-      beginning of your first renewal permit,
-      DBPR does not require the 7 hours for
-      that initial instructor-permit renewal.
+issued fewer than six months before its
+first expiration date, DBPR does not
+require the 7 hours of instructor
+continuing education for that first
+renewal.
     </p>
 
     <p
