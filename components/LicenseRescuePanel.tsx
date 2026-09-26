@@ -813,8 +813,8 @@ export function LicenseRescuePanel({
           </div>
 
           <p className="license-rescue-deadline">
-            Final rescue deadline calculated
-            from this weekly record:{" "}
+            Final rescue deadline based on
+this weekly DBPR record:{" "}
             <strong>
               {formatDate(
                 finalRescueDeadline,
