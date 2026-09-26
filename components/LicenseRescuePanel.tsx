@@ -11,10 +11,10 @@ type LicenseRescuePanelProps = {
   expirationDate: string;
 };
 
-type DurationBucket =
-  | "under-12"
-  | "12-24"
-  | "24-plus"
+type RescuePath =
+  | "14-hour"
+  | "28-hour"
+  | "past-window"
   | "unknown";
 
 const DAY_MS =
@@ -190,16 +190,10 @@ function parseDbprDate(
 }
 
 function formatDate(
-  value: string,
+  date: Date | null,
 ) {
-  const parsed =
-    parseDbprDate(
-      value,
-    );
-
-  if (!parsed) {
-    return value ||
-      "Not listed";
+  if (!date) {
+    return "Unable to calculate";
   }
 
   return new Intl.DateTimeFormat(
@@ -209,8 +203,16 @@ function formatDate(
       day: "numeric",
       year: "numeric",
     },
-  ).format(
-    parsed,
+  ).format(date);
+}
+
+function formatDbprDate(
+  value: string,
+) {
+  return formatDate(
+    parseDbprDate(
+      value,
+    ),
   );
 }
 
@@ -237,81 +239,28 @@ function addYears(
   );
 }
 
-function getDurationBucket(
-  statusEffectiveDate: string,
-): DurationBucket {
-  const effective =
-    parseDbprDate(
-      statusEffectiveDate,
-    );
-
-  if (!effective) {
-    return "unknown";
-  }
-
-  const today =
-    startOfToday();
-
-  const oneYear =
-    addYears(
-      effective,
-      1,
-    );
-
-  const twoYears =
-    addYears(
-      effective,
-      2,
-    );
-
-  if (
-    today <= oneYear
-  ) {
-    return "under-12";
-  }
-
-  if (
-    today < twoYears
-  ) {
-    return "12-24";
-  }
-
-  return "24-plus";
-}
-
-function getDaysUntil(
-  expirationDate: string,
+function daysBetween(
+  from: Date,
+  to: Date,
 ) {
-  const expiration =
-    parseDbprDate(
-      expirationDate,
+  const fromUtc =
+    Date.UTC(
+      from.getFullYear(),
+      from.getMonth(),
+      from.getDate(),
     );
 
-  if (!expiration) {
-    return null;
-  }
-
-  const today =
-    startOfToday();
-
-  const todayUtc =
+  const toUtc =
     Date.UTC(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate(),
-    );
-
-  const expirationUtc =
-    Date.UTC(
-      expiration.getFullYear(),
-      expiration.getMonth(),
-      expiration.getDate(),
+      to.getFullYear(),
+      to.getMonth(),
+      to.getDate(),
     );
 
   return Math.round(
     (
-      expirationUtc -
-      todayUtc
+      toUtc -
+      fromUtc
     ) / DAY_MS,
   );
 }
@@ -328,6 +277,25 @@ function statusText(
     .join(" / ");
 }
 
+function isInvoluntaryStatus(
+  primaryStatus: string,
+  secondaryStatus: string,
+) {
+  const status =
+    `${primaryStatus} ${secondaryStatus}`
+      .trim()
+      .toLowerCase();
+
+  return (
+    status.includes(
+      "inactive",
+    ) &&
+    status.includes(
+      "invol",
+    )
+  );
+}
+
 export function LicenseRescuePanel({
   licenseNumber,
   licenseType,
@@ -337,62 +305,85 @@ export function LicenseRescuePanel({
   expirationDate,
 }: LicenseRescuePanelProps) {
   const [
-    manualDuration,
-    setManualDuration,
-  ] =
-    useState<DurationBucket | null>(
-      null,
-    );
-
-  const [
     showChecklist,
     setShowChecklist,
   ] = useState(false);
 
-  const combinedStatus =
-    `${primaryStatus} ${secondaryStatus}`
-      .trim()
-      .toLowerCase();
-
   const isInvoluntary =
-    combinedStatus.includes(
-      "involuntary",
-    ) ||
-    combinedStatus.includes(
-      "involuntarily",
+    isInvoluntaryStatus(
+      primaryStatus,
+      secondaryStatus,
     );
 
   if (!isInvoluntary) {
     return null;
   }
 
-  const automaticDuration =
-    getDurationBucket(
-      statusEffectiveDate,
-    );
+  const today =
+    startOfToday();
 
-  const duration =
-    manualDuration ||
-    automaticDuration;
-
-  const daysUntilDeadline =
-    getDaysUntil(
+  const originalExpiration =
+    parseDbprDate(
       expirationDate,
     );
 
+  const oneYearMark =
+    originalExpiration
+      ? addYears(
+          originalExpiration,
+          1,
+        )
+      : null;
+
+  const finalRescueDeadline =
+    originalExpiration
+      ? addYears(
+          originalExpiration,
+          2,
+        )
+      : null;
+
+  let rescuePath:
+    RescuePath =
+      "unknown";
+
+  if (
+    originalExpiration &&
+    oneYearMark &&
+    finalRescueDeadline
+  ) {
+    if (
+      today <= oneYearMark
+    ) {
+      rescuePath =
+        "14-hour";
+    } else if (
+      today <=
+      finalRescueDeadline
+    ) {
+      rescuePath =
+        "28-hour";
+    } else {
+      rescuePath =
+        "past-window";
+    }
+  }
+
+  const daysRemaining =
+    finalRescueDeadline
+      ? daysBetween(
+          today,
+          finalRescueDeadline,
+        )
+      : null;
+
   const deadlinePassed =
-    daysUntilDeadline !==
-      null &&
-    daysUntilDeadline < 0;
+    rescuePath ===
+    "past-window";
 
   const deadlineToday =
-    daysUntilDeadline === 0;
-
-  const urgent =
-    daysUntilDeadline !==
-      null &&
-    daysUntilDeadline >= 0 &&
-    daysUntilDeadline <= 30;
+    daysRemaining === 0 &&
+    !deadlinePassed;
 
   const needsBrokerRegistration =
     licenseType
@@ -406,118 +397,126 @@ export function LicenseRescuePanel({
         "broker associate",
       );
 
-  let educationTitle =
-    "";
-
-  let educationCopy =
-    "";
-
-  if (
-    deadlinePassed ||
-    duration ===
-      "24-plus"
-  ) {
-    educationTitle =
-      "Do not choose a reactivation course from this weekly record alone.";
-
-    educationCopy =
-      "The deadline shown on this record has passed, or the status may be at or beyond the two-year involuntary-inactivity limit. Verify the live DBPR record before purchasing education.";
-  } else if (
-    duration ===
-      "under-12"
-  ) {
-    educationTitle =
-      "Possible education path: at least 14 hours of prescribed continuing education.";
-
-    educationCopy =
-      "Florida law provides a 14-hour reactivation path for a license that has been involuntarily inactive for 12 months or less. Confirm the exact current requirement on your live DBPR record before enrolling.";
-  } else if (
-    duration ===
-      "12-24"
-  ) {
-    educationTitle =
-      "Likely education path: 28-hour reactivation education.";
-
-    educationCopy =
-      "Florida law provides a 28-hour reactivation requirement when a license has been involuntarily inactive for more than 12 months but fewer than 24 months. Complete all DBPR renewal requirements by the deadline shown on the official record.";
-  }
-
   return (
-    <section
-      className={
-        urgent
-          ? "license-rescue license-rescue--urgent"
-          : "license-rescue"
-      }
-    >
+    <section className="license-rescue">
       <style>
         {`
           .license-rescue {
             margin: 4px 28px 26px;
-            padding: clamp(24px, 4vw, 32px);
-            border: 1px solid rgba(125, 95, 58, 0.34);
-            border-left: 4px solid #7d5f3a;
-            background: #f3ecdf;
+            padding: clamp(24px, 4vw, 34px);
+            border: 1px solid rgba(155, 58, 50, 0.5);
+            border-left: 6px solid #9b3a32;
+            background: #f7ece8;
             color: #111717;
           }
 
-          .license-rescue--urgent {
-            border-color: rgba(138, 45, 37, 0.34);
-            border-left-color: #8a2d25;
-            background: #f7ece8;
+          .license-rescue-warning-label {
+            margin: 0 0 10px;
+            color: #7a2c25;
+            font-size: 0.72rem;
+            font-weight: 850;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
           }
 
           .license-rescue-title {
-            max-width: 760px;
+            max-width: 780px;
             margin: 0;
             color: #111717;
-            font-family: var(--font-serif), Georgia, serif;
-            font-size: clamp(1.7rem, 3vw, 2.35rem);
+            font-family:
+              var(--font-serif),
+              Georgia,
+              serif;
+            font-size:
+              clamp(
+                1.8rem,
+                3.5vw,
+                2.6rem
+              );
             line-height: 1.12;
           }
 
           .license-rescue-status {
-            margin: 12px 0 0;
+            margin: 14px 0 0;
             color: #4d4b46;
-            line-height: 1.6;
+            line-height: 1.65;
+          }
+
+          .license-rescue-countdown {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 22px;
+            padding: 16px 20px;
+            background: #7a2c25;
+            color: #fffaf5;
+          }
+
+          .license-rescue-countdown-number {
+            font-family:
+              var(--font-serif),
+              Georgia,
+              serif;
+            font-size:
+              clamp(
+                2.3rem,
+                6vw,
+                3.8rem
+              );
+            line-height: 0.95;
+          }
+
+          .license-rescue-countdown-label {
+            margin-top: 8px;
+            font-size: 0.72rem;
+            font-weight: 850;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
           }
 
           .license-rescue-deadline {
-            display: inline-flex;
             margin: 16px 0 0;
-            padding: 7px 11px;
-            border: 1px solid rgba(125, 95, 58, 0.34);
-            background: rgba(255, 255, 255, 0.48);
-            color: #6f5333;
-            font-size: 0.8rem;
-            font-weight: 750;
-          }
-
-          .license-rescue--urgent
-            .license-rescue-deadline {
-            border-color: rgba(138, 45, 37, 0.3);
             color: #7a2c25;
+            font-size: 0.94rem;
+            font-weight: 700;
+            line-height: 1.6;
           }
 
           .license-rescue-grid {
             display: grid;
             grid-template-columns:
-              repeat(2, minmax(0, 1fr));
+              repeat(
+                2,
+                minmax(0, 1fr)
+              );
             gap: 14px;
-            margin-top: 24px;
+            margin-top: 26px;
           }
 
           .license-rescue-card {
             padding: 20px;
-            border: 1px solid rgba(17, 23, 23, 0.13);
-            background: rgba(255, 255, 255, 0.5);
+            border:
+              1px solid
+              rgba(
+                122,
+                44,
+                37,
+                0.18
+              );
+            background:
+              rgba(
+                255,
+                255,
+                255,
+                0.62
+              );
           }
 
           .license-rescue-card-label {
             margin: 0 0 7px;
-            color: #7d5f3a;
+            color: #7a2c25;
             font-size: 0.67rem;
-            font-weight: 750;
+            font-weight: 800;
             letter-spacing: 0.13em;
             text-transform: uppercase;
           }
@@ -525,80 +524,41 @@ export function LicenseRescuePanel({
           .license-rescue-card-value {
             margin: 0;
             color: #111717;
+            font-family:
+              var(--font-serif),
+              Georgia,
+              serif;
+            font-size: 1.25rem;
             font-weight: 700;
-            line-height: 1.5;
+            line-height: 1.45;
           }
 
           .license-rescue-card-copy {
             margin: 8px 0 0;
             color: #5f5c56;
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             line-height: 1.6;
-          }
-
-          .license-rescue-question {
-            margin-top: 24px;
-            padding: 20px;
-            border: 1px solid rgba(17, 23, 23, 0.14);
-            background: rgba(255, 255, 255, 0.5);
-          }
-
-          .license-rescue-question h4 {
-            margin: 0 0 8px;
-            font-family: var(--font-serif), Georgia, serif;
-            font-size: 1.35rem;
-          }
-
-          .license-rescue-question p {
-            margin: 0;
-            color: #5f5c56;
-            line-height: 1.6;
-          }
-
-          .license-rescue-choice-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 16px;
-          }
-
-          .license-rescue-button,
-          .license-rescue-action {
-            min-height: 46px;
-            padding: 0 17px;
-            border: 1px solid #111717;
-            background: #faf7f1;
-            color: #111717;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font: inherit;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            transition:
-              background-color 0.2s ease,
-              color 0.2s ease,
-              transform 0.2s ease,
-              box-shadow 0.2s ease;
-          }
-
-          .license-rescue-button[aria-pressed="true"] {
-            border-color: #7d5f3a;
-            background: #eee6d9;
           }
 
           .license-rescue-education {
             margin-top: 24px;
             padding: 22px;
-            border-left: 3px solid #7d5f3a;
-            background: rgba(255, 255, 255, 0.58);
+            border-left:
+              4px solid
+              #9b3a32;
+            background:
+              rgba(
+                255,
+                255,
+                255,
+                0.65
+              );
           }
 
           .license-rescue-education h4 {
             margin: 0;
-            font-size: 1rem;
+            color: #111717;
+            font-size: 1.02rem;
             line-height: 1.55;
           }
 
@@ -609,21 +569,51 @@ export function LicenseRescuePanel({
           }
 
           .license-rescue-first-renewal-note {
-            margin-top: 16px;
-            padding: 14px 16px;
-            border: 1px solid rgba(17, 23, 23, 0.13);
-            background: rgba(255, 255, 255, 0.45);
+            margin-top: 18px;
+            padding: 16px 18px;
+            border:
+              1px solid
+              rgba(
+                122,
+                44,
+                37,
+                0.2
+              );
+            background:
+              rgba(
+                255,
+                255,
+                255,
+                0.48
+              );
             color: #4d4b46;
             font-size: 0.84rem;
-            line-height: 1.6;
+            line-height: 1.65;
+          }
+
+          .license-rescue-first-renewal-note strong {
+            color: #7a2c25;
           }
 
           .license-rescue-costs {
             margin-top: 24px;
             display: grid;
             gap: 1px;
-            background: rgba(17, 23, 23, 0.12);
-            border: 1px solid rgba(17, 23, 23, 0.12);
+            border:
+              1px solid
+              rgba(
+                17,
+                23,
+                23,
+                0.12
+              );
+            background:
+              rgba(
+                17,
+                23,
+                23,
+                0.12
+              );
           }
 
           .license-rescue-cost-row {
@@ -651,17 +641,48 @@ export function LicenseRescuePanel({
             margin-top: 24px;
           }
 
+          .license-rescue-action {
+            min-height: 46px;
+            padding: 0 17px;
+            border: 1px solid #111717;
+            background: #faf7f1;
+            color: #111717;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition:
+              background-color 0.2s ease,
+              color 0.2s ease,
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
+          }
+
           .license-rescue-checklist {
             margin-top: 20px;
-            padding: 20px;
-            border: 1px solid rgba(17, 23, 23, 0.14);
+            padding: 22px;
+            border:
+              1px solid
+              rgba(
+                122,
+                44,
+                37,
+                0.2
+              );
             background: #faf7f1;
           }
 
           .license-rescue-checklist h4 {
             margin: 0 0 14px;
-            font-family: var(--font-serif), Georgia, serif;
-            font-size: 1.4rem;
+            font-family:
+              var(--font-serif),
+              Georgia,
+              serif;
+            font-size: 1.45rem;
           }
 
           .license-rescue-checklist ol {
@@ -673,7 +694,7 @@ export function LicenseRescuePanel({
           .license-rescue-checklist li {
             margin: 0 0 11px;
             padding-left: 4px;
-            line-height: 1.6;
+            line-height: 1.65;
           }
 
           .license-rescue-checklist li:last-child {
@@ -681,23 +702,35 @@ export function LicenseRescuePanel({
           }
 
           .license-rescue-disclaimer {
-            margin: 22px 0 0;
+            margin: 24px 0 0;
             padding-top: 18px;
-            border-top: 1px solid rgba(17, 23, 23, 0.14);
+            border-top:
+              1px solid
+              rgba(
+                122,
+                44,
+                37,
+                0.18
+              );
             color: #6e6b65;
             font-size: 0.78rem;
-            line-height: 1.6;
+            line-height: 1.65;
           }
 
           @media (hover: hover) and (pointer: fine) {
-            .license-rescue-button:hover,
             .license-rescue-action:hover {
               background: #111717;
               color: #f5f0e7;
-              transform: translateY(-2px);
+              transform:
+                translateY(-2px);
               box-shadow:
                 0 10px 24px
-                rgba(17, 23, 23, 0.12);
+                rgba(
+                  17,
+                  23,
+                  23,
+                  0.12
+                );
             }
           }
 
@@ -708,38 +741,41 @@ export function LicenseRescuePanel({
             }
 
             .license-rescue-grid {
-              grid-template-columns: 1fr;
+              grid-template-columns:
+                1fr;
             }
 
-            .license-rescue-choice-row,
             .license-rescue-actions {
               display: grid;
-              grid-template-columns: 1fr;
+              grid-template-columns:
+                1fr;
             }
 
-            .license-rescue-button,
             .license-rescue-action {
               width: 100%;
             }
 
             .license-rescue-cost-row {
-              grid-template-columns: 1fr;
+              grid-template-columns:
+                1fr;
               gap: 5px;
             }
           }
         `}
       </style>
 
-      <p className="eyebrow">
-        LICENSE RESCUE
+      <p className="license-rescue-warning-label">
+        ⚠ LICENSE ACTION REQUIRED
       </p>
 
       <h3 className="license-rescue-title">
         {deadlinePassed
-          ? "The deadline shown on this record has passed."
-          : `Your license needs action before ${formatDate(
-              expirationDate,
-            )}.`}
+          ? "This weekly record may be beyond Florida’s reactivation window."
+          : finalRescueDeadline
+            ? `Your license needs action before ${formatDate(
+                finalRescueDeadline,
+              )}.`
+            : "Your license needs immediate attention."}
       </h3>
 
       <p className="license-rescue-status">
@@ -754,156 +790,168 @@ export function LicenseRescuePanel({
         .
       </p>
 
-      {daysUntilDeadline !==
+      {daysRemaining !==
         null && (
-        <div className="license-rescue-deadline">
-          {deadlinePassed
-            ? `${Math.abs(
-                daysUntilDeadline,
-              ).toLocaleString()} ${
-                Math.abs(
-                  daysUntilDeadline,
-                ) === 1
-                  ? "day"
-                  : "days"
-              } past the deadline shown on this record`
-            : deadlineToday
-              ? "Deadline is today"
-              : `${daysUntilDeadline.toLocaleString()} ${
-                  daysUntilDeadline ===
-                  1
-                    ? "day"
-                    : "days"
-                } left before the DBPR deadline on this record`}
-        </div>
+        <>
+          <div className="license-rescue-countdown">
+            <span className="license-rescue-countdown-number">
+              {deadlinePassed
+                ? "0"
+                : daysRemaining.toLocaleString()}
+            </span>
+
+            <span className="license-rescue-countdown-label">
+              {deadlinePassed
+                ? "RESCUE WINDOW MAY HAVE ENDED"
+                : deadlineToday
+                  ? "DEADLINE IS TODAY"
+                  : daysRemaining ===
+                      1
+                    ? "DAY REMAINING"
+                    : "DAYS REMAINING"}
+            </span>
+          </div>
+
+          <p className="license-rescue-deadline">
+            Final rescue deadline calculated
+            from this weekly record:{" "}
+            <strong>
+              {formatDate(
+                finalRescueDeadline,
+              )}
+            </strong>
+            .
+          </p>
+        </>
       )}
 
       <div className="license-rescue-grid">
         <div className="license-rescue-card">
           <p className="license-rescue-card-label">
-            STATUS EFFECTIVE
+            ORIGINAL MISSED RENEWAL DATE
           </p>
 
           <p className="license-rescue-card-value">
-            {formatDate(
-              statusEffectiveDate,
-            )}
-          </p>
-
-          <p className="license-rescue-card-copy">
-            Greyson uses this date only to help
-            estimate which involuntary-inactive
-            education window may apply.
-          </p>
-        </div>
-
-        <div className="license-rescue-card">
-          <p className="license-rescue-card-label">
-            EXPIRATION / ACTION DEADLINE
-          </p>
-
-          <p className="license-rescue-card-value">
-            {formatDate(
+            {formatDbprDate(
               expirationDate,
             )}
           </p>
 
           <p className="license-rescue-card-copy">
-            Confirm this date on the live DBPR
+            This is the expiration date
+            currently shown in the weekly DBPR
+            record. It is not the new rescue
+            deadline.
+          </p>
+        </div>
+
+        <div className="license-rescue-card">
+          <p className="license-rescue-card-label">
+            FINAL RESCUE DEADLINE
+          </p>
+
+          <p className="license-rescue-card-value">
+            {formatDate(
+              finalRescueDeadline,
+            )}
+          </p>
+
+          <p className="license-rescue-card-copy">
+            Greyson calculates this from the
+            two-year involuntary-inactive window.
+            Verify the deadline on the live DBPR
             record before relying on it.
           </p>
         </div>
       </div>
 
-      {automaticDuration ===
-        "unknown" && (
-        <div className="license-rescue-question">
+      {rescuePath ===
+        "14-hour" && (
+        <div className="license-rescue-education">
           <h4>
-            How long has this license been
-            involuntarily inactive?
+            Likely education path: at least
+            14 hours of prescribed continuing
+            education.
           </h4>
 
           <p>
-            Greyson cannot determine the duration
-            reliably from this weekly record, so
-            choose the closest answer instead of
-            guessing at the course requirement.
+            This record appears to be within
+            the first 12 months of involuntary
+            inactivity. Education is only one
+            part of renewal. Confirm the live
+            DBPR record and the exact payment
+            requirements before enrolling.
           </p>
-
-          <div className="license-rescue-choice-row">
-            <button
-              type="button"
-              className="license-rescue-button"
-              aria-pressed={
-                manualDuration ===
-                "under-12"
-              }
-              onClick={() =>
-                setManualDuration(
-                  "under-12",
-                )
-              }
-            >
-              12 months or less
-            </button>
-
-            <button
-              type="button"
-              className="license-rescue-button"
-              aria-pressed={
-                manualDuration ===
-                "12-24"
-              }
-              onClick={() =>
-                setManualDuration(
-                  "12-24",
-                )
-              }
-            >
-              More than 12, fewer than 24 months
-            </button>
-
-            <button
-              type="button"
-              className="license-rescue-button"
-              aria-pressed={
-                manualDuration ===
-                "24-plus"
-              }
-              onClick={() =>
-                setManualDuration(
-                  "24-plus",
-                )
-              }
-            >
-              I&apos;m not sure / 24+ months
-            </button>
-          </div>
         </div>
       )}
 
-      {duration !==
-        "unknown" && (
+      {rescuePath ===
+        "28-hour" && (
         <div className="license-rescue-education">
           <h4>
-            {educationTitle}
+            Likely education path: 28-hour
+            reactivation education.
           </h4>
 
           <p>
-            {educationCopy}
+            This record appears to have been
+            involuntarily inactive for more
+            than 12 months while still inside
+            the two-year reactivation window.
+            Education is only one part of
+            renewal. Complete all required DBPR
+            renewal steps and payment by the
+            official deadline.
+          </p>
+        </div>
+      )}
+
+      {rescuePath ===
+        "past-window" && (
+        <div className="license-rescue-education">
+          <h4>
+            Do not purchase a 14-hour or
+            28-hour course based only on this
+            weekly record.
+          </h4>
+
+          <p>
+            The calculated two-year
+            reactivation window has passed.
+            Verify the live DBPR record
+            immediately to determine the
+            current status and available path.
+          </p>
+        </div>
+      )}
+
+      {rescuePath ===
+        "unknown" && (
+        <div className="license-rescue-education">
+          <h4>
+            Greyson cannot safely determine
+            the reactivation course from this
+            weekly record.
+          </h4>
+
+          <p>
+            Verify the license directly with
+            DBPR before purchasing education
+            or attempting renewal.
           </p>
         </div>
       )}
 
       <div className="license-rescue-first-renewal-note">
         <strong>
-          Was this your first renewal?
+          Important — was this your first renewal?
         </strong>{" "}
-        Missing required first-renewal post-license
-        education can follow a different path. Do
-        not purchase a 14-hour or 28-hour course
-        based only on this panel if the missed
-        deadline was your first renewal.
+        Missing required first-renewal
+        post-license education can follow a
+        different path. Do not purchase a
+        14-hour or 28-hour course based only
+        on this panel if the missed deadline
+        was your first renewal.
       </div>
 
       <div className="license-rescue-costs">
@@ -923,8 +971,8 @@ export function LicenseRescuePanel({
           </strong>
 
           <span>
-            Check your DBPR account for the exact
-            amount currently due.
+            Check your DBPR account for the
+            exact amount currently due.
           </span>
         </div>
 
@@ -989,58 +1037,62 @@ export function LicenseRescuePanel({
 
           <ol>
             <li>
-              Verify the license on DBPR&apos;s
-              live search before making an
-              education or renewal decision.
+              Verify your status and deadline
+              using DBPR&apos;s live license
+              search.
             </li>
 
             <li>
-              Complete the correct DBPR-approved
-              education for your actual status
-              and duration of inactivity.
+              Complete the correct
+              DBPR-approved education for your
+              actual status and time inactive.
             </li>
 
             <li>
               Keep your completion certificate
-              and confirm the provider reports
-              your completed education to DBPR.
+              and confirm the education
+              provider reports the completed
+              hours to DBPR.
             </li>
 
             <li>
-              Log in to your DBPR account and pay
-              the exact renewal, late, or other
-              amounts shown there.
+              Log in to your DBPR account and
+              pay the exact renewal, late, or
+              prior-period amounts shown there.
             </li>
 
             <li>
-              If the account will not allow the
-              required payment, follow DBPR&apos;s
-              payment instructions and contact
-              DBPR immediately if the deadline is
+              If DBPR does not allow online
+              payment, follow the payment
+              instructions in your renewal
+              notice and contact DBPR
+              immediately if the deadline is
               close.
             </li>
 
             <li>
-              Recheck the live DBPR record after
-              completing the education and
-              renewal steps.
+              Recheck the live DBPR record
+              after completing the education
+              and renewal steps.
             </li>
 
             {needsBrokerRegistration && (
               <li>
-                If you are a Sales Associate or
-                Broker Associate, confirm the
-                appropriate broker relationship
-                is registered before returning
-                to licensed activity.
+                If you are a Sales Associate
+                or Broker Associate, confirm
+                the appropriate broker
+                relationship is registered
+                before returning to licensed
+                activity.
               </li>
             )}
 
             <li>
-              Do not perform licensed real estate
-              activity until your official DBPR
-              record shows the status required
-              for you to practice.
+              Do not perform licensed real
+              estate activity until your
+              official DBPR record shows the
+              status required for you to
+              practice.
             </li>
           </ol>
         </div>
@@ -1049,14 +1101,20 @@ export function LicenseRescuePanel({
       <p className="license-rescue-disclaimer">
         Greyson Institute is not the Florida
         Department of Business and Professional
-        Regulation. This guidance uses DBPR&apos;s
-        weekly public-record data and is designed
-        to help you understand possible next
-        steps. Confirm your current status,
-        education requirement, payment amount,
-        and deadline on the official live DBPR
-        record before relying on this information.
-        License: {licenseNumber}.
+        Regulation. This guidance uses
+        DBPR&apos;s weekly public-record data
+        and is designed to help identify a
+        possible reactivation path. Confirm
+        your current status, education
+        requirement, payment amount, and
+        deadline on the official live DBPR
+        record before relying on this
+        information. Weekly status-effective
+        date:{" "}
+        {formatDbprDate(
+          statusEffectiveDate,
+        )}
+        . License: {licenseNumber}.
       </p>
     </section>
   );
