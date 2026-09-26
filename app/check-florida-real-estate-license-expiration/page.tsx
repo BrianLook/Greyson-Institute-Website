@@ -71,6 +71,18 @@ const renewalPaths = [
     linkText:
       "Understand the 14-hour CE requirement",
   },
+  {
+  eyebrow: "INSTRUCTOR PERMIT",
+  title:
+    "Florida Real Estate School Instructor",
+  requirement:
+    "7-hour instructor continuing education",
+  description:
+    "Florida real estate school instructors generally renew their instructor permit with 3 hours of Core Law and 4 hours of Teaching Techniques during each permit period.",
+  href: "/contact",
+  linkText:
+    "Ask About Instructor Continuing Education",
+},
 ];
 
 export default function FloridaLicenseExpirationPage() {
@@ -494,7 +506,151 @@ export default function FloridaLicenseExpirationPage() {
             )}
           </div>
         </div>
+<div
+  style={{
+    marginBottom: "84px",
+    border:
+      "1px solid rgba(17, 23, 23, 0.18)",
+    padding:
+      "clamp(32px, 5vw, 50px)",
+    background: "#faf7f1",
+  }}
+>
+  <p className="eyebrow">
+    REAL ESTATE SCHOOL INSTRUCTOR
+  </p>
 
+  <h2
+    style={{
+      maxWidth: "820px",
+    }}
+  >
+    Your instructor permit has its own
+    continuing-education requirement.
+  </h2>
+
+  <p
+    style={{
+      maxWidth: "830px",
+      color: "#4d4b46",
+    }}
+  >
+    Florida real estate school instructors
+    generally must complete 7 hours of
+    instructor continuing education during
+    each permit period:
+  </p>
+
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns:
+        "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+      gap: "18px",
+      marginTop: "28px",
+    }}
+  >
+    <div className="license-warning-box">
+      <p className="eyebrow">
+        CORE LAW
+      </p>
+
+      <h3
+        style={{
+          fontSize: "1.6rem",
+          marginBottom: "12px",
+        }}
+      >
+        3 hours
+      </h3>
+
+      <p
+        style={{
+          color: "#4d4b46",
+          margin: 0,
+        }}
+      >
+        The required Core Law course may also
+        satisfy the Core Law portion of your
+        regular Florida real estate
+        continuing-education requirement when
+        completed in the appropriate renewal
+        cycle.
+      </p>
+    </div>
+
+    <div className="license-warning-box">
+      <p className="eyebrow">
+        TEACHING TECHNIQUES
+      </p>
+
+      <h3
+        style={{
+          fontSize: "1.6rem",
+          marginBottom: "12px",
+        }}
+      >
+        4 hours
+      </h3>
+
+      <p
+        style={{
+          color: "#4d4b46",
+          margin: 0,
+        }}
+      >
+        The Teaching Techniques requirement
+        must be completed through another
+        instructor. Teaching the course
+        yourself does not satisfy your own
+        instructor renewal requirement.
+      </p>
+    </div>
+  </div>
+
+  <div
+    style={{
+      marginTop: "18px",
+      padding: "24px",
+      background: "#eee6d9",
+      border:
+        "1px solid rgba(17, 23, 23, 0.14)",
+    }}
+  >
+    <strong>
+      Two important exceptions
+    </strong>
+
+    <p
+      style={{
+        color: "#4d4b46",
+        marginTop: "10px",
+      }}
+    >
+      If your initial instructor permit was
+      issued less than six months before the
+      beginning of your first renewal permit,
+      DBPR does not require the 7 hours for
+      that initial instructor-permit renewal.
+    </p>
+
+    <p
+      style={{
+        color: "#4d4b46",
+        marginBottom: 0,
+      }}
+    >
+      If an instructor permit is involuntarily
+      inactive, DBPR currently requires a Core
+      Law course and Teaching Techniques course
+      for the missed renewal cycle and another
+      Core Law and Teaching Techniques course
+      for the current renewal cycle. Verify
+      your individual record with DBPR before
+      enrolling.
+    </p>
+  </div>
+</div>
         <div
           style={{
             background: "#eee6d9",
