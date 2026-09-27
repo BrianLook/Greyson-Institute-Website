@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Florida Real Estate Guides",
   description:
-    "Explore Greyson Institute's Florida real estate licensing and education guides, from getting licensed and preparing for the state exam through post-license and continuing education.",
+    "Explore Greyson Institute's Florida real estate licensing and education guides, from getting licensed and preparing for the state exam through post-license, continuing education, and instructor education.",
 };
 
 const baseUrl = "https://greysoninstitute.com";
@@ -74,6 +74,14 @@ const guides = [
     description:
       "Understand Florida's ongoing continuing-education requirement, including Core Law, Ethics and Business Practices, and specialty education.",
     href: "/florida-14-hour-real-estate-continuing-education",
+  },
+  {
+    number: "09",
+    stage: "INSTRUCTOR RENEWAL",
+    title: "Florida Real Estate Instructor Continuing Education Requirements",
+    description:
+      "Learn the instructor permit renewal requirement, including Core Law, Teaching Techniques, first-renewal exemptions, and inactive instructor rules.",
+    href: "/florida-real-estate-instructor-continuing-education",
   },
 ];
 
