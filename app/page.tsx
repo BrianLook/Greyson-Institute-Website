@@ -50,7 +50,7 @@ export default function HomePage() {
               minWidth: 0,
             }}
           >
-            <p className="eyebrow">ONLINE REAL ESTATE EDUCATION</p>
+            <p className="eyebrow">FLORIDA REAL ESTATE EDUCATION</p>
 
             <h1
               style={{
@@ -59,16 +59,37 @@ export default function HomePage() {
             >
               Get licensed.
               <br />
-              Understand what comes next.
+              Stay licensed.
+              <br />
+              Know what comes next.
             </h1>
 
             <p className="hero-lead">
-              Online real estate education, at your pace.
+              Greyson helps you understand the Florida education path that
+              likely applies to you — before you choose a course.
             </p>
 
-            <div className="button-row">
-              <Link className="button" href="/courses">
-                Explore Courses
+            <div
+              className="button-row"
+              style={{
+                alignItems: "center",
+              }}
+            >
+              <Link
+                className="button"
+                href="/find-my-path"
+              >
+                Find My Exact Path
+              </Link>
+
+              <Link
+                className="text-link"
+                href="/courses"
+                style={{
+                  fontSize: "0.92rem",
+                }}
+              >
+                Explore Courses <span>→</span>
               </Link>
             </div>
           </div>
