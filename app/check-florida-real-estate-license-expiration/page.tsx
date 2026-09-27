@@ -79,9 +79,9 @@ const renewalPaths = [
     "7-hour instructor continuing education",
   description:
     "Florida real estate school instructors generally renew their instructor permit with 3 hours of Core Law and 4 hours of Teaching Techniques during each permit period.",
-  href: "/contact",
+  href: "/florida-real-estate-instructor-continuing-education",
   linkText:
-  "Ask About Instructor CE",
+    "Understand Instructor CE",
 },
 ];
 
