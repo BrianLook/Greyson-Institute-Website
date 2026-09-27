@@ -3183,15 +3183,17 @@ export function FloridaLicenseExpirationCheck() {
                         before the initial license
                         expires.
                       </strong>
+                    </p>
 
-                      <p>
-                        DBPR lists an exemption
-                        for a qualifying 4-year
-                        degree, or higher, in real
-                        estate. Verify whether an
-                        exemption applies before
-                        enrolling.
-                      </p>
+                    <p>
+                      DBPR lists an exemption
+                      for a qualifying 4-year
+                      degree, or higher, in real
+                      estate. Attorneys are not
+                      exempt from post-license
+                      education. Verify whether
+                      an exemption applies before
+                      enrolling.
                     </p>
 
                     <Link href="/florida-45-hour-post-license-requirements">
@@ -3210,24 +3212,27 @@ export function FloridaLicenseExpirationCheck() {
                       <strong>
                         Based on this record and
                         your answer, you most
-                        likely need Florida
-                        broker post-license
-                        education for your first
-                        renewal.
+                        likely need 60 hours of
+                        Florida broker
+                        post-license education
+                        before the initial broker
+                        license expires.
                       </strong>
-
-                      <p>
-                        DBPR lists an exemption
-                        for a qualifying 4-year
-                        degree, or higher, in real
-                        estate. Verify whether an
-                        exemption applies before
-                        enrolling.
-                      </p>
                     </p>
 
-                    <Link href="/courses#broker">
-                      Explore the Broker Education Path →
+                    <p>
+                      DBPR lists an exemption
+                      for a qualifying 4-year
+                      degree, or higher, in real
+                      estate. Attorneys are not
+                      exempt from post-license
+                      education. Verify whether
+                      an exemption applies before
+                      enrolling.
+                    </p>
+
+                    <Link href="/contact">
+                      Ask About Broker Post-License →
                     </Link>
                   </div>
                 )}
@@ -3244,9 +3249,20 @@ export function FloridaLicenseExpirationCheck() {
                         your answer, you most
                         likely fall under
                         Florida&apos;s regular
-                        continuing-education
-                        renewal cycle.
+                        14-hour continuing
+                        education renewal cycle.
                       </strong>
+                    </p>
+
+                    <p>
+                      Active Florida Bar members
+                      in good standing are exempt
+                      from the 14-hour real estate
+                      continuing education
+                      requirement. If DBPR does
+                      not already have your Bar
+                      status, contact DBPR before
+                      relying on the exemption.
                     </p>
 
                     <Link href="/florida-14-hour-real-estate-continuing-education">
