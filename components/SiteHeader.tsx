@@ -15,6 +15,8 @@ const guidePaths = [
   "/what-happens-after-you-pass-the-florida-real-estate-exam",
   "/florida-45-hour-post-license-requirements",
   "/florida-14-hour-real-estate-continuing-education",
+  "/florida-real-estate-instructor-continuing-education",
+  "/florida-60-hour-broker-post-license-requirements",
 ];
 
 export function SiteHeader() {
@@ -145,6 +147,27 @@ export function SiteHeader() {
             onClick={handleNavClick}
           >
             Find your path →
+          </a>
+
+          <span
+            aria-hidden="true"
+            style={{
+              color: "rgba(245, 240, 231, 0.35)",
+            }}
+          >
+            |
+          </span>
+
+          <a
+            href="tel:+13213242418"
+            style={{
+              color: "#f5f0e7",
+              fontWeight: 600,
+              whiteSpace: "nowrap",
+              textDecoration: "none",
+            }}
+          >
+            Call 321-324-2418
           </a>
         </div>
       </div>
@@ -292,6 +315,13 @@ export function SiteHeader() {
             >
               Contact
             </Link>
+
+            <a
+              href="tel:+13213242418"
+              onClick={handleNavClick}
+            >
+              Call Greyson: 321-324-2418
+            </a>
 
             <Link
               href="/privacy"
