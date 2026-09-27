@@ -3020,11 +3020,11 @@ export function FloridaLicenseExpirationCheck() {
           </Link>
         </div>
 
-        <p>
+               <p>
           If your initial instructor permit was
           issued fewer than six months before
           its first expiration date, the
-          instructor continuing-education
+          instructor continuing education
           requirement does not apply to that
           first renewal.
         </p>
