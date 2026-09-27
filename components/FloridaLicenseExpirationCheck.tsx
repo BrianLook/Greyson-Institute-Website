@@ -42,6 +42,8 @@ type LicenseMeta = {
   source?: string;
   fetchedAt?: string;
   sourceLastModified?: string | null;
+  instructorSourceLastModified?: string | null;
+  instructorSourceAvailable?: boolean;
   recordCount?: number;
   nullAndVoidIncluded?: boolean;
   error?: string;
@@ -309,10 +311,15 @@ function formatDbprDate(
 
 function formatSourceDate(
   meta: LicenseMeta | null,
+  instructorRecord = false,
 ) {
   const sourceDate =
-    meta?.sourceLastModified ||
-    meta?.fetchedAt;
+    instructorRecord
+      ? meta?.instructorSourceLastModified ||
+        meta?.sourceLastModified ||
+        meta?.fetchedAt
+      : meta?.sourceLastModified ||
+        meta?.fetchedAt;
 
   if (!sourceDate) {
     return "the latest available weekly DBPR file";
@@ -2923,6 +2930,9 @@ export function FloridaLicenseExpirationCheck() {
             <strong>
               {formatSourceDate(
                 meta,
+                isInstructor(
+                  result,
+                ),
               )}
             </strong>
             . This weekly file is a convenience
