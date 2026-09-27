@@ -3293,8 +3293,8 @@ export function FloridaLicenseExpirationCheck() {
                       enrolling.
                     </p>
 
-                    <Link href="/contact">
-                      Ask About Broker Post-License →
+                    <Link href="/florida-60-hour-broker-post-license-requirements">
+                      Understand the 60-Hour Requirement →
                     </Link>
                   </div>
                 )}
