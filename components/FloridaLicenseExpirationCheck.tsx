@@ -2998,6 +2998,14 @@ export function FloridaLicenseExpirationCheck() {
           education.
         </p>
 
+        <p>
+          Rule 61J2-3.011 includes an exemption
+          for an attorney who is otherwise
+          qualified under section 475.451,
+          Florida Statutes. Verify the exemption
+          before enrolling.
+        </p>
+
         <div className="fl-license-guidance">
           <p>
             <strong>
@@ -3175,6 +3183,15 @@ export function FloridaLicenseExpirationCheck() {
                         before the initial license
                         expires.
                       </strong>
+
+                      <p>
+                        DBPR lists an exemption
+                        for a qualifying 4-year
+                        degree, or higher, in real
+                        estate. Verify whether an
+                        exemption applies before
+                        enrolling.
+                      </p>
                     </p>
 
                     <Link href="/florida-45-hour-post-license-requirements">
@@ -3198,6 +3215,15 @@ export function FloridaLicenseExpirationCheck() {
                         education for your first
                         renewal.
                       </strong>
+
+                      <p>
+                        DBPR lists an exemption
+                        for a qualifying 4-year
+                        degree, or higher, in real
+                        estate. Verify whether an
+                        exemption applies before
+                        enrolling.
+                      </p>
                     </p>
 
                     <Link href="/courses#broker">
