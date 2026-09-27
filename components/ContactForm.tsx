@@ -280,6 +280,16 @@ export function ContactForm() {
             >
               support@greysoninstitute.com
             </a>
+            {" "}or call{" "}
+            <a
+              href="tel:+13213242418"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "3px",
+              }}
+            >
+              321-324-2418
+            </a>
             .
           </p>
         )}
