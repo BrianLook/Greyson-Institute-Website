@@ -12,6 +12,14 @@ const NAME_INDEX_DIR = path.join(
   "florida-real-estate-name-index",
 );
 
+const META_FILE = path.join(
+  process.cwd(),
+  "public",
+  "data",
+  "florida-real-estate-licenses",
+  "meta.json",
+);
+
 const MAX_VISIBLE_MATCHES = 8;
 
 const RATE_LIMIT_WINDOW_MS =
@@ -576,6 +584,51 @@ export async function POST(
           "Invalid license type.",
       },
       400,
+    );
+  }
+
+  try {
+    const metaFile =
+      await fs.readFile(
+        META_FILE,
+        "utf8",
+      );
+
+    const meta =
+      JSON.parse(
+        metaFile,
+      ) as {
+        available?: boolean;
+        instructorSourceAvailable?: boolean;
+      };
+
+    if (
+      meta.available !== true ||
+      meta.instructorSourceAvailable ===
+        false
+    ) {
+      return json(
+        {
+          ok: false,
+          error:
+            "The Florida license name search is temporarily unavailable while Greyson refreshes complete DBPR data.",
+        },
+        503,
+      );
+    }
+  } catch (error) {
+    console.error(
+      "Florida license search metadata could not be read:",
+      error,
+    );
+
+    return json(
+      {
+        ok: false,
+        error:
+          "The Florida license name search is temporarily unavailable.",
+      },
+      503,
     );
   }
 
