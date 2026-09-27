@@ -831,6 +831,21 @@ export function FloridaLicenseExpirationCheck() {
         return;
       }
 
+      const suppliedPrefix =
+        /[A-Z]/.test(
+          normalized,
+        );
+
+      if (suppliedPrefix) {
+        setError(
+          "That complete license number does not match the current weekly DBPR file. Check the letters and digits, or verify the record live with Florida DBPR.",
+        );
+
+        setHasSearched(true);
+
+        return;
+      }
+
       const numericMatches =
         records.filter(
           (record) =>
