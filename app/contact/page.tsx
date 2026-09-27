@@ -4,7 +4,7 @@ import { ContactForm } from "../../components/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Greyson Institute for help choosing the right real estate education path.",
+    "Contact Greyson Institute by phone, text, email, or message for help choosing the right real estate education path.",
 };
 
 export default function ContactPage() {
@@ -120,6 +120,51 @@ export default function ContactPage() {
               >
                 support@greysoninstitute.com
               </a>
+            </div>
+
+            <div
+              style={{
+                padding: "24px 0",
+                borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
+                minWidth: 0,
+              }}
+            >
+              <p
+                style={{
+                  margin: "0 0 6px",
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.16em",
+                  textTransform: "uppercase",
+                  color: "#7d5f3a",
+                  fontWeight: 700,
+                }}
+              >
+                Phone
+              </p>
+
+              <a
+                href="tel:+13213242418"
+                style={{
+                  fontFamily: "var(--font-serif), Georgia, serif",
+                  fontSize: "1.25rem",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "3px",
+                  overflowWrap: "anywhere",
+                }}
+              >
+                321-324-2418
+              </a>
+
+              <p
+                style={{
+                  margin: "7px 0 0",
+                  color: "#6e6b65",
+                  fontSize: "0.85rem",
+                  lineHeight: 1.5,
+                }}
+              >
+                Call or text Greyson Institute.
+              </p>
             </div>
 
             <div
