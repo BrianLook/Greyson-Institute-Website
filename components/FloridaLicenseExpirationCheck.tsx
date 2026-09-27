@@ -783,6 +783,22 @@ export function FloridaLicenseExpirationCheck() {
         return;
       }
 
+      if (
+        normalized.startsWith(
+          "ZH",
+        ) &&
+        metaData.instructorSourceAvailable ===
+          false
+      ) {
+        setError(
+          "Greyson's instructor-record source is temporarily unavailable. Do not rely on a no-match result; verify the instructor permit live with Florida DBPR.",
+        );
+
+        setHasSearched(true);
+
+        return;
+      }
+
       const bucketKey =
         digits
           .slice(-3)
