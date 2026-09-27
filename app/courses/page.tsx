@@ -47,6 +47,12 @@ const paths = [
     href: "#broker",
   },
   {
+    label: "I need broker post-license education",
+    detail:
+      "Review the 60-hour education required for a broker's first renewal.",
+    href: "#broker-post-license",
+  },
+  {
     label: "I need to reactivate my license",
     detail:
       "Find education associated with returning an inactive license to active status.",
@@ -89,6 +95,13 @@ const courses = [
     title: "Broker Pre-Licensing",
     body:
       "For experienced real estate professionals preparing to advance to broker licensure.",
+  },
+  {
+    id: "broker-post-license",
+    eyebrow: "BROKER POST-LICENSE",
+    title: "Broker Post-License",
+    body:
+      "For newly licensed brokers and broker associates completing the 60-hour education required for their first renewal.",
   },
   {
     id: "reactivation",
@@ -561,6 +574,28 @@ export default function CoursesPage() {
                     >
                       Florida 14-Hour Real Estate Continuing Education
                       Requirements →
+                    </Link>
+                  </p>
+                </div>
+              )}
+
+              {course.id === "broker-post-license" && (
+                <div
+                  style={{
+                    marginTop: "14px",
+                  }}
+                >
+                  <p style={{ margin: 0 }}>
+                    <Link
+                      href="/florida-60-hour-broker-post-license-requirements"
+                      style={{
+                        textDecoration: "underline",
+                        textUnderlineOffset: "3px",
+                        fontWeight: 600,
+                        color: "#111717",
+                      }}
+                    >
+                      Florida 60-Hour Broker Post-License Requirements →
                     </Link>
                   </p>
                 </div>
