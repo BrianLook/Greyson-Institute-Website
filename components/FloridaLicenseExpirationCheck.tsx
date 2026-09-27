@@ -898,7 +898,7 @@ export function FloridaLicenseExpirationCheck() {
       }
 
       setError(
-        "No match was found in Greyson's current weekly DBPR file. That does not necessarily mean you were never licensed or that the license is invalid. Verify the record live with Florida DBPR.",
+        "No match was found in Greyson's current weekly DBPR file. Null-and-void records are not included in the weekly downloadable file, and recent changes may not appear yet. Verify the record live with Florida DBPR.",
       );
 
       setHasSearched(true);
@@ -2774,11 +2774,13 @@ export function FloridaLicenseExpirationCheck() {
                 <p>
                   Try the legal first and last
                   name used on your Florida
-                  license. A recently changed
-                  name or a record that is not
-                  included in the weekly
-                  downloadable file may require
-                  Florida DBPR&apos;s live search.
+                  license. Null-and-void records
+                  are not included in the weekly
+                  downloadable file, and recent
+                  changes may not appear yet.
+                  Use Florida DBPR&apos;s live
+                  search if Greyson cannot find
+                  the record.
                 </p>
 
                 <a
