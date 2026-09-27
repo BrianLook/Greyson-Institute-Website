@@ -932,6 +932,7 @@ export function FloridaLicenseExpirationCheck() {
       middleName?: string;
       skipMiddle?: boolean;
       county?: string;
+      skipCounty?: boolean;
     },
   ) {
     const trimmedFirst =
@@ -981,6 +982,10 @@ export function FloridaLicenseExpirationCheck() {
         ? options.county
         : county;
 
+    const requestedSkipCounty =
+      options?.skipCounty ===
+      true;
+
     setNameSearchError("");
     setNameMatches([]);
     setSelectedNameMatch(
@@ -998,6 +1003,7 @@ export function FloridaLicenseExpirationCheck() {
         middleName?: string;
         skipMiddle?: boolean;
         county?: string;
+        skipCounty?: boolean;
         supportsCounty: true;
       } = {
         firstName:
@@ -1040,6 +1046,13 @@ export function FloridaLicenseExpirationCheck() {
       ) {
         body.county =
           requestedCounty.trim();
+      }
+
+      if (
+        requestedSkipCounty
+      ) {
+        body.skipCounty =
+          true;
       }
 
       const response =
@@ -1301,12 +1314,18 @@ export function FloridaLicenseExpirationCheck() {
     });
   }
 
-  function countyUnknown() {
+  async function countyUnknown() {
     setNameSearchError("");
 
-    setNameStage(
-      "too-many",
-    );
+    await runNameSearch({
+      licenseType:
+        nameLicenseType,
+      skipLicenseType,
+      middleName,
+      skipMiddle,
+      county: "",
+      skipCounty: true,
+    });
   }
 
   function viewNameMatch(
