@@ -34,6 +34,21 @@ export function SiteFooter() {
           >
             support@greysoninstitute.com
           </a>
+
+          <a
+            href="tel:+13213242418"
+            style={{
+              display: "block",
+              width: "fit-content",
+              marginTop: "8px",
+              color: "rgba(245, 240, 231, 0.82)",
+              fontSize: "13px",
+              textDecoration: "underline",
+              textUnderlineOffset: "3px",
+            }}
+          >
+            Call or text: 321-324-2418
+          </a>
         </div>
 
         <div className="footer-links">
