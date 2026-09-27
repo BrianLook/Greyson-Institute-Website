@@ -1415,17 +1415,113 @@ export function FindMyPath() {
           }
 
           @media (max-width: 650px) {
+            .path-shell {
+              max-width: none;
+            }
+
+            .path-intro {
+              text-align: left;
+              margin-bottom: 26px;
+            }
+
+            .path-intro h1,
+            .path-intro h2 {
+              font-size: clamp(2.2rem, 11vw, 3.1rem);
+              line-height: 1.02;
+            }
+
+            .path-intro p {
+              margin-left: 0;
+              margin-right: 0;
+              font-size: 0.96rem;
+              line-height: 1.6;
+            }
+
+            .path-door {
+              min-height: 76px;
+              padding: 20px;
+              font-size: 1rem;
+            }
+
+            .path-panel {
+              padding: 22px;
+            }
+
+            .path-panel h2 {
+              font-size: clamp(1.9rem, 9vw, 2.6rem);
+              line-height: 1.08;
+            }
+
             .path-grid {
               grid-template-columns: 1fr;
+            }
+
+            .path-input {
+              min-height: 58px;
+              font-size: 1rem;
             }
 
             .path-primary,
             .path-secondary {
               width: 100%;
+              min-height: 54px;
+            }
+
+            .path-question-buttons {
+              gap: 12px;
+            }
+
+            .path-result-main {
+              padding: 26px 22px 30px;
+            }
+
+            .path-result-name {
+              font-size: 1.65rem;
+            }
+
+            .path-result-license {
+              margin-bottom: 24px;
+            }
+
+            .path-date {
+              font-size: clamp(3rem, 15vw, 4.4rem);
+              line-height: 0.96;
+            }
+
+            .path-status {
+              margin-top: 26px;
+              padding-top: 20px;
+              font-size: 1.04rem;
+            }
+
+            .path-answer {
+              padding: 28px 22px;
+            }
+
+            .path-answer h2 {
+              font-size: clamp(2rem, 10vw, 2.9rem);
+              line-height: 1.03;
+            }
+
+            .path-reason {
+              font-size: 0.96rem;
+              line-height: 1.6;
+            }
+
+            .path-answer .path-primary {
+              width: 100%;
+              margin-top: 14px;
             }
 
             .path-result-footer {
               display: grid;
+              gap: 12px;
+              padding: 18px 22px 22px;
+            }
+
+            .path-result-footer .path-text-button,
+            .path-result-footer a {
+              width: fit-content;
             }
           }
         `}
