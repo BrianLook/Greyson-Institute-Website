@@ -83,6 +83,14 @@ const guides = [
       "Learn the instructor permit renewal requirement, including Core Law, Teaching Techniques, first-renewal exemptions, and inactive instructor rules.",
     href: "/florida-real-estate-instructor-continuing-education",
   },
+  {
+    number: "10",
+    stage: "BROKER FIRST RENEWAL",
+    title: "Florida 60-Hour Broker Post-License Requirements",
+    description:
+      "Learn the 60-hour first-renewal requirement for brokers and broker associates, including exemptions and missed-deadline consequences.",
+    href: "/florida-60-hour-broker-post-license-requirements",
+  },
 ];
 
 const pathSteps = [
