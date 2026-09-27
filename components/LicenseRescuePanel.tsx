@@ -817,8 +817,9 @@ export function LicenseRescuePanel({
           </div>
 
           <p className="license-rescue-deadline">
-            Final rescue deadline based on
-this weekly DBPR record:{" "}
+            Standard two-year reactivation
+            deadline based on this weekly DBPR
+            record:{" "}
             <strong>
               {formatDate(
                 finalRescueDeadline,
@@ -851,7 +852,7 @@ this weekly DBPR record:{" "}
 
         <div className="license-rescue-card">
           <p className="license-rescue-card-label">
-            FINAL RESCUE DEADLINE
+            STANDARD REACTIVATION DEADLINE
           </p>
 
           <p className="license-rescue-card-value">
@@ -862,9 +863,14 @@ this weekly DBPR record:{" "}
 
           <p className="license-rescue-card-copy">
             Greyson calculates this from the
-            two-year involuntary-inactive window.
-            Verify the deadline on the live DBPR
-            record before relying on it.
+            standard two-year
+            involuntary-inactive window. Florida
+            rules also provide a separate
+            hardship process that may allow an
+            additional six months in qualifying
+            cases. Verify the deadline and any
+            hardship eligibility directly with
+            DBPR/FREC.
           </p>
         </div>
       </div>
@@ -914,17 +920,20 @@ this weekly DBPR record:{" "}
         "past-window" && (
         <div className="license-rescue-education">
           <h4>
-            Do not purchase a 14-hour or
-            28-hour course based only on this
-            weekly record.
+            The standard two-year reactivation
+            window appears to have passed.
           </h4>
 
           <p>
-            The calculated two-year
-            reactivation window has passed.
-            Verify the live DBPR record
-            immediately to determine the
-            current status and available path.
+            Do not purchase a 14-hour or
+            28-hour course based only on this
+            weekly record. Florida rules provide
+            a separate hardship process that may
+            allow an additional six months in
+            qualifying cases. Verify the live
+            DBPR record and contact DBPR/FREC
+            immediately to determine whether any
+            reactivation path remains available.
           </p>
         </div>
       )}
@@ -951,11 +960,13 @@ this weekly DBPR record:{" "}
           Important — was this your first renewal?
         </strong>{" "}
         Missing required first-renewal
-        post-license education can follow a
-        different path. Do not purchase a
-        14-hour or 28-hour course based only
-        on this panel if the missed deadline
-        was your first renewal.
+        post-license education is different
+        from a normal continuing-education
+        lapse and can cause the license to
+        become null and void. Do not purchase
+        a 14-hour or 28-hour reactivation
+        course based only on this panel if the
+        missed deadline was your first renewal.
       </div>
 
       <div className="license-rescue-costs">
