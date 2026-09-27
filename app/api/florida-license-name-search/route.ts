@@ -53,6 +53,7 @@ type SearchRequest = {
   middleName?: string;
   skipMiddle?: boolean;
   county?: string;
+  skipCounty?: boolean;
   supportsCounty?: boolean;
 };
 
@@ -833,7 +834,8 @@ export async function POST(
   if (
     matches.length > 1 &&
     !county &&
-    body.supportsCounty
+    body.supportsCounty &&
+    !body.skipCounty
   ) {
     const counties =
       availableCounties(
