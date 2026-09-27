@@ -73,6 +73,13 @@ const organizationSchema = {
     url: "https://greysoninstitute.com/brand/greyson-icon-color.png",
   },
   email: "support@greysoninstitute.com",
+  telephone: "+1-321-324-2418",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+1-321-324-2418",
+    contactType: "customer support",
+    availableLanguage: "English",
+  },
   description:
     "Greyson Institute provides clear, modern real estate education guidance for licensing, post-license, continuing education, broker education, and exam preparation.",
 };
