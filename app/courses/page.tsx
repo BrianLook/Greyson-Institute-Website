@@ -6,7 +6,7 @@ import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
 export const metadata: Metadata = {
   title: "Courses",
   description:
-    "Explore Greyson Institute online real estate education for pre-licensing, post-license, continuing education, broker education, reactivation, and exam preparation.",
+    "Explore Greyson Institute online real estate education for pre-licensing, post-license, continuing education, instructor education, broker education, reactivation, and exam preparation.",
 };
 
 const paths = [
@@ -33,6 +33,12 @@ const paths = [
     detail:
       "Find education for maintaining and renewing an active license.",
     href: "#continuing-education",
+  },
+  {
+    label: "I need instructor continuing education",
+    detail:
+      "Review the education required to renew a Florida real estate instructor permit.",
+    href: "#instructor-ce",
   },
   {
     label: "I want to become a broker",
@@ -69,6 +75,13 @@ const courses = [
     title: "Continuing Education",
     body:
       "For active real estate professionals completing education for license renewal.",
+  },
+  {
+    id: "instructor-ce",
+    eyebrow: "INSTRUCTOR CE",
+    title: "Real Estate Instructor Continuing Education",
+    body:
+      "For Florida real estate school instructors completing Core Law and Teaching Techniques requirements for permit renewal.",
   },
   {
     id: "broker",
@@ -547,6 +560,29 @@ export default function CoursesPage() {
                       }}
                     >
                       Florida 14-Hour Real Estate Continuing Education
+                      Requirements →
+                    </Link>
+                  </p>
+                </div>
+              )}
+
+              {course.id === "instructor-ce" && (
+                <div
+                  style={{
+                    marginTop: "14px",
+                  }}
+                >
+                  <p style={{ margin: 0 }}>
+                    <Link
+                      href="/florida-real-estate-instructor-continuing-education"
+                      style={{
+                        textDecoration: "underline",
+                        textUnderlineOffset: "3px",
+                        fontWeight: 600,
+                        color: "#111717",
+                      }}
+                    >
+                      Florida Real Estate Instructor Continuing Education
                       Requirements →
                     </Link>
                   </p>
