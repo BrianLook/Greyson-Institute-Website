@@ -62,6 +62,12 @@ const faqItems = [
   },
   {
     question:
+      "Are attorneys exempt from Florida real estate instructor continuing education?",
+    answer:
+      "Yes, in the situation described by Rule 61J2-3.011. The rule states that the instructor continuing-education requirements do not apply to an attorney who is otherwise qualified under section 475.451, Florida Statutes.",
+  },
+  {
+    question:
       "What if my instructor permit is involuntarily inactive?",
     answer:
       "DBPR currently requires two Core Law courses and two Teaching Techniques courses: one set for the missed renewal cycle and another set for the current renewal cycle.",
@@ -385,6 +391,45 @@ export default function FloridaInstructorContinuingEducationPage() {
             individual record before assuming
             one Core Law course will satisfy
             both requirements.
+          </p>
+        </div>
+
+        <div
+          style={{
+            background: "#eee6d9",
+            border:
+              "1px solid rgba(17, 23, 23, 0.14)",
+            padding:
+              "clamp(30px, 5vw, 48px)",
+            marginBottom: "82px",
+          }}
+        >
+          <p className="eyebrow">
+            ATTORNEY EXEMPTION
+          </p>
+
+          <h2
+            style={{
+              fontSize:
+                "clamp(2rem, 4vw, 3rem)",
+              maxWidth: "820px",
+              marginBottom: "18px",
+            }}
+          >
+            Florida&apos;s instructor rule includes an attorney exemption.
+          </h2>
+
+          <p
+            style={{
+              color: "#4d4b46",
+              maxWidth: "840px",
+              marginBottom: 0,
+            }}
+          >
+            Rule 61J2-3.011 states that the continuing-education requirements
+            for school instructors do not apply to an attorney who is otherwise
+            qualified under section 475.451, Florida Statutes. Verify that the
+            exemption applies to your individual situation before relying on it.
           </p>
         </div>
 
