@@ -136,7 +136,7 @@ export function SiteHeader() {
           </span>
 
           <a
-            href="/courses#find-your-path"
+            href="/find-my-path"
             style={{
               color: "#d6bd9c",
               fontWeight: 600,
@@ -264,6 +264,14 @@ export function SiteHeader() {
             className="mobile-menu__panel"
             aria-label="Mobile navigation"
           >
+            <Link
+              href="/find-my-path"
+              aria-current={isCurrentPage("/find-my-path") ? "page" : undefined}
+              onClick={handleNavClick}
+            >
+              Find My Exact Path
+            </Link>
+
             <Link
               href="/courses"
               aria-current={isCurrentPage("/courses") ? "page" : undefined}
