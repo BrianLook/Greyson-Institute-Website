@@ -268,10 +268,28 @@ function normalizeLicenseNumber(
 export function canCreateLicenseCalendar(
   expirationDate: string,
 ) {
-  return Boolean(
+  const expiration =
     parseDbprExpirationDate(
       expirationDate,
-    ),
+    );
+
+  if (!expiration) {
+    return false;
+  }
+
+  const now =
+    new Date();
+
+  const today =
+    new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+    );
+
+  return (
+    expiration.getTime() >=
+    today.getTime()
   );
 }
 
@@ -295,6 +313,23 @@ export function downloadLicenseRenewalCalendar({
     );
 
   if (!expiration) {
+    return false;
+  }
+
+  const today =
+    new Date();
+
+  const startOfToday =
+    new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate(),
+    );
+
+  if (
+    expiration.getTime() <
+    startOfToday.getTime()
+  ) {
     return false;
   }
 
