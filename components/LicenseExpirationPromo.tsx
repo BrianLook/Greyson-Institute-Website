@@ -4,12 +4,16 @@ type LicenseExpirationPromoProps = {
   eyebrow?: string;
   title?: string;
   text?: string;
+  href?: string;
+  buttonLabel?: string;
 };
 
 export function LicenseExpirationPromo({
   eyebrow = "CHECK YOUR LICENSE",
   title = "Not sure when your Florida real estate license expires?",
   text = "Check your official license record before choosing your renewal education. Your expiration date, license type, status, and renewal history can all affect which requirement applies.",
+  href = "/check-florida-real-estate-license-expiration",
+  buttonLabel = "Check My License Expiration →",
 }: LicenseExpirationPromoProps) {
   return (
     <div className="license-expiration-promo">
@@ -101,9 +105,9 @@ export function LicenseExpirationPromo({
       <div>
         <Link
           className="license-expiration-promo__button"
-          href="/check-florida-real-estate-license-expiration"
+          href={href}
         >
-          Check My License Expiration →
+          {buttonLabel}
         </Link>
       </div>
     </div>
