@@ -57,16 +57,15 @@ export default function HomePage() {
                 overflowWrap: "anywhere",
               }}
             >
-              Get licensed.
+              Florida Real Estate Education
               <br />
-              Stay licensed.
-              <br />
-              Know what comes next.
+              for Every Step of Your License.
             </h1>
 
             <p className="hero-lead">
-              Greyson helps you understand the Florida education path that
-              likely applies to you — before you choose a course.
+              Greyson Institute helps aspiring and current Florida real estate
+              professionals understand the path from pre-licensing through
+              post-license and continuing education.
             </p>
 
             <div
