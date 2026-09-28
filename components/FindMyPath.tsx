@@ -226,7 +226,13 @@ function daysCopy(
   ).toLocaleString()} days past this date`;
 }
 
-export function FindMyPath() {
+type FindMyPathProps = {
+  intent?: "14-hour-ce";
+};
+
+export function FindMyPath({
+  intent,
+}: FindMyPathProps) {
   const [
     stage,
     setStage,
@@ -2089,7 +2095,49 @@ export function FindMyPath() {
           "result" &&
           record &&
           pathResult && (
-          <div
+          <>
+            {intent === "14-hour-ce" && (
+              <div
+                style={{
+                  marginBottom: "18px",
+                  padding: "18px 20px",
+                  border:
+                    pathResult.kind === "later-ce"
+                      ? "1px solid rgba(48, 94, 71, 0.28)"
+                      : "1px solid rgba(138, 45, 37, 0.28)",
+                  background:
+                    pathResult.kind === "later-ce"
+                      ? "rgba(48, 94, 71, 0.06)"
+                      : "rgba(138, 45, 37, 0.06)",
+                }}
+              >
+                <p
+                  style={{
+                    margin: 0,
+                    fontWeight: 700,
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {pathResult.kind === "later-ce"
+                    ? "This appears to match the 14-hour continuing-education path."
+                    : "This does not appear to match the regular 14-hour continuing-education path."}
+                </p>
+
+                <p
+                  style={{
+                    margin: "7px 0 0",
+                    color: "#5f5c56",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {pathResult.kind === "later-ce"
+                    ? "Greyson is showing the result from the same license-path logic that will protect checkout when enrollment opens."
+                    : "Greyson is showing the education path that most likely fits your record and renewal answer instead of sending you straight to the wrong course."}
+                </p>
+              </div>
+            )}
+
+            <div
             className={
               pathResult.urgent
                 ? "path-result path-result--urgent"
@@ -2220,7 +2268,38 @@ export function FindMyPath() {
                 Greyson Institute is not DBPR.
               </span>
             </div>
+
+            {intent === "14-hour-ce" && (
+              <div
+                style={{
+                  padding: "0 clamp(24px, 5vw, 46px) 22px",
+                  background: "#faf7f1",
+                }}
+              >
+                {pathResult.kind === "later-ce" ? (
+                  <Link
+                    className="path-primary"
+                    href="/florida-14-hour-real-estate-continuing-education"
+                  >
+                    Return to 14-Hour CE →
+                  </Link>
+                ) : (
+                  <Link
+                    href="/florida-14-hour-real-estate-continuing-education"
+                    style={{
+                      color: "#5f5c56",
+                      fontSize: "0.82rem",
+                      textDecoration: "underline",
+                      textUnderlineOffset: "3px",
+                    }}
+                  >
+                    View 14-hour CE information anyway
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
+          </>
         )}
       </div>
     </div>
