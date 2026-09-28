@@ -22,12 +22,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://greysoninstitute.com"),
 
   title: {
-    default: "Greyson Institute | Real Estate Education",
+    default: "Florida Real Estate Education | Greyson Institute",
     template: "%s | Greyson Institute",
   },
 
   description:
-    "Clear, modern real estate education guidance for licensing, post-license, continuing education, broker education, and exam preparation.",
+    "Florida real estate education for licensing, post-license, continuing education, broker education, and exam preparation. Find the path that fits your next step.",
 
   icons: {
     icon: "/brand/greyson-icon-color.png",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://greysoninstitute.com",
     siteName: "Greyson Institute",
-    title: "Greyson Institute | Real Estate Education",
+    title: "Florida Real Estate Education | Greyson Institute",
     description:
-      "A clearer path through real estate education, from first license to what comes next.",
+      "Florida real estate education for licensing, post-license, continuing education, broker education, and exam preparation.",
     images: [
       {
         url: "/opengraph-image",
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Greyson Institute | Real Estate Education",
+    title: "Florida Real Estate Education | Greyson Institute",
     description:
-      "A clearer path through real estate education, from first license to what comes next.",
+      "Florida real estate education for licensing, post-license, continuing education, broker education, and exam preparation.",
     images: ["/opengraph-image"],
   },
 };
