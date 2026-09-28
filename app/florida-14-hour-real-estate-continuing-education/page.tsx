@@ -358,7 +358,7 @@ export default function Florida14HourContinuingEducationPage() {
             eyebrow="VERIFY BEFORE YOU ENROLL"
             title="Make sure 14-hour CE is actually your next requirement."
             text="Use Find My Exact Path before choosing this course. If this is your first renewal, if your license is inactive, or if a different requirement applies, Greyson will point you toward that path instead of guessing."
-            href="/find-my-path"
+            href="/find-my-path?intent=14-hour-ce"
             buttonLabel="Verify My Path Before Enrollment →"
           />
         </div>
