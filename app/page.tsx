@@ -24,7 +24,7 @@ const paths = [
     title: "Become a Broker",
     body: "Prepare for the next level of your real estate career.",
     meta: "Broker",
-    href: "/courses#broker",
+    href: "/how-to-become-florida-real-estate-broker",
   },
   {
     title: "Exam Preparation",
@@ -260,16 +260,7 @@ export default function HomePage() {
             minWidth: 0,
           }}
         >
-          <div
-            style={{
-              position: "relative",
-              minHeight: "clamp(320px, 50vw, 520px)",
-              overflow: "hidden",
-              border: "1px solid rgba(17, 23, 23, 0.16)",
-              background: "#eee6d9",
-              minWidth: 0,
-            }}
-          >
+          <div className="instructor-photo-card">
             <Image
               src="/smith-brian.png"
               alt="Brian Smith, Licensed Florida Real Estate Broker and Instructor"
@@ -283,6 +274,7 @@ export default function HomePage() {
           </div>
 
           <div
+            className="instructor-copy"
             style={{
               minWidth: 0,
             }}
@@ -393,7 +385,7 @@ export default function HomePage() {
 
           <a
             className="button"
-            href="/courses#find-your-path"
+            href="/find-my-path"
           >
             Find Your Path
           </a>
