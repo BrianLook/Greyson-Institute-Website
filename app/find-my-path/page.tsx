@@ -7,7 +7,22 @@ export const metadata: Metadata = {
     "Use your Florida DBPR license record and a few simple answers to find the real estate education requirement that most likely applies next.",
 };
 
-export default function FindMyPathPage() {
+type FindMyPathPageProps = {
+  searchParams: Promise<{
+    intent?: string;
+  }>;
+};
+
+export default async function FindMyPathPage({
+  searchParams,
+}: FindMyPathPageProps) {
+  const params = await searchParams;
+
+  const intent =
+    params.intent === "14-hour-ce"
+      ? "14-hour-ce"
+      : undefined;
+
   return (
     <section
       className="page-hero"
@@ -25,7 +40,7 @@ export default function FindMyPathPage() {
           minWidth: 0,
         }}
       >
-        <FindMyPath />
+        <FindMyPath intent={intent} />
       </div>
     </section>
   );
