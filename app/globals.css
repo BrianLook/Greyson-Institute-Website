@@ -441,6 +441,22 @@ p {
   align-items: center;
 }
 
+.instructor-photo-card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid rgba(17, 23, 23, 0.16);
+  background: #eee6d9;
+  min-width: 0;
+  justify-self: center;
+}
+
+.instructor-copy {
+  min-width: 0;
+}
+
 .portrait-placeholder {
   min-height: 420px;
   background: linear-gradient(160deg, #ded4c4, #b4a28b);
@@ -724,6 +740,16 @@ p {
 
   .path-card {
     min-height: 220px;
+  }
+
+  .instructor-copy {
+    order: 1;
+  }
+
+  .instructor-photo-card {
+    order: 2;
+    max-width: 340px;
+    margin-top: 10px;
   }
 
   .course-row {
