@@ -325,7 +325,7 @@ export default function CoursesPage() {
         >
           <div style={{ minWidth: 0 }}>
             <p className="eyebrow" style={{ marginBottom: "8px" }}>
-              ORLANDO & CENTRAL FLORIDA
+              STUDENTS ACROSS FLORIDA
             </p>
             <p style={{ margin: 0, color: "#4d4b46", maxWidth: "720px" }}>
               Looking for Florida real estate education from the Orlando area?
@@ -335,9 +335,9 @@ export default function CoursesPage() {
 
           <Link
             className="text-link"
-            href="/orlando-florida-real-estate-education"
+            href="/florida-online-real-estate-education"
           >
-            Orlando Real Estate Education <span>→</span>
+            Florida Online Real Estate Education <span>→</span>
           </Link>
         </div>
       </div>
