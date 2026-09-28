@@ -17,6 +17,8 @@ const guidePaths = [
   "/florida-14-hour-real-estate-continuing-education",
   "/florida-real-estate-instructor-continuing-education",
   "/florida-60-hour-broker-post-license-requirements",
+  "/how-to-become-florida-real-estate-broker",
+  "/how-to-become-florida-real-estate-instructor",
 ];
 
 export function SiteHeader() {
