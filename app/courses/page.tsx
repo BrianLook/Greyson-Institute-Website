@@ -311,6 +311,45 @@ export default function CoursesPage() {
           minWidth: 0,
         }}
       >
+        <div
+          style={{
+            borderTop: "1px solid rgba(17, 23, 23, 0.16)",
+            borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
+            padding: "28px 0",
+            display: "flex",
+            gap: "20px",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ minWidth: 0 }}>
+            <p className="eyebrow" style={{ marginBottom: "8px" }}>
+              ORLANDO & CENTRAL FLORIDA
+            </p>
+            <p style={{ margin: 0, color: "#4d4b46", maxWidth: "720px" }}>
+              Looking for Florida real estate education from the Orlando area?
+              Explore our Central Florida licensing and education guide.
+            </p>
+          </div>
+
+          <Link
+            className="text-link"
+            href="/orlando-florida-real-estate-education"
+          >
+            Orlando Real Estate Education <span>→</span>
+          </Link>
+        </div>
+      </div>
+
+      <div
+        className="container"
+        style={{
+          maxWidth: "1080px",
+          marginBottom: "88px",
+          minWidth: 0,
+        }}
+      >
         <LicenseExpirationPromo
           eyebrow="ALREADY LICENSED IN FLORIDA?"
           title="Check when your Florida real estate license expires."
