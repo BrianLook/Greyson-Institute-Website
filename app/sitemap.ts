@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/orlando-florida-real-estate-education`,
+      url: `${baseUrl}/florida-online-real-estate-education`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
