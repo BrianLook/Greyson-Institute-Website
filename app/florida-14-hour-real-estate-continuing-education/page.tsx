@@ -134,7 +134,7 @@ export default function Florida14HourContinuingEducationPage() {
         description={guideDescription}
         path={guidePath}
         datePublished="2026-09-24"
-        dateModified="2026-09-24"
+        dateModified="2026-09-28"
       />
 
       <div
@@ -190,7 +190,7 @@ export default function Florida14HourContinuingEducationPage() {
             works and what you need to complete.
           </p>
 
-          <p className="muted">Last reviewed: September 24, 2026</p>
+          <p className="muted">Last reviewed: September 28, 2026</p>
         </div>
 
         <div
@@ -228,13 +228,138 @@ export default function Florida14HourContinuingEducationPage() {
 
         <div
           style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
+            border: "1px solid rgba(17, 23, 23, 0.16)",
+            marginBottom: "32px",
+          }}
+        >
+          <div
+            style={{
+              padding: "clamp(30px, 5vw, 48px)",
+              borderRight: "1px solid rgba(17, 23, 23, 0.16)",
+              minWidth: 0,
+            }}
+          >
+            <p className="eyebrow">GREYSON COURSE EXPERIENCE</p>
+
+            <h2
+              style={{
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                marginBottom: "16px",
+                overflowWrap: "anywhere",
+              }}
+            >
+              Florida 14-Hour Continuing Education
+            </h2>
+
+            <p
+              style={{
+                color: "#4d4b46",
+                lineHeight: 1.75,
+                maxWidth: "650px",
+              }}
+            >
+              This is the first Greyson course path we are preparing for
+              enrollment. Before enrollment opens, Greyson will publish the
+              final course availability, provider details, pricing,
+              completion process, and reporting information.
+            </p>
+
+            <p
+              style={{
+                color: "#7d5f3a",
+                fontSize: "0.72rem",
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                marginBottom: 0,
+              }}
+            >
+              Enrollment opening soon
+            </p>
+          </div>
+
+          <div
+            style={{
+              padding: "clamp(30px, 5vw, 48px)",
+              minWidth: 0,
+            }}
+          >
+            <p className="eyebrow">COURSE AT A GLANCE</p>
+
+            <div
+              style={{
+                display: "grid",
+                gap: "18px",
+                marginTop: "24px",
+              }}
+            >
+              <div>
+                <strong
+                  style={{
+                    display: "block",
+                    fontFamily: "var(--font-serif), Georgia, serif",
+                    fontSize: "1.4rem",
+                    marginBottom: "4px",
+                  }}
+                >
+                  14 total hours
+                </strong>
+                <span style={{ color: "#6e6b65" }}>
+                  3 Core Law + 3 Ethics &amp; Business Practices + 8 specialty
+                </span>
+              </div>
+
+              <div>
+                <strong
+                  style={{
+                    display: "block",
+                    fontFamily: "var(--font-serif), Georgia, serif",
+                    fontSize: "1.4rem",
+                    marginBottom: "4px",
+                  }}
+                >
+                  Planned online delivery
+                </strong>
+                <span style={{ color: "#6e6b65" }}>
+                  Final delivery and completion details will be posted before
+                  enrollment opens.
+                </span>
+              </div>
+
+              <div>
+                <strong
+                  style={{
+                    display: "block",
+                    fontFamily: "var(--font-serif), Georgia, serif",
+                    fontSize: "1.4rem",
+                    marginBottom: "4px",
+                  }}
+                >
+                  Built around the correct-license check
+                </strong>
+                <span style={{ color: "#6e6b65" }}>
+                  Greyson will help you verify that 14-hour CE is likely the
+                  right path before you purchase.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
             marginBottom: "82px",
           }}
         >
           <LicenseExpirationPromo
-            eyebrow="CHECK BEFORE YOU ENROLL"
-            title="Not sure when your Florida real estate license expires?"
-            text="Check your official Florida license record before choosing renewal education. If this is your first renewal, you may need post-license education instead of the regular 14-hour continuing-education requirement."
+            eyebrow="VERIFY BEFORE YOU ENROLL"
+            title="Make sure 14-hour CE is actually your next requirement."
+            text="Use Find My Exact Path before choosing this course. If this is your first renewal, if your license is inactive, or if a different requirement applies, Greyson will point you toward that path instead of guessing."
+            href="/find-my-path"
+            buttonLabel="Verify My Path Before Enrollment →"
           />
         </div>
 
