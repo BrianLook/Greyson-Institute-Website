@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Florida Real Estate Guides",
   description:
-    "Explore Greyson Institute's Florida real estate licensing and education guides, from getting licensed and preparing for the state exam through post-license, continuing education, and instructor education.",
+    "Explore Greyson Institute's Florida real estate licensing and education guides, from getting licensed and preparing for the state exam through post-license, continuing education, broker advancement, and instructor education.",
 };
 
 const baseUrl = "https://greysoninstitute.com";
@@ -91,6 +91,22 @@ const guides = [
       "Learn the 60-hour first-renewal requirement for brokers and broker associates, including exemptions and missed-deadline consequences.",
     href: "/florida-60-hour-broker-post-license-requirements",
   },
+  {
+    number: "11",
+    stage: "CAREER ADVANCEMENT",
+    title: "How to Become a Florida Real Estate Broker",
+    description:
+      "Understand the broker eligibility requirements, qualifying experience, 72-hour broker education, application, fingerprints, exam, and first-renewal path.",
+    href: "/how-to-become-florida-real-estate-broker",
+  },
+  {
+    number: "12",
+    stage: "INSTRUCTOR PATH",
+    title: "How to Become a Florida Real Estate Instructor",
+    description:
+      "See Florida's instructor-permit qualification routes, application steps, school registration process, and what comes after approval.",
+    href: "/how-to-become-florida-real-estate-instructor",
+  },
 ];
 
 const pathSteps = [
@@ -117,6 +133,14 @@ const pathSteps = [
   {
     label: "Maintain your license",
     href: "/florida-14-hour-real-estate-continuing-education",
+  },
+  {
+    label: "Advance to broker",
+    href: "/how-to-become-florida-real-estate-broker",
+  },
+  {
+    label: "Explore the instructor path",
+    href: "/how-to-become-florida-real-estate-instructor",
   },
 ];
 
@@ -294,7 +318,7 @@ export default function GuidesPage() {
           >
             Clear, practical guides for every stage of the Florida real estate
             education journey — from getting your first license through exam
-            preparation, post-license education, and continuing education.
+            preparation, renewal, broker advancement, and instructor education.
           </p>
         </div>
 
