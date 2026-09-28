@@ -4,9 +4,9 @@ import Link from "next/link";
 import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
 
 export const metadata: Metadata = {
-  title: "Courses",
+  title: "Florida Real Estate Courses & Licensing Education",
   description:
-    "Explore Greyson Institute online real estate education for pre-licensing, post-license, continuing education, instructor education, broker education, reactivation, and exam preparation.",
+    "Explore Greyson Institute Florida real estate education for pre-licensing, post-license, continuing education, broker education, reactivation, and exam preparation.",
 };
 
 const paths = [
@@ -172,16 +172,16 @@ export default function CoursesPage() {
         }}
       >
         <div style={{ minWidth: 0 }}>
-          <p className="eyebrow">REAL ESTATE EDUCATION</p>
+          <p className="eyebrow">FLORIDA REAL ESTATE EDUCATION</p>
 
           <h1 style={{ overflowWrap: "anywhere" }}>
-            Find the course that matches your next step.
+            Florida Real Estate Courses for Every Stage of Your License.
           </h1>
 
           <p className="page-lead">
-            From your first license through continuing education and broker
-            preparation, Greyson Institute makes it easier to understand where
-            you are and what comes next.
+            Explore Florida real estate education paths for pre-licensing,
+            post-license, continuing education, broker education, reactivation,
+            and exam preparation — and understand what comes next.
           </p>
         </div>
 
