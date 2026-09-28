@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "EducationalOrganization"],
   "@id": "https://greysoninstitute.com/#organization",
   name: "Greyson Institute",
   legalName: "BrightPath Education Group, LLC",
@@ -81,7 +81,11 @@ const organizationSchema = {
     availableLanguage: "English",
   },
   description:
-    "Greyson Institute provides clear, modern real estate education guidance for licensing, post-license, continuing education, broker education, and exam preparation.",
+    "Greyson Institute provides Florida-focused real estate education guidance for licensing, post-license, continuing education, broker education, and exam preparation.",
+  areaServed: {
+    "@type": "State",
+    name: "Florida",
+  },
 };
 
 const websiteSchema = {
