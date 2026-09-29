@@ -14,7 +14,7 @@ const guidePath =
   "/florida-real-estate-instructor-continuing-education";
 
 export const metadata: Metadata = {
-  title: guideTitle,
+  title: "Florida Real Estate Instructor CE",
   description: guideDescription,
 };
 
