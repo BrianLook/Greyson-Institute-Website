@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "FAQ",
+  title: "Florida Real Estate Education FAQ",
   description:
-    "Find answers to common Greyson Institute questions about online real estate education, licensing paths, course requirements, completion, and student support.",
+    "Answers to common Florida real estate education questions about licensing, the 63-hour course, post-license, continuing education, exams, and Greyson Institute.",
 };
 
 const faqs = [
@@ -14,9 +14,9 @@ const faqs = [
       "That depends on where you are in your real estate journey. Greyson Institute is organized around the most common paths: getting licensed, completing post-license education, renewing your license, becoming a broker, reactivating a license, or preparing for an exam.",
   },
   {
-    question: "Are the courses online?",
+    question: "Does Greyson Institute offer online Florida real estate education?",
     answer:
-      "Yes. Greyson Institute is designed around online real estate education so students can learn at their own pace and work through the material on a schedule that fits their life.",
+      "Greyson Institute is built around online Florida real estate education and licensing guidance. Course availability, enrollment status, delivery format, and any required approvals are shown on the relevant course page before enrollment.",
   },
   {
     question: "Can you help me figure out what course I need?",
@@ -24,9 +24,9 @@ const faqs = [
       "Yes. If you are unsure which education requirement applies to you, Greyson Institute can help point you toward the appropriate course path and explain what to look for before enrolling.",
   },
   {
-    question: "Are courses available in every state?",
+    question: "Does Greyson Institute serve students throughout Florida?",
     answer:
-      "Course availability and licensing requirements vary by state. Available states, course-specific requirements, provider information, and enrollment details will be clearly displayed before enrollment.",
+      "Yes. Greyson Institute is designed to help students throughout Florida understand the education path that applies to their license stage. Florida licensing rules are statewide, although individual course availability and enrollment details may vary by program.",
   },
   {
     question: "Do I have to complete the course all at once?",
@@ -42,6 +42,31 @@ const faqs = [
     question: "What happens after I finish my course?",
     answer:
       "That depends on the course you are taking. Some students may be preparing for a licensing exam, while others may be completing post-license, continuing education, broker, or reactivation requirements. Greyson Institute will explain the next step for each course path.",
+  },
+  {
+    question: "What is the 63-hour Florida real estate pre-licensing course?",
+    answer:
+      "Florida sales associate applicants generally complete a 63-hour approved pre-licensing course before taking the state licensing examination, subject to any applicable exemption. Greyson Institute provides a dedicated guide explaining the requirement and where it fits in the licensing process.",
+  },
+  {
+    question: "What is the 45-hour Florida post-license requirement?",
+    answer:
+      "Florida sales associates generally must complete 45 hours of approved post-license education before their first license renewal. The requirement applies to the initial renewal period and is separate from later continuing-education requirements.",
+  },
+  {
+    question: "How much continuing education do Florida real estate licensees need?",
+    answer:
+      "After the initial post-license period, Florida real estate licensees generally complete 14 hours of continuing education for each applicable renewal cycle, subject to current Florida rules and any exemption that may apply.",
+  },
+  {
+    question: "Can I get a Florida real estate license online?",
+    answer:
+      "Many parts of the Florida licensing process can be completed online, including approved distance-education coursework. Applicants still must satisfy the state's application, background-check, examination, and other licensing requirements.",
+  },
+  {
+    question: "How do I prepare for the Florida real estate exam?",
+    answer:
+      "Start by completing the required education, then review the major tested subject areas, practice exam-style questions, and make sure you understand the state's examination and scheduling process. Greyson Institute provides a Florida real estate exam guide and exam-preparation resources.",
   },
   {
     question: "Who is Brian Smith?",
@@ -124,9 +149,10 @@ export default function FAQPage() {
               overflowWrap: "anywhere",
             }}
           >
-            Real estate education comes with requirements, deadlines, and
-            important next steps. Start here with answers to some of the most
-            common questions.
+            Florida real estate education comes with specific requirements,
+            deadlines, and next steps. Start here with answers to common
+            questions about licensing, pre-licensing, post-license, continuing
+            education, exams, and Greyson Institute.
           </p>
         </div>
       </div>
