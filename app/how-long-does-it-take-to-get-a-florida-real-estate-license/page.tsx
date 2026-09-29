@@ -11,7 +11,7 @@ const guidePath =
   "/how-long-does-it-take-to-get-a-florida-real-estate-license";
 
 export const metadata: Metadata = {
-  title: guideTitle,
+  title: "Florida Real Estate License Timeline",
   description: guideDescription,
 };
 
