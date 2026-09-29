@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ContactForm } from "../../components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact Greyson Institute | Florida Real Estate Education",
   description:
-    "Contact Greyson Institute by phone, text, email, or message for help choosing the right real estate education path.",
+    "Contact Greyson Institute for help understanding Florida real estate licensing, education paths, courses, and next-step requirements.",
 };
 
 export default function ContactPage() {
@@ -34,8 +34,9 @@ export default function ContactPage() {
         </h1>
 
         <p className="page-lead">
-          If you are unsure which real estate education path applies to you,
-          Greyson Institute is here to help you understand your options.
+          If you are unsure which Florida real estate education path applies
+          to you, Greyson Institute is here to help you understand your options
+          from anywhere in the state.
         </p>
       </div>
 
@@ -184,7 +185,7 @@ export default function ContactPage() {
                   fontWeight: 700,
                 }}
               >
-                Business
+                Operated by
               </p>
 
               <p
@@ -229,7 +230,47 @@ export default function ContactPage() {
                   wordBreak: "break-word",
                 }}
               >
-                greysoninstitute.com
+                <a
+                  href="https://greysoninstitute.com"
+                  style={{
+                    textDecoration: "underline",
+                    textUnderlineOffset: "3px",
+                  }}
+                >
+                  greysoninstitute.com
+                </a>
+              </p>
+            </div>
+
+            <div
+              style={{
+                padding: "24px 0",
+                borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
+                minWidth: 0,
+              }}
+            >
+              <p
+                style={{
+                  margin: "0 0 6px",
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.16em",
+                  textTransform: "uppercase",
+                  color: "#7d5f3a",
+                  fontWeight: 700,
+                }}
+              >
+                Service area
+              </p>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontFamily: "var(--font-serif), Georgia, serif",
+                  fontSize: "1.15rem",
+                  lineHeight: 1.5,
+                }}
+              >
+                Students throughout Florida
               </p>
             </div>
 
