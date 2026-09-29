@@ -342,8 +342,7 @@ export default function HomePage() {
         >
           <Image
             src="/brand/greyson-icon-color.png"
-            alt=""
-            aria-hidden="true"
+            alt="Greyson Institute logo"
             width={72}
             height={72}
             sizes="72px"
