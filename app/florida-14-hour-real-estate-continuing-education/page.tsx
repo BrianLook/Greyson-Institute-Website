@@ -11,7 +11,7 @@ const guideDescription =
 const guidePath = "/florida-14-hour-real-estate-continuing-education";
 
 export const metadata: Metadata = {
-  title: guideTitle,
+  title: "Florida 14-Hour Real Estate CE",
   description: guideDescription,
 };
 
