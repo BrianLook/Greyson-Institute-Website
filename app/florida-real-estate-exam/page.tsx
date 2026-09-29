@@ -10,7 +10,7 @@ const guideDescription =
 const guidePath = "/florida-real-estate-exam";
 
 export const metadata: Metadata = {
-  title: guideTitle,
+  title: "Florida Real Estate Exam Guide",
   description: guideDescription,
 };
 
