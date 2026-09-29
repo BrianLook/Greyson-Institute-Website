@@ -17,8 +17,8 @@ export function SiteFooter() {
           <BrandLockup inverse />
 
           <p className="footer-copy">
-            A clearer path through real estate education — from first license
-            to what comes next.
+            Florida real estate education and licensing guidance — from first
+            license to what comes next.
           </p>
 
           <a
@@ -87,6 +87,7 @@ export function SiteFooter() {
 
           <span>
             Greyson Institute is operated by BrightPath Education Group, LLC
+            and serves students throughout Florida.
           </span>
         </div>
       </div>
