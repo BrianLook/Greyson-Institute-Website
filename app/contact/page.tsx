@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "../../components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact Greyson Institute | Florida Real Estate Education",
+  title: "Contact Greyson Institute",
   description:
     "Contact Greyson Institute for help understanding Florida real estate licensing, education paths, courses, and next-step requirements.",
 };
