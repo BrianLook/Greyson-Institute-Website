@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Greyson Institute | Florida Real Estate Education",
   description:
-    "Meet the Greyson Institute team and learn how experienced real estate leadership, technology, and student support shape our online education experience.",
+    "Meet the Greyson Institute team behind our Florida real estate education, licensing guidance, student support, and online learning experience.",
 };
 
 const team = [
@@ -102,9 +103,9 @@ export default function AboutPage() {
               minWidth: 0,
             }}
           >
-            Experienced leadership, thoughtful technology, and responsive
-            student support work together to make real estate education easier
-            to navigate.
+            Greyson Institute brings together Florida real estate experience,
+            thoughtful technology, and responsive student support to make
+            licensing and continuing education easier to understand and navigate.
           </p>
         </div>
       </div>
@@ -233,6 +234,73 @@ export default function AboutPage() {
             </div>
           </article>
         ))}
+      </div>
+
+      <div
+        className="container"
+        style={{
+          maxWidth: "1080px",
+          marginTop: "88px",
+          minWidth: 0,
+        }}
+      >
+        <div
+          style={{
+            borderTop: "1px solid rgba(17, 23, 23, 0.16)",
+            borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
+            padding: "34px 0",
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+            gap: "28px",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ minWidth: 0 }}>
+            <p className="eyebrow">FLORIDA REAL ESTATE EDUCATION</p>
+
+            <h2
+              style={{
+                marginBottom: "12px",
+                overflowWrap: "anywhere",
+              }}
+            >
+              Education paths built around where you are in your license journey.
+            </h2>
+
+            <p
+              style={{
+                color: "#4d4b46",
+                margin: 0,
+                lineHeight: 1.75,
+              }}
+            >
+              Explore Florida licensing, pre-licensing, post-license,
+              continuing education, broker education, reactivation, and exam
+              preparation resources from Greyson Institute.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "16px",
+              alignItems: "center",
+            }}
+          >
+            <Link className="button" href="/courses">
+              Explore Florida Courses
+            </Link>
+
+            <Link
+              className="text-link"
+              href="/how-to-get-a-florida-real-estate-license"
+            >
+              Florida Licensing Guide <span>→</span>
+            </Link>
+          </div>
+        </div>
       </div>
 
       <div
