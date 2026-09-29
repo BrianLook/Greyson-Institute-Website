@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Greyson Institute | Florida Real Estate Education",
+  title: "About Greyson Institute",
   description:
     "Meet the Greyson Institute team behind our Florida real estate education, licensing guidance, student support, and online learning experience.",
 };
