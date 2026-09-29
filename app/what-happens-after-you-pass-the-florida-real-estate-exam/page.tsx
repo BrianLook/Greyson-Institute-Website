@@ -11,7 +11,7 @@ const guidePath =
   "/what-happens-after-you-pass-the-florida-real-estate-exam";
 
 export const metadata: Metadata = {
-  title: guideTitle,
+  title: "After the Florida Real Estate Exam",
   description: guideDescription,
 };
 
