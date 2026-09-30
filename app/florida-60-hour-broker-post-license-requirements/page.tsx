@@ -405,7 +405,7 @@ export default function FloridaBrokerPostLicensePage() {
               marginRight: "auto",
             }}
           >
-            Greyson&apos;s broker post-license offering is coming soon.
+            Co-branded broker post-license enrollment is coming soon.
           </h2>
 
           <p
@@ -416,9 +416,10 @@ export default function FloridaBrokerPostLicensePage() {
               marginRight: "auto",
             }}
           >
-            Until enrollment opens, use the Florida License Check to verify
-            your broker record and contact Greyson if you need help
-            understanding your first-renewal education path.
+            Greyson is preparing tracked partner enrollment through The CE Shop.
+            Until the link is live, use the Florida License Check to verify your
+            broker record and contact Greyson if you need help understanding
+            your first-renewal education path.
           </p>
 
           <div
