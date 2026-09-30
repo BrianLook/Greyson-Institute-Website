@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
 import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
+import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 
 const guideTitle =
   "Florida 14-Hour Real Estate Continuing Education Requirements";
@@ -269,18 +270,12 @@ export default function Florida14HourContinuingEducationPage() {
               you to the appropriate tracked partner enrollment page.
             </p>
 
-            <p
-              style={{
-                color: "#7d5f3a",
-                fontSize: "0.72rem",
-                fontWeight: 700,
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                marginBottom: 0,
-              }}
-            >
-              Enrollment opening soon
-            </p>
+            <div style={{ marginTop: "24px" }}>
+              <PartnerEnrollmentButton
+                course="floridaContinuingEducation14"
+                pendingLabel="Enrollment opening soon"
+              />
+            </div>
           </div>
 
           <div
@@ -1038,9 +1033,7 @@ export default function Florida14HourContinuingEducationPage() {
               justifyContent: "center",
             }}
           >
-            <Link className="button" href="/courses#continuing-education">
-              Explore Continuing Education
-            </Link>
+            <PartnerEnrollmentButton course="floridaContinuingEducation14" />
 
             <Link
               href="/contact"
