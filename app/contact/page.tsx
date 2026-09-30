@@ -337,9 +337,11 @@ export default function ContactPage() {
             overflowWrap: "anywhere",
           }}
         >
-          Course-specific enrollment, technical support, completion
-          requirements, and provider questions may be directed to the
-          appropriate education provider when applicable.
+          Greyson can help with Florida licensing-path questions and enrollment
+          guidance. When co-branded The CE Shop enrollment launches,
+          course-specific billing, technical support, classroom access,
+          certificates, and content questions will be handled by The CE Shop as
+          the school of record and course provider.
         </p>
       </div>
     </section>
