@@ -481,7 +481,7 @@ export function determineFloridaLicensePath(
         reason:
           "You told us this was not your first renewal, and this record appears to be within the first 12 months of involuntary inactivity.",
         href:
-          "/courses#reactivation",
+          "/florida-real-estate-license-reactivation",
         buttonText:
           "See My Reactivation Steps →",
         deadlineLabel:
@@ -512,7 +512,7 @@ export function determineFloridaLicensePath(
         reason:
           "You told us this was not your first renewal, and this record appears to have been involuntarily inactive for more than 12 months but less than two years.",
         href:
-          "/courses#reactivation",
+          "/florida-real-estate-license-reactivation",
         buttonText:
           "See My Reactivation Steps →",
         deadlineLabel:
