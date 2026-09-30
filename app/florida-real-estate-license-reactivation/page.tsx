@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
 import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
+import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 
 const guideTitle =
   "Florida Real Estate License Reactivation: 14-Hour vs. 28-Hour Education";
@@ -424,23 +425,46 @@ export default function FloridaRealEstateLicenseReactivationPage() {
             reporting.
           </p>
 
-          <Link
-            href="/find-my-path"
+          <div
             style={{
-              minHeight: "50px",
-              padding: "0 22px",
-              border: "1px solid #f5f0e7",
-              display: "inline-flex",
-              alignItems: "center",
+              display: "flex",
+              flexWrap: "wrap",
               justifyContent: "center",
-              color: "#f5f0e7",
-              textDecoration: "none",
-              fontWeight: 700,
-              marginTop: "14px",
+              gap: "12px",
+              marginTop: "22px",
             }}
           >
-            Find My Likely Path
-          </Link>
+            <PartnerEnrollmentButton
+              course="floridaReactivation14"
+              label="Enroll in 14-Hour Path →"
+              pendingLabel="14-Hour link coming soon"
+              dark
+            />
+
+            <PartnerEnrollmentButton
+              course="floridaReactivation28"
+              label="Enroll in 28-Hour Path →"
+              pendingLabel="28-Hour link coming soon"
+              dark
+            />
+
+            <Link
+              href="/find-my-path"
+              style={{
+                minHeight: "48px",
+                padding: "0 20px",
+                border: "1px solid #f5f0e7",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#f5f0e7",
+                textDecoration: "none",
+                fontWeight: 700,
+              }}
+            >
+              Find My Likely Path
+            </Link>
+          </div>
         </div>
 
         <div
