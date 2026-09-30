@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Greyson Institute",
   description:
-    "Meet the Greyson Institute team behind our Florida real estate education, licensing guidance, student support, and online learning experience.",
+    "Meet the Greyson Institute team behind our Florida real estate licensing guidance, student navigation, technology, and education-partner experience.",
 };
 
 const team = [
@@ -23,7 +23,7 @@ const team = [
     secondary: "Co-Founder, Greyson Institute",
     image: "/jessica-smith.png",
     bio:
-      "Jessica is a licensed Florida real estate professional and Co-Founder of Greyson Institute who combines sales leadership with a strong focus on technology and student experience. She helps streamline course delivery, improve digital systems, support enrollment growth, and make the learning experience easier to navigate. Her role connects the technology, communication, and sales sides of Greyson Institute so students have a smoother path from interest to enrollment.",
+      "Jessica is a licensed Florida real estate professional and Co-Founder of Greyson Institute who combines sales leadership with a strong focus on technology and student experience. She helps improve Greyson's digital systems, guide enrollment handoffs, support growth, and make the education path easier to navigate. Her role connects the technology, communication, and sales sides of Greyson Institute so students have a smoother path from interest to the right next step.",
   },
   {
     name: "Jennifer Wilson",
@@ -31,7 +31,7 @@ const team = [
     secondary: "Student Support & Operations",
     image: "/jennifer-wilson.png",
     bio:
-      "Jennifer supports students and staff throughout the learning experience, from initial questions through course completion. She manages customer support, helps resolve issues quickly, and coordinates internal HR processes that keep the organization running smoothly. Her focus is creating a responsive, organized, and supportive environment where students feel taken care of and the team can operate efficiently.",
+      "Jennifer supports Greyson visitors and students with questions, navigation, and enrollment handoffs while also coordinating internal HR processes that keep the organization running smoothly. Course-specific technical support, billing, certificates, and classroom issues are handled by the applicable course provider. Her focus is creating a responsive, organized, and supportive Greyson experience.",
   },
 ];
 
