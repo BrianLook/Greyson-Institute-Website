@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
+import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
 
 const guideTitle = "Florida 45-Hour Post-License Requirements";
@@ -969,9 +970,7 @@ export default function Florida45HourPostLicenseRequirementsPage() {
               justifyContent: "center",
             }}
           >
-            <Link className="button" href="/courses#post-license">
-              Explore Post-License Education
-            </Link>
+            <PartnerEnrollmentButton course="floridaPostLicense45" />
 
             <Link
               href="/florida-14-hour-real-estate-continuing-education"
