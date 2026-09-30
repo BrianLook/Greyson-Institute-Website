@@ -969,6 +969,23 @@ export function LicenseRescuePanel({
         missed deadline was your first renewal.
       </div>
 
+      <p
+        style={{
+          margin: "18px 0 24px",
+        }}
+      >
+        <a
+          href="/florida-real-estate-license-reactivation"
+          style={{
+            fontWeight: 700,
+            textDecoration: "underline",
+            textUnderlineOffset: "4px",
+          }}
+        >
+          Read the Florida reactivation guide: 14 hours vs. 28 hours →
+        </a>
+      </p>
+
       <div className="license-rescue-costs">
         <div className="license-rescue-cost-row">
           <strong>
