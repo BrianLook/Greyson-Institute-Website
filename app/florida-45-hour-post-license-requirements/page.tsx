@@ -944,7 +944,7 @@ export default function Florida45HourPostLicenseRequirementsPage() {
               marginRight: "auto",
             }}
           >
-            Explore Greyson Institute&apos;s post-license education path.
+            Co-branded 45-hour post-license enrollment is coming soon.
           </h2>
 
           <p
@@ -955,9 +955,12 @@ export default function Florida45HourPostLicenseRequirementsPage() {
               marginRight: "auto",
             }}
           >
-            Understand where Florida&apos;s 45-hour post-license requirement
-            fits into your first renewal and what continuing education comes
-            next.
+            Greyson is preparing tracked partner enrollment through The CE Shop.
+            The CE Shop will remain the school of record and handle payment,
+            course delivery, course-specific support, certificates, and
+            applicable completion reporting. Until the enrollment link is live,
+            use this guide to confirm where the 45-hour requirement fits in your
+            first renewal.
           </p>
 
           <div
