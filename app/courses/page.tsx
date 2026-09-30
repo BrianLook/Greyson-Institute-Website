@@ -220,6 +220,64 @@ export default function CoursesPage() {
       >
         <div
           style={{
+            background: "#1f2d30",
+            color: "#f5f0e7",
+            padding: "clamp(30px, 5vw, 48px)",
+            marginBottom: "36px",
+          }}
+        >
+          <p className="eyebrow eyebrow--light">HOW ENROLLMENT WILL WORK</p>
+
+          <h2
+            className="light-heading"
+            style={{
+              maxWidth: "820px",
+              marginBottom: "28px",
+            }}
+          >
+            Greyson guides the path. The CE Shop delivers the partner course.
+          </h2>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
+              gap: "22px",
+            }}
+          >
+            <div>
+              <p style={{ color: "#d6bd9c", fontWeight: 700 }}>01</p>
+              <h3 style={{ color: "#f5f0e7" }}>Find your likely requirement</h3>
+              <p style={{ color: "rgba(245, 240, 231, 0.82)" }}>
+                Use Greyson&apos;s guides and Find My Path tool to understand
+                which Florida education requirement most likely applies.
+              </p>
+            </div>
+
+            <div>
+              <p style={{ color: "#d6bd9c", fontWeight: 700 }}>02</p>
+              <h3 style={{ color: "#f5f0e7" }}>Open the tracked course page</h3>
+              <p style={{ color: "rgba(245, 240, 231, 0.82)" }}>
+                When onboarding is complete, Greyson will link directly to the
+                appropriate co-branded The CE Shop course page.
+              </p>
+            </div>
+
+            <div>
+              <p style={{ color: "#d6bd9c", fontWeight: 700 }}>03</p>
+              <h3 style={{ color: "#f5f0e7" }}>Enroll and complete the course</h3>
+              <p style={{ color: "rgba(245, 240, 231, 0.82)" }}>
+                The CE Shop will handle payment, enrollment, course delivery,
+                course-specific support, certificates, and applicable
+                regulatory completion reporting.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
             background: "#eee6d9",
             border: "1px solid rgba(17, 23, 23, 0.14)",
             padding: "clamp(28px, 5vw, 44px)",
