@@ -77,6 +77,14 @@ const guides = [
   },
   {
     number: "09",
+    stage: "REACTIVATION",
+    title: "Florida Real Estate License Reactivation: 14 Hours vs. 28 Hours",
+    description:
+      "Understand how Florida's involuntary-inactive timeline affects reactivation education, why first-renewal cases are different, and when DBPR verification matters.",
+    href: "/florida-real-estate-license-reactivation",
+  },
+  {
+    number: "10",
     stage: "INSTRUCTOR RENEWAL",
     title: "Florida Real Estate Instructor Continuing Education Requirements",
     description:
@@ -84,7 +92,7 @@ const guides = [
     href: "/florida-real-estate-instructor-continuing-education",
   },
   {
-    number: "10",
+    number: "11",
     stage: "BROKER FIRST RENEWAL",
     title: "Florida 60-Hour Broker Post-License Requirements",
     description:
@@ -92,7 +100,7 @@ const guides = [
     href: "/florida-60-hour-broker-post-license-requirements",
   },
   {
-    number: "11",
+    number: "12",
     stage: "CAREER ADVANCEMENT",
     title: "How to Become a Florida Real Estate Broker",
     description:
@@ -100,7 +108,7 @@ const guides = [
     href: "/how-to-become-florida-real-estate-broker",
   },
   {
-    number: "12",
+    number: "13",
     stage: "INSTRUCTOR PATH",
     title: "How to Become a Florida Real Estate Instructor",
     description:
@@ -133,6 +141,10 @@ const pathSteps = [
   {
     label: "Maintain your license",
     href: "/florida-14-hour-real-estate-continuing-education",
+  },
+  {
+    label: "Reactivate an inactive license",
+    href: "/florida-real-estate-license-reactivation",
   },
   {
     label: "Advance to broker",
