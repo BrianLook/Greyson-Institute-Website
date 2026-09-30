@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
+import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 
 export const metadata: Metadata = {
   title: "Florida Real Estate Courses & Licensing Education",
@@ -798,9 +799,42 @@ export default function CoursesPage() {
               )}
             </div>
 
-            <span className="coming-soon">
-              Enrollment link coming soon
-            </span>
+            {course.id === "pre-licensing" && (
+              <PartnerEnrollmentButton course="floridaPreLicense63" />
+            )}
+
+            {course.id === "post-license" && (
+              <PartnerEnrollmentButton course="floridaPostLicense45" />
+            )}
+
+            {course.id === "continuing-education" && (
+              <PartnerEnrollmentButton course="floridaContinuingEducation14" />
+            )}
+
+            {course.id === "instructor-ce" && (
+              <PartnerEnrollmentButton course="floridaInstructorCE" />
+            )}
+
+            {course.id === "broker" && (
+              <PartnerEnrollmentButton course="floridaBrokerPreLicense72" />
+            )}
+
+            {course.id === "broker-post-license" && (
+              <PartnerEnrollmentButton course="floridaBrokerPostLicense60" />
+            )}
+
+            {course.id === "reactivation" && (
+              <Link
+                href="/florida-real-estate-license-reactivation"
+                className="coming-soon"
+              >
+                Choose 14-hour vs. 28-hour path →
+              </Link>
+            )}
+
+            {course.id === "exam-prep" && (
+              <PartnerEnrollmentButton course="floridaExamPrep" />
+            )}
           </article>
         ))}
       </div>
