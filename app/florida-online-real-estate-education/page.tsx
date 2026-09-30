@@ -251,9 +251,10 @@ export default function FloridaOnlineRealEstateEducationPage() {
             }}
           >
             Students throughout Florida can use Greyson Institute to understand
-            which real estate education requirement applies to their current
-            stage, compare the major license pathways, and move directly to the
-            most relevant course or licensing guide.
+            which real estate education requirement likely applies to their
+            current stage, compare the major license pathways, and move directly
+            to the most relevant licensing guide or tracked partner course page
+            when enrollment is available.
           </p>
 
           <p
@@ -262,10 +263,12 @@ export default function FloridaOnlineRealEstateEducationPage() {
               lineHeight: 1.8,
             }}
           >
-            Course availability and enrollment options may depend on the
-            specific program and its current approval status. Review the
-            individual course page for the most current information before
-            enrolling.
+            Greyson is preparing co-branded online enrollment through The CE Shop.
+            For partner-delivered courses, The CE Shop will remain the school
+            of record and handle payment, course delivery, course-specific
+            support, certificates, and regulatory completion reporting. Final
+            enrollment links and pricing will be posted after onboarding is
+            complete.
           </p>
         </div>
 
