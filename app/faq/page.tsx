@@ -44,6 +44,26 @@ const faqs = [
       "That depends on the course. Greyson will explain the likely next licensing step, while the course provider handles the classroom, course completion, certificate, and applicable regulatory reporting. Completing required education does not by itself complete every DBPR renewal or licensing step.",
   },
   {
+    question: "Who will charge me for a partner course?",
+    answer:
+      "When Greyson's co-branded The CE Shop enrollment links are activated, payment and checkout for those courses will be handled by The CE Shop. Greyson will direct you to the tracked partner course page rather than collecting the course payment itself.",
+  },
+  {
+    question: "Who is the school of record for The CE Shop partner courses?",
+    answer:
+      "The CE Shop will remain the school of record and course provider for partner-delivered courses. It will handle the classroom, course-specific support, certificates, and applicable regulatory completion reporting.",
+  },
+  {
+    question: "Does finishing the education automatically renew my Florida license?",
+    answer:
+      "No. Completing required education is only one part of many Florida renewal or licensing paths. You may still need to complete DBPR account steps, pay renewal fees, satisfy application or examination requirements, or complete another state requirement. Always verify your live DBPR record.",
+  },
+  {
+    question: "Why should I use the Greyson enrollment link?",
+    answer:
+      "Greyson's co-branded link is the tracked path that connects your enrollment to Greyson. When enrollment launches, use the course link provided on GreysonInstitute.com rather than searching for the course separately.",
+  },
+  {
     question: "What is the 63-hour Florida real estate pre-licensing course?",
     answer:
       "Florida sales associate applicants generally complete a 63-hour approved pre-licensing course before taking the state licensing examination, subject to any applicable exemption. Greyson Institute provides a dedicated guide explaining the requirement and where it fits in the licensing process.",
