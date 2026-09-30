@@ -2131,7 +2131,7 @@ export function FindMyPath({
                   }}
                 >
                   {pathResult.kind === "later-ce"
-                    ? "Greyson is showing the result from the same license-path logic that will protect checkout when enrollment opens."
+                    ? "Greyson is showing the result from the same license-path logic we will use to guide you to the appropriate partner course when enrollment opens."
                     : "Greyson is showing the education path that most likely fits your record and renewal answer instead of sending you straight to the wrong course."}
                 </p>
               </div>
@@ -2265,7 +2265,9 @@ export function FindMyPath({
               </button>
 
               <span>
-                Greyson Institute is not DBPR.
+                Greyson Institute is not DBPR. This result is guidance, not a
+                licensing determination. Verify your live DBPR record before
+                purchasing education.
               </span>
             </div>
 
