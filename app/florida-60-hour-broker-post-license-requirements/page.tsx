@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
 import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
+import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 
 const guideTitle =
   "Florida 60-Hour Broker Post-License Requirements";
@@ -431,6 +432,11 @@ export default function FloridaBrokerPostLicensePage() {
               marginTop: "26px",
             }}
           >
+            <PartnerEnrollmentButton
+              course="floridaBrokerPostLicense60"
+              dark
+            />
+
             <Link
               href="/check-florida-real-estate-license-expiration"
               style={{
