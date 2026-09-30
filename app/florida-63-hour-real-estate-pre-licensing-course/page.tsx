@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
+import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 
 const guideTitle = "Florida 63-Hour Real Estate Pre-Licensing Course";
 const guideDescription =
@@ -692,9 +693,7 @@ export default function Florida63HourPreLicensingCoursePage() {
               justifyContent: "center",
             }}
           >
-            <Link className="button" href="/courses#pre-licensing">
-              Explore Pre-Licensing
-            </Link>
+            <PartnerEnrollmentButton course="floridaPreLicense63" />
 
             <Link
               href="/contact"
