@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
+import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 
 const guideTitle =
   "Florida Real Estate Exam: What to Expect and How to Prepare";
@@ -967,8 +968,7 @@ export default function FloridaRealEstateExamPage() {
               marginRight: "auto",
             }}
           >
-            Explore Greyson Institute&apos;s exam preparation and licensing
-            education paths.
+            Prepare for the exam with the right education path.
           </h2>
 
           <p
@@ -979,8 +979,9 @@ export default function FloridaRealEstateExamPage() {
               marginRight: "auto",
             }}
           >
-            Review the education path that matches where you are today, from
-            pre-licensing through exam preparation and post-license education.
+            Greyson can help you understand where exam preparation fits.
+            When the tracked partner link is live, exam-prep enrollment will
+            open through The CE Shop.
           </p>
 
           <div
@@ -989,9 +990,7 @@ export default function FloridaRealEstateExamPage() {
               justifyContent: "center",
             }}
           >
-            <Link className="button" href="/courses#exam-prep">
-              Explore Exam Preparation
-            </Link>
+            <PartnerEnrollmentButton course="floridaExamPrep" />
 
             <Link
               href="/contact"
