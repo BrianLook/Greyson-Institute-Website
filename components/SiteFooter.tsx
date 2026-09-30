@@ -89,6 +89,14 @@ export function SiteFooter() {
             Greyson Institute is operated by BrightPath Education Group, LLC
             and serves students throughout Florida.
           </span>
+
+          <span>
+            Greyson Institute is preparing a co-branded affiliate relationship
+            with The CE Shop for online course enrollment. When launched, The
+            CE Shop will remain the school of record and course provider for
+            partner-delivered courses. Final enrollment links and provider
+            disclosure will be posted after onboarding is complete.
+          </span>
         </div>
       </div>
 
