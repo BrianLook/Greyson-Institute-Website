@@ -16,7 +16,7 @@ const faqs = [
   {
     question: "Does Greyson Institute offer online Florida real estate education?",
     answer:
-      "Greyson Institute is built around online Florida real estate education and licensing guidance. Course availability, enrollment status, delivery format, and any required approvals are shown on the relevant course page before enrollment.",
+      "Greyson Institute provides Florida real estate licensing guidance and is preparing co-branded online course enrollment through The CE Shop. For partner-delivered courses, The CE Shop will remain the school of record and handle payment, course delivery, course-specific support, certificates, and regulatory completion reporting.",
   },
   {
     question: "Can you help me figure out what course I need?",
@@ -31,17 +31,17 @@ const faqs = [
   {
     question: "Do I have to complete the course all at once?",
     answer:
-      "Online coursework is designed for flexible, self-paced learning. Specific course timing, completion requirements, and access periods will be listed on each course page.",
+      "The CE Shop's partner courses are online and asynchronous. Specific course timing, completion requirements, and access periods will be shown on the partner course page when enrollment opens.",
   },
   {
     question: "Will I receive proof of completion?",
     answer:
-      "Completion documentation and any applicable reporting details will be explained clearly on each course page before enrollment.",
+      "For partner-delivered courses, The CE Shop will handle certificates and applicable regulatory completion reporting. Greyson will explain the next licensing step and link you to the correct provider information.",
   },
   {
     question: "What happens after I finish my course?",
     answer:
-      "That depends on the course you are taking. Some students may be preparing for a licensing exam, while others may be completing post-license, continuing education, broker, or reactivation requirements. Greyson Institute will explain the next step for each course path.",
+      "That depends on the course. Greyson will explain the likely next licensing step, while the course provider handles the classroom, course completion, certificate, and applicable regulatory reporting. Completing required education does not by itself complete every DBPR renewal or licensing step.",
   },
   {
     question: "What is the 63-hour Florida real estate pre-licensing course?",
@@ -76,7 +76,7 @@ const faqs = [
   {
     question: "Can I contact Greyson Institute if I have questions?",
     answer:
-      "Yes. Greyson Institute is built around clear guidance and practical support, so students have a place to turn when they are unsure what comes next.",
+      "Yes. Greyson can help with Florida licensing-path questions and enrollment guidance. Course-specific billing, technical issues, classroom access, certificates, and content support are handled by the applicable course provider.",
   },
 ];
 
