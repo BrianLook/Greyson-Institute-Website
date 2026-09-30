@@ -719,7 +719,7 @@ export default function CoursesPage() {
             </div>
 
             <span className="coming-soon">
-              Course details available soon
+              Enrollment link coming soon
             </span>
           </article>
         ))}
@@ -743,9 +743,14 @@ export default function CoursesPage() {
             overflowWrap: "anywhere",
           }}
         >
-          Course availability, pricing, enrollment links, state-specific
-          requirements, and provider details will be displayed on each course
-          page before enrollment opens.
+          Greyson Institute is preparing co-branded online enrollment through The
+          CE Shop. When enrollment opens, The CE Shop will remain the school of
+          record and will handle payment, course delivery, course-specific
+          support, certificates, and regulatory completion reporting for
+          partner-provided courses. Greyson will provide licensing guidance and
+          direct students to the appropriate tracked enrollment page. Final
+          links, pricing, and provider disclosure will be posted after
+          onboarding is complete.
         </p>
       </div>
     </section>
