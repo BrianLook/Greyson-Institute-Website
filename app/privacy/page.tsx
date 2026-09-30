@@ -20,7 +20,7 @@ export default function PrivacyPage() {
         </p>
 
         <p className="muted">
-          Last updated: September 21, 2026
+          Last updated: September 30, 2026
         </p>
 
         <h2>Information We Collect</h2>
@@ -108,15 +108,18 @@ export default function PrivacyPage() {
         <h2>Course Providers and Third-Party Services</h2>
 
         <p>
-          Some courses, enrollment services, payment processing, learning
-          platforms, or student services may be provided through third-party
-          providers.
+          Greyson Institute is preparing co-branded online course enrollment with
+          The CE Shop. When those links are activated, The CE Shop will operate
+          the course shopping, payment, student-account, and learning-platform
+          experience for partner-delivered courses.
         </p>
 
         <p>
-          When you leave the Greyson Institute website and use a third-party
-          website or service, that provider's privacy policy and terms may
-          apply separately.
+          When you follow a Greyson link to a co-branded or third-party course
+          page, information you submit there is handled by that provider under
+          its own privacy policy and terms. Greyson may receive affiliate
+          enrollment and student information made available through the partner
+          relationship for support, recordkeeping, and permitted follow-up.
         </p>
 
         <h2>Cookies and Similar Technologies</h2>
