@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
+import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 
 export const metadata: Metadata = {
   title: "How to Become a Florida Real Estate Broker",
@@ -305,6 +306,34 @@ export default function BrokerPathPage() {
             real estate may be exempt from the 72-hour broker pre-license
             course. Official transcripts are used to document the exemption.
           </p>
+        </div>
+
+        <div
+          style={{
+            background: "#eee6d9",
+            border: "1px solid rgba(17, 23, 23, 0.14)",
+            padding: "clamp(28px, 5vw, 42px)",
+            marginBottom: "28px",
+          }}
+        >
+          <p className="eyebrow">BROKER PRE-LICENSING</p>
+
+          <h2>Co-branded 72-hour broker enrollment is coming soon.</h2>
+
+          <p
+            style={{
+              color: "#5f5c56",
+              maxWidth: "820px",
+              lineHeight: 1.75,
+            }}
+          >
+            Greyson is preparing tracked partner enrollment through The CE
+            Shop. The CE Shop will remain the school of record and handle
+            payment, course delivery, course-specific support, certificates,
+            and applicable completion reporting.
+          </p>
+
+          <PartnerEnrollmentButton course="floridaBrokerPreLicense72" />
         </div>
 
         <div
