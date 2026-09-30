@@ -20,7 +20,7 @@ export default function TermsPage() {
         </p>
 
         <p className="muted">
-          Last updated: September 23, 2026
+          Last updated: September 30, 2026
         </p>
 
         <h2>Website Information</h2>
@@ -35,17 +35,23 @@ export default function TermsPage() {
         <h2>Course Enrollment</h2>
 
         <p>
-          Some courses, enrollment services, payments, student accounts, or
-          completion services may be provided through third-party education
-          platforms. Additional terms may apply when using those services.
+          Greyson Institute is preparing to refer students to partner-delivered
+          online courses through a co-branded affiliate relationship with The
+          CE Shop. When those enrollment links are activated, The CE Shop will
+          handle checkout, enrollment, course access, course-specific student
+          support, certificates, and regulatory completion reporting for those
+          courses. Additional provider terms will apply.
         </p>
 
         <h2>Licensing Requirements</h2>
 
         <p>
-          Real estate licensing and education requirements may change. Students
-          are responsible for confirming that a course satisfies the
-          requirements applicable to their license status and goals.
+          Real estate licensing and education requirements may change. Greyson's
+          Find My Path and license-lookup tools provide guidance based on
+          available records and user answers; they are not a DBPR determination.
+          Students should verify their live DBPR record and confirm that a
+          course satisfies the requirements applicable to their license status
+          and goals before purchasing education.
         </p>
 
         <h2>No Guarantee of Licensing or Exam Results</h2>
@@ -60,17 +66,21 @@ export default function TermsPage() {
 
         <p>
           Greyson Institute may provide links to third-party websites or
-          platforms. Those services are governed by their own terms, policies,
-          and procedures. Greyson Institute is not responsible for the
-          availability or operation of third-party services.
+          platforms, including co-branded course pages operated by The CE Shop.
+          Those services are governed by their own terms, policies, procedures,
+          payment systems, and course-support processes. Greyson does not
+          develop The CE Shop's course content or operate its classroom
+          platform.
         </p>
 
         <h2>Refunds and Course Policies</h2>
 
         <p>
-          Refund, cancellation, access, completion, and student-support
-          policies may vary by course or provider. Applicable policies will be
-          displayed before enrollment or provided through the course platform.
+          Refund, cancellation, access, completion, and course-support policies
+          are controlled by the applicable course provider. For The CE Shop
+          partner courses, The CE Shop handles those requests through its
+          customer-service process, while Greyson may assist with partner
+          escalation when appropriate.
         </p>
 
         <h2>Intellectual Property</h2>
