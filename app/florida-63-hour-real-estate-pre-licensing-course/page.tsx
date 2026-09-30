@@ -667,7 +667,7 @@ export default function Florida63HourPreLicensingCoursePage() {
               marginRight: "auto",
             }}
           >
-            Explore the Florida sales associate education path.
+            Co-branded 63-hour pre-licensing enrollment is coming soon.
           </h2>
 
           <p
@@ -678,9 +678,12 @@ export default function Florida63HourPreLicensingCoursePage() {
               marginRight: "auto",
             }}
           >
-            Review Greyson Institute&apos;s pre-licensing path and learn where
-            the 63-hour course fits into your journey toward a Florida real
-            estate license.
+            Greyson is preparing tracked partner enrollment through The CE Shop.
+            The CE Shop will remain the school of record and handle payment,
+            course delivery, course-specific support, certificates, and
+            applicable completion reporting. Until the enrollment link is live,
+            use this guide to understand where the 63-hour course fits into your
+            Florida licensing journey.
           </p>
 
           <div
