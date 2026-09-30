@@ -741,8 +741,8 @@ export default function FloridaInstructorContinuingEducationPage() {
               marginRight: "auto",
             }}
           >
-            Greyson&apos;s instructor continuing
-            education offering is coming soon.
+            Co-branded instructor education
+            enrollment is coming soon.
           </h2>
 
           <p
@@ -754,11 +754,13 @@ export default function FloridaInstructorContinuingEducationPage() {
               marginRight: "auto",
             }}
           >
-            Until enrollment opens, use the
+            Greyson is preparing tracked partner
+            enrollment through The CE Shop.
+            Until the link is live, use the
             Florida License Check to verify your
-            instructor permit and contact
-            Greyson if you need help
-            understanding your education path.
+            instructor permit and contact Greyson
+            if you need help understanding your
+            education path.
           </p>
 
           <div
