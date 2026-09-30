@@ -242,7 +242,7 @@ export default function Florida14HourContinuingEducationPage() {
               minWidth: 0,
             }}
           >
-            <p className="eyebrow">GREYSON COURSE EXPERIENCE</p>
+            <p className="eyebrow">ONLINE COURSE PARTNER</p>
 
             <h2
               style={{
@@ -261,10 +261,12 @@ export default function Florida14HourContinuingEducationPage() {
                 maxWidth: "650px",
               }}
             >
-              This is the first Greyson course path we are preparing for
-              enrollment. Before enrollment opens, Greyson will publish the
-              final course availability, provider details, pricing,
-              completion process, and reporting information.
+              Greyson Institute is preparing a co-branded affiliate enrollment
+              experience with The CE Shop. The CE Shop will remain the school
+              of record and handle payment, course delivery, course-specific
+              support, certificates, and regulatory completion reporting.
+              Greyson will help you identify the likely education path and send
+              you to the appropriate tracked partner enrollment page.
             </p>
 
             <p
@@ -321,11 +323,12 @@ export default function Florida14HourContinuingEducationPage() {
                     marginBottom: "4px",
                   }}
                 >
-                  Planned online delivery
+                  Online, self-paced delivery
                 </strong>
                 <span style={{ color: "#6e6b65" }}>
-                  Final delivery and completion details will be posted before
-                  enrollment opens.
+                  The planned partner course experience is online and asynchronous. Final
+                  enrollment links, pricing, and provider disclosure will be
+                  posted after onboarding is complete.
                 </span>
               </div>
 
