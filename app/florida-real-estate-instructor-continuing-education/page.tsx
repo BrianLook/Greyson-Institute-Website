@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
 import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
+import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 
 const guideTitle =
   "Florida Real Estate Instructor Continuing Education Requirements";
@@ -772,6 +773,11 @@ export default function FloridaInstructorContinuingEducationPage() {
               marginTop: "26px",
             }}
           >
+            <PartnerEnrollmentButton
+              course="floridaInstructorCE"
+              dark
+            />
+
             <Link
               href="/check-florida-real-estate-license-expiration"
               style={{
