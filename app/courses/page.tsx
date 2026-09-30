@@ -56,7 +56,7 @@ const paths = [
     label: "I need to reactivate my license",
     detail:
       "Find education associated with returning an inactive license to active status.",
-    href: "#reactivation",
+    href: "/florida-real-estate-license-reactivation",
   },
   {
     label: "I want to become a real estate instructor",
@@ -747,6 +747,28 @@ export default function CoursesPage() {
                     >
                       Florida Real Estate Instructor Continuing Education
                       Requirements →
+                    </Link>
+                  </p>
+                </div>
+              )}
+
+              {course.id === "reactivation" && (
+                <div
+                  style={{
+                    marginTop: "14px",
+                  }}
+                >
+                  <p style={{ margin: 0 }}>
+                    <Link
+                      href="/florida-real-estate-license-reactivation"
+                      style={{
+                        textDecoration: "underline",
+                        textUnderlineOffset: "3px",
+                        fontWeight: 600,
+                        color: "#111717",
+                      }}
+                    >
+                      Florida License Reactivation: 14 Hours vs. 28 Hours →
                     </Link>
                   </p>
                 </div>
