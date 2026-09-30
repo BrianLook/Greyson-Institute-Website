@@ -64,8 +64,8 @@ export default function HomePage() {
 
             <p className="hero-lead">
               Greyson Institute helps aspiring and current Florida real estate
-              professionals understand the path from pre-licensing through
-              post-license and continuing education.
+              professionals understand which education path most likely fits
+              their license — then makes the next step easier to navigate.
             </p>
 
             <div
@@ -278,7 +278,7 @@ export default function HomePage() {
               minWidth: 0,
             }}
           >
-            <p className="eyebrow">YOUR INSTRUCTOR</p>
+            <p className="eyebrow">FOUNDER & FLORIDA INSTRUCTOR</p>
 
             <h2
               style={{
@@ -321,9 +321,9 @@ export default function HomePage() {
             </p>
 
             <p>
-              His focus is practical, real-world education designed to help
-              students understand both the licensing material and the business
-              that follows.
+              At Greyson, Brian focuses on practical licensing guidance and real-world
+              context. Online partner courses are completed through the course
+              provider&apos;s platform.
             </p>
 
             <Link className="text-link" href="/about">
