@@ -204,7 +204,7 @@ export default function FloridaRealEstateLicenseCostPage() {
             }}
           >
             {[
-              { name: "Course Only", price: "$139", detail: "63-hour package" },
+              { name: "Course Only Package", price: "$139", detail: "63-hour pre-licensing package" },
               { name: "Standard", price: "$239", detail: "Includes exam prep" },
               { name: "Value", price: "$315", detail: "Additional career resources" },
               { name: "Premium", price: "$459", detail: "Expanded bundle, including post-license" },
@@ -241,12 +241,46 @@ export default function FloridaRealEstateLicenseCostPage() {
             ))}
           </div>
 
-          <p style={{ color: "#5f5c56", fontSize: "0.9rem", lineHeight: 1.7, maxWidth: "840px", marginBottom: "20px" }}>
-            The CE Shop also separately lists an individual 63-hour
-            Sales Associate course at $125. Prices above are published reference
-            amounts checked November 12, 2026, not guaranteed promotional
-            or checkout prices. Package contents, availability, and discounts
-            may change.
+          <div
+            style={{
+              border: "1px solid rgba(17, 23, 23, 0.16)",
+              background: "#faf7f1",
+              padding: "20px 24px",
+              marginBottom: "20px",
+            }}
+          >
+            <p className="eyebrow" style={{ marginBottom: "8px" }}>
+              ANOTHER COURSE OPTION
+            </p>
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: 1.65,
+                color: "#111717",
+                margin: "0 0 8px",
+                fontWeight: 650,
+              }}
+            >
+              Individual 63-Hour Sales Associate Course — $125
+            </p>
+            <p style={{ color: "#5f5c56", fontSize: "0.9rem", lineHeight: 1.7, margin: 0 }}>
+              The CE Shop lists this separately from its $139 Course Only
+              Package. Both list 63 required hours; compare each product's
+              details and current checkout price before choosing.
+            </p>
+          </div>
+          <p
+            style={{
+              color: "#5f5c56",
+              fontSize: "0.86rem",
+              lineHeight: 1.7,
+              maxWidth: "840px",
+              marginBottom: "20px",
+            }}
+          >
+            Published reference prices checked November 12, 2026.
+            These are not guaranteed promotional or checkout prices.
+            Course contents, availability, and discounts may change.
           </p>
 
           <PartnerEnrollmentButton
