@@ -962,25 +962,39 @@ textarea {
   gap: clamp(24px, 4vw, 46px);
 }
 
+.ce-shop-automated-promo__copy {
+  min-width: 0;
+}
+
+.ce-shop-automated-promo__copy > .eyebrow {
+  margin: 0 0 16px;
+}
+
 .ce-shop-automated-promo__copy h2 {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(1.85rem, 2.6vw, 2.6rem);
-  line-height: 1.12;
+  font-size: clamp(1.9rem, 2.4vw, 2.5rem);
+  line-height: 1.16;
   font-weight: 500;
-  margin: 10px 0 12px;
+  margin: 0 0 18px;
+  max-width: 440px;
 }
 
-.ce-shop-automated-promo__copy > p:not(.eyebrow) {
-  font-size: 0.93rem;
-  line-height: 1.6;
+.ce-shop-automated-promo__copy > p.ce-shop-automated-promo__description {
+  font-size: 0.96rem;
+  line-height: 1.7;
   color: #4d4b46;
-  margin: 0;
+  max-width: 440px;
+  margin: 0 0 18px;
 }
 
-.ce-shop-automated-promo__copy .ce-shop-automated-promo__disclosure {
-  font-size: 0.8rem;
+.ce-shop-automated-promo__copy > p.ce-shop-automated-promo__disclosure {
+  font-size: 0.81rem;
+  line-height: 1.65;
   color: var(--muted);
-  margin-top: 12px;
+  max-width: 440px;
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(17, 23, 23, 0.14);
 }
 
 .ce-shop-automated-promo__media {
@@ -1018,6 +1032,12 @@ textarea {
 
   .ce-shop-automated-promo__copy {
     max-width: 700px;
+  }
+
+  .ce-shop-automated-promo__copy h2,
+  .ce-shop-automated-promo__copy > p.ce-shop-automated-promo__description,
+  .ce-shop-automated-promo__copy > p.ce-shop-automated-promo__disclosure {
+    max-width: 100%;
   }
 }
 
