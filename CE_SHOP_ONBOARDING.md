@@ -1,6 +1,23 @@
 # The CE Shop Affiliate Onboarding — Greyson Institute
 
-Last updated: September 30, 2026
+Last updated: November 12, 2026 (September discovery-call notes retained below)
+
+## Current operational status — November 12, 2026
+
+- **Affiliate website is live:** https://greyson.theceshop.com/
+- **Greyson's course buttons are live and navigation-tested:** Florida 63-hour Sales Associate pre-license; 45-hour Sales Associate post-license; 14-hour CE; 72-hour Broker pre-license; 60-hour Broker post-license; and Sales Associate exam prep.
+- **Reactivation guide is connected:** 14-hour CE catalog and a 28-hour Sales Associate reinstatement pre-licensing page. Hannah has been asked whether the 28-Hr. FL Reinstatement Program (approval #0017466) in the CE catalog is equivalent; do not assume so.
+- **Instructor CE is not yet connected:** The CE Shop lists the 3-hour Core Law course but no confirmed 4-hour Teaching Techniques option; Hannah was asked for clarification.
+- **Website disclosures and partner enrollment language are updated.** The CE Shop remains the school of record.
+- **Automatic CE Shop promotional GIF banners are installed** on the Greyson homepage and Courses page, responsive on desktop/mobile, linking to the Greyson co-branded domain.
+- **Find My Exact Path** includes a first-license route and co-branded course links for clear active-license recommendations. Tests for new Sales Associate pre-license and active Broker later-renewal 14-hour CE navigation passed.
+- **Admin Portal login works and its temporary password has been changed.** Hannah offered separate admin/marketing access for Jessie, not yet confirmed as provisioned.
+- **Navigation tests do not verify sales attribution.** Hannah explained a seven-day referral tracking window on the Nov 11 walkthrough; the first eligible transaction/reporting still needs to be checked.
+- **Planned 50%-off launch week:** Monday December 7 through Sunday December 13, 2026. Hannah's Nov 11 email said her team would set it up and notify Greyson when marketing assets were uploaded. Launch code, exact eligibility, exclusion list, time zone, and written active status still need confirmation. **Do not publish or schedule a live discount claim until verified.**
+- **Commercial terms from the original discovery call:** 30% of net discounted revenue, paid quarterly by check. Confirm against the signed affiliate agreement and with Hannah before spending on advertisements.
+
+> The sections below are historical onboarding/discovery-call notes. Some statements such as "preparing" or "still waiting on a co-branded URL" are superseded by the current operational status above.
+
 
 ## Confirmed partnership model
 
