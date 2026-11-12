@@ -1,8 +1,8 @@
 export const ceShopPartner = {
   providerName: "The CE Shop",
-  status: "onboarding" as const,
-  coBrandedBaseUrl: "",
-  disclosure: "",
+  status: "live" as const,
+  coBrandedBaseUrl: "https://greyson.theceshop.com/",
+  disclosure: "Education provided by The CE Shop.",
   links: {
     floridaPreLicense63: "https://greyson.theceshop.com/florida/pre-licensing/fl-sales-associate-pre-licensing-cost/",
     floridaPostLicense45: "https://greyson.theceshop.com/online-education/florida/real-estate/sales-associate/post-licensing/courses.html",
