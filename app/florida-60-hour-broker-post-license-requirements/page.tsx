@@ -406,7 +406,7 @@ export default function FloridaBrokerPostLicensePage() {
               marginRight: "auto",
             }}
           >
-            Co-branded broker post-license enrollment is coming soon.
+            Explore 60-hour Florida Broker post-license courses.
           </h2>
 
           <p
@@ -417,10 +417,10 @@ export default function FloridaBrokerPostLicensePage() {
               marginRight: "auto",
             }}
           >
-            Greyson is preparing tracked partner enrollment through The CE Shop.
-            Until the link is live, use the Florida License Check to verify your
-            broker record and contact Greyson if you need help understanding
-            your first-renewal education path.
+            If this is your first broker renewal, review your requirements
+            and browse available courses on our co-branded The CE Shop site.
+            Education provided by The CE Shop. Verify your live DBPR record
+            before purchasing, or contact Greyson for licensing-path guidance.
           </p>
 
           <div
