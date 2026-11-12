@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
+import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 
 const guideTitle = "How Much Does a Florida Real Estate License Cost?";
 const guideDescription =
-  "Learn the costs involved in getting a Florida real estate sales associate license, including the DBPR application fee, fingerprints, pre-licensing education, and the state exam.";
+  "Understand the cost of a Florida real estate license, with DBPR fees, fingerprints, state exam costs, and current The CE Shop 63-hour pre-licensing package examples.";
 const guidePath = "/how-much-does-a-florida-real-estate-license-cost";
 
 export const metadata: Metadata = {
@@ -31,9 +32,9 @@ const costItems = [
   {
     number: "03",
     title: "63-hour pre-licensing course",
-    amount: "Varies by school",
+    amount: "View options",
     body:
-      "Most applicants must complete a Florida Real Estate Commission-approved 63-hour sales associate pre-licensing course. Course tuition varies by education provider, course format, included study materials, and available promotions.",
+      "Most applicants must complete a FREC-approved 63-hour course. The CE Shop publishes several online course and package options; the price depends on the package you select and any promotion available at checkout. See the reference prices and co-branded link below.",
   },
   {
     number: "04",
@@ -58,7 +59,7 @@ const faqItems = [
   {
     question: "How much does the 63-hour Florida real estate course cost?",
     answer:
-      "There is no single statewide tuition price. Pre-licensing schools set their own course prices, and the amount can vary depending on the provider, format, study materials, and promotions.",
+      "There is no single statewide tuition price. The CE Shop currently advertises packages from $139 to $459 and separately lists an individual 63-hour course at $125, before any applicable offers. These are reference prices, not a guaranteed checkout quote. Use the Greyson course link on this page to verify the live price.",
   },
   {
     question: "Is the Florida real estate exam included in the application fee?",
@@ -85,7 +86,7 @@ export default function FloridaRealEstateLicenseCostPage() {
         description={guideDescription}
         path={guidePath}
         datePublished="2026-09-24"
-        dateModified="2026-09-24"
+        dateModified="2026-11-12"
       />
 
       <div
@@ -140,7 +141,7 @@ export default function FloridaRealEstateLicenseCostPage() {
             fingerprinting, education, and examination costs to plan for.
           </p>
 
-          <p className="muted">Last reviewed: September 24, 2026</p>
+          <p className="muted">Pricing reference checked: November 12, 2026</p>
         </div>
 
         <div
@@ -169,11 +170,104 @@ export default function FloridaRealEstateLicenseCostPage() {
               marginBottom: 0,
             }}
           >
-            Florida currently charges $62.75 for the initial sales associate
+            Florida DBPR lists $62.75 for the initial sales associate
             application. You should also budget separately for electronic
-            fingerprints, the required 63-hour pre-licensing course, and the
-            state examination. Because education and fingerprinting prices vary
-            by provider, the final total depends on the options you choose.
+            fingerprints, the required 63-hour pre-licensing course, and
+            the state examination. The CE Shop publishes several course
+            packages at different prices, so there is no single guaranteed
+            total. Check current partner pricing and promotions before enrolling.
+          </p>
+        </div>
+
+        <div
+          style={{
+            marginBottom: "82px",
+          }}
+        >
+          <p className="eyebrow">63-HOUR COURSE PRICING</p>
+          <h2 style={{ maxWidth: "780px", marginBottom: "20px" }}>
+            Compare available online course packages.
+          </h2>
+          <p style={{ color: "#4d4b46", maxWidth: "820px", marginBottom: "26px" }}>
+            For reference, The CE Shop currently publishes these Florida
+            Sales Associate pre-licensing package prices. Each package includes
+            the required 63-hour education, but additional study resources
+            and benefits vary.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 195px), 1fr))",
+              gap: "14px",
+              marginBottom: "22px",
+            }}
+          >
+            {[
+              { name: "Course Only", price: "$139", detail: "63-hour package" },
+              { name: "Standard", price: "$239", detail: "Includes exam prep" },
+              { name: "Value", price: "$315", detail: "Additional career resources" },
+              { name: "Premium", price: "$459", detail: "Expanded bundle, including post-license" },
+            ].map((option) => (
+              <div
+                key={option.name}
+                style={{
+                  background: "#faf7f1",
+                  border: "1px solid rgba(17, 23, 23, 0.16)",
+                  padding: "22px 20px",
+                }}
+              >
+                <p
+                  className="eyebrow"
+                  style={{ marginBottom: "10px" }}
+                >
+                  {option.name}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "var(--font-serif), Georgia, serif",
+                    fontSize: "clamp(2rem, 4vw, 2.5rem)",
+                    lineHeight: 1,
+                    color: "#111717",
+                    margin: "0 0 12px",
+                  }}
+                >
+                  {option.price}
+                </p>
+                <p style={{ margin: 0, color: "#6e6b65", fontSize: "0.88rem", lineHeight: 1.6 }}>
+                  {option.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ color: "#5f5c56", fontSize: "0.9rem", lineHeight: 1.7, maxWidth: "840px", marginBottom: "20px" }}>
+            The CE Shop also separately lists an individual 63-hour
+            Sales Associate course at $125. Prices above are published reference
+            amounts checked November 12, 2026, not guaranteed promotional
+            or checkout prices. Package contents, availability, and discounts
+            may change.
+          </p>
+
+          <PartnerEnrollmentButton
+            course="floridaPreLicense63"
+            label="View Current Course Prices →"
+          />
+
+          <p
+            style={{
+              color: "#6e6b65",
+              fontSize: "0.82rem",
+              lineHeight: 1.65,
+              marginTop: "16px",
+              maxWidth: "820px",
+            }}
+          >
+            Education provided by The CE Shop. The button opens Greyson's
+            co-branded partner page in a new tab. Final pricing and
+            eligibility are determined by The CE Shop at checkout.
+            Course tuition is separate from DBPR application fees,
+            fingerprints, and the state exam.
           </p>
         </div>
 
@@ -242,6 +336,15 @@ export default function FloridaRealEstateLicenseCostPage() {
                   >
                     {item.body}
                   </p>
+
+                  {item.number === "03" && (
+                    <div style={{ marginTop: "14px" }}>
+                      <PartnerEnrollmentButton
+                        course="floridaPreLicense63"
+                        label="Compare Live Packages →"
+                      />
+                    </div>
+                  )}
 
                   {item.number === "04" && (
                     <div
