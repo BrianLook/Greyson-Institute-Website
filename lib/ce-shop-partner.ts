@@ -6,7 +6,7 @@ export const ceShopPartner = {
   links: {
     floridaPreLicense63: "",
     floridaPostLicense45: "",
-    floridaContinuingEducation14: "",
+    floridaContinuingEducation14: "https://greyson.theceshop.com/online-education/florida/real-estate/broker-and-sales-license/continuing-education/courses.html",
     floridaBrokerPreLicense72: "",
     floridaBrokerPostLicense60: "",
     floridaInstructorCE: "",
