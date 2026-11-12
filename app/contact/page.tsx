@@ -338,10 +338,11 @@ export default function ContactPage() {
           }}
         >
           Greyson can help with Florida licensing-path questions and enrollment
-          guidance. When co-branded The CE Shop enrollment launches,
-          course-specific billing, technical support, classroom access,
-          certificates, and content questions will be handled by The CE Shop as
-          the school of record and course provider.
+          guidance. For online courses offered through our co-branded
+          partnership, education is provided by The CE Shop. Course-specific
+          billing, technical support, classroom access, certificates, and
+          content questions are handled by The CE Shop as the school of
+          record and course provider.
         </p>
       </div>
     </section>
