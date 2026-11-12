@@ -318,7 +318,7 @@ export default function BrokerPathPage() {
         >
           <p className="eyebrow">BROKER PRE-LICENSING</p>
 
-          <h2>Co-branded 72-hour broker enrollment is coming soon.</h2>
+          <h2>Explore available 72-hour Florida broker pre-licensing courses.</h2>
 
           <p
             style={{
@@ -327,10 +327,11 @@ export default function BrokerPathPage() {
               lineHeight: 1.75,
             }}
           >
-            Greyson is preparing tracked partner enrollment through The CE
-            Shop. The CE Shop will remain the school of record and handle
-            payment, course delivery, course-specific support, certificates,
-            and applicable completion reporting.
+            Greyson connects aspiring brokers to available online course
+            packages through our co-branded partnership. Education provided
+            by The CE Shop. The CE Shop is the school of record for its courses
+            and handles payment, course delivery, course-specific support,
+            certificates, and applicable completion reporting.
           </p>
 
           <PartnerEnrollmentButton course="floridaBrokerPreLicense72" />
