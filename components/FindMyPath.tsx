@@ -19,6 +19,7 @@ import {
   type RenewalAnswer,
 } from "@/lib/florida-license-path";
 import { getCeShopCourseUrl, type CeShopCourseKey } from "@/lib/ce-shop-partner";
+import { trackCeShopClick } from "@/lib/affiliate-analytics";
 
 const DATA_BASE =
   "/data/florida-real-estate-licenses";
@@ -2288,6 +2289,10 @@ export function FindMyPath({
                   <a
                     className="path-secondary"
                     href={partnerCourseUrl}
+                    onClick={() => trackCeShopClick(
+                      partnerCoursesForResults[pathResult.kind] ?? "unspecified",
+                      "find_my_path",
+                    )}
                     target="_blank"
                     rel="noopener noreferrer sponsored"
                   >
