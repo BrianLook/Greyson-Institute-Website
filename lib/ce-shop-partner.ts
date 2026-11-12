@@ -4,7 +4,7 @@ export const ceShopPartner = {
   coBrandedBaseUrl: "",
   disclosure: "",
   links: {
-    floridaPreLicense63: "",
+    floridaPreLicense63: "https://greyson.theceshop.com/florida/pre-licensing/fl-sales-associate-pre-licensing-cost/",
     floridaPostLicense45: "",
     floridaContinuingEducation14: "https://greyson.theceshop.com/online-education/florida/real-estate/broker-and-sales-license/continuing-education/courses.html",
     floridaBrokerPreLicense72: "",
