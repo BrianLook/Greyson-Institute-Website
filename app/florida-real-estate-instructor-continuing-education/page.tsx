@@ -742,8 +742,8 @@ export default function FloridaInstructorContinuingEducationPage() {
               marginRight: "auto",
             }}
           >
-            Co-branded instructor education
-            enrollment is coming soon.
+            Instructor course availability is
+            being confirmed.
           </h2>
 
           <p
@@ -755,13 +755,13 @@ export default function FloridaInstructorContinuingEducationPage() {
               marginRight: "auto",
             }}
           >
-            Greyson is preparing tracked partner
-            enrollment through The CE Shop.
-            Until the link is live, use the
-            Florida License Check to verify your
-            instructor permit and contact Greyson
-            if you need help understanding your
-            education path.
+            The CE Shop's Florida catalog lists
+            the 3-hour Core Law course, but a
+            matching 4-hour Teaching Techniques
+            course has not yet been confirmed.
+            Verify your instructor permit and
+            contact Greyson or DBPR before
+            purchasing education.
           </p>
 
           <div
@@ -775,6 +775,7 @@ export default function FloridaInstructorContinuingEducationPage() {
           >
             <PartnerEnrollmentButton
               course="floridaInstructorCE"
+              pendingLabel="Full instructor course option not yet confirmed"
               dark
             />
 
