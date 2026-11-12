@@ -16,7 +16,7 @@ const faqs = [
   {
     question: "Does Greyson Institute offer online Florida real estate education?",
     answer:
-      "Greyson Institute provides Florida real estate licensing guidance and is preparing co-branded online course enrollment through The CE Shop. For partner-delivered courses, The CE Shop will remain the school of record and handle payment, course delivery, course-specific support, certificates, and regulatory completion reporting.",
+      "Greyson Institute provides Florida real estate licensing guidance and links students to available online courses through our co-branded The CE Shop partnership. Education provided by The CE Shop. The CE Shop remains the school of record for its courses and handles payment, course delivery, course-specific support, certificates, and applicable regulatory completion reporting.",
   },
   {
     question: "Can you help me figure out what course I need?",
@@ -31,7 +31,7 @@ const faqs = [
   {
     question: "Do I have to complete the course all at once?",
     answer:
-      "The CE Shop's partner courses are online and asynchronous. Specific course timing, completion requirements, and access periods will be shown on the partner course page when enrollment opens.",
+      "The CE Shop's partner courses are online and asynchronous. Specific course timing, completion requirements, and access periods are shown on the applicable course page.",
   },
   {
     question: "Will I receive proof of completion?",
@@ -46,7 +46,7 @@ const faqs = [
   {
     question: "Who will charge me for a partner course?",
     answer:
-      "When Greyson's co-branded The CE Shop enrollment links are activated, payment and checkout for those courses will be handled by The CE Shop. Greyson will direct you to the tracked partner course page rather than collecting the course payment itself.",
+      "Payment and checkout for courses offered through Greyson's co-branded The CE Shop links are handled by The CE Shop. Greyson directs you to the partner course page rather than collecting your course payment.",
   },
   {
     question: "Who is the school of record for The CE Shop partner courses?",
@@ -61,7 +61,7 @@ const faqs = [
   {
     question: "Why should I use the Greyson enrollment link?",
     answer:
-      "Greyson's co-branded link is the tracked path that connects your enrollment to Greyson. When enrollment launches, use the course link provided on GreysonInstitute.com rather than searching for the course separately.",
+      "Greyson's co-branded enrollment links help attribute eligible purchases to our affiliate partnership. Use the course link provided on GreysonInstitute.com rather than searching for the course separately.",
   },
   {
     question: "What is the 63-hour Florida real estate pre-licensing course?",
