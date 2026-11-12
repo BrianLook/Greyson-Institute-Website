@@ -262,12 +262,13 @@ export default function Florida14HourContinuingEducationPage() {
                 maxWidth: "650px",
               }}
             >
-              Greyson Institute is preparing a co-branded affiliate enrollment
-              experience with The CE Shop. The CE Shop will remain the school
-              of record and handle payment, course delivery, course-specific
-              support, certificates, and regulatory completion reporting.
-              Greyson will help you identify the likely education path and send
-              you to the appropriate tracked partner enrollment page.
+              Greyson Institute helps you identify the appropriate Florida
+              education path and connects you with available continuing
+              education courses through our co-branded partnership.
+              Education provided by The CE Shop. The CE Shop is the school
+              of record for its courses and handles payment, course delivery,
+              course-specific support, certificates, and applicable completion
+              reporting.
             </p>
 
             <div style={{ marginTop: "24px" }}>
@@ -321,9 +322,9 @@ export default function Florida14HourContinuingEducationPage() {
                   Online, self-paced delivery
                 </strong>
                 <span style={{ color: "#6e6b65" }}>
-                  The planned partner course experience is online and asynchronous. Final
-                  enrollment links, pricing, and provider disclosure will be
-                  posted after onboarding is complete.
+                  Online, self-paced partner courses are available through The
+                  CE Shop. Check the selected course page for current pricing,
+                  access periods, and completion requirements before enrolling.
                 </span>
               </div>
 
