@@ -945,7 +945,7 @@ export default function Florida45HourPostLicenseRequirementsPage() {
               marginRight: "auto",
             }}
           >
-            Co-branded 45-hour post-license enrollment is coming soon.
+            Explore 45-hour Sales Associate post-license courses.
           </h2>
 
           <p
@@ -956,12 +956,12 @@ export default function Florida45HourPostLicenseRequirementsPage() {
               marginRight: "auto",
             }}
           >
-            Greyson is preparing tracked partner enrollment through The CE Shop.
-            The CE Shop will remain the school of record and handle payment,
-            course delivery, course-specific support, certificates, and
-            applicable completion reporting. Until the enrollment link is live,
-            use this guide to confirm where the 45-hour requirement fits in your
-            first renewal.
+            If this is your first Sales Associate renewal, use this guide
+            to understand the 45-hour requirement before browsing available
+            partner packages. Education provided by The CE Shop. The CE Shop
+            handles payment, course delivery, course-specific support,
+            certificates, and applicable completion reporting. Confirm your
+            live DBPR renewal requirements before purchasing.
           </p>
 
           <div
