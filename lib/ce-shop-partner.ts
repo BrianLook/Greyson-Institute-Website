@@ -5,7 +5,7 @@ export const ceShopPartner = {
   disclosure: "",
   links: {
     floridaPreLicense63: "https://greyson.theceshop.com/florida/pre-licensing/fl-sales-associate-pre-licensing-cost/",
-    floridaPostLicense45: "",
+    floridaPostLicense45: "https://greyson.theceshop.com/online-education/florida/real-estate/sales-associate/post-licensing/courses.html",
     floridaContinuingEducation14: "https://greyson.theceshop.com/online-education/florida/real-estate/broker-and-sales-license/continuing-education/courses.html",
     floridaBrokerPreLicense72: "",
     floridaBrokerPostLicense60: "",
