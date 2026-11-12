@@ -168,6 +168,37 @@ export default function Florida63HourPreLicensingCoursePage() {
           </p>
 
           <p className="muted">Last reviewed: September 24, 2026</p>
+
+          <div
+            style={{
+              marginTop: "30px",
+              padding: "22px 24px",
+              background: "#faf7f1",
+              border: "1px solid rgba(17, 23, 23, 0.18)",
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "18px",
+            }}
+          >
+            <div style={{ flex: "1 1 260px", minWidth: 0 }}>
+              <p
+                className="eyebrow"
+                style={{ marginBottom: "8px" }}
+              >
+                READY TO GET STARTED?
+              </p>
+              <p style={{ margin: 0, color: "#4d4b46", lineHeight: 1.65 }}>
+                Compare available 63-hour course packages.
+                Education provided by The CE Shop.
+              </p>
+            </div>
+            <PartnerEnrollmentButton
+              course="floridaPreLicense63"
+              label="View Course Options →"
+            />
+          </div>
         </div>
 
         <div
