@@ -227,7 +227,7 @@ export default function CoursesPage() {
             marginBottom: "36px",
           }}
         >
-          <p className="eyebrow eyebrow--light">HOW ENROLLMENT WILL WORK</p>
+          <p className="eyebrow eyebrow--light">HOW ENROLLMENT WORKS</p>
 
           <h2
             className="light-heading"
@@ -260,8 +260,8 @@ export default function CoursesPage() {
               <p style={{ color: "#d6bd9c", fontWeight: 700 }}>02</p>
               <h3 style={{ color: "#f5f0e7" }}>Open the tracked course page</h3>
               <p style={{ color: "rgba(245, 240, 231, 0.82)" }}>
-                When onboarding is complete, Greyson will link directly to the
-                appropriate co-branded The CE Shop course page.
+                Use Greyson&apos;s enrollment buttons to open the corresponding
+                course catalog or pricing page on our co-branded The CE Shop website.
               </p>
             </div>
 
@@ -857,14 +857,13 @@ export default function CoursesPage() {
             overflowWrap: "anywhere",
           }}
         >
-          Greyson Institute is preparing co-branded online enrollment through The
-          CE Shop. When enrollment opens, The CE Shop will remain the school of
-          record and will handle payment, course delivery, course-specific
-          support, certificates, and regulatory completion reporting for
-          partner-provided courses. Greyson will provide licensing guidance and
-          direct students to the appropriate tracked enrollment page. Final
-          links, pricing, and provider disclosure will be posted after
-          onboarding is complete.
+          Greyson Institute partners with The CE Shop for online course
+          enrollment. Education provided by The CE Shop. Greyson offers
+          licensing guidance and co-branded course links. The CE Shop is
+          the school of record for its courses and handles payment,
+          course delivery, course-specific support, certificates, and
+          applicable regulatory completion reporting. Certain specialty
+          course options are subject to provider availability.
         </p>
       </div>
     </section>
