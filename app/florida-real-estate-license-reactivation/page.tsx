@@ -407,7 +407,7 @@ export default function FloridaRealEstateLicenseReactivationPage() {
               marginRight: "auto",
             }}
           >
-            Tracked reactivation enrollment links are coming after onboarding.
+            Choose the education that matches your verified license status.
           </h2>
 
           <p
@@ -418,11 +418,12 @@ export default function FloridaRealEstateLicenseReactivationPage() {
               marginRight: "auto",
             }}
           >
-            Greyson is preparing co-branded online enrollment through The CE
-            Shop. When the appropriate links are live, The CE Shop will remain
-            the school of record and handle payment, course delivery,
-            course-specific support, certificates, and applicable completion
-            reporting.
+            The 14-hour option opens Florida continuing education packages;
+            the 28-hour option opens The CE Shop's Sales Associate
+            Reinstatement course. Verify your exact DBPR license status,
+            renewal history, and eligibility before purchasing. The CE Shop
+            handles payment, course delivery, support, certificates, and
+            applicable completion reporting.
           </p>
 
           <div
@@ -436,14 +437,14 @@ export default function FloridaRealEstateLicenseReactivationPage() {
           >
             <PartnerEnrollmentButton
               course="floridaReactivation14"
-              label="Enroll in 14-Hour Path →"
+              label="Browse 14-Hour CE Options →"
               pendingLabel="14-Hour link coming soon"
               dark
             />
 
             <PartnerEnrollmentButton
               course="floridaReactivation28"
-              label="Enroll in 28-Hour Path →"
+              label="View 28-Hour Sales Associate Course →"
               pendingLabel="28-Hour link coming soon"
               dark
             />
@@ -465,6 +466,20 @@ export default function FloridaRealEstateLicenseReactivationPage() {
               Find My Likely Path
             </Link>
           </div>
+          <p
+            style={{
+              fontSize: "0.87rem",
+              color: "rgba(245, 240, 231, 0.75)",
+              maxWidth: "760px",
+              margin: "22px auto 0",
+              lineHeight: 1.7,
+            }}
+          >
+            The 28-hour link is specifically advertised for Florida Sales
+            Associates. Broker licensees should confirm an appropriate approved
+            28-hour option with The CE Shop and DBPR before enrolling. Missing
+            first-renewal post-license education may require a different path.
+          </p>
         </div>
 
         <div
