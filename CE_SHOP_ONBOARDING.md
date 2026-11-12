@@ -13,8 +13,8 @@ Last updated: November 12, 2026 (September discovery-call notes retained below)
 - **Find My Exact Path** includes a first-license route and co-branded course links for clear active-license recommendations. Tests for new Sales Associate pre-license and active Broker later-renewal 14-hour CE navigation passed.
 - **Admin Portal login works and its temporary password has been changed.** Hannah offered separate admin/marketing access for Jessie, not yet confirmed as provisioned.
 - **Navigation tests do not verify sales attribution.** Hannah explained a seven-day referral tracking window on the Nov 11 walkthrough; the first eligible transaction/reporting still needs to be checked.
-- **Planned 50%-off launch week:** Monday December 7 through Sunday December 13, 2026. Hannah's Nov 11 email said her team would set it up and notify Greyson when marketing assets were uploaded. Launch code, exact eligibility, exclusion list, time zone, and written active status still need confirmation. **Do not publish or schedule a live discount claim until verified.**
-- **Commercial terms from the original discovery call:** 30% of net discounted revenue, paid quarterly by check. Confirm against the signed affiliate agreement and with Hannah before spending on advertisements.
+- **Launch promotion:** Marketing is being coordinated with The CE Shop. Refer to the private campaign pack for unreleased dates, offer details, approval status, and confirmation requirements. Do not publish an offer until approved.
+- **Commercial terms:** The signed affiliate agreement is the controlling source. Confirm commissions and payout terms privately with Hannah before paid advertising.
 
 > The sections below are historical onboarding/discovery-call notes. Some statements such as "preparing" or "still waiting on a co-branded URL" are superseded by the current operational status above.
 
@@ -30,16 +30,9 @@ Greyson Institute is moving forward with an **affiliate marketing partnership** 
 - The CE Shop stated that Greyson does **not** need to register as the Florida real estate school under this affiliate arrangement.
 - The agreement is non-exclusive.
 
-## Commercial terms stated on the discovery call
+## Commercial terms (keep details in private internal records)
 
-- Affiliate commission: **30% of net revenue after the student's discount is applied**.
-- Payout frequency: **quarterly**.
-- Current payout method described: check.
-- No-cost affiliate partnership.
-- Greyson will receive access to an affiliate back end with enrollment and commission reporting.
-- The partner back end was described as showing student name, email, physical address, enrolled course, and commission information.
-
-Treat the signed affiliate agreement as the controlling source if any term differs.
+The partnership includes affiliate compensation, and the Admin Portal reports enrollments and commissions. The signed affiliate agreement controls compensation and payment terms. Do not put exact rates, payout details, student personal information, or unreleased promotional codes in this public code repository.
 
 ## Co-branded site and tracking
 
@@ -85,9 +78,9 @@ Paid-search restriction stated on the call:
 
 - Greyson may not bid on **The CE Shop** brand name in paid search.
 
-Launch benefit discussed:
+Launch marketing coordination:
 
-- The CE Shop offers an exclusive **50% off launch week** for the affiliate launch, coordinated Monday through Sunday.
+- Partner-only launch offers may be available; confirm all details in writing before public promotion. Keep unreleased offers and internal commercial terms outside this public repository.
 
 ## Support
 
