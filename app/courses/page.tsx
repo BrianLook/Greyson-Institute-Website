@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
 import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
+import { CeShopAutomatedPromo } from "@/components/CeShopAutomatedPromo";
 
 export const metadata: Metadata = {
   title: "Florida Real Estate Courses & Licensing Education",
@@ -210,6 +211,8 @@ export default function CoursesPage() {
           />
         </div>
       </div>
+
+      <CeShopAutomatedPromo />
 
       <div
         className="container"
