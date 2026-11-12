@@ -29,8 +29,6 @@ export function CeShopAutomatedPromo() {
               <img
                 alt="Online Continuing Education"
                 src="https://image.theceshop.com/image/promo-association-home-wide.gif"
-                width="728"
-                height="90"
               />
             </a>
           </div>
@@ -40,8 +38,6 @@ export function CeShopAutomatedPromo() {
               <img
                 alt="Online Continuing Education"
                 src="https://image.theceshop.com/image/promo-association-home.gif"
-                width="300"
-                height="250"
               />
             </a>
           </div>
