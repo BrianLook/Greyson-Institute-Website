@@ -11,12 +11,14 @@ import {
   daysUntil,
   formatPlainDate,
   isInstructorRecord,
+  isActiveRecord,
   normalizeLicenseNumber,
   numericLicensePart,
   type FloridaLicenseRecord,
   type PathResult,
   type RenewalAnswer,
 } from "@/lib/florida-license-path";
+import { getCeShopCourseUrl, type CeShopCourseKey } from "@/lib/ce-shop-partner";
 
 const DATA_BASE =
   "/data/florida-real-estate-licenses";
@@ -32,6 +34,28 @@ const SAVED_RENEWAL_KEY =
 
 const dbprGeneralSearch =
   "https://www.myfloridalicense.com/portalsearches/VerifyLicensee";
+
+// Direct partner links are limited to clearly active, known education paths.
+const partnerCoursesForResults: Partial<Record<PathResult["kind"], CeShopCourseKey>> = {
+  "sales-first": "floridaPostLicense45",
+  "broker-first": "floridaBrokerPostLicense60",
+  "later-ce": "floridaContinuingEducation14",
+};
+
+function partnerCourseForResult(
+  result: PathResult,
+  record: FloridaLicenseRecord,
+): string | null {
+  const statuses = `${record.p} ${record.s}`.toLowerCase();
+  if (
+    !isActiveRecord(record) ||
+    /inactive|expired|void|suspend|revok|delinquent/.test(statuses)
+  ) {
+    return null;
+  }
+  const key = partnerCoursesForResults[result.kind];
+  return key ? getCeShopCourseUrl(key) : null;
+}
 
 type LicenseMeta = {
   available: boolean;
@@ -1116,6 +1140,11 @@ export function FindMyPath({
     setStage("doors");
   }
 
+  const partnerCourseUrl =
+    record && pathResult
+      ? partnerCourseForResult(pathResult, record)
+      : null;
+
   return (
     <div className="path-finder">
       <style>
@@ -1361,6 +1390,32 @@ export function FindMyPath({
             border-color: #f5f0e7;
           }
 
+          .path-result-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+          }
+
+          .path-result-ctas .path-primary {
+            margin-top: 0;
+          }
+
+          .path-result-ctas .path-secondary {
+            border-color: rgba(245, 240, 231, 0.8);
+            color: #f5f0e7;
+            background: transparent;
+          }
+
+          .path-partner-note {
+            font-size: 0.83rem;
+            line-height: 1.6;
+            color: rgba(245, 240, 231, 0.75);
+            max-width: 620px;
+            margin: 14px 0 0;
+          }
+
           .path-result-footer {
             padding: 18px clamp(24px, 5vw, 46px);
             border-top: 1px solid rgba(17, 23, 23, 0.12);
@@ -1584,6 +1639,18 @@ export function FindMyPath({
                   →
                 </span>
               </button>
+
+              <Link
+                className="path-door"
+                href="/florida-63-hour-real-estate-pre-licensing-course"
+              >
+                <span>
+                  I&apos;m working toward my first Florida license
+                </span>
+                <span aria-hidden="true">
+                  →
+                </span>
+              </Link>
             </div>
           </>
         )}
@@ -2131,7 +2198,7 @@ export function FindMyPath({
                   }}
                 >
                   {pathResult.kind === "later-ce"
-                    ? "Greyson is showing the result from the same license-path logic we will use to guide you to the appropriate partner course when enrollment opens."
+                    ? "Greyson is showing your likely education path. You can review the requirement and browse available partner courses after verifying your live DBPR record."
                     : "Greyson is showing the education path that most likely fits your record and renewal answer instead of sending you straight to the wrong course."}
                 </p>
               </div>
@@ -2196,28 +2263,45 @@ export function FindMyPath({
                 {pathResult.reason}
               </p>
 
-              {pathResult.href.startsWith(
-                "http",
-              ) ? (
-                <a
-                  className="path-primary"
-                  href={
-                    pathResult.href
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {pathResult.buttonText}
-                </a>
-              ) : (
-                <Link
-                  className="path-primary"
-                  href={
-                    pathResult.href
-                  }
-                >
-                  {pathResult.buttonText}
-                </Link>
+              <div className="path-result-ctas">
+                {pathResult.href.startsWith(
+                  "http",
+                ) ? (
+                  <a
+                    className="path-primary"
+                    href={pathResult.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {pathResult.buttonText}
+                  </a>
+                ) : (
+                  <Link
+                    className="path-primary"
+                    href={pathResult.href}
+                  >
+                    {pathResult.buttonText}
+                  </Link>
+                )}
+
+                {partnerCourseUrl && (
+                  <a
+                    className="path-secondary"
+                    href={partnerCourseUrl}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                  >
+                    Browse Matching Courses ↗
+                  </a>
+                )}
+              </div>
+
+              {partnerCourseUrl && (
+                <p className="path-partner-note">
+                  Education provided by The CE Shop. Confirm the
+                  course meets your current DBPR requirements before
+                  purchasing.
+                </p>
               )}
             </div>
 
