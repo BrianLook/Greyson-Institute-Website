@@ -668,7 +668,7 @@ export default function Florida63HourPreLicensingCoursePage() {
               marginRight: "auto",
             }}
           >
-            Co-branded 63-hour pre-licensing enrollment is coming soon.
+            Explore 63-hour Sales Associate pre-licensing options.
           </h2>
 
           <p
@@ -679,12 +679,12 @@ export default function Florida63HourPreLicensingCoursePage() {
               marginRight: "auto",
             }}
           >
-            Greyson is preparing tracked partner enrollment through The CE Shop.
-            The CE Shop will remain the school of record and handle payment,
+            Greyson helps you understand the Florida licensing path and
+            connects you with available co-branded courses from The CE Shop.
+            Education provided by The CE Shop. The CE Shop handles checkout,
             course delivery, course-specific support, certificates, and
-            applicable completion reporting. Until the enrollment link is live,
-            use this guide to understand where the 63-hour course fits into your
-            Florida licensing journey.
+            applicable completion reporting. Review your current licensing
+            requirements and the selected package details before enrolling.
           </p>
 
           <div
