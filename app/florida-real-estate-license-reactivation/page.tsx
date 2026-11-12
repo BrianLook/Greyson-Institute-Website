@@ -419,7 +419,7 @@ export default function FloridaRealEstateLicenseReactivationPage() {
             }}
           >
             The 14-hour option opens Florida continuing education packages;
-            the 28-hour option opens The CE Shop's Sales Associate
+            the 28-hour option opens The CE Shop&apos;s Sales Associate
             Reinstatement course. Verify your exact DBPR license status,
             renewal history, and eligibility before purchasing. The CE Shop
             handles payment, course delivery, support, certificates, and
