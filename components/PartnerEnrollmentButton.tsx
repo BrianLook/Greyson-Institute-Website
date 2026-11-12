@@ -1,3 +1,6 @@
+"use client";
+
+import { trackCeShopClick } from "@/lib/affiliate-analytics";
 import {
   getCeShopCourseUrl,
   type CeShopCourseKey,
@@ -49,6 +52,7 @@ export function PartnerEnrollmentButton({
   return (
     <a
       href={href}
+      onClick={() => trackCeShopClick(course, "course_button")}
       target="_blank"
       rel="noopener noreferrer sponsored"
       style={{
