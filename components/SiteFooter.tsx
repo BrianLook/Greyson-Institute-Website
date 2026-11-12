@@ -91,11 +91,11 @@ export function SiteFooter() {
           </span>
 
           <span>
-            Greyson Institute is preparing a co-branded affiliate relationship
-            with The CE Shop for online course enrollment. When launched, The
-            CE Shop will remain the school of record and course provider for
-            partner-delivered courses. Final enrollment links and provider
-            disclosure will be posted after onboarding is complete.
+            Greyson Institute partners with The CE Shop for online real estate
+            education. Education provided by The CE Shop. The CE Shop is the
+            school of record for its courses and handles payment, enrollment,
+            course delivery, student support, certificates, and applicable
+            regulatory completion reporting.
           </span>
         </div>
       </div>
