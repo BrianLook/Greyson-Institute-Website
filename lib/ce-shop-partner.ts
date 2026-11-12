@@ -12,7 +12,7 @@ export const ceShopPartner = {
     floridaInstructorCE: "",
     floridaReactivation14: "",
     floridaReactivation28: "",
-    floridaExamPrep: "",
+    floridaExamPrep: "https://greyson.theceshop.com/florida/real-estate-exam-prep/fl-sales-associate-exam-prep-cost/",
   },
 };
 
