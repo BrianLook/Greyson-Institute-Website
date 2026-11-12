@@ -34,7 +34,7 @@ const costItems = [
     title: "63-hour pre-licensing course",
     amount: "View options",
     body:
-      "Most applicants must complete a FREC-approved 63-hour course. The CE Shop publishes several online course and package options; the price depends on the package you select and any promotion available at checkout. See the reference prices and co-branded link below.",
+      "Most applicants must complete a FREC-approved 63-hour course. The CE Shop publishes several online course and package options; the price depends on the package you select and any promotion available at checkout. See the reference prices above, or use the course button here to check current partner pricing.",
   },
   {
     number: "04",
