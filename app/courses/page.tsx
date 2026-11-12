@@ -815,7 +815,10 @@ export default function CoursesPage() {
             )}
 
             {course.id === "instructor-ce" && (
-              <PartnerEnrollmentButton course="floridaInstructorCE" />
+              <PartnerEnrollmentButton
+                course="floridaInstructorCE"
+                pendingLabel="Instructor CE availability unconfirmed"
+              />
             )}
 
             {course.id === "broker" && (
