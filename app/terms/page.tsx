@@ -20,7 +20,7 @@ export default function TermsPage() {
         </p>
 
         <p className="muted">
-          Last updated: September 30, 2026
+          Last updated: November 12, 2026
         </p>
 
         <h2>Website Information</h2>
@@ -35,12 +35,13 @@ export default function TermsPage() {
         <h2>Course Enrollment</h2>
 
         <p>
-          Greyson Institute is preparing to refer students to partner-delivered
-          online courses through a co-branded affiliate relationship with The
-          CE Shop. When those enrollment links are activated, The CE Shop will
-          handle checkout, enrollment, course access, course-specific student
-          support, certificates, and regulatory completion reporting for those
-          courses. Additional provider terms will apply.
+          Greyson Institute refers students to online courses through its
+          co-branded affiliate partnership with The CE Shop. Education provided
+          by The CE Shop. For courses offered through that partnership, The
+          CE Shop is the school of record and handles checkout, enrollment,
+          course access, course-specific student support, certificates, and
+          applicable regulatory completion reporting. The CE Shop&apos;s
+          separate provider terms and policies apply.
         </p>
 
         <h2>Licensing Requirements</h2>
@@ -106,8 +107,8 @@ export default function TermsPage() {
         </p>
 
         <p className="muted">
-          These terms may be updated before course enrollment opens to reflect
-          final provider, payment, refund, and student-support arrangements.
+          These terms may be updated as course offerings, provider policies, and
+          student-support arrangements change.
         </p>
       </div>
     </section>
