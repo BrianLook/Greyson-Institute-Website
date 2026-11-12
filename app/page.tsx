@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CeShopAutomatedPromo } from "@/components/CeShopAutomatedPromo";
 
 const paths = [
   {
@@ -118,6 +119,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <CeShopAutomatedPromo />
 
       <section className="section section--cream-darkline">
         <div
