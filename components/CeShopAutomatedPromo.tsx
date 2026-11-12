@@ -11,15 +11,15 @@ export function CeShopAutomatedPromo() {
     >
       <div className="container ce-shop-automated-promo__inner">
         <div className="ce-shop-automated-promo__copy">
-          <p className="eyebrow">OFFERS FROM OUR EDUCATION PARTNER</p>
-          <h2>Explore current course promotions.</h2>
-          <p>
-            Find online real estate education offers through our partner,
+          <p className="eyebrow">CURRENT PARTNER OFFERS</p>
+          <h2>Explore current course offers.</h2>
+          <p className="ce-shop-automated-promo__description">
+            See the latest savings on online real estate education through
             The CE Shop.
           </p>
           <p className="ce-shop-automated-promo__disclosure">
-            Education provided by The CE Shop. Offers and eligibility are
-            subject to The CE Shop&apos;s terms.
+            Education provided by The CE Shop. Offers and eligibility
+            are subject to provider terms.
           </p>
         </div>
 
