@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
-import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
+import { PreLicensingPackageGuide } from "@/components/PreLicensingPackageGuide";
 
 export const metadata: Metadata = {
   title: "How to Become a Florida Real Estate Broker",
@@ -318,7 +318,7 @@ export default function BrokerPathPage() {
         >
           <p className="eyebrow">BROKER PRE-LICENSING</p>
 
-          <h2>Explore available 72-hour Florida broker pre-licensing courses.</h2>
+          <h2>Compare your 72-hour Florida broker pre-licensing packages.</h2>
 
           <p
             style={{
@@ -327,15 +327,19 @@ export default function BrokerPathPage() {
               lineHeight: 1.75,
             }}
           >
-            Greyson connects aspiring brokers to available online course
-            packages through our co-branded partnership. Education provided
-            by The CE Shop. The CE Shop is the school of record for its courses
-            and handles payment, course delivery, course-specific support,
-            certificates, and applicable completion reporting.
+            Greyson explains the difference between the Standard and
+            Premium packages before you visit The CE Shop. Both include
+            the required 72-hour broker pre-licensing course. Premium also
+            includes the future 60-hour broker post-license education.
+            The CE Shop provides the courses, checkout, and student support.
           </p>
 
-          <PartnerEnrollmentButton course="floridaBrokerPreLicense72" />
+          <Link className="button" href="#choose-pre-license-package">
+            Choose My Broker Package →
+          </Link>
         </div>
+
+        <PreLicensingPackageGuide track="broker" />
 
         <div
           style={{
