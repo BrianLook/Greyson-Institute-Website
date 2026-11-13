@@ -85,6 +85,14 @@ const guides = [
   },
   {
     number: "10",
+    stage: "TIMESHARE & VACATION OWNERSHIP",
+    title: "Florida Timeshare Sales Continuing Education",
+    description:
+      "For licensed timeshare and vacation ownership sales professionals: choose the right 14-hour CE, 45-hour first-renewal, or broker education path.",
+    href: "/florida-timeshare-sales-continuing-education",
+  },
+  {
+    number: "11",
     stage: "REACTIVATION",
     title: "Florida Real Estate License Reactivation: 14 Hours vs. 28 Hours",
     description:
@@ -92,7 +100,7 @@ const guides = [
     href: "/florida-real-estate-license-reactivation",
   },
   {
-    number: "11",
+    number: "12",
     stage: "INSTRUCTOR RENEWAL",
     title: "Florida Real Estate Instructor Continuing Education Requirements",
     description:
@@ -100,7 +108,7 @@ const guides = [
     href: "/florida-real-estate-instructor-continuing-education",
   },
   {
-    number: "12",
+    number: "13",
     stage: "BROKER FIRST RENEWAL",
     title: "Florida 60-Hour Broker Post-License Requirements",
     description:
@@ -108,7 +116,7 @@ const guides = [
     href: "/florida-60-hour-broker-post-license-requirements",
   },
   {
-    number: "13",
+    number: "14",
     stage: "CAREER ADVANCEMENT",
     title: "How to Become a Florida Real Estate Broker",
     description:
@@ -116,7 +124,7 @@ const guides = [
     href: "/how-to-become-florida-real-estate-broker",
   },
   {
-    number: "14",
+    number: "15",
     stage: "INSTRUCTOR PATH",
     title: "How to Become a Florida Real Estate Instructor",
     description:
