@@ -88,7 +88,7 @@ const courses = [
     eyebrow: "CONTINUING EDUCATION",
     title: "Continuing Education",
     body:
-      "For active real estate professionals completing education for license renewal.",
+      "Need all 14 hours? Compare complete Florida CE packages, including REALTOR and ProPath options, before going to The CE Shop.",
   },
   {
     id: "instructor-ce",
@@ -811,7 +811,12 @@ export default function CoursesPage() {
             )}
 
             {course.id === "continuing-education" && (
-              <PartnerEnrollmentButton course="floridaContinuingEducation14" />
+              <Link
+                href="/florida-14-hour-real-estate-continuing-education#choose-ce-option"
+                className="button"
+              >
+                Choose My 14-Hour CE Package →
+              </Link>
             )}
 
             {course.id === "instructor-ce" && (
