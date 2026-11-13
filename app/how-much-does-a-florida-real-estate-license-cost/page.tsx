@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
-import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
+
 
 const guideTitle = "How Much Does a Florida Real Estate License Cost?";
 const guideDescription =
@@ -283,10 +283,12 @@ export default function FloridaRealEstateLicenseCostPage() {
             Course contents, availability, and discounts may change.
           </p>
 
-          <PartnerEnrollmentButton
-            course="floridaPreLicense63"
-            label="View Current Course Prices →"
-          />
+          <Link
+            href="/florida-63-hour-real-estate-pre-licensing-course#choose-pre-license-package"
+            className="button"
+          >
+            Compare Packages &amp; Current Prices →
+          </Link>
 
           <p
             style={{
@@ -297,8 +299,9 @@ export default function FloridaRealEstateLicenseCostPage() {
               maxWidth: "820px",
             }}
           >
-            Education provided by The CE Shop. The button opens Greyson's
-            co-branded partner page in a new tab. Final pricing and
+            Education provided by The CE Shop. The button takes you to
+            Greyson's guided package comparison; each package then opens
+            its own co-branded partner product page. Final pricing and
             eligibility are determined by The CE Shop at checkout.
             Course tuition is separate from DBPR application fees,
             fingerprints, and the state exam.
@@ -373,10 +376,12 @@ export default function FloridaRealEstateLicenseCostPage() {
 
                   {item.number === "03" && (
                     <div style={{ marginTop: "14px" }}>
-                      <PartnerEnrollmentButton
-                        course="floridaPreLicense63"
-                        label="Compare Live Packages →"
-                      />
+                      <Link
+                        href="/florida-63-hour-real-estate-pre-licensing-course#choose-pre-license-package"
+                        className="button"
+                      >
+                        Compare Course Packages →
+                      </Link>
                     </div>
                   )}
 
