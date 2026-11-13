@@ -229,6 +229,38 @@ export default function Florida14HourContinuingEducationPage() {
 
         <div
           style={{
+            borderLeft: "4px solid #7d5f3a",
+            background: "#f5eadb",
+            padding: "clamp(24px, 4vw, 36px)",
+            marginBottom: "38px",
+          }}
+        >
+          <p className="eyebrow">FOR TIMESHARE &amp; VACATION OWNERSHIP SALES PROFESSIONALS</p>
+          <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.45rem)", marginBottom: "14px" }}>
+            Sell vacations? Your real estate license still needs attention.
+          </h2>
+          <p style={{ maxWidth: "840px", lineHeight: 1.77, color: "#4d4b46" }}>
+            If you sell vacation ownership rather than residential homes,
+            your Florida license renewal requirements still matter.
+            Greyson has a dedicated guide to help you distinguish
+            14-hour CE from first-renewal post-licensing before enrolling.
+          </p>
+          <Link
+            href="/florida-timeshare-sales-continuing-education"
+            style={{
+              fontWeight: 700,
+              display: "inline-flex",
+              textDecoration: "underline",
+              textUnderlineOffset: "4px",
+              padding: "8px 0",
+            }}
+          >
+            Explore Timeshare &amp; Vacation Ownership Education →
+          </Link>
+        </div>
+
+        <div
+          style={{
             display: "grid",
             gridTemplateColumns:
               "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
