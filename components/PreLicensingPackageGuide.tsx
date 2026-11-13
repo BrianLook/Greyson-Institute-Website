@@ -11,7 +11,6 @@ type Choice = {
   link: CeShopCourseKey;
   button: string;
   eyebrow?: string;
-  caveat?: string;
 };
 
 const salesPackages: Choice[] = [
@@ -53,8 +52,7 @@ const brokerPackages: Choice[] = [
     who: "I need the required 72-hour broker pre-licensing course.",
     includes: "The 72-hour Florida Real Estate Brokerage pre-licensing course. It does not bundle the first broker post-license education.",
     link: "floridaBrokerPreLicense72",
-    button: "View Standard Pricing & Details →",
-    caveat: "The CE Shop's broker pricing page shows both Standard and Premium. Select Standard there.",
+    button: "View Standard Broker Package →",
   },
   {
     name: "Premium Broker Package",
@@ -176,18 +174,6 @@ export function PreLicensingPackageGuide({ track }: { track: Track }) {
                 Current discounts may lower the checkout price.
               </span>
             </div>
-            {option.caveat && (
-              <p
-                style={{
-                  color: "#6e5a43",
-                  lineHeight: 1.55,
-                  fontSize: "0.81rem",
-                  margin: 0,
-                }}
-              >
-                {option.caveat}
-              </p>
-            )}
             <div
               className="ce-package-choice-card__action"
               style={{ paddingTop: "12px", marginTop: "auto" }}
