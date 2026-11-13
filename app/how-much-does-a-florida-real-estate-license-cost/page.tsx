@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
+import { ceShopReferencePrices } from "@/lib/ce-shop-pricing";
 
 
 const guideTitle = "How Much Does a Florida Real Estate License Cost?";
@@ -86,7 +87,7 @@ export default function FloridaRealEstateLicenseCostPage() {
         description={guideDescription}
         path={guidePath}
         datePublished="2026-09-24"
-        dateModified="2026-11-12"
+        dateModified="2026-11-13"
       />
 
       <div
@@ -141,7 +142,7 @@ export default function FloridaRealEstateLicenseCostPage() {
             fingerprinting, education, and examination costs to plan for.
           </p>
 
-          <p className="muted">Pricing reference checked: November 12, 2026</p>
+          <p className="muted">Pricing reference checked: {ceShopReferencePrices.lastChecked}</p>
         </div>
 
         <div
@@ -204,10 +205,10 @@ export default function FloridaRealEstateLicenseCostPage() {
             }}
           >
             {[
-              { name: "Course Only Package", price: "$139", detail: "63-hour pre-licensing package" },
-              { name: "Standard", price: "$239", detail: "Includes exam prep" },
-              { name: "Value", price: "$315", detail: "Additional career resources" },
-              { name: "Premium", price: "$459", detail: "Expanded bundle, including post-license" },
+              { name: "Course Only Package", price: ceShopReferencePrices.sales63.courseOnly, detail: "63-hour pre-licensing package" },
+              { name: "Standard", price: ceShopReferencePrices.sales63.standard, detail: "Includes exam prep" },
+              { name: "Value", price: ceShopReferencePrices.sales63.value, detail: "Additional career resources" },
+              { name: "Premium", price: ceShopReferencePrices.sales63.premium, detail: "Expanded bundle, including post-license" },
             ].map((option) => (
               <div
                 key={option.name}
@@ -261,10 +262,10 @@ export default function FloridaRealEstateLicenseCostPage() {
                 fontWeight: 650,
               }}
             >
-              Individual 63-Hour Sales Associate Course — $125
+              Individual 63-Hour Sales Associate Course — {ceShopReferencePrices.sales63.individual}
             </p>
             <p style={{ color: "#5f5c56", fontSize: "0.9rem", lineHeight: 1.7, margin: 0 }}>
-              The CE Shop lists this separately from its $139 Course Only
+              The CE Shop lists this separately from its {ceShopReferencePrices.sales63.courseOnly} Course Only
               Package. Both list 63 required hours; compare each product's
               details and current checkout price before choosing.
             </p>
@@ -278,7 +279,7 @@ export default function FloridaRealEstateLicenseCostPage() {
               marginBottom: "20px",
             }}
           >
-            Published reference prices checked November 12, 2026.
+            Published reference prices checked {ceShopReferencePrices.lastChecked}.
             These are not guaranteed promotional or checkout prices.
             Course contents, availability, and discounts may change.
           </p>
