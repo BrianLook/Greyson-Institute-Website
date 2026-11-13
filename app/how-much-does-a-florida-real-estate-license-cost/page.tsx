@@ -28,7 +28,7 @@ const costItems = [
     title: "Electronic fingerprints",
     amount: "Varies",
     body:
-      "Electronic fingerprints are required. Approved private Livescan providers set their own prices. DBPR also offers fingerprinting at its Tallahassee headquarters for $36 for eligible DBPR license applicants.",
+      "Electronic fingerprinting is required. FDLE-registered LiveScan providers set their own prices, which may include service and processing fees. Before booking, confirm electronic submission for DBPR Real Estate Sales and Brokers, ORI FL920010Z, and the full cost.",
   },
   {
     number: "03",
@@ -55,7 +55,7 @@ const faqItems = [
   {
     question: "Are fingerprints included in the application fee?",
     answer:
-      "No. Fingerprinting is a separate cost. Private approved Livescan providers establish their own pricing.",
+      "No. Fingerprinting is a separate cost. FDLE-registered LiveScan providers establish their own pricing. The real estate ORI is FL920010Z; confirm the total fee before booking.",
   },
   {
     question: "How much does the 63-hour Florida real estate course cost?",
@@ -178,6 +178,30 @@ export default function FloridaRealEstateLicenseCostPage() {
             packages at different prices, so there is no single guaranteed
             total. Check current partner pricing and promotions before enrolling.
           </p>
+        </div>
+
+        <div
+          style={{
+            padding: "24px 28px",
+            background: "#f6f1e9",
+            border: "1px solid rgba(17, 23, 23, 0.14)",
+            marginBottom: "60px",
+          }}
+        >
+          <p className="eyebrow" style={{ marginBottom: "8px" }}>
+            NEED FINGERPRINTING?
+          </p>
+          <p style={{ color: "#4d4b46", lineHeight: 1.7, margin: "0 0 14px" }}>
+            We explain where to find an FDLE-registered LiveScan provider,
+            what to bring, and the correct Florida real estate ORI
+            (<strong>FL920010Z</strong>)—so your results reach DBPR.
+          </p>
+          <Link
+            href="/florida-real-estate-fingerprinting"
+            style={{ textDecoration: "underline", fontWeight: 700, textUnderlineOffset: "4px" }}
+          >
+            Where Can I Get My Florida Real Estate Fingerprints Done? →
+          </Link>
         </div>
 
         <div
