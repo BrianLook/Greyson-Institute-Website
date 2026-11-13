@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 import type { CeShopCourseKey } from "@/lib/ce-shop-partner";
-import { ceShopReferencePrices } from "@/lib/ce-shop-pricing";
 
 type Track = "sales" | "broker";
 
@@ -11,7 +10,6 @@ type Choice = {
   includes: string;
   link: CeShopCourseKey;
   button: string;
-  price?: string;
   eyebrow?: string;
   caveat?: string;
 };
@@ -22,16 +20,14 @@ const salesPackages: Choice[] = [
     who: "I want just the required 63-hour education.",
     includes: "The Florida 63-hour Sales Associate Pre-Licensing course, without the separate Exam Prep Edge study program.",
     link: "floridaPreLicense63CourseOnly",
-    button: "View Course Only Package →",
-    price: ceShopReferencePrices.sales63.courseOnly,
+    button: "See Course Only Price & Offers →",
   },
   {
     name: "Standard Package",
     who: "I want help studying for the state licensing exam, too.",
     includes: "The required 63-hour course plus Florida Sales Associate Exam Prep Edge practice and study tools.",
     link: "floridaPreLicense63Standard",
-    button: "View Standard Package →",
-    price: ceShopReferencePrices.sales63.standard,
+    button: "See Standard Price & Offers →",
     eyebrow: "STRONG STARTING POINT",
   },
   {
@@ -39,8 +35,7 @@ const salesPackages: Choice[] = [
     who: "I want exam preparation and career-starting skills.",
     includes: "Everything in Standard, plus the ProPath Career Kickstarter program with business planning, networking, and negotiation lessons.",
     link: "floridaPreLicense63Value",
-    button: "View Value Package →",
-    price: ceShopReferencePrices.sales63.value,
+    button: "See Value Price & Offers →",
   },
   {
     name: "Premium Package",
@@ -48,7 +43,6 @@ const salesPackages: Choice[] = [
     includes: "The 63-hour course, Exam Prep Edge, ProPath Kickstarter, Career Companion eTextbook, and a 45-hour Florida Sales Post-Licensing package.",
     link: "floridaPreLicense63Premium",
     button: "View Premium Package →",
-    price: ceShopReferencePrices.sales63.premium,
     eyebrow: "INCLUDES POST-LICENSING",
   },
 ];
@@ -164,16 +158,24 @@ export function PreLicensingPackageGuide({ track }: { track: Track }) {
             >
               {option.includes}
             </p>
-            {option.price && (
-              <div className="ce-package-choice-card__price">
-                <span className="ce-package-choice-card__price-label">
-                  PUBLISHED REFERENCE PRICE
-                </span>
-                <div className="ce-package-choice-card__price-values">
-                  <strong>{option.price}</strong>
-                </div>
-              </div>
-            )}
+            <div className="ce-package-choice-card__price">
+              <span className="ce-package-choice-card__price-label">
+                LIVE PARTNER PRICING
+              </span>
+              <strong
+                style={{
+                  color: "#172b2d",
+                  fontFamily: "var(--font-serif), Georgia, serif",
+                  fontSize: "clamp(1.35rem, 2.2vw, 1.7rem)",
+                  lineHeight: 1.3,
+                }}
+              >
+                See today&apos;s CE Shop offer
+              </strong>
+              <span className="ce-package-choice-card__price-note">
+                Current discounts may lower the checkout price.
+              </span>
+            </div>
             {option.caveat && (
               <p
                 style={{
@@ -227,12 +229,10 @@ export function PreLicensingPackageGuide({ track }: { track: Track }) {
             }}
           >
             The CE Shop also lists an individual 63-hour licensing course
-            with a published reference price of{" "}
-            {ceShopReferencePrices.sales63.individual}. This is a separate
-            listing from the{" "}
-            {ceShopReferencePrices.sales63.courseOnly} Course Only Package.
-            The button opens the CE Shop course list; scroll to
-            &quot;Individual Courses&quot; to find it and check the details.
+            separate from its Course Only Package. To avoid showing an
+            outdated price, check the current offer on the CE Shop course list.
+            Scroll to &quot;Individual Courses&quot; to find it and review
+            its details.
           </p>
           <PartnerEnrollmentButton
             course="floridaPreLicense63IndividualCatalog"
@@ -250,10 +250,11 @@ export function PreLicensingPackageGuide({ track }: { track: Track }) {
           lineHeight: 1.75,
         }}
       >
-        {sales
-          ? `Published package prices checked ${ceShopReferencePrices.lastChecked}; these are not live prices. Promotions, eligibility, and checkout totals may change.`
-          : "To avoid displaying unverified prices, check The CE Shop for the latest Standard and Premium broker prices."}
-        {" "}The CE Shop provides all courses, student support, and checkout.
+        The CE Shop controls course prices, current promotions, and
+        discount eligibility. A product&apos;s actual price may be much lower
+        than its previously advertised regular price. Confirm the current
+        offer and final total on The CE Shop&apos;s product page or at checkout.
+        The CE Shop provides all courses, student support, and checkout.
         The state application, fingerprints, and licensing exam are
         separate from these course bundles. Professional-development lessons
         do not replace state-required licensing or renewal education.
