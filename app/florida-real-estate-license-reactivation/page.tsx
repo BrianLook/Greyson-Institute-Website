@@ -44,6 +44,11 @@ const faqItems = [
       "Not necessarily. Florida Statute 475.183 distinguishes between licenses involuntarily inactive for 12 months or less and those inactive for more than 12 months but fewer than 24 months. Your exact status, dates, renewal history, fees, and other requirements matter.",
   },
   {
+    question: "Are the two 28-hour reinstatement listings at The CE Shop different courses?",
+    answer:
+      "No. The CE Shop confirmed on November 13, 2026 that the 28-hour reinstatement course shown in its Continuing Education catalog and its pre-licensing/reinstatement section is the same course listed in two places. Greyson links to one listing. Confirm that the course fits your license status before purchasing.",
+  },
+  {
     question: "What if this was my first renewal?",
     answer:
       "First-renewal post-license requirements are different from a normal continuing-education lapse. A Florida sales associate who misses the required 45-hour post-license education by the initial expiration can become null and void. Brokers also have a separate first-renewal post-license requirement. Verify with DBPR before buying a reactivation course.",
@@ -73,7 +78,7 @@ export default function FloridaRealEstateLicenseReactivationPage() {
         description={guideDescription}
         path={guidePath}
         datePublished="2026-09-30"
-        dateModified="2026-09-30"
+        dateModified="2026-11-13"
       />
 
       <div
@@ -125,7 +130,7 @@ export default function FloridaRealEstateLicenseReactivationPage() {
             Start with your actual license record before buying a course.
           </p>
 
-          <p className="muted">Last reviewed: September 30, 2026</p>
+          <p className="muted">Last reviewed: November 13, 2026</p>
         </div>
 
         <div
@@ -418,12 +423,31 @@ export default function FloridaRealEstateLicenseReactivationPage() {
               marginRight: "auto",
             }}
           >
-            The 14-hour option opens Florida continuing education packages;
-            the 28-hour option opens The CE Shop&apos;s Sales Associate
-            Reinstatement course. Verify your exact DBPR license status,
+            The 14-hour option opens Florida continuing education packages.
+            The 28-hour option opens The CE Shop&apos;s Sales Associate
+            Reinstatement course. Check your exact DBPR license status,
             renewal history, and eligibility before purchasing. The CE Shop
             handles payment, course delivery, support, certificates, and
             applicable completion reporting.
+          </p>
+
+          <p
+            style={{
+              background: "rgba(245, 240, 231, 0.09)",
+              border: "1px solid rgba(245, 240, 231, 0.22)",
+              color: "rgba(245, 240, 231, 0.91)",
+              maxWidth: "760px",
+              margin: "18px auto 0",
+              padding: "14px 18px",
+              fontSize: "0.91rem",
+              lineHeight: 1.65,
+            }}
+          >
+            <strong>One course, two listings:</strong> The CE Shop has
+            confirmed that its 28-Hour Reinstatement Program in the
+            Continuing Education catalog is the same course listed under
+            reinstatement pre-licensing. Greyson provides one direct
+            28-hour course link to avoid confusion.
           </p>
 
           <div
@@ -444,7 +468,7 @@ export default function FloridaRealEstateLicenseReactivationPage() {
 
             <PartnerEnrollmentButton
               course="floridaReactivation28"
-              label="View 28-Hour Sales Associate Course →"
+              label="View 28-Hour Sales Associate Reinstatement →"
               pendingLabel="28-Hour link coming soon"
               dark
             />
