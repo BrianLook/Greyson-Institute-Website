@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
 import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
-import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
+import { PostLicensePackageGuide } from "@/components/PostLicensePackageGuide";
 
 const guideTitle =
   "Florida 60-Hour Broker Post-License Requirements";
@@ -71,7 +71,7 @@ export default function FloridaBrokerPostLicensePage() {
         description={guideDescription}
         path={guidePath}
         datePublished="2026-09-27"
-        dateModified="2026-09-27"
+        dateModified="2026-11-13"
       />
 
       <div
@@ -126,7 +126,7 @@ export default function FloridaBrokerPostLicensePage() {
           </p>
 
           <p className="muted">
-            Last reviewed: September 27, 2026
+            Last reviewed: November 13, 2026
           </p>
         </div>
 
@@ -176,6 +176,8 @@ export default function FloridaBrokerPostLicensePage() {
             text="Greyson can check the latest available weekly DBPR record for your Florida broker or broker associate license. Your first renewal has a different education requirement from later renewals."
           />
         </div>
+
+        <PostLicensePackageGuide track="broker" />
 
         <div
           style={{
@@ -406,7 +408,7 @@ export default function FloridaBrokerPostLicensePage() {
               marginRight: "auto",
             }}
           >
-            Explore 60-hour Florida Broker post-license courses.
+            Find the right 60-hour Broker post-license package.
           </h2>
 
           <p
@@ -417,10 +419,11 @@ export default function FloridaBrokerPostLicensePage() {
               marginRight: "auto",
             }}
           >
-            If this is your first broker renewal, review your requirements
-            and browse available courses on our co-branded The CE Shop site.
-            Education provided by The CE Shop. Verify your live DBPR record
-            before purchasing, or contact Greyson for licensing-path guidance.
+            If this is your first broker renewal, compare the standard
+            60-hour package with the optional ProPath upgrade on Greyson
+            before going directly to the selected CE Shop product.
+            Education is provided by The CE Shop. Verify your live DBPR
+            record before purchasing, or contact Greyson for guidance.
           </p>
 
           <div
@@ -432,10 +435,23 @@ export default function FloridaBrokerPostLicensePage() {
               marginTop: "26px",
             }}
           >
-            <PartnerEnrollmentButton
-              course="floridaBrokerPostLicense60"
-              dark
-            />
+            <Link
+              href="#choose-post-license-package"
+              style={{
+                minHeight: "50px",
+                padding: "0 20px",
+                border: "1px solid #f5f0e7",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#f5f0e7",
+                fontSize: "14px",
+                fontWeight: 700,
+                textDecoration: "none",
+              }}
+            >
+              Choose My 60-Hour Package →
+            </Link>
 
             <Link
               href="/check-florida-real-estate-license-expiration"
