@@ -210,7 +210,7 @@ export default function FloridaRealEstateExamPage() {
         description={guideDescription}
         path={guidePath}
         datePublished="2026-09-24"
-        dateModified="2026-09-24"
+        dateModified="2026-11-13"
       />
 
       <div
@@ -265,7 +265,7 @@ export default function FloridaRealEstateExamPage() {
             subject areas, testing rules, and practical ways to prepare.
           </p>
 
-          <p className="muted">Last reviewed: September 24, 2026</p>
+          <p className="muted">Last reviewed: November 13, 2026</p>
         </div>
 
         <div
@@ -952,11 +952,13 @@ export default function FloridaRealEstateExamPage() {
         </div>
 
         <div
+          id="choose-exam-prep"
           style={{
             background: "#eee6d9",
             border: "1px solid rgba(17, 23, 23, 0.14)",
             padding: "clamp(34px, 6vw, 58px)",
             textAlign: "center",
+            scrollMarginTop: "155px",
           }}
         >
           <p className="eyebrow">PREPARE FOR YOUR NEXT STEP</p>
@@ -968,7 +970,7 @@ export default function FloridaRealEstateExamPage() {
               marginRight: "auto",
             }}
           >
-            Prepare for the exam with the right education path.
+            Do you need exam prep—or a complete pre-licensing package?
           </h2>
 
           <p
@@ -979,18 +981,48 @@ export default function FloridaRealEstateExamPage() {
               marginRight: "auto",
             }}
           >
-            Greyson can help you understand where exam preparation fits.
-            When the tracked partner link is live, exam-prep enrollment will
-            open through The CE Shop.
+            The CE Shop&apos;s Florida Sales Associate Exam Prep Edge is an
+            optional exam-study program, not a replacement for the required
+            63-hour pre-licensing education. If you already completed that
+            education and want practice exams and study lessons, standalone
+            Exam Prep Edge may fit you. If you still need your 63 hours,
+            compare the complete pre-licensing packages first—several already
+            include Exam Prep Edge.
+          </p>
+
+          <p
+            style={{
+              margin: "18px auto 0",
+              maxWidth: "700px",
+              color: "#5d5548",
+              fontSize: "0.92rem",
+              lineHeight: 1.7,
+            }}
+          >
+            <strong>Already bought a Standard, Value, or Premium 63-hour
+            package from The CE Shop?</strong> Those packages include
+            Florida Sales Associate Exam Prep Edge. Check your existing
+            CE Shop account before paying for it separately.
           </p>
 
           <div
             className="button-row"
             style={{
               justifyContent: "center",
+              marginTop: "26px",
             }}
           >
-            <PartnerEnrollmentButton course="floridaExamPrep" />
+            <PartnerEnrollmentButton
+              course="floridaExamPrep"
+              label="View Sales Associate Exam Prep Edge &amp; Price →"
+            />
+
+            <Link
+              href="/florida-63-hour-real-estate-pre-licensing-course#choose-pre-license-package"
+              className="button"
+            >
+              Compare 63-Hour Packages →
+            </Link>
 
             <Link
               href="/contact"
