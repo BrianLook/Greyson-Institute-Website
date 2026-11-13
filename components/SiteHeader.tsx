@@ -15,6 +15,7 @@ const guidePaths = [
   "/what-happens-after-you-pass-the-florida-real-estate-exam",
   "/florida-45-hour-post-license-requirements",
   "/florida-14-hour-real-estate-continuing-education",
+  "/florida-timeshare-sales-continuing-education",
   "/florida-real-estate-instructor-continuing-education",
   "/florida-60-hour-broker-post-license-requirements",
   "/how-to-become-florida-real-estate-broker",
@@ -288,6 +289,18 @@ export function SiteHeader() {
               onClick={handleNavClick}
             >
               Guides
+            </Link>
+
+            <Link
+              href="/florida-timeshare-sales-continuing-education"
+              aria-current={
+                isCurrentPage("/florida-timeshare-sales-continuing-education")
+                  ? "page"
+                  : undefined
+              }
+              onClick={handleNavClick}
+            >
+              Timeshare &amp; Vacation Ownership
             </Link>
 
             <Link
