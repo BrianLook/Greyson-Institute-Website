@@ -1159,3 +1159,431 @@ textarea {
     transform: none;
   }
 }
+
+
+/* VACATION OWNERSHIP / TIMESHARE CE LANDING PAGE */
+
+.timeshare-page {
+  padding-bottom: 100px;
+}
+
+.timeshare-hero {
+  position: relative;
+  overflow: hidden;
+  background: #1f2d30;
+  color: #f5f0e7;
+  padding: clamp(35px, 6vw, 72px);
+  margin: 30px 0 64px;
+}
+
+.timeshare-hero::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  right: -160px;
+  top: -250px;
+  width: 540px;
+  height: 540px;
+  border: 1px solid rgba(214, 189, 156, .23);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 68px rgba(214, 189, 156, .055),
+    0 0 0 145px rgba(214, 189, 156, .035);
+}
+
+.timeshare-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+}
+
+.timeshare-hero h1 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(3rem, 6vw, 5.1rem);
+  font-weight: 500;
+  line-height: 1.04;
+  color: #f5f0e7;
+  margin: 24px 0;
+  max-width: 900px;
+  overflow-wrap: anywhere;
+}
+
+.timeshare-hero h1 span {
+  color: #d6bd9c;
+  display: block;
+}
+
+.timeshare-hero__lead {
+  max-width: 780px;
+  font-size: clamp(1.03rem, 1.8vw, 1.19rem);
+  color: rgba(245,240,231,.87);
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+
+.timeshare-hero__actions,
+.timeshare-verify__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.timeshare-hero__actions a,
+.timeshare-verify__actions a {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  font-size: .86rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .18s ease;
+}
+
+.timeshare-hero__actions a:first-child {
+  color: #1f2d30;
+  background: #eee6d9;
+  border: 1px solid #eee6d9;
+}
+
+.timeshare-hero__actions a:first-child:hover {
+  background: #d6bd9c;
+}
+
+.timeshare-hero__actions a:last-child {
+  color: #f5f0e7;
+  border: 1px solid rgba(245,240,231,.7);
+}
+
+.timeshare-hero__actions a:last-child:hover {
+  background: rgba(245,240,231,.12);
+}
+
+.timeshare-intro {
+  margin-bottom: 72px;
+  max-width: 900px;
+}
+
+.timeshare-intro h2 {
+  max-width: 880px;
+  margin-bottom: 20px;
+}
+
+.timeshare-intro > p:not(.eyebrow) {
+  color: #4d4b46;
+  line-height: 1.85;
+  font-size: 1.02rem;
+}
+
+.timeshare-intro .timeshare-intro__note {
+  color: #6e6b65 !important;
+  font-size: .93rem !important;
+}
+
+.timeshare-chooser {
+  margin-bottom: 78px;
+  scroll-margin-top: 150px;
+}
+
+.timeshare-chooser h2 {
+  max-width: 810px;
+  margin-bottom: 16px;
+}
+
+.timeshare-chooser__lead,
+.timeshare-chooser__note {
+  color: #4d4b46;
+  max-width: 890px;
+  line-height: 1.8;
+}
+
+.timeshare-chooser__note {
+  font-size: .91rem;
+  margin-top: 22px;
+}
+
+.timeshare-chooser__note a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 700;
+}
+
+.timeshare-paths {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.timeshare-path {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(22px, 3vw, 32px);
+  background: #faf7f1;
+  border: 1px solid rgba(17,23,23,.18);
+  transition:
+    background-color .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    transform .2s ease;
+}
+
+.timeshare-path .timeshare-path__eyebrow {
+  margin: 0;
+  color: #7d5f3a;
+  font-size: .7rem;
+}
+
+.timeshare-path__hours {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.timeshare-path__hours span {
+  font-family: var(--font-serif), Georgia, serif;
+  color: #1f2d30;
+  font-size: 3.9rem;
+  line-height: 1;
+}
+
+.timeshare-path__hours small {
+  font-size: .72rem;
+  letter-spacing: .12em;
+  color: #7d5f3a;
+  font-weight: 750;
+}
+
+.timeshare-path h3 {
+  font-size: clamp(1.45rem, 2.5vw, 1.83rem);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.timeshare-path p:not(.eyebrow) {
+  margin: 0;
+  color: #56544e;
+  line-height: 1.7;
+}
+
+.timeshare-path .timeshare-path__details {
+  border-top: 1px solid rgba(17,23,23,.16);
+  padding-top: 14px;
+  font-size: .88rem;
+}
+
+.timeshare-path a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 16px;
+  margin-top: auto;
+  text-align: center;
+  background: #111717;
+  color: #f5f0e7;
+  font-size: .83rem;
+  font-weight: 700;
+}
+
+.timeshare-path a:hover {
+  background: #7d5f3a;
+}
+
+.timeshare-path:focus-within {
+  outline: 3px solid #7d5f3a;
+  outline-offset: 3px;
+}
+
+.timeshare-insights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 16px;
+  margin-bottom: 76px;
+}
+
+.timeshare-insights article {
+  padding: clamp(27px, 4vw, 40px);
+  border: 1px solid rgba(17,23,23,.14);
+  background: #eee6d9;
+}
+
+.timeshare-insights article:last-child {
+  background: #f8f6f0;
+}
+
+.timeshare-insights article h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.timeshare-insights article p:last-child {
+  color: #4d4b46;
+  line-height: 1.77;
+  margin-bottom: 0;
+}
+
+.timeshare-community {
+  border-top: 1px solid rgba(17,23,23,.18);
+  padding-top: 34px;
+  margin-bottom: 75px;
+  max-width: 990px;
+}
+
+.timeshare-community h2 {
+  max-width: 880px;
+}
+
+.timeshare-community > p:not(.eyebrow) {
+  color: #4d4b46;
+  line-height: 1.8;
+}
+
+.timeshare-community .timeshare-community__disclaimer {
+  color: #6e6b65 !important;
+  font-size: .87rem;
+}
+
+.timeshare-verify {
+  display: grid;
+  grid-template-columns: minmax(0,1.35fr) minmax(240px,.7fr);
+  gap: clamp(25px,4vw,50px);
+  align-items: center;
+  background: #1f2d30;
+  color: #f5f0e7;
+  padding: clamp(32px,5vw,52px);
+  margin-bottom: 75px;
+}
+
+.timeshare-verify h2 {
+  margin-bottom: 17px;
+}
+
+.timeshare-verify p:not(.eyebrow) {
+  color: rgba(245,240,231,.83);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.timeshare-verify__actions {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.timeshare-verify__actions a:first-child {
+  background: #eee6d9;
+  color: #1f2d30;
+  border: 1px solid #eee6d9;
+}
+
+.timeshare-verify__actions a:last-child {
+  border: 1px solid rgba(245,240,231,.68);
+  color: #f5f0e7;
+}
+
+.timeshare-verify__actions a:hover {
+  background: #7d5f3a;
+  border-color: #7d5f3a;
+  color: #fff;
+}
+
+.timeshare-faq {
+  margin-bottom: 75px;
+}
+
+.timeshare-faq h2 {
+  margin-bottom: 27px;
+}
+
+.timeshare-faq details {
+  border-bottom: 1px solid rgba(17,23,23,.18);
+  padding: 21px 0;
+}
+
+.timeshare-faq details:first-child {
+  border-top: 1px solid rgba(17,23,23,.18);
+}
+
+.timeshare-faq summary {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.28rem, 2.5vw, 1.65rem);
+  line-height: 1.38;
+  cursor: pointer;
+}
+
+.timeshare-faq details p {
+  color: #4d4b46;
+  line-height: 1.8;
+  max-width: 860px;
+  margin: 14px 0 0;
+}
+
+.timeshare-official {
+  border: 1px solid rgba(17,23,23,.14);
+  background: #eee6d9;
+  padding: clamp(27px, 4vw, 42px);
+}
+
+.timeshare-official > p:not(.eyebrow) {
+  color: #4d4b46;
+  line-height: 1.75;
+  max-width: 800px;
+}
+
+.timeshare-official > div {
+  display: grid;
+  gap: 17px;
+}
+
+.timeshare-official a {
+  font-size: .95rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .timeshare-path:hover {
+    background: #f5eadb;
+    border-color: #7d5f3a;
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(48,37,23,.12);
+  }
+}
+
+@media (max-width: 920px) {
+  .timeshare-paths {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 275px),1fr));
+  }
+
+  .timeshare-insights,
+  .timeshare-verify {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .timeshare-hero {
+    padding: 32px 24px;
+  }
+
+  .timeshare-hero::after {
+    right: -340px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeshare-path,
+  .timeshare-hero__actions a,
+  .timeshare-verify__actions a {
+    transition: none;
+  }
+
+  .timeshare-path:hover {
+    transform: none;
+  }
+}
