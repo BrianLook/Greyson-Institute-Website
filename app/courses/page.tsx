@@ -81,7 +81,7 @@ const courses = [
     eyebrow: "POST-LICENSE",
     title: "Sales Associate Post-License",
     body:
-      "For newly licensed sales associates completing the education required for their first renewal period.",
+      "Compare complete 45-hour first-renewal packages and go straight to your selected course, without searching a long catalog.",
   },
   {
     id: "continuing-education",
@@ -109,7 +109,7 @@ const courses = [
     eyebrow: "BROKER POST-LICENSE",
     title: "Broker Post-License",
     body:
-      "For newly licensed brokers and broker associates completing the 60-hour education required for their first renewal.",
+      "Compare the standard 60-hour broker post-license package with the ProPath option before enrolling.",
   },
   {
     id: "reactivation",
@@ -807,7 +807,12 @@ export default function CoursesPage() {
             )}
 
             {course.id === "post-license" && (
-              <PartnerEnrollmentButton course="floridaPostLicense45" />
+              <Link
+                href="/florida-45-hour-post-license-requirements#choose-post-license-package"
+                className="button"
+              >
+                Choose My 45-Hour Package →
+              </Link>
             )}
 
             {course.id === "continuing-education" && (
@@ -831,7 +836,12 @@ export default function CoursesPage() {
             )}
 
             {course.id === "broker-post-license" && (
-              <PartnerEnrollmentButton course="floridaBrokerPostLicense60" />
+              <Link
+                href="/florida-60-hour-broker-post-license-requirements#choose-post-license-package"
+                className="button"
+              >
+                Choose My 60-Hour Package →
+              </Link>
             )}
 
             {course.id === "reactivation" && (
