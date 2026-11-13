@@ -462,6 +462,17 @@ export default function Florida63HourPreLicensingCoursePage() {
             >
               See the complete Florida licensing process →
             </Link>
+
+            <Link
+              href="/florida-real-estate-fingerprinting"
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "4px",
+                fontWeight: 650,
+              }}
+            >
+              Where to Get Fingerprinted for a Florida Real Estate License →
+            </Link>
           </div>
         </div>
 
