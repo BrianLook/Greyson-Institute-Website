@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 import type { CeShopCourseKey } from "@/lib/ce-shop-partner";
+import { ceShopReferencePrices } from "@/lib/ce-shop-pricing";
 
 type Track = "sales" | "broker";
 
@@ -22,7 +23,7 @@ const salesPackages: Choice[] = [
     includes: "The Florida 63-hour Sales Associate Pre-Licensing course, without the separate Exam Prep Edge study program.",
     link: "floridaPreLicense63CourseOnly",
     button: "View Course Only Package →",
-    price: "$139",
+    price: ceShopReferencePrices.sales63.courseOnly,
   },
   {
     name: "Standard Package",
@@ -30,7 +31,7 @@ const salesPackages: Choice[] = [
     includes: "The required 63-hour course plus Florida Sales Associate Exam Prep Edge practice and study tools.",
     link: "floridaPreLicense63Standard",
     button: "View Standard Package →",
-    price: "$239",
+    price: ceShopReferencePrices.sales63.standard,
     eyebrow: "STRONG STARTING POINT",
   },
   {
@@ -39,7 +40,7 @@ const salesPackages: Choice[] = [
     includes: "Everything in Standard, plus the ProPath Career Kickstarter program with business planning, networking, and negotiation lessons.",
     link: "floridaPreLicense63Value",
     button: "View Value Package →",
-    price: "$315",
+    price: ceShopReferencePrices.sales63.value,
   },
   {
     name: "Premium Package",
@@ -47,7 +48,7 @@ const salesPackages: Choice[] = [
     includes: "The 63-hour course, Exam Prep Edge, ProPath Kickstarter, Career Companion eTextbook, and a 45-hour Florida Sales Post-Licensing package.",
     link: "floridaPreLicense63Premium",
     button: "View Premium Package →",
-    price: "$459",
+    price: ceShopReferencePrices.sales63.premium,
     eyebrow: "INCLUDES POST-LICENSING",
   },
 ];
@@ -209,8 +210,10 @@ export function PreLicensingPackageGuide({ track }: { track: Track }) {
           }}
         >
           <strong>Another option:</strong> The CE Shop also lists a separate
-          individual 63-hour licensing course, previously priced at $125.
-          It is not the same listing as the $139 &quot;Course Only Package.&quot;
+          individual 63-hour licensing course, with a published reference
+          price of {ceShopReferencePrices.sales63.individual}.
+          It is not the same listing as the{" "}
+          {ceShopReferencePrices.sales63.courseOnly} &quot;Course Only Package.&quot;
           You can find the individual course under the{" "}
           <Link
             href="/how-much-does-a-florida-real-estate-license-cost"
@@ -232,7 +235,7 @@ export function PreLicensingPackageGuide({ track }: { track: Track }) {
         }}
       >
         {sales
-          ? "Published package prices checked November 13, 2026; these are not live prices. Promotions, eligibility, and checkout totals may change."
+          ? `Published package prices checked ${ceShopReferencePrices.lastChecked}; these are not live prices. Promotions, eligibility, and checkout totals may change.`
           : "To avoid displaying unverified prices, check The CE Shop for the latest Standard and Premium broker prices."}
         {" "}The CE Shop provides all courses, student support, and checkout.
         The state application, fingerprints, and licensing exam are
