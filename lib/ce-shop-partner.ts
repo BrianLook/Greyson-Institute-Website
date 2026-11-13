@@ -22,9 +22,8 @@ export const ceShopPartner = {
     floridaCE14Basic: "https://greyson.theceshop.com/online-education/florida/real-estate/broker-and-sales-license/continuing-education/course/14-hr-fl-ce-package-with-ethics-course-7082-26281.html",
     floridaCE14Realtors: "https://greyson.theceshop.com/online-education/florida/real-estate/broker-and-sales-license/continuing-education/course/14-hr-fl-ce-package-for-realtors-7377-27046.html",
     floridaCE14ProPath: "https://greyson.theceshop.com/online-education/florida/real-estate/broker-and-sales-license/continuing-education/course/14-hr-fl-ce-package-with-ethics-course-plus-professional-development-7083-26282.html",
-    // Broker Standard currently goes to the official two-option broker pricing page
-    // until The CE Shop confirms a stable individual-product URL.
-    floridaBrokerPreLicense72: "https://greyson.theceshop.com/florida/pre-licensing/fl-broker-pre-licensing-cost/",
+    // User-verified Greyson-branded 72-hour Broker Standard product page.
+    floridaBrokerPreLicense72: "https://greyson.theceshop.com/online-education/florida/real-estate/broker/pre-licensing/course/72-hr-fl-broker-pre-licensing-standard-package-4021-19215.html",
     floridaBrokerPreLicense72Premium: "https://greyson.theceshop.com/online-education/florida/real-estate/broker/pre-licensing/course/72-hr-fl-broker-pre-licensing-premium-package-4022-19216.html",
     floridaBrokerPostLicense60: "https://greyson.theceshop.com/online-education/florida/real-estate/broker/post-licensing/courses.html",
     floridaBrokerPostLicense60Standard: "https://greyson.theceshop.com/online-education/florida/real-estate/broker/post-licensing/course/60-hr-fl-broker-post-licensing-package-3063-14356.html",
