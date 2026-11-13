@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
-import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
+import { PostLicensePackageGuide } from "@/components/PostLicensePackageGuide";
 import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
 
 const guideTitle = "Florida 45-Hour Post-License Requirements";
@@ -141,7 +141,7 @@ export default function Florida45HourPostLicenseRequirementsPage() {
         description={guideDescription}
         path={guidePath}
         datePublished="2026-09-24"
-        dateModified="2026-09-24"
+        dateModified="2026-11-13"
       />
 
       <div
@@ -197,7 +197,7 @@ export default function Florida45HourPostLicenseRequirementsPage() {
             first license renewal.
           </p>
 
-          <p className="muted">Last reviewed: September 24, 2026</p>
+          <p className="muted">Last reviewed: November 13, 2026</p>
         </div>
 
         <div
@@ -244,6 +244,8 @@ export default function Florida45HourPostLicenseRequirementsPage() {
             text="Your 45-hour post-license education must be completed before the expiration of your initial sales associate license. Check your official Florida DBPR record now so you know exactly which deadline you are working toward."
           />
         </div>
+
+        <PostLicensePackageGuide track="sales" />
 
         <div
           style={{
@@ -945,7 +947,7 @@ export default function Florida45HourPostLicenseRequirementsPage() {
               marginRight: "auto",
             }}
           >
-            Explore 45-hour Sales Associate post-license courses.
+            Choose your 45-hour Sales Associate post-license course.
           </h2>
 
           <p
@@ -956,12 +958,12 @@ export default function Florida45HourPostLicenseRequirementsPage() {
               marginRight: "auto",
             }}
           >
-            If this is your first Sales Associate renewal, use this guide
-            to understand the 45-hour requirement before browsing available
-            partner packages. Education provided by The CE Shop. The CE Shop
-            handles payment, course delivery, course-specific support,
-            certificates, and applicable completion reporting. Confirm your
-            live DBPR renewal requirements before purchasing.
+            If this is your first Sales Associate renewal, Greyson can help
+            you compare complete 45-hour packages and open the individual
+            course that fits you on our co-branded CE Shop website. The CE
+            Shop handles payment, course delivery, support, certificates,
+            and applicable completion reporting. Confirm your live DBPR
+            requirements before purchasing.
           </p>
 
           <div
@@ -970,7 +972,12 @@ export default function Florida45HourPostLicenseRequirementsPage() {
               justifyContent: "center",
             }}
           >
-            <PartnerEnrollmentButton course="floridaPostLicense45" />
+            <Link
+              className="button"
+              href="#choose-post-license-package"
+            >
+              Choose My 45-Hour Package →
+            </Link>
 
             <Link
               href="/florida-14-hour-real-estate-continuing-education"
