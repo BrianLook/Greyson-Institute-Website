@@ -74,7 +74,7 @@ const courses = [
     eyebrow: "PRE-LICENSING",
     title: "Sales Associate Pre-Licensing",
     body:
-      "For students beginning the path toward a real estate sales associate license.",
+      "Start your Florida license with the 63-hour course and compare Course Only, Standard, Value, and Premium packages.",
   },
   {
     id: "post-license",
@@ -102,7 +102,7 @@ const courses = [
     eyebrow: "BROKER",
     title: "Broker Pre-Licensing",
     body:
-      "For experienced real estate professionals preparing to advance to broker licensure.",
+      "Compare the required 72-hour broker course with the package that also bundles your first broker renewal education.",
   },
   {
     id: "broker-post-license",
@@ -123,7 +123,7 @@ const courses = [
     eyebrow: "EXAM PREP",
     title: "Exam Preparation",
     body:
-      "Focused preparation designed to reinforce key concepts before a licensing examination.",
+      "Understand Florida Sales Associate Exam Prep Edge, whether you already have it, and when to purchase it separately.",
   },
 ];
 
@@ -803,7 +803,12 @@ export default function CoursesPage() {
             </div>
 
             {course.id === "pre-licensing" && (
-              <PartnerEnrollmentButton course="floridaPreLicense63" />
+              <Link
+                href="/florida-63-hour-real-estate-pre-licensing-course#choose-pre-license-package"
+                className="button"
+              >
+                Choose My 63-Hour Package →
+              </Link>
             )}
 
             {course.id === "post-license" && (
@@ -832,7 +837,12 @@ export default function CoursesPage() {
             )}
 
             {course.id === "broker" && (
-              <PartnerEnrollmentButton course="floridaBrokerPreLicense72" />
+              <Link
+                href="/how-to-become-florida-real-estate-broker#choose-pre-license-package"
+                className="button"
+              >
+                Choose My Broker Package →
+              </Link>
             )}
 
             {course.id === "broker-post-license" && (
@@ -854,7 +864,12 @@ export default function CoursesPage() {
             )}
 
             {course.id === "exam-prep" && (
-              <PartnerEnrollmentButton course="floridaExamPrep" />
+              <Link
+                href="/florida-real-estate-exam#choose-exam-prep"
+                className="button"
+              >
+                Find My Exam Prep →
+              </Link>
             )}
           </article>
         ))}
