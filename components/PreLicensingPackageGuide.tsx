@@ -200,29 +200,45 @@ export function PreLicensingPackageGuide({ track }: { track: Track }) {
       </div>
 
       {sales && (
-        <p
+        <div
+          className="ce-package-choice-individual"
           style={{
-            marginTop: "20px",
-            maxWidth: "900px",
-            color: "#5e5d58",
-            fontSize: "0.91rem",
-            lineHeight: 1.7,
+            marginTop: "16px",
+            padding: "clamp(22px, 3vw, 30px)",
+            border: "1px solid rgba(17, 23, 23, 0.16)",
+            background: "#f6f1e9",
           }}
         >
-          <strong>Another option:</strong> The CE Shop also lists a separate
-          individual 63-hour licensing course, with a published reference
-          price of {ceShopReferencePrices.sales63.individual}.
-          It is not the same listing as the{" "}
-          {ceShopReferencePrices.sales63.courseOnly} &quot;Course Only Package.&quot;
-          You can find the individual course under the{" "}
-          <Link
-            href="/how-much-does-a-florida-real-estate-license-cost"
-            style={{ textDecoration: "underline", fontWeight: 650 }}
+          <h3
+            style={{
+              fontSize: "clamp(1.35rem, 2.8vw, 1.7rem)",
+              marginBottom: "12px",
+            }}
           >
-            Greyson course-cost guide
-          </Link>{" "}
-          and compare current details before purchasing.
-        </p>
+            Looking for the separate individual 63-hour course?
+          </h3>
+          <p
+            style={{
+              maxWidth: "870px",
+              color: "#5e5d58",
+              fontSize: "0.93rem",
+              lineHeight: 1.7,
+              marginBottom: "18px",
+            }}
+          >
+            The CE Shop also lists an individual 63-hour licensing course
+            with a published reference price of{" "}
+            {ceShopReferencePrices.sales63.individual}. This is a separate
+            listing from the{" "}
+            {ceShopReferencePrices.sales63.courseOnly} Course Only Package.
+            The button opens the CE Shop course list; scroll to
+            &quot;Individual Courses&quot; to find it and check the details.
+          </p>
+          <PartnerEnrollmentButton
+            course="floridaPreLicense63IndividualCatalog"
+            label="Find the Individual 63-Hour Course →"
+          />
+        </div>
       )}
 
       <p
