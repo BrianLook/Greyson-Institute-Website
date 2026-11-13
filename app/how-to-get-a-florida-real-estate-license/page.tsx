@@ -36,7 +36,7 @@ const steps = [
     number: "04",
     title: "Complete electronic fingerprinting",
     body:
-      "Florida requires electronic fingerprints for real estate sales associate applicants as part of the background-screening process.",
+      "Florida requires electronic fingerprints for real estate sales associate applicants. After filing your DBPR application, book an FDLE-registered LiveScan provider using the correct real estate ORI FL920010Z. Keep your receipt and transaction number.",
   },
   {
     number: "05",
@@ -71,7 +71,7 @@ const faqItems = [
   {
     question: "Do Florida real estate applicants need fingerprints?",
     answer:
-      "Yes. Electronic fingerprinting is required for real estate sales associate applicants.",
+      "Yes. After filing your DBPR application, use an FDLE-registered LiveScan provider to submit fingerprints electronically for Florida Real Estate Sales and Brokers with ORI FL920010Z. See Greyson's separate fingerprinting guide for locations and steps.",
   },
   {
     question: "What score do you need to pass the Florida real estate exam?",
@@ -98,7 +98,7 @@ export default function FloridaRealEstateLicenseGuidePage() {
         description={guideDescription}
         path={guidePath}
         datePublished="2026-09-24"
-        dateModified="2026-09-24"
+        dateModified="2026-11-13"
       />
 
       <div
@@ -299,6 +299,30 @@ export default function FloridaRealEstateLicenseGuidePage() {
             }}
           >
             Learn what the Florida 63-hour pre-licensing course covers →
+          </Link>
+          <p
+            style={{
+              color: "#4d4b46",
+              lineHeight: 1.7,
+              marginTop: "22px",
+              marginBottom: "10px",
+            }}
+          >
+            <strong>Need fingerprints for your application?</strong> The
+            correct ORI for Florida real estate sales and brokers is
+            <strong> FL920010Z</strong>. We can show you where to get
+            electronic LiveScan fingerprints and how to prepare for your visit.
+          </p>
+          <Link
+            href="/florida-real-estate-fingerprinting"
+            style={{
+              display: "inline-block",
+              textDecoration: "underline",
+              textUnderlineOffset: "4px",
+              fontWeight: 700,
+            }}
+          >
+            Where to Get Florida Real Estate Fingerprints →
           </Link>
         </div>
 
