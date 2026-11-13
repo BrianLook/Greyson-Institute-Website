@@ -1,15 +1,11 @@
 import Link from "next/link";
 import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 import type { CeShopCourseKey } from "@/lib/ce-shop-partner";
-import { ceShopReferencePrices } from "@/lib/ce-shop-pricing";
 
 type PackageOption = {
   title: string;
   description: string;
   includes: string;
-  price: string;
-  regularPrice?: string;
-  pricingNote?: string;
   course: CeShopCourseKey;
   label: string;
   highlighted?: boolean;
@@ -20,28 +16,23 @@ const completePackages: PackageOption[] = [
     title: "Basic 14-Hour CE Package",
     description: "I need all 14 hours for my regular Florida renewal.",
     includes: "3 hours Core Law + 3 hours Ethics and Business Practices + 8 specialty hours.",
-    price: ceShopReferencePrices.continuing14.basic,
     course: "floridaCE14Basic",
-    label: "View Basic Package →",
+    label: "Check Basic Price & Offers →",
     highlighted: true,
   },
   {
     title: "14-Hour CE for REALTORS",
     description: "I want a complete CE package that also covers REALTOR-focused ethics and fair housing topics.",
     includes: "14 Florida CE hours, with NAR Ethics and NAR Fair Housing coursework. Confirm acceptance with your REALTOR association.",
-    price: ceShopReferencePrices.continuing14.realtor,
     course: "floridaCE14Realtors",
-    label: "View REALTOR Package →",
+    label: "Check REALTOR Price & Offers →",
   },
   {
     title: "14-Hour CE Plus ProPath",
     description: "I want my regular 14 CE hours plus additional professional development.",
     includes: "14 Florida CE hours plus ProPath skill-building content. Extra professional development does not count toward the required 14 CE hours.",
-    price: ceShopReferencePrices.continuing14.proPath,
-    regularPrice: ceShopReferencePrices.continuing14.proPathRegular,
-    pricingNote: "Promotional price shown November 13, 2026; a promo code may be required.",
     course: "floridaCE14ProPath",
-    label: "View ProPath Package →",
+    label: "Check ProPath Price & Offers →",
   },
 ];
 
@@ -132,21 +123,22 @@ export function Ce14HourPackageGuide() {
 
             <div className="ce-package-choice-card__price">
               <span className="ce-package-choice-card__price-label">
-                CE SHOP PRICE SHOWN
+                TODAY&apos;S PRICE &amp; PROMOTIONS
               </span>
-              <div className="ce-package-choice-card__price-values">
-                <strong>{option.price}</strong>
-                {option.regularPrice && (
-                  <del aria-label={`Regular price ${option.regularPrice}`}>
-                    {option.regularPrice}
-                  </del>
-                )}
-              </div>
-              {option.pricingNote && (
-                <span className="ce-package-choice-card__price-note">
-                  {option.pricingNote}
-                </span>
-              )}
+              <strong
+                style={{
+                  fontFamily: "var(--font-serif), Georgia, serif",
+                  fontSize: "clamp(1.35rem, 2.2vw, 1.7rem)",
+                  fontWeight: 600,
+                  color: "#172b2d",
+                  lineHeight: 1.25,
+                }}
+              >
+                See live CE Shop price
+              </strong>
+              <span className="ce-package-choice-card__price-note">
+                A current promotion may lower your price.
+              </span>
             </div>
             <div className="ce-package-choice-card__action" style={{ marginTop: "auto", paddingTop: "12px" }}>
               <PartnerEnrollmentButton
@@ -205,11 +197,11 @@ export function Ce14HourPackageGuide() {
         >
           Not sure? Find your likely path first →
         </Link>
-        {" "}Prices shown above were checked {ceShopReferencePrices.lastChecked},
-        and are not live quotes. The ProPath price shown is promotional and may expire.
-        Prices, discount eligibility, package contents, and availability can
-        change; The CE Shop determines the final checkout price and provides
-        the education. Please confirm current pricing before purchasing.
+        {" "}The CE Shop manages prices and promotional offers, which can
+        change without notice. Choose a package to check today&apos;s available
+        price and discount eligibility directly on our co-branded CE Shop
+        website. The CE Shop determines the final checkout total and
+        provides the education.
       </p>
     </section>
   );
