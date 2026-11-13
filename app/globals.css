@@ -1065,11 +1065,6 @@ textarea {
     box-shadow 220ms ease;
 }
 
-.ce-package-choice-card[data-recommended="true"] {
-  border: 2px solid #1f2d30;
-  background: #eee6d9;
-}
-
 .ce-package-choice-card__price {
   display: grid;
   gap: 4px;
@@ -1117,7 +1112,8 @@ textarea {
   z-index: 1;
 }
 
-.ce-package-choice-card:focus-within {
+/* Highlight keyboard navigation without leaving a card selected after a mouse click. */
+.ce-package-choice-card:has(.ce-package-choice-card__action a:focus-visible) {
   border-color: #7d5f3a;
   background: #f5eadb;
   outline: 3px solid #7d5f3a;
