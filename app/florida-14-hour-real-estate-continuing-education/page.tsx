@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
 import { LicenseExpirationPromo } from "@/components/LicenseExpirationPromo";
-import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
+import { Ce14HourPackageGuide } from "@/components/Ce14HourPackageGuide";
 
 const guideTitle =
   "Florida 14-Hour Real Estate Continuing Education Requirements";
@@ -135,7 +135,7 @@ export default function Florida14HourContinuingEducationPage() {
         description={guideDescription}
         path={guidePath}
         datePublished="2026-09-24"
-        dateModified="2026-09-28"
+        dateModified="2026-11-13"
       />
 
       <div
@@ -191,7 +191,7 @@ export default function Florida14HourContinuingEducationPage() {
             works and what you need to complete.
           </p>
 
-          <p className="muted">Last reviewed: September 28, 2026</p>
+          <p className="muted">Last reviewed: November 13, 2026</p>
         </div>
 
         <div
@@ -262,20 +262,18 @@ export default function Florida14HourContinuingEducationPage() {
                 maxWidth: "650px",
               }}
             >
-              Greyson Institute helps you identify the appropriate Florida
-              education path and connects you with available continuing
-              education courses through our co-branded partnership.
-              Education provided by The CE Shop. The CE Shop is the school
-              of record for its courses and handles payment, course delivery,
-              course-specific support, certificates, and applicable completion
-              reporting.
+              Need all 14 hours? You can pick one complete Florida CE package
+              rather than selecting individual classes. Greyson makes the
+              options easy to understand and links directly to the package
+              you choose at The CE Shop. The CE Shop provides the education,
+              payment, course delivery, support, certificates, and applicable
+              completion reporting.
             </p>
 
             <div style={{ marginTop: "24px" }}>
-              <PartnerEnrollmentButton
-                course="floridaContinuingEducation14"
-                pendingLabel="Enrollment opening soon"
-              />
+              <Link href="#choose-ce-option" className="button">
+                Help Me Choose My 14-Hour Package →
+              </Link>
             </div>
           </div>
 
@@ -347,6 +345,8 @@ export default function Florida14HourContinuingEducationPage() {
             </div>
           </div>
         </div>
+
+        <Ce14HourPackageGuide />
 
         <div
           style={{
@@ -1034,7 +1034,9 @@ export default function Florida14HourContinuingEducationPage() {
               justifyContent: "center",
             }}
           >
-            <PartnerEnrollmentButton course="floridaContinuingEducation14" />
+            <Link href="#choose-ce-option" className="button">
+              Choose My CE Package →
+            </Link>
 
             <Link
               href="/contact"
