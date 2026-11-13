@@ -6,6 +6,9 @@ export const ceShopPartner = {
   links: {
     floridaPreLicense63: "https://greyson.theceshop.com/florida/pre-licensing/fl-sales-associate-pre-licensing-cost/",
     floridaPreLicense63CourseOnly: "https://greyson.theceshop.com/online-education/florida/real-estate/sales-associate/pre-licensing/course/63-hr-fl-sales-pre-licensing-course-only-package-3850-18175.html",
+    // No verified deep link to the separate individual course yet.
+    // This catalog lists it under "Individual Courses" below the packages.
+    floridaPreLicense63IndividualCatalog: "https://greyson.theceshop.com/online-education/florida/real-estate/sales-associate/pre-licensing/courses.html",
     floridaPreLicense63Standard: "https://greyson.theceshop.com/online-education/florida/real-estate/sales-associate/pre-licensing/course/63-hr-fl-real-estate-sales-associate-licensing-standard-package-3622-17392.html",
     floridaPreLicense63Value: "https://greyson.theceshop.com/online-education/florida/real-estate/sales-associate/pre-licensing/course/fl-63-hour-pre-licensing-value-package-2951-13332.html",
     floridaPreLicense63Premium: "https://greyson.theceshop.com/online-education/florida/real-estate/sales-associate/pre-licensing/course/fl-63-hour-pre-licensing-premium-package-2952-13333.html",
