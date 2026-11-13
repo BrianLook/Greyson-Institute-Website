@@ -18,10 +18,7 @@ import {
   type PathResult,
   type RenewalAnswer,
 } from "@/lib/florida-license-path";
-import { getCeShopCourseUrl, type CeShopCourseKey } from "@/lib/ce-shop-partner";
-import { trackCeShopClick } from "@/lib/affiliate-analytics";
-
-const DATA_BASE =
+ const DATA_BASE =
   "/data/florida-real-estate-licenses";
 
 const NAME_SEARCH_ENDPOINT =
@@ -36,14 +33,18 @@ const SAVED_RENEWAL_KEY =
 const dbprGeneralSearch =
   "https://www.myfloridalicense.com/portalsearches/VerifyLicensee";
 
-// Direct partner links are limited to clearly active, known education paths.
-const partnerCoursesForResults: Partial<Record<PathResult["kind"], CeShopCourseKey>> = {
-  "sales-first": "floridaPostLicense45",
-  "broker-first": "floridaBrokerPostLicense60",
-  "later-ce": "floridaContinuingEducation14",
+// Give eligible licensees a direct path to Greyson's package comparisons.
+// Course selection happens on Greyson before a user opens CE Shop checkout.
+const guidedPackagePaths: Partial<Record<PathResult["kind"], string>> = {
+  "sales-first":
+    "/florida-45-hour-post-license-requirements#choose-post-license-package",
+  "broker-first":
+    "/florida-60-hour-broker-post-license-requirements#choose-post-license-package",
+  "later-ce":
+    "/florida-14-hour-real-estate-continuing-education#choose-ce-option",
 };
 
-function partnerCourseForResult(
+function guidedPackagePathForResult(
   result: PathResult,
   record: FloridaLicenseRecord,
 ): string | null {
@@ -54,8 +55,7 @@ function partnerCourseForResult(
   ) {
     return null;
   }
-  const key = partnerCoursesForResults[result.kind];
-  return key ? getCeShopCourseUrl(key) : null;
+  return guidedPackagePaths[result.kind] ?? null;
 }
 
 type LicenseMeta = {
@@ -1141,9 +1141,9 @@ export function FindMyPath({
     setStage("doors");
   }
 
-  const partnerCourseUrl =
+  const guidedPackagePath =
     record && pathResult
-      ? partnerCourseForResult(pathResult, record)
+      ? guidedPackagePathForResult(pathResult, record)
       : null;
 
   return (
@@ -2285,27 +2285,21 @@ export function FindMyPath({
                   </Link>
                 )}
 
-                {partnerCourseUrl && (
-                  <a
+                {guidedPackagePath && (
+                  <Link
                     className="path-secondary"
-                    href={partnerCourseUrl}
-                    onClick={() => trackCeShopClick(
-                      partnerCoursesForResults[pathResult.kind] ?? "unspecified",
-                      "find_my_path",
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer sponsored"
+                    href={guidedPackagePath}
                   >
-                    Browse Matching Courses ↗
-                  </a>
+                    Compare My Course Packages →
+                  </Link>
                 )}
               </div>
 
-              {partnerCourseUrl && (
+              {guidedPackagePath && (
                 <p className="path-partner-note">
-                  Education provided by The CE Shop. Confirm the
-                  course meets your current DBPR requirements before
-                  purchasing.
+                  Compare your package options on Greyson first, then
+                  review the selected course and current price on
+                  our co-branded CE Shop website before purchasing.
                 </p>
               )}
             </div>
