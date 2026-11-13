@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
 import type { CeShopCourseKey } from "@/lib/ce-shop-partner";
+import { ceShopReferencePrices } from "@/lib/ce-shop-pricing";
 
 type PackageOption = {
   title: string;
@@ -19,7 +20,7 @@ const completePackages: PackageOption[] = [
     title: "Basic 14-Hour CE Package",
     description: "I need all 14 hours for my regular Florida renewal.",
     includes: "3 hours Core Law + 3 hours Ethics and Business Practices + 8 specialty hours.",
-    price: "$39",
+    price: ceShopReferencePrices.continuing14.basic,
     course: "floridaCE14Basic",
     label: "View Basic Package →",
     highlighted: true,
@@ -28,7 +29,7 @@ const completePackages: PackageOption[] = [
     title: "14-Hour CE for REALTORS",
     description: "I want a complete CE package that also covers REALTOR-focused ethics and fair housing topics.",
     includes: "14 Florida CE hours, with NAR Ethics and NAR Fair Housing coursework. Confirm acceptance with your REALTOR association.",
-    price: "$45",
+    price: ceShopReferencePrices.continuing14.realtor,
     course: "floridaCE14Realtors",
     label: "View REALTOR Package →",
   },
@@ -36,8 +37,8 @@ const completePackages: PackageOption[] = [
     title: "14-Hour CE Plus ProPath",
     description: "I want my regular 14 CE hours plus additional professional development.",
     includes: "14 Florida CE hours plus ProPath skill-building content. Extra professional development does not count toward the required 14 CE hours.",
-    price: "$60",
-    regularPrice: "$75",
+    price: ceShopReferencePrices.continuing14.proPath,
+    regularPrice: ceShopReferencePrices.continuing14.proPathRegular,
     pricingNote: "Promotional price shown November 13, 2026; a promo code may be required.",
     course: "floridaCE14ProPath",
     label: "View ProPath Package →",
@@ -204,8 +205,8 @@ export function Ce14HourPackageGuide() {
         >
           Not sure? Find your likely path first →
         </Link>
-        {" "}Prices shown above were checked November 13, 2026, and are not
-        live quotes. The ProPath price shown is promotional and may expire.
+        {" "}Prices shown above were checked {ceShopReferencePrices.lastChecked},
+        and are not live quotes. The ProPath price shown is promotional and may expire.
         Prices, discount eligibility, package contents, and availability can
         change; The CE Shop determines the final checkout price and provides
         the education. Please confirm current pricing before purchasing.
