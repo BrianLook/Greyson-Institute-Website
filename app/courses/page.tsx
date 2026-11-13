@@ -37,6 +37,12 @@ const paths = [
     href: "#continuing-education",
   },
   {
+    label: "I work in timeshare or vacation ownership sales",
+    detail:
+      "Find Florida real estate CE and first-renewal courses designed around the vacation ownership sales professional's licensing path.",
+    href: "/florida-timeshare-sales-continuing-education",
+  },
+  {
     label: "I need instructor continuing education",
     detail:
       "Review the education required to renew a Florida real estate instructor permit.",
@@ -213,6 +219,48 @@ export default function CoursesPage() {
       </div>
 
       <CeShopAutomatedPromo />
+
+      <div
+        className="container"
+        style={{
+          maxWidth: "1080px",
+          marginTop: "24px",
+          marginBottom: "55px",
+          minWidth: 0,
+        }}
+      >
+        <div
+          style={{
+            padding: "clamp(26px, 4vw, 42px)",
+            background: "#eee6d9",
+            border: "1px solid rgba(17, 23, 23, 0.17)",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))",
+            gap: "22px",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <p className="eyebrow">FLORIDA TIMESHARE &amp; VACATION OWNERSHIP</p>
+            <h2 style={{ fontSize: "clamp(1.85rem, 3vw, 2.6rem)", marginBottom: "12px" }}>
+              You sell vacations. Keep your real estate license on track.
+            </h2>
+            <p style={{ color: "#4d4b46", lineHeight: 1.7, margin: 0 }}>
+              Find the right Florida real estate education for your timeshare
+              sales career, from 14-hour continuing education to first-renewal
+              post-licensing.
+            </p>
+          </div>
+          <div style={{ justifySelf: "start" }}>
+            <Link
+              className="button"
+              href="/florida-timeshare-sales-continuing-education"
+            >
+              Explore Vacation Ownership Education →
+            </Link>
+          </div>
+        </div>
+      </div>
 
       <div
         className="container"
