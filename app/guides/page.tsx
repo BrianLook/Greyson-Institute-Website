@@ -21,6 +21,14 @@ const guides = [
   },
   {
     number: "02",
+    stage: "FINGERPRINTING",
+    title: "Where to Get Fingerprinted for a Florida Real Estate License",
+    description:
+      "Find FDLE-registered LiveScan fingerprinting providers, learn the correct real estate ORI FL920010Z, what to bring, and how DBPR receives your results.",
+    href: "/florida-real-estate-fingerprinting",
+  },
+  {
+    number: "03",
     stage: "PLANNING",
     title: "How Much Does a Florida Real Estate License Cost?",
     description:
@@ -28,7 +36,7 @@ const guides = [
     href: "/how-much-does-a-florida-real-estate-license-cost",
   },
   {
-    number: "03",
+    number: "04",
     stage: "PLANNING",
     title: "How Long Does It Take to Get a Florida Real Estate License?",
     description:
@@ -36,7 +44,7 @@ const guides = [
     href: "/how-long-does-it-take-to-get-a-florida-real-estate-license",
   },
   {
-    number: "04",
+    number: "05",
     stage: "PRE-LICENSING",
     title: "Florida 63-Hour Real Estate Pre-Licensing Course",
     description:
@@ -44,7 +52,7 @@ const guides = [
     href: "/florida-63-hour-real-estate-pre-licensing-course",
   },
   {
-    number: "05",
+    number: "06",
     stage: "STATE EXAM",
     title: "Florida Real Estate Exam: What to Expect and How to Prepare",
     description:
@@ -52,7 +60,7 @@ const guides = [
     href: "/florida-real-estate-exam",
   },
   {
-    number: "06",
+    number: "07",
     stage: "AFTER THE EXAM",
     title: "What Happens After You Pass the Florida Real Estate Exam?",
     description:
@@ -60,7 +68,7 @@ const guides = [
     href: "/what-happens-after-you-pass-the-florida-real-estate-exam",
   },
   {
-    number: "07",
+    number: "08",
     stage: "FIRST RENEWAL",
     title: "Florida 45-Hour Post-License Requirements",
     description:
@@ -68,7 +76,7 @@ const guides = [
     href: "/florida-45-hour-post-license-requirements",
   },
   {
-    number: "08",
+    number: "09",
     stage: "ONGOING RENEWALS",
     title: "Florida 14-Hour Real Estate Continuing Education Requirements",
     description:
@@ -76,7 +84,7 @@ const guides = [
     href: "/florida-14-hour-real-estate-continuing-education",
   },
   {
-    number: "09",
+    number: "10",
     stage: "REACTIVATION",
     title: "Florida Real Estate License Reactivation: 14 Hours vs. 28 Hours",
     description:
@@ -84,7 +92,7 @@ const guides = [
     href: "/florida-real-estate-license-reactivation",
   },
   {
-    number: "10",
+    number: "11",
     stage: "INSTRUCTOR RENEWAL",
     title: "Florida Real Estate Instructor Continuing Education Requirements",
     description:
@@ -92,7 +100,7 @@ const guides = [
     href: "/florida-real-estate-instructor-continuing-education",
   },
   {
-    number: "11",
+    number: "12",
     stage: "BROKER FIRST RENEWAL",
     title: "Florida 60-Hour Broker Post-License Requirements",
     description:
@@ -100,7 +108,7 @@ const guides = [
     href: "/florida-60-hour-broker-post-license-requirements",
   },
   {
-    number: "12",
+    number: "13",
     stage: "CAREER ADVANCEMENT",
     title: "How to Become a Florida Real Estate Broker",
     description:
@@ -108,7 +116,7 @@ const guides = [
     href: "/how-to-become-florida-real-estate-broker",
   },
   {
-    number: "13",
+    number: "14",
     stage: "INSTRUCTOR PATH",
     title: "How to Become a Florida Real Estate Instructor",
     description:
@@ -125,6 +133,10 @@ const pathSteps = [
   {
     label: "Complete pre-licensing",
     href: "/florida-63-hour-real-estate-pre-licensing-course",
+  },
+  {
+    label: "Arrange DBPR fingerprinting",
+    href: "/florida-real-estate-fingerprinting",
   },
   {
     label: "Prepare for the state exam",
