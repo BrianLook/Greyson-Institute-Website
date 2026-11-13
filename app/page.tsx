@@ -120,6 +120,67 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section
+        aria-labelledby="vacation-ownership-feature-title"
+        className="section--cream-darkline"
+        style={{
+          padding: "clamp(28px, 5vw, 52px) 0",
+          borderTop: "1px solid rgba(17, 23, 23, 0.16)",
+        }}
+      >
+        <div
+          className="container"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 310px), 1fr))",
+            alignItems: "center",
+            gap: "28px",
+            padding: "clamp(24px, 4vw, 44px)",
+            background: "#eee6d9",
+            border: "1px solid rgba(17, 23, 23, 0.13)",
+          }}
+        >
+          <div>
+            <p className="eyebrow" style={{ marginBottom: "12px" }}>
+              A SPECIAL PATH FOR VACATION OWNERSHIP PROFESSIONALS
+            </p>
+            <h2
+              id="vacation-ownership-feature-title"
+              style={{
+                fontSize: "clamp(2rem, 3.5vw, 3.05rem)",
+                lineHeight: 1.13,
+                marginBottom: "16px",
+              }}
+            >
+              You Sell Vacations. Your License Still Matters.
+            </h2>
+            <p style={{ color: "#4d4b46", lineHeight: 1.8, margin: 0 }}>
+              Work in timeshare or vacation ownership sales? Find the
+              Florida 14-hour CE, 45-hour first-renewal post-license,
+              or broker education that fits your license—without searching
+              an overwhelming course catalog.
+            </p>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gap: "14px",
+              justifyItems: "start",
+            }}
+          >
+            <Link
+              className="button"
+              href="/florida-timeshare-sales-continuing-education"
+            >
+              Timeshare &amp; Vacation Ownership CE →
+            </Link>
+            <p style={{ color: "#6e6b65", fontSize: ".85rem", lineHeight: 1.6, margin: 0 }}>
+              Florida licensed resort and vacation ownership sales professionals
+            </p>
+          </div>
+        </div>
+      </section>
+
       <CeShopAutomatedPromo />
 
       <section className="section section--cream-darkline">
