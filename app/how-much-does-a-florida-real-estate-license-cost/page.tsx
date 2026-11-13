@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
-import { ceShopReferencePrices } from "@/lib/ce-shop-pricing";
-
 
 const guideTitle = "How Much Does a Florida Real Estate License Cost?";
 const guideDescription =
@@ -35,7 +33,7 @@ const costItems = [
     title: "63-hour pre-licensing course",
     amount: "View options",
     body:
-      "Most applicants must complete a FREC-approved 63-hour course. The CE Shop publishes several online course and package options; the price depends on the package you select and any promotion available at checkout. See the reference prices above, or use the course button here to check current partner pricing.",
+      "Most applicants must complete a FREC-approved 63-hour course. The CE Shop offers several packages, with different optional study resources and promotional prices. Use the comparison on this page to choose a package, then check its current offer on The CE Shop.",
   },
   {
     number: "04",
@@ -60,7 +58,7 @@ const faqItems = [
   {
     question: "How much does the 63-hour Florida real estate course cost?",
     answer:
-      "There is no single statewide tuition price. The CE Shop currently advertises packages from $139 to $459 and separately lists an individual 63-hour course at $125, before any applicable offers. These are reference prices, not a guaranteed checkout quote. Use the Greyson course link on this page to verify the live price.",
+      "There is no single statewide tuition price. The CE Shop sells several 63-hour packages and a separate individual course. Promotions may make the checkout price substantially lower than an older listed price, so use Greyson's direct course links to confirm the current offer.",
   },
   {
     question: "Is the Florida real estate exam included in the application fee?",
@@ -142,7 +140,7 @@ export default function FloridaRealEstateLicenseCostPage() {
             fingerprinting, education, and examination costs to plan for.
           </p>
 
-          <p className="muted">Pricing reference checked: {ceShopReferencePrices.lastChecked}</p>
+          <p className="muted">Course prices and promotional discounts are displayed by The CE Shop.</p>
         </div>
 
         <div
@@ -214,10 +212,10 @@ export default function FloridaRealEstateLicenseCostPage() {
             Compare available online course packages.
           </h2>
           <p style={{ color: "#4d4b46", maxWidth: "820px", marginBottom: "26px" }}>
-            For reference, The CE Shop currently publishes these Florida
-            Sales Associate pre-licensing package prices. Each package includes
-            the required 63-hour education, but additional study resources
-            and benefits vary.
+            The CE Shop offers several Florida Sales Associate pre-licensing
+            packages. Every package includes the required 63-hour education,
+            but study tools and extras differ. Prices and promotional discounts
+            can change, so follow the links to check the current price.
           </p>
 
           <div
@@ -229,10 +227,10 @@ export default function FloridaRealEstateLicenseCostPage() {
             }}
           >
             {[
-              { name: "Course Only Package", price: ceShopReferencePrices.sales63.courseOnly, detail: "63-hour pre-licensing package" },
-              { name: "Standard", price: ceShopReferencePrices.sales63.standard, detail: "Includes exam prep" },
-              { name: "Value", price: ceShopReferencePrices.sales63.value, detail: "Additional career resources" },
-              { name: "Premium", price: ceShopReferencePrices.sales63.premium, detail: "Expanded bundle, including post-license" },
+              { name: "Course Only Package", detail: "63-hour pre-licensing package" },
+              { name: "Standard", detail: "Includes exam prep" },
+              { name: "Value", detail: "Additional career resources" },
+              { name: "Premium", detail: "Expanded bundle, including post-license" },
             ].map((option) => (
               <div
                 key={option.name}
@@ -250,14 +248,14 @@ export default function FloridaRealEstateLicenseCostPage() {
                 </p>
                 <p
                   style={{
-                    fontFamily: "var(--font-serif), Georgia, serif",
-                    fontSize: "clamp(2rem, 4vw, 2.5rem)",
-                    lineHeight: 1,
-                    color: "#111717",
+                    fontWeight: 700,
+                    fontSize: "0.94rem",
+                    color: "#7d5f3a",
+                    lineHeight: 1.5,
                     margin: "0 0 12px",
                   }}
                 >
-                  {option.price}
+                  See today&apos;s price &amp; offers
                 </p>
                 <p style={{ margin: 0, color: "#6e6b65", fontSize: "0.88rem", lineHeight: 1.6 }}>
                   {option.detail}
@@ -286,12 +284,13 @@ export default function FloridaRealEstateLicenseCostPage() {
                 fontWeight: 650,
               }}
             >
-              Individual 63-Hour Sales Associate Course — {ceShopReferencePrices.sales63.individual}
+              Individual 63-Hour Sales Associate Course — See Current Price
             </p>
             <p style={{ color: "#5f5c56", fontSize: "0.9rem", lineHeight: 1.7, margin: 0 }}>
-              The CE Shop lists this separately from its {ceShopReferencePrices.sales63.courseOnly} Course Only
-              Package. Both list 63 required hours; compare each product's
-              details and current checkout price before choosing.
+              The CE Shop lists this separately from the Course Only
+              Package. Both list 63 required hours, but prices and any
+              available discounts may differ. Compare product details
+              and check the current price before choosing.
             </p>
           </div>
           <p
@@ -303,9 +302,9 @@ export default function FloridaRealEstateLicenseCostPage() {
               marginBottom: "20px",
             }}
           >
-            Published reference prices checked {ceShopReferencePrices.lastChecked}.
-            These are not guaranteed promotional or checkout prices.
-            Course contents, availability, and discounts may change.
+            Course prices are shown at The CE Shop, not fixed on Greyson.
+            Promotional pricing and discounts may change; the final
+            checkout price is set by The CE Shop.
           </p>
 
           <Link
