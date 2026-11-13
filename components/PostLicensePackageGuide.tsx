@@ -49,12 +49,12 @@ const tracks: Record<
         tag: "APPRAISAL FOCUS",
       },
       {
-        name: "45-Hour Plus ProPath",
+        name: "45-Hour Plus Professional Development",
         audience: "I want the 45-hour requirement plus additional business-building lessons.",
         content:
-          "The same 45-hour subject mix as Package #1, plus professional development. Extra ProPath hours do not count toward the required 45 post-license hours.",
+          "The same 45-hour subject mix as Package #1, plus additional professional-development content. Those extras do not replace or count toward the required 45 post-license hours.",
         link: "floridaPostLicense45ProPath",
-        action: "View ProPath & Price →",
+        action: "View Plus Professional Development →",
         tag: "WITH PROFESSIONAL DEVELOPMENT",
       },
     ],
@@ -76,12 +76,12 @@ const tracks: Record<
         tag: "COMPLETE 60 HOURS",
       },
       {
-        name: "60-Hour Broker Plus ProPath",
+        name: "60-Hour Broker Plus Professional Development",
         audience: "I'd like the required broker courses plus business-building skills.",
         content:
-          "The same 60 hours of Finance and Brokerage, plus additional ProPath professional-development content that does not count toward the required 60 hours.",
+          "The same 60 hours of Finance and Brokerage, plus additional professional-development content that does not count toward the required 60 hours.",
         link: "floridaBrokerPostLicense60ProPath",
-        action: "View ProPath & Price →",
+        action: "View Plus Professional Development →",
         tag: "WITH PROFESSIONAL DEVELOPMENT",
       },
     ],
