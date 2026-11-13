@@ -9,7 +9,7 @@ const pageDescription =
 const pagePath = "/florida-timeshare-sales-continuing-education";
 
 export const metadata: Metadata = {
-  title: "Florida Timeshare Sales Continuing Education | Greyson Institute",
+  title: "Florida Timeshare Sales CE & License Renewal",
   description: pageDescription,
   alternates: { canonical: pagePath },
 };
