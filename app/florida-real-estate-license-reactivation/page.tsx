@@ -423,9 +423,10 @@ export default function FloridaRealEstateLicenseReactivationPage() {
               marginRight: "auto",
             }}
           >
-            The 14-hour option opens Florida continuing education packages.
-            The 28-hour option opens The CE Shop&apos;s Sales Associate
-            Reinstatement course. Check your exact DBPR license status,
+            The 14-hour option first explains Florida continuing education
+            package choices on Greyson; the 28-hour option opens The CE
+            Shop&apos;s Sales Associate Reinstatement course directly.
+            Check your exact DBPR license status,
             renewal history, and eligibility before purchasing. The CE Shop
             handles payment, course delivery, support, certificates, and
             applicable completion reporting.
@@ -459,12 +460,24 @@ export default function FloridaRealEstateLicenseReactivationPage() {
               marginTop: "22px",
             }}
           >
-            <PartnerEnrollmentButton
-              course="floridaReactivation14"
-              label="Browse 14-Hour CE Options →"
-              pendingLabel="14-Hour link coming soon"
-              dark
-            />
+            <Link
+              href="/florida-14-hour-real-estate-continuing-education#choose-ce-option"
+              style={{
+                minHeight: "48px",
+                padding: "0 20px",
+                border: "1px solid #f5f0e7",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#f5f0e7",
+                fontSize: "14px",
+                fontWeight: 700,
+                textDecoration: "none",
+                textAlign: "center",
+              }}
+            >
+              Compare 14-Hour CE Packages →
+            </Link>
 
             <PartnerEnrollmentButton
               course="floridaReactivation28"
