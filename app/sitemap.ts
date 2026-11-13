@@ -95,6 +95,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/florida-timeshare-sales-continuing-education`,
+      lastModified: new Date("2026-11-13"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/florida-real-estate-license-reactivation`,
       lastModified: new Date(),
       changeFrequency: "monthly",
