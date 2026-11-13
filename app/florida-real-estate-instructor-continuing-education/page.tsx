@@ -75,6 +75,12 @@ const faqItems = [
   },
   {
     question:
+      "Can I complete all seven instructor continuing-education hours through The CE Shop?",
+    answer:
+      "That is not confirmed. The CE Shop lists a 3-hour Florida Core Law course, but its partner team has said they do not believe they offer the separate 4-hour Teaching Techniques course. The provider recommended checking with customer support. Core Law alone does not ordinarily fulfill the seven-hour instructor CE requirement. Verify available approved courses and your individual renewal needs before enrolling.",
+  },
+  {
+    question:
       "Can instructor continuing education be completed online?",
     answer:
       "Florida permits approved classroom or distance-learning education for the instructor continuing-education requirement.",
@@ -94,7 +100,7 @@ export default function FloridaInstructorContinuingEducationPage() {
         description={guideDescription}
         path={guidePath}
         datePublished="2026-09-27"
-        dateModified="2026-09-27"
+        dateModified="2026-11-13"
       />
 
       <div
@@ -157,7 +163,7 @@ export default function FloridaInstructorContinuingEducationPage() {
           </p>
 
           <p className="muted">
-            Last reviewed: September 27, 2026
+            Last reviewed: November 13, 2026
           </p>
         </div>
 
@@ -197,7 +203,9 @@ export default function FloridaInstructorContinuingEducationPage() {
             instructors generally complete
             7 hours of instructor continuing
             education during each applicable
-            permit period.
+            permit period. A 3-hour Core Law
+            course alone does not meet the
+            usual 7-hour instructor requirement.
           </p>
         </div>
 
@@ -742,8 +750,8 @@ export default function FloridaInstructorContinuingEducationPage() {
               marginRight: "auto",
             }}
           >
-            Instructor course availability is
-            being confirmed.
+            Complete instructor CE enrollment
+            is not confirmed through The CE Shop.
           </h2>
 
           <p
@@ -755,13 +763,17 @@ export default function FloridaInstructorContinuingEducationPage() {
               marginRight: "auto",
             }}
           >
-            The CE Shop's Florida catalog lists
-            the 3-hour Core Law course, but a
-            matching 4-hour Teaching Techniques
-            course has not yet been confirmed.
-            Verify your instructor permit and
-            contact Greyson or DBPR before
-            purchasing education.
+            The CE Shop&apos;s Florida catalog lists
+            a 3-hour Core Law course. Its partner
+            team has advised that a matching
+            4-hour Teaching Techniques course
+            may not be offered and recommends
+            checking with customer support.
+            We are not advertising a complete
+            7-hour instructor CE program through
+            this partner. Verify your instructor
+            permit and approved course options
+            with DBPR before purchasing.
           </p>
 
           <div
@@ -775,7 +787,7 @@ export default function FloridaInstructorContinuingEducationPage() {
           >
             <PartnerEnrollmentButton
               course="floridaInstructorCE"
-              pendingLabel="Full instructor course option not yet confirmed"
+              pendingLabel="Full 7-hour instructor CE option not confirmed"
               dark
             />
 
