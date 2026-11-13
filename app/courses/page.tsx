@@ -95,7 +95,7 @@ const courses = [
     eyebrow: "INSTRUCTOR CE",
     title: "Real Estate Instructor Continuing Education",
     body:
-      "For Florida real estate school instructors completing Core Law and Teaching Techniques requirements for permit renewal.",
+      "Guidance on the 3-hour Core Law and 4-hour Teaching Techniques requirements. Full instructor CE enrollment through The CE Shop is not confirmed.",
   },
   {
     id: "broker",
@@ -116,7 +116,7 @@ const courses = [
     eyebrow: "REACTIVATION",
     title: "Reactivation Education",
     body:
-      "For licensees completing education associated with returning an inactive license to active status.",
+      "Review whether 14-hour CE or the 28-hour reinstatement course fits your verified license status. The CE Shop lists the same 28-hour course in two catalog sections.",
   },
   {
     id: "exam-prep",
@@ -817,7 +817,7 @@ export default function CoursesPage() {
             {course.id === "instructor-ce" && (
               <PartnerEnrollmentButton
                 course="floridaInstructorCE"
-                pendingLabel="Instructor CE availability unconfirmed"
+                pendingLabel="Full instructor CE not confirmed"
               />
             )}
 
