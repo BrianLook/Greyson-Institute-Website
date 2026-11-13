@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GuideStructuredData } from "@/components/GuideStructuredData";
-import { PartnerEnrollmentButton } from "@/components/PartnerEnrollmentButton";
+import { PreLicensingPackageGuide } from "@/components/PreLicensingPackageGuide";
 
 const guideTitle = "Florida 63-Hour Real Estate Pre-Licensing Course";
 const guideDescription =
@@ -111,7 +111,7 @@ export default function Florida63HourPreLicensingCoursePage() {
         description={guideDescription}
         path={guidePath}
         datePublished="2026-09-24"
-        dateModified="2026-09-24"
+        dateModified="2026-11-13"
       />
 
       <div
@@ -167,7 +167,7 @@ export default function Florida63HourPreLicensingCoursePage() {
             it covers, and what happens after you finish it.
           </p>
 
-          <p className="muted">Last reviewed: September 24, 2026</p>
+          <p className="muted">Last reviewed: November 13, 2026</p>
 
           <div
             style={{
@@ -194,12 +194,16 @@ export default function Florida63HourPreLicensingCoursePage() {
                 Education provided by The CE Shop.
               </p>
             </div>
-            <PartnerEnrollmentButton
-              course="floridaPreLicense63"
-              label="View Course Options →"
-            />
+            <Link
+              href="#choose-pre-license-package"
+              className="button"
+            >
+              Help Me Choose My Course Package →
+            </Link>
           </div>
         </div>
+
+        <PreLicensingPackageGuide track="sales" />
 
         <div
           style={{
@@ -724,7 +728,9 @@ export default function Florida63HourPreLicensingCoursePage() {
               justifyContent: "center",
             }}
           >
-            <PartnerEnrollmentButton course="floridaPreLicense63" />
+            <Link className="button" href="#choose-pre-license-package">
+              Choose My 63-Hour Package →
+            </Link>
 
             <Link
               href="/contact"
