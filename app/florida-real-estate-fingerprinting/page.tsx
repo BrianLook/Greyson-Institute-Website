@@ -80,14 +80,14 @@ const officialLinks = [
     url: "https://www2.myfloridalicense.com/fingerprinting/",
   },
   {
-    title: "Find a registered LiveScan provider",
-    description: "Statewide FDLE provider list and current fingerprinting information",
-    url: "https://www.fdle.state.fl.us/criminal-history-records/registered-livescan-submitters",
+    title: "FDLE LiveScan service provider list (PDF)",
+    description: "Official statewide FDLE provider listing generated August 1, 2026. Search the PDF for a city, then confirm current services and availability directly.",
+    url: "https://www.fdle.state.fl.us/getContentAsset/f5614955-d587-4099-b801-46a9227a8cdd/73aabf56-e6e5-4330-95a3-5f2a270a1d2b/LiveScan-Provider-Listing-October-2025.pdf",
   },
   {
     title: "Check your fingerprint submission",
     description: "Look up a transaction by its TCN after the provider submits it",
-    url: "https://web.fdle.state.fl.us/search/app/tcnlookup",
+    url: "https://cchinet.fdle.state.fl.us/search/app/tcnlookup",
   },
 ];
 
@@ -156,16 +156,30 @@ export default function FloridaRealEstateFingerprintingPage() {
             for a different license.
           </p>
           <a
-            href="https://www.fdle.state.fl.us/criminal-history-records/registered-livescan-submitters"
+            href="https://www.fdle.state.fl.us/getContentAsset/f5614955-d587-4099-b801-46a9227a8cdd/73aabf56-e6e5-4330-95a3-5f2a270a1d2b/LiveScan-Provider-Listing-October-2025.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="button"
             style={{ marginTop: "12px" }}
           >
-            Find a Registered LiveScan Provider ↗
+            Open FDLE Provider List (PDF) ↗
           </a>
           <p style={{ fontSize: "0.87rem", color: "#6e6b65", marginTop: "15px", lineHeight: 1.65 }}>
-            This link opens the official FDLE website. Provider fees and availability vary.
+            This official FDLE PDF is dated August 1, 2026. Open it and use
+            your browser&apos;s Find command to search your city or a provider name.
+            Confirm each provider&apos;s current services, availability, and
+            complete price before booking. FDLE listings can change.
+          </p>
+          <p style={{ fontSize: "0.87rem", color: "#6e6b65", marginTop: "14px", lineHeight: 1.65 }}>
+            Prefer the agency&apos;s current instructions?{" "}
+            <a
+              href="https://www2.myfloridalicense.com/fingerprinting/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "underline", fontWeight: 700 }}
+            >
+              Open Florida DBPR fingerprinting information ↗
+            </a>
           </p>
         </div>
 
