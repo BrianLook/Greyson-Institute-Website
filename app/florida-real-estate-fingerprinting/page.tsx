@@ -80,8 +80,8 @@ const officialLinks = [
     url: "https://www2.myfloridalicense.com/fingerprinting/",
   },
   {
-    title: "FDLE LiveScan service provider list (PDF)",
-    description: "Official statewide FDLE provider listing generated August 1, 2026. Search the PDF for a city, then confirm current services and availability directly.",
+    title: "Download FDLE LiveScan provider list (PDF)",
+    description: "Optional downloadable provider directory. The list is dated August 1, 2026; confirm current services before booking.",
     url: "https://www.fdle.state.fl.us/getContentAsset/f5614955-d587-4099-b801-46a9227a8cdd/73aabf56-e6e5-4330-95a3-5f2a270a1d2b/LiveScan-Provider-Listing-October-2025.pdf",
   },
   {
@@ -149,37 +149,38 @@ export default function FloridaRealEstateFingerprintingPage() {
             Find an FDLE-registered electronic fingerprinting provider.
           </h2>
           <p style={{ color: "#4d4b46", maxWidth: "840px", lineHeight: 1.75 }}>
-            Use the Florida Department of Law Enforcement&apos;s current
-            LiveScan provider list. You can choose a location near home or
-            work, but confirm the provider submits directly for DBPR real
-            estate licensing—not just a fingerprint card or a background check
-            for a different license.
+            Begin with Florida DBPR&apos;s fingerprinting webpage, which
+            explains the process and links to provider information. Choose a
+            location near home or work, but confirm it submits directly for
+            DBPR real estate licensing—not just fingerprint cards or checks
+            for another agency.
           </p>
           <a
-            href="https://www.fdle.state.fl.us/getContentAsset/f5614955-d587-4099-b801-46a9227a8cdd/73aabf56-e6e5-4330-95a3-5f2a270a1d2b/LiveScan-Provider-Listing-October-2025.pdf"
+            href="https://www2.myfloridalicense.com/fingerprinting/"
             target="_blank"
             rel="noopener noreferrer"
             className="button"
             style={{ marginTop: "12px" }}
           >
-            Open FDLE Provider List (PDF) ↗
+            Florida Fingerprinting Instructions &amp; Provider Options ↗
           </a>
           <p style={{ fontSize: "0.87rem", color: "#6e6b65", marginTop: "15px", lineHeight: 1.65 }}>
-            This official FDLE PDF is dated August 1, 2026. Open it and use
-            your browser&apos;s Find command to search your city or a provider name.
-            Confirm each provider&apos;s current services, availability, and
-            complete price before booking. FDLE listings can change.
+            Start with Florida DBPR&apos;s webpage for the current
+            instructions, the correct real estate ORI, and access to
+            provider information. Confirm that your selected provider
+            transmits LiveScan results for Florida real estate licensing.
           </p>
           <p style={{ fontSize: "0.87rem", color: "#6e6b65", marginTop: "14px", lineHeight: 1.65 }}>
-            Prefer the agency&apos;s current instructions?{" "}
+            Want a statewide directory instead?{" "}
             <a
-              href="https://www2.myfloridalicense.com/fingerprinting/"
+              href="https://www.fdle.state.fl.us/getContentAsset/f5614955-d587-4099-b801-46a9227a8cdd/73aabf56-e6e5-4330-95a3-5f2a270a1d2b/LiveScan-Provider-Listing-October-2025.pdf"
               target="_blank"
               rel="noopener noreferrer"
               style={{ textDecoration: "underline", fontWeight: 700 }}
             >
-              Open Florida DBPR fingerprinting information ↗
+              Download the official FDLE provider list (PDF) ↗
             </a>
+            {" "}This file may download automatically, depending on your browser.
           </p>
         </div>
 
