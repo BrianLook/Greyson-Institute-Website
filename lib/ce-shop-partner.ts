@@ -29,7 +29,7 @@ export const ceShopPartner = {
     floridaInstructorCE: "",
     floridaReactivation14: "https://greyson.theceshop.com/online-education/florida/real-estate/broker-and-sales-license/continuing-education/courses.html",
     floridaReactivation28: "https://greyson.theceshop.com/florida/pre-licensing/fl-reinstatement-pre-licensing-cost/",
-    floridaExamPrep: "https://greyson.theceshop.com/florida/real-estate-exam-prep/fl-sales-associate-exam-prep-cost/",
+    floridaExamPrep: "https://greyson.theceshop.com/online-education/florida/real-estate/sales-associate/exam-prep/course/fl-sales-associate-exam-prep-edge-3618-17358.html",
   },
 };
 
