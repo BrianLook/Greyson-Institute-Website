@@ -6,6 +6,9 @@ type PackageOption = {
   title: string;
   description: string;
   includes: string;
+  price: string;
+  regularPrice?: string;
+  pricingNote?: string;
   course: CeShopCourseKey;
   label: string;
   highlighted?: boolean;
@@ -16,6 +19,7 @@ const completePackages: PackageOption[] = [
     title: "Basic 14-Hour CE Package",
     description: "I need all 14 hours for my regular Florida renewal.",
     includes: "3 hours Core Law + 3 hours Ethics and Business Practices + 8 specialty hours.",
+    price: "$39",
     course: "floridaCE14Basic",
     label: "View Basic Package →",
     highlighted: true,
@@ -24,6 +28,7 @@ const completePackages: PackageOption[] = [
     title: "14-Hour CE for REALTORS",
     description: "I want a complete CE package that also covers REALTOR-focused ethics and fair housing topics.",
     includes: "14 Florida CE hours, with NAR Ethics and NAR Fair Housing coursework. Confirm acceptance with your REALTOR association.",
+    price: "$45",
     course: "floridaCE14Realtors",
     label: "View REALTOR Package →",
   },
@@ -31,6 +36,9 @@ const completePackages: PackageOption[] = [
     title: "14-Hour CE Plus ProPath",
     description: "I want my regular 14 CE hours plus additional professional development.",
     includes: "14 Florida CE hours plus ProPath skill-building content. Extra professional development does not count toward the required 14 CE hours.",
+    price: "$60",
+    regularPrice: "$75",
+    pricingNote: "Promotional price shown November 13, 2026; a promo code may be required.",
     course: "floridaCE14ProPath",
     label: "View ProPath Package →",
   },
@@ -79,13 +87,11 @@ export function Ce14HourPackageGuide() {
         {completePackages.map((option) => (
           <article
             key={option.course}
+            className="ce-package-choice-card"
+            data-recommended={option.highlighted ? "true" : undefined}
             style={{
               minWidth: 0,
               padding: "clamp(22px, 3.5vw, 34px)",
-              border: option.highlighted
-                ? "2px solid #1f2d30"
-                : "1px solid rgba(17, 23, 23, 0.20)",
-              background: option.highlighted ? "#eee6d9" : "#faf7f1",
               display: "flex",
               flexDirection: "column",
               gap: "14px",
@@ -122,7 +128,26 @@ export function Ce14HourPackageGuide() {
             <p style={{ color: "#5e5d58", lineHeight: 1.65, margin: 0 }}>
               {option.includes}
             </p>
-            <div style={{ marginTop: "auto", paddingTop: "12px" }}>
+
+            <div className="ce-package-choice-card__price">
+              <span className="ce-package-choice-card__price-label">
+                CE SHOP PRICE SHOWN
+              </span>
+              <div className="ce-package-choice-card__price-values">
+                <strong>{option.price}</strong>
+                {option.regularPrice && (
+                  <del aria-label={`Regular price ${option.regularPrice}`}>
+                    {option.regularPrice}
+                  </del>
+                )}
+              </div>
+              {option.pricingNote && (
+                <span className="ce-package-choice-card__price-note">
+                  {option.pricingNote}
+                </span>
+              )}
+            </div>
+            <div className="ce-package-choice-card__action" style={{ marginTop: "auto", paddingTop: "12px" }}>
               <PartnerEnrollmentButton
                 course={option.course}
                 label={option.label}
@@ -133,6 +158,7 @@ export function Ce14HourPackageGuide() {
       </div>
 
       <div
+        className="ce-package-choice-individual"
         style={{
           marginTop: "16px",
           padding: "clamp(22px, 3.5vw, 30px)",
@@ -178,9 +204,11 @@ export function Ce14HourPackageGuide() {
         >
           Not sure? Find your likely path first →
         </Link>
-        {" "}The CE Shop provides the education and checkout. Prices, promotions,
-        and package availability are determined by The CE Shop; review the
-        product details before purchase.
+        {" "}Prices shown above were checked November 13, 2026, and are not
+        live quotes. The ProPath price shown is promotional and may expire.
+        Prices, discount eligibility, package contents, and availability can
+        change; The CE Shop determines the final checkout price and provides
+        the education. Please confirm current pricing before purchasing.
       </p>
     </section>
   );
