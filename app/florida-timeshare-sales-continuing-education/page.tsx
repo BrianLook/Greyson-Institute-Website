@@ -223,6 +223,37 @@ export default function FloridaTimeshareSalesEducationPage() {
           </p>
         </div>
 
+        <div
+          style={{
+            background: "#eee6d9",
+            borderLeft: "4px solid #7d5f3a",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
+            alignItems: "center",
+            gap: "22px",
+            padding: "clamp(26px, 4vw, 42px)",
+            marginBottom: "65px",
+          }}
+        >
+          <div>
+            <p className="eyebrow">FOR RESORT SALES TEAMS &amp; LEADERS</p>
+            <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)", marginBottom: "14px" }}>
+              One link to help your team find the right renewal course.
+            </h2>
+            <p style={{ color: "#4d4b46", lineHeight: 1.8, marginBottom: 0 }}>
+              Have coworkers who need 14-hour CE or first-renewal education?
+              Share this page with your sales floor or owner-update team.
+              Each professional can identify their likely requirement and
+              review their own course choices.
+            </p>
+          </div>
+          <div style={{ justifySelf: "start" }}>
+            <Link className="button" href="/contact">
+              Questions About Team Education? →
+            </Link>
+          </div>
+        </div>
+
         <div className="timeshare-verify">
           <div>
             <p className="eyebrow eyebrow--light">BEFORE YOU ENROLL</p>
