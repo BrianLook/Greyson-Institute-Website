@@ -122,6 +122,18 @@ export function PostLicensePackageGuide({
         review current pricing and the full course details before purchasing.
       </p>
 
+      <p
+        style={{
+          color: "#5d5548",
+          fontSize: "0.88rem",
+          lineHeight: 1.65,
+          margin: "-14px 0 26px",
+        }}
+      >
+        Greyson may earn a commission if you enroll through these
+        The CE Shop partner links. The CE Shop provides the courses and checkout.
+      </p>
+
       <div
         style={{
           display: "grid",
