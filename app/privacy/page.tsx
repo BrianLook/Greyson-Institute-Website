@@ -20,7 +20,7 @@ export default function PrivacyPage() {
         </p>
 
         <p className="muted">
-          Last updated: September 30, 2026
+          Last updated: November 13, 2026
         </p>
 
         <h2>Information We Collect</h2>
@@ -108,10 +108,9 @@ export default function PrivacyPage() {
         <h2>Course Providers and Third-Party Services</h2>
 
         <p>
-          Greyson Institute is preparing co-branded online course enrollment with
-          The CE Shop. When those links are activated, The CE Shop will operate
-          the course shopping, payment, student-account, and learning-platform
-          experience for partner-delivered courses.
+          Greyson Institute provides links to its co-branded online course storefront
+          with The CE Shop. The CE Shop operates shopping, payment, student
+          accounts, and course delivery for courses offered through that partnership.
         </p>
 
         <p>
