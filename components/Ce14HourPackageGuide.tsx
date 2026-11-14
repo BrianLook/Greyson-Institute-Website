@@ -13,7 +13,7 @@ type PackageOption = {
 
 const completePackages: PackageOption[] = [
   {
-    title: "Basic 14-Hour CE Package",
+    title: "Basic 14-Hour Continuing Education Package",
     description: "I need all 14 hours for my regular Florida renewal.",
     includes: "3 hours Core Law + 3 hours Ethics and Business Practices + 8 specialty hours.",
     course: "floridaCE14Basic",
@@ -21,16 +21,16 @@ const completePackages: PackageOption[] = [
     highlighted: true,
   },
   {
-    title: "14-Hour CE for REALTORS",
-    description: "I want a complete CE package that also covers REALTOR-focused ethics and fair housing topics.",
-    includes: "14 Florida CE hours, with NAR Ethics and NAR Fair Housing coursework. Confirm acceptance with your REALTOR association.",
+    title: "14-Hour Continuing Education for REALTORS",
+    description: "I want a complete continuing education package that also covers REALTOR-focused ethics and fair housing topics.",
+    includes: "14 Florida continuing education hours, with NAR Ethics and NAR Fair Housing coursework. Confirm acceptance with your REALTOR association.",
     course: "floridaCE14Realtors",
     label: "Check REALTOR Price & Offers →",
   },
   {
-    title: "14-Hour CE Plus ProPath",
-    description: "I want my regular 14 CE hours plus additional professional development.",
-    includes: "14 Florida CE hours plus ProPath skill-building content. Extra professional development does not count toward the required 14 CE hours.",
+    title: "14-Hour Continuing Education Plus ProPath",
+    description: "I want my regular 14 continuing education hours plus additional professional development.",
+    includes: "14 Florida continuing education hours plus ProPath skill-building content. Extra professional development does not count toward the required 14 continuing education hours.",
     course: "floridaCE14ProPath",
     label: "Check ProPath Price & Offers →",
   },
@@ -175,7 +175,7 @@ export function Ce14HourPackageGuide() {
         }}
       >
         <h3 style={{ fontSize: "clamp(1.35rem, 3vw, 1.7rem)", margin: 0 }}>
-          Already completed some of your CE hours?
+          Already completed some of your continuing education hours?
         </h3>
         <p style={{ margin: 0, color: "#4d4b46", lineHeight: 1.65 }}>
           You may only need individual approved classes. Use the full CE Shop
