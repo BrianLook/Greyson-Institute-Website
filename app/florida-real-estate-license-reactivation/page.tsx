@@ -406,7 +406,7 @@ export default function FloridaRealEstateLicenseReactivationPage() {
                 textAlign: "center",
               }}
             >
-              Compare 14-Hour CE Packages →
+              Compare 14-Hour Continuing Education Packages →
             </Link>
 
             <PartnerEnrollmentButton
