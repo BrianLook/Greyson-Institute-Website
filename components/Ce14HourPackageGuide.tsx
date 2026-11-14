@@ -23,14 +23,14 @@ const completePackages: PackageOption[] = [
   {
     title: "14-Hour Continuing Education for REALTORS",
     description: "I want a complete continuing education package that also covers REALTOR-focused ethics and fair housing topics.",
-    includes: "14 Florida continuing education hours, with NAR Ethics and NAR Fair Housing coursework. Confirm acceptance with your REALTOR association.",
+    includes: "14 hours of Florida continuing education, with NAR Ethics and NAR Fair Housing coursework. Confirm acceptance with your REALTOR association.",
     course: "floridaCE14Realtors",
     label: "Check REALTOR Price & Offers →",
   },
   {
     title: "14-Hour Continuing Education Plus ProPath",
-    description: "I want my regular 14 continuing education hours plus additional professional development.",
-    includes: "14 Florida continuing education hours plus ProPath skill-building content. Extra professional development does not count toward the required 14 continuing education hours.",
+    description: "I want my required 14 hours of continuing education plus additional professional development.",
+    includes: "14 hours of Florida continuing education plus ProPath skill-building content. Extra professional development does not count toward the required 14 hours of continuing education.",
     course: "floridaCE14ProPath",
     label: "Check ProPath Price & Offers →",
   },
