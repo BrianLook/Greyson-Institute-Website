@@ -1041,6 +1041,20 @@ export default function FloridaRealEstateExamPage() {
               Ask a Question
             </Link>
           </div>
+          <p
+            style={{
+              maxWidth: "700px",
+              margin: "18px auto 0",
+              color: "#5d5548",
+              fontSize: "0.88rem",
+              lineHeight: 1.7,
+              textAlign: "center",
+            }}
+          >
+            Greyson may earn a commission when you purchase through
+            our CE Shop partner links. The CE Shop provides the course
+            and manages checkout.
+          </p>
         </div>
       </div>
     </section>
