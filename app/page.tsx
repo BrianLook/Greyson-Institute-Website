@@ -18,7 +18,7 @@ const paths = [
   {
     title: "Continuing Education",
     body: "Keep your license current with clear, convenient education options.",
-    meta: "CE",
+    meta: "Continuing Education",
     href: "/courses#continuing-education",
   },
   {
@@ -156,7 +156,7 @@ export default function HomePage() {
             </h2>
             <p style={{ color: "#4d4b46", lineHeight: 1.8, margin: 0 }}>
               Work in timeshare or vacation ownership sales? Find the
-              Florida 14-hour CE, 45-hour first-renewal post-license,
+              Florida 14-hour continuing education, 45-hour first-renewal post-license,
               or broker education that fits your license—without searching
               an overwhelming course catalog.
             </p>
@@ -172,7 +172,7 @@ export default function HomePage() {
               className="button"
               href="/florida-timeshare-sales-continuing-education"
             >
-              Timeshare &amp; Vacation Ownership CE →
+              Timeshare &amp; Vacation Ownership continuing education →
             </Link>
             <p style={{ color: "#6e6b65", fontSize: ".85rem", lineHeight: 1.6, margin: 0 }}>
               Florida licensed resort and vacation ownership sales professionals
