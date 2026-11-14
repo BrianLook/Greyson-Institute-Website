@@ -12,7 +12,7 @@ const guideDescription =
 const guidePath = "/florida-14-hour-real-estate-continuing-education";
 
 export const metadata: Metadata = {
-  title: "Florida 14-Hour Real Estate CE",
+  title: "Florida 14-Hour Real Estate Continuing Education",
   description: guideDescription,
 };
 
@@ -87,13 +87,13 @@ const faqItems = [
       "Current active Florida real estate licensees generally need 14 hours of approved continuing education during each applicable renewal period after the initial post-license renewal.",
   },
   {
-    question: "What makes up the Florida 14-hour CE requirement?",
+    question: "What makes up the Florida 14-hour continuing education requirement?",
     answer:
       "The current requirement consists of 3 hours of Core Law, 3 hours of Ethics and Business Practices, and 8 hours of specialty continuing education.",
   },
   {
     question:
-      "Do Florida sales associates need 14 hours of CE for their first renewal?",
+      "Do Florida sales associates need 14 hours of continuing education for their first renewal?",
     answer:
       "Generally, no. Florida sales associates completing their first renewal are subject to the 45-hour post-license education requirement. The regular 14-hour continuing-education requirement applies after the initial renewal.",
   },
@@ -243,7 +243,7 @@ export default function Florida14HourContinuingEducationPage() {
             If you sell vacation ownership rather than residential homes,
             your Florida license renewal requirements still matter.
             Greyson has a dedicated guide to help you distinguish
-            14-hour CE from first-renewal post-licensing before enrolling.
+            14-hour continuing education from first-renewal post-licensing before enrolling.
           </p>
           <Link
             href="/florida-timeshare-sales-continuing-education"
@@ -294,7 +294,7 @@ export default function Florida14HourContinuingEducationPage() {
                 maxWidth: "650px",
               }}
             >
-              Need all 14 hours? You can pick one complete Florida CE package
+              Need all 14 hours? You can pick one complete Florida continuing education package
               rather than selecting individual classes. Greyson makes the
               options easy to understand and links directly to the package
               you choose at The CE Shop. The CE Shop provides the education,
@@ -370,7 +370,7 @@ export default function Florida14HourContinuingEducationPage() {
                   Built around the correct-license check
                 </strong>
                 <span style={{ color: "#6e6b65" }}>
-                  Greyson will help you verify that 14-hour CE is likely the
+                  Greyson will help you verify that 14-hour continuing education is likely the
                   right path before you purchase.
                 </span>
               </div>
@@ -387,7 +387,7 @@ export default function Florida14HourContinuingEducationPage() {
         >
           <LicenseExpirationPromo
             eyebrow="VERIFY BEFORE YOU ENROLL"
-            title="Make sure 14-hour CE is actually your next requirement."
+            title="Make sure 14-hour continuing education is actually your next requirement."
             text="Use Find My Exact Path before choosing this course. If this is your first renewal, if your license is inactive, or if a different requirement applies, Greyson will point you toward that path instead of guessing."
             href="/find-my-path?intent=14-hour-ce"
             buttonLabel="Verify My Path Before Enrollment →"
@@ -525,7 +525,7 @@ export default function Florida14HourContinuingEducationPage() {
             marginBottom: "82px",
           }}
         >
-          <p className="eyebrow">WHO NEEDS 14-HOUR CE?</p>
+          <p className="eyebrow">WHO NEEDS 14-HOUR continuing education?</p>
 
           <h2
             style={{
@@ -742,7 +742,7 @@ export default function Florida14HourContinuingEducationPage() {
               marginBottom: "18px",
             }}
           >
-            Active Florida Bar members have a CE exemption.
+            Active Florida Bar members have a continuing education exemption.
           </h2>
 
           <p
@@ -1067,7 +1067,7 @@ export default function Florida14HourContinuingEducationPage() {
             }}
           >
             <Link href="#choose-ce-option" className="button">
-              Choose My CE Package →
+              Choose My continuing education Package →
             </Link>
 
             <Link
