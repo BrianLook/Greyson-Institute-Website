@@ -39,7 +39,7 @@ const paths = [
   {
     label: "I work in timeshare or vacation ownership sales",
     detail:
-      "Find Florida real estate CE and first-renewal courses designed around the vacation ownership sales professional's licensing path.",
+      "Find Florida real estate continuing education and first-renewal courses designed around the vacation ownership sales professional's licensing path.",
     href: "/florida-timeshare-sales-continuing-education",
   },
   {
@@ -129,14 +129,14 @@ const courses = [
     eyebrow: "CONTINUING EDUCATION",
     title: "Continuing Education",
     body:
-      "Need all 14 hours? Compare complete Florida CE packages, including REALTOR and ProPath options, before going to The CE Shop.",
+      "Need all 14 hours? Compare complete Florida continuing education packages, including REALTOR and ProPath options, before going to The CE Shop.",
   },
   {
     id: "instructor-ce",
-    eyebrow: "INSTRUCTOR CE",
+    eyebrow: "INSTRUCTOR CONTINUING EDUCATION",
     title: "Real Estate Instructor Continuing Education",
     body:
-      "Guidance on the 3-hour Core Law and 4-hour Teaching Techniques requirements. Full instructor CE enrollment through The CE Shop is not confirmed.",
+      "Guidance on the 3-hour Core Law and 4-hour Teaching Techniques requirements. Full instructor continuing education enrollment through The CE Shop is not confirmed.",
   },
   {
     id: "broker",
@@ -157,7 +157,7 @@ const courses = [
     eyebrow: "REACTIVATION",
     title: "Reactivation Education",
     body:
-      "Review whether 14-hour CE or the 28-hour reinstatement course fits your verified license status. The CE Shop lists the same 28-hour course in two catalog sections.",
+      "Review whether 14-hour continuing education or the 28-hour reinstatement course fits your verified license status. The CE Shop lists the same 28-hour course in two catalog sections.",
   },
   {
     id: "exam-prep",
@@ -310,7 +310,7 @@ export default function CoursesPage() {
         <p style={{ color: "#6e6b65", fontSize: "0.88rem", marginTop: "18px" }}>
           First renewal, later renewal, and license reactivation have different
           requirements. Verify your license status and renewal history with
-          Florida DBPR before choosing education. Full instructor CE enrollment
+          Florida DBPR before choosing education. Full instructor continuing education enrollment
           is not yet confirmed; see the instructor guidance below.
         </p>
       </div>
@@ -970,14 +970,14 @@ export default function CoursesPage() {
                 href="/florida-14-hour-real-estate-continuing-education#choose-ce-option"
                 className="button"
               >
-                Choose My 14-Hour CE Package →
+                Choose My 14-Hour Continuing Education Package →
               </Link>
             )}
 
             {course.id === "instructor-ce" && (
               <PartnerEnrollmentButton
                 course="floridaInstructorCE"
-                pendingLabel="Full instructor CE not confirmed"
+                pendingLabel="Full instructor continuing education not confirmed"
               />
             )}
 
