@@ -189,7 +189,7 @@ export default function FloridaBrokerPostLicensePage() {
           </p>
 
           <h2>
-            Broker post-license education comes before the regular 14-hour CE cycle.
+            Broker post-license education comes before the regular 14-hour continuing education cycle.
           </h2>
 
           <p>
