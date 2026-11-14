@@ -30,7 +30,7 @@ export const ceShopPartner = {
     floridaBrokerPostLicense60ProPath: "https://greyson.theceshop.com/online-education/florida/real-estate/broker/post-licensing/course/60-hr-fl-broker-post-licensing-package-plus-propath-6259-24580.html",
     floridaInstructorCE: "",
     floridaReactivation14: "https://greyson.theceshop.com/online-education/florida/real-estate/broker-and-sales-license/continuing-education/courses.html",
-    floridaReactivation28: "https://greyson.theceshop.com/florida/pre-licensing/fl-reinstatement-pre-licensing-cost/",
+    floridaReactivation28: "https://greyson.theceshop.com/online-education/florida/real-estate/broker-and-sales-license/continuing-education/course/28-hr-fl-reinstatement-program-2955-14390.html",
     floridaExamPrep: "https://greyson.theceshop.com/online-education/florida/real-estate/sales-associate/exam-prep/course/fl-sales-associate-exam-prep-edge-3618-17358.html",
   },
 };
