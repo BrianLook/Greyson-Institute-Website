@@ -172,7 +172,7 @@ export default function HomePage() {
               className="button"
               href="/florida-timeshare-sales-continuing-education"
             >
-              Timeshare &amp; Vacation Ownership continuing education →
+              Timeshare &amp; Vacation Ownership Continuing Education →
             </Link>
             <p style={{ color: "#6e6b65", fontSize: ".85rem", lineHeight: 1.6, margin: 0 }}>
               Florida licensed resort and vacation ownership sales professionals
