@@ -108,8 +108,8 @@ export function PreLicensingPackageGuide({ track }: { track: Track }) {
           margin: "-14px 0 26px",
         }}
       >
-        Greyson may earn a commission if you enroll through these
-        The CE Shop partner links. The CE Shop provides the courses and checkout.
+        Greyson may earn a commission when you purchase through the CE Shop
+        partner links below. The CE Shop provides the courses and checkout.
       </p>
 
       <div
