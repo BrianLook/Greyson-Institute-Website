@@ -285,9 +285,24 @@ export default function CoursesPage() {
               className="licensing-guide-link"
               href={course.href}
               key={course.href}
-              style={{ padding: "14px 16px", minHeight: "66px", lineHeight: 1.4 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "14px",
+                padding: "14px 18px",
+                minHeight: "76px",
+                lineHeight: 1.4,
+                textAlign: "left",
+              }}
             >
-              {course.label} →
+              <span style={{ flex: "1 1 auto" }}>{course.label}</span>
+              <span
+                aria-hidden="true"
+                style={{ flexShrink: 0, fontSize: "20px", lineHeight: 1 }}
+              >
+                →
+              </span>
             </Link>
           ))}
         </div>
