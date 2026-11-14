@@ -316,6 +316,8 @@ export function FindMyPath({
     setError,
   ] = useState("");
 
+  const [refreshNotice, setRefreshNotice] = useState("");
+
   const [
     firstName,
     setFirstName,
@@ -376,55 +378,15 @@ export function FindMyPath({
       [],
     );
 
+  // Remember the last number for convenience, but do not automatically
+  // display an old result when someone opens Find My Path.
   useEffect(() => {
-    let savedLicense = "";
-    let savedRenewal:
-      RenewalAnswer | null =
-      null;
-
     try {
-      savedLicense =
-        window.localStorage.getItem(
-          SAVED_LICENSE_KEY,
-        ) || "";
-
-      const rawRenewal =
-        window.localStorage.getItem(
-          SAVED_RENEWAL_KEY,
-        );
-
-      if (
-        rawRenewal ===
-          "first" ||
-        rawRenewal ===
-          "later" ||
-        rawRenewal ===
-          "unsure"
-      ) {
-        savedRenewal =
-          rawRenewal;
-      }
+      const savedLicense = window.localStorage.getItem(SAVED_LICENSE_KEY);
+      if (savedLicense) setLicenseNumber(savedLicense);
     } catch {
-      return;
+      // Students can still start a new search without browser storage.
     }
-
-    if (!savedLicense) {
-      return;
-    }
-
-    setLicenseNumber(
-      savedLicense,
-    );
-
-    setRenewalAnswer(
-      savedRenewal,
-    );
-
-    void lookupLicense(
-      savedLicense,
-      savedRenewal,
-      true,
-    );
   }, []);
 
   function savePathContext(
@@ -472,9 +434,20 @@ export function FindMyPath({
     setPathResult(null);
     setRenewalAnswer(null);
     setLicenseNumber("");
+    setMeta(null);
     resetNameSearch();
     setError("");
+    setRefreshNotice("");
     setStage("doors");
+
+    // The result footer can be far down the page. Make the new choices
+    // visible immediately rather than leaving the visitor at the bottom.
+    window.requestAnimationFrame(() => {
+      document.getElementById("find-my-path-start")?.scrollIntoView({
+        block: "start",
+        behavior: "auto",
+      });
+    });
   }
 
   function resetNameSearch() {
@@ -508,6 +481,7 @@ export function FindMyPath({
       );
 
     setError("");
+    setRefreshNotice("");
     setLoading(true);
 
     try {
@@ -659,6 +633,9 @@ export function FindMyPath({
         );
 
         setStage("result");
+        if (returning) {
+          setRefreshNotice("Checked again using the latest weekly DBPR data available to Greyson.");
+        }
 
         return;
       }
@@ -686,6 +663,9 @@ export function FindMyPath({
         );
 
         setStage("result");
+        if (returning) {
+          setRefreshNotice("Checked again using the latest weekly DBPR data available to Greyson.");
+        }
 
         return;
       }
@@ -1147,7 +1127,7 @@ export function FindMyPath({
       : null;
 
   return (
-    <div className="path-finder">
+    <div className="path-finder" id="find-my-path-start" style={{ scrollMarginTop: "110px" }}>
       <style>
         {`
           .path-finder {
@@ -2326,6 +2306,16 @@ export function FindMyPath({
               <button
                 type="button"
                 className="path-text-button"
+                onClick={clearSavedPath}
+              >
+                Check another license
+              </button>
+
+              <button
+                type="button"
+                className="path-text-button"
+                disabled={loading}
+                aria-busy={loading}
                 onClick={() =>
                   void lookupLicense(
                     record.i,
@@ -2334,18 +2324,14 @@ export function FindMyPath({
                   )
                 }
               >
-                Check again
+                {loading ? "Refreshing..." : "Refresh this result"}
               </button>
 
-              <button
-                type="button"
-                className="path-text-button"
-                onClick={
-                  clearSavedPath
-                }
-              >
-                Not you?
-              </button>
+              {(refreshNotice || error) && (
+                <span role={error ? "alert" : "status"} aria-live="polite">
+                  {error || refreshNotice}
+                </span>
+              )}
 
               <span>
                 Greyson Institute is not DBPR. This result is guidance, not a
