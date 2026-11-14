@@ -74,6 +74,41 @@ const paths = [
   },
 ];
 
+const quickCourseLinks = [
+  {
+    label: "63-Hour Sales Associate Pre-License",
+    href: "/florida-63-hour-real-estate-pre-licensing-course#choose-pre-license-package",
+  },
+  {
+    label: "45-Hour Sales Associate Post-License",
+    href: "/florida-45-hour-post-license-requirements#choose-post-license-package",
+  },
+  {
+    label: "14-Hour Continuing Education",
+    href: "/florida-14-hour-real-estate-continuing-education#choose-ce-option",
+  },
+  {
+    label: "72-Hour Broker Pre-License",
+    href: "/how-to-become-florida-real-estate-broker#choose-pre-license-package",
+  },
+  {
+    label: "60-Hour Broker Post-License",
+    href: "/florida-60-hour-broker-post-license-requirements#choose-post-license-package",
+  },
+  {
+    label: "14-Hour vs. 28-Hour Reactivation",
+    href: "/florida-real-estate-license-reactivation#reactivation-course-options",
+  },
+  {
+    label: "Sales Associate Exam Prep",
+    href: "/florida-real-estate-exam#choose-exam-prep",
+  },
+  {
+    label: "Not Sure? Find My Exact Path",
+    href: "/find-my-path",
+  },
+];
+
 const courses = [
   {
     id: "pre-licensing",
@@ -216,6 +251,52 @@ export default function CoursesPage() {
             }}
           />
         </div>
+      </div>
+
+      <div
+        className="container"
+        id="choose-your-course"
+        style={{
+          maxWidth: "1080px",
+          marginBottom: "60px",
+          scrollMarginTop: "150px",
+          minWidth: 0,
+        }}
+      >
+        <p className="eyebrow">START WITH YOUR COURSE</p>
+        <h2 style={{ marginBottom: "12px" }}>
+          Know what you need? Compare your options.
+        </h2>
+        <p style={{ color: "#4d4b46", maxWidth: "760px", lineHeight: 1.7 }}>
+          Go straight to Greyson&apos;s package comparisons, then review the
+          individual product and current checkout price on our co-branded The
+          CE Shop storefront. Education is provided by The CE Shop.
+        </p>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 235px), 1fr))",
+            gap: "12px",
+            marginTop: "24px",
+          }}
+        >
+          {quickCourseLinks.map((course) => (
+            <Link
+              className="licensing-guide-link"
+              href={course.href}
+              key={course.href}
+              style={{ padding: "14px 16px", minHeight: "66px", lineHeight: 1.4 }}
+            >
+              {course.label} →
+            </Link>
+          ))}
+        </div>
+        <p style={{ color: "#6e6b65", fontSize: "0.88rem", marginTop: "18px" }}>
+          First renewal, later renewal, and license reactivation have different
+          requirements. Verify your license status and renewal history with
+          Florida DBPR before choosing education. Full instructor CE enrollment
+          is not yet confirmed; see the instructor guidance below.
+        </p>
       </div>
 
       <CeShopAutomatedPromo />
