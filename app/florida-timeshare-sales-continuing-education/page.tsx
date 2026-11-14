@@ -9,7 +9,7 @@ const pageDescription =
 const pagePath = "/florida-timeshare-sales-continuing-education";
 
 export const metadata: Metadata = {
-  title: "Florida Timeshare Sales CE & License Renewal",
+  title: "Florida Timeshare Sales Continuing Education & License Renewal",
   description: pageDescription,
   alternates: { canonical: pagePath },
 };
@@ -18,12 +18,12 @@ const pathways = [
   {
     hours: "14",
     eyebrow: "SECOND & LATER RENEWALS",
-    title: "I need regular license renewal CE.",
+    title: "I need regular license renewal Continuing Education.",
     detail:
       "For eligible sales associates, broker associates, and brokers who have already met their first-renewal requirements.",
     coursework: "3 Core Law + 3 Ethics & Business Practices + 8 specialty",
     href: "/florida-14-hour-real-estate-continuing-education#choose-ce-option",
-    action: "Compare 14-Hour CE Packages",
+    action: "Compare 14-Hour Continuing Education Packages",
   },
   {
     hours: "45",
@@ -31,7 +31,7 @@ const pathways = [
     title: "This is my first license renewal.",
     detail:
       "New Florida sales associates generally need approved post-license education before their initial license expiration.",
-    coursework: "45-hour post-license education—not the usual 14-hour CE",
+    coursework: "45-hour post-license education—not the usual 14-hour continuing education",
     href: "/florida-45-hour-post-license-requirements#choose-post-license-package",
     action: "Compare 45-Hour Packages",
   },
@@ -61,7 +61,7 @@ const faqs = [
   {
     question: "Do timeshare sales agents have to buy the REALTOR package?",
     answer:
-      "No—not solely because they sell vacation ownership. REALTOR association membership is different from having a Florida real estate license. If you only need ordinary Florida 14-hour CE, the basic approved package may fit. Choose REALTOR-related extras only when relevant to your own requirements.",
+      "No—not solely because they sell vacation ownership. REALTOR association membership is different from having a Florida real estate license. If you only need ordinary Florida 14-hour continuing education, the basic approved package may fit. Choose REALTOR-related extras only when relevant to your own requirements.",
   },
   {
     question: "Does this apply to marketing representatives who just book resort tours?",
@@ -71,7 +71,7 @@ const faqs = [
   {
     question: "What if my license is inactive or I missed a deadline?",
     answer:
-      "Do not buy the standard CE package assuming it will reactivate the license. The required steps depend on your license type, renewal history, and how long the license has been inactive. Review your live DBPR record and Greyson's reactivation guide first.",
+      "Do not buy the standard continuing education package assuming it will reactivate the license. The required steps depend on your license type, renewal history, and how long the license has been inactive. Review your live DBPR record and Greyson's reactivation guide first.",
   },
   {
     question: "Are the courses provided by my resort company?",
@@ -199,7 +199,7 @@ export default function FloridaTimeshareSalesEducationPage() {
             <p>
               A Florida real estate license and REALTOR association
               membership are different. If you only need the standard
-              14-hour state CE requirement, start with the basic approved
+              14-hour state continuing education requirement, start with the basic approved
               package and compare any extras before buying.
             </p>
           </article>
@@ -241,7 +241,7 @@ export default function FloridaTimeshareSalesEducationPage() {
               One link to help your team find the right renewal course.
             </h2>
             <p style={{ color: "#4d4b46", lineHeight: 1.8, marginBottom: 0 }}>
-              Have coworkers who need 14-hour CE or first-renewal education?
+              Have coworkers who need 14-hour continuing education or first-renewal education?
               Share this page with your sales floor or owner-update team.
               Each professional can identify their likely requirement and
               review their own course choices.
@@ -279,7 +279,7 @@ export default function FloridaTimeshareSalesEducationPage() {
 
         <section className="timeshare-faq" aria-labelledby="timeshare-faq-heading">
           <p className="eyebrow">COMMON QUESTIONS</p>
-          <h2 id="timeshare-faq-heading">Florida timeshare salesperson CE FAQ</h2>
+          <h2 id="timeshare-faq-heading">Florida timeshare salesperson continuing education FAQ</h2>
           <div>
             {faqs.map((item) => (
               <details key={item.question}>
