@@ -3086,7 +3086,7 @@ export function FloridaLicenseExpirationCheck() {
           </p>
 
           <Link href="/contact">
-            Ask About Instructor CE →
+            Ask About Instructor Continuing Education →
           </Link>
         </div>
 
@@ -3328,7 +3328,7 @@ export function FloridaLicenseExpirationCheck() {
                     </p>
 
                     <Link href="/florida-14-hour-real-estate-continuing-education">
-                      Understand the 14-Hour CE Requirement →
+                      Understand the 14-Hour Continuing Education Requirement →
                     </Link>
                   </div>
                 )}
