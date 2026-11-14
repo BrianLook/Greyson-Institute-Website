@@ -169,6 +169,20 @@ export default function FloridaRealEstateLicenseReactivationPage() {
             months but fewer than 24 months. Other renewal requirements still
             apply.
           </p>
+          <Link
+            href="#reactivation-course-options"
+            style={{
+              color: "#f5f0e7",
+              display: "inline-flex",
+              border: "1px solid rgba(245, 240, 231, 0.85)",
+              padding: "12px 18px",
+              marginTop: "22px",
+              fontWeight: 700,
+              textDecoration: "none",
+            }}
+          >
+            Compare the 14-Hour and 28-Hour Options ↓
+          </Link>
         </div>
 
         <div style={{ marginBottom: "72px" }}>
@@ -306,95 +320,9 @@ export default function FloridaRealEstateLicenseReactivationPage() {
         </div>
 
         <div
+          id="reactivation-course-options"
           style={{
-            borderTop: "1px solid rgba(17, 23, 23, 0.18)",
-            borderBottom: "1px solid rgba(17, 23, 23, 0.18)",
-            padding: "34px 0",
-            marginBottom: "82px",
-          }}
-        >
-          <p className="eyebrow">IMPORTANT</p>
-
-          <h2 style={{ maxWidth: "820px" }}>
-            Education alone does not complete the renewal.
-          </h2>
-
-          <p
-            style={{
-              color: "#4d4b46",
-              maxWidth: "850px",
-            }}
-          >
-            A licensee may still need to complete DBPR renewal steps, pay
-            required fees, and satisfy any other requirements shown on the live
-            license record. Verify the record directly with DBPR before relying
-            on a course purchase as the complete solution.
-          </p>
-
-          <a
-            href="https://www.myfloridalicense.com/portalsearches/VerifyLicensee"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              fontWeight: 700,
-              textDecoration: "underline",
-              textUnderlineOffset: "4px",
-            }}
-          >
-            Verify your live Florida DBPR record ↗
-          </a>
-        </div>
-
-        <div style={{ marginBottom: "82px" }}>
-          <p className="eyebrow">FREQUENTLY ASKED QUESTIONS</p>
-
-          <h2
-            style={{
-              maxWidth: "820px",
-              marginBottom: "34px",
-            }}
-          >
-            Florida reactivation questions
-          </h2>
-
-          <div
-            style={{
-              borderTop: "1px solid rgba(17, 23, 23, 0.18)",
-            }}
-          >
-            {faqItems.map((item) => (
-              <article
-                key={item.question}
-                style={{
-                  padding: "26px 0",
-                  borderBottom: "1px solid rgba(17, 23, 23, 0.18)",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1.35rem",
-                    marginBottom: "10px",
-                  }}
-                >
-                  {item.question}
-                </h3>
-
-                <p
-                  style={{
-                    color: "#4d4b46",
-                    margin: 0,
-                    maxWidth: "850px",
-                  }}
-                >
-                  {item.answer}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div
-          style={{
+            scrollMarginTop: "155px",
             background: "#1f2d30",
             color: "#f5f0e7",
             padding: "clamp(34px, 6vw, 58px)",
@@ -426,8 +354,9 @@ export default function FloridaRealEstateLicenseReactivationPage() {
             The 14-hour option first explains Florida continuing education
             package choices on Greyson; the 28-hour option opens The CE
             Shop&apos;s Sales Associate Reinstatement course directly.
-            Check your exact DBPR license status,
-            renewal history, and eligibility before purchasing. The CE Shop
+            Only choose the 28-hour product if DBPR confirms that
+            requirement for your sales associate license. Check your
+            exact license status, renewal history, and eligibility before purchasing. The CE Shop
             handles payment, course delivery, support, certificates, and
             applicable completion reporting.
           </p>
@@ -517,6 +446,94 @@ export default function FloridaRealEstateLicenseReactivationPage() {
             28-hour option with The CE Shop and DBPR before enrolling. Missing
             first-renewal post-license education may require a different path.
           </p>
+        </div>
+
+        <div
+          style={{
+            borderTop: "1px solid rgba(17, 23, 23, 0.18)",
+            borderBottom: "1px solid rgba(17, 23, 23, 0.18)",
+            padding: "34px 0",
+            marginBottom: "82px",
+          }}
+        >
+          <p className="eyebrow">IMPORTANT</p>
+
+          <h2 style={{ maxWidth: "820px" }}>
+            Education alone does not complete the renewal.
+          </h2>
+
+          <p
+            style={{
+              color: "#4d4b46",
+              maxWidth: "850px",
+            }}
+          >
+            A licensee may still need to complete DBPR renewal steps, pay
+            required fees, and satisfy any other requirements shown on the live
+            license record. Verify the record directly with DBPR before relying
+            on a course purchase as the complete solution.
+          </p>
+
+          <a
+            href="https://www.myfloridalicense.com/portalsearches/VerifyLicensee"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontWeight: 700,
+              textDecoration: "underline",
+              textUnderlineOffset: "4px",
+            }}
+          >
+            Verify your live Florida DBPR record ↗
+          </a>
+        </div>
+
+        <div style={{ marginBottom: "82px" }}>
+          <p className="eyebrow">FREQUENTLY ASKED QUESTIONS</p>
+
+          <h2
+            style={{
+              maxWidth: "820px",
+              marginBottom: "34px",
+            }}
+          >
+            Florida reactivation questions
+          </h2>
+
+          <div
+            style={{
+              borderTop: "1px solid rgba(17, 23, 23, 0.18)",
+            }}
+          >
+            {faqItems.map((item) => (
+              <article
+                key={item.question}
+                style={{
+                  padding: "26px 0",
+                  borderBottom: "1px solid rgba(17, 23, 23, 0.18)",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "1.35rem",
+                    marginBottom: "10px",
+                  }}
+                >
+                  {item.question}
+                </h3>
+
+                <p
+                  style={{
+                    color: "#4d4b46",
+                    margin: 0,
+                    maxWidth: "850px",
+                  }}
+                >
+                  {item.answer}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
 
         <div
