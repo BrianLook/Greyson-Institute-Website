@@ -525,7 +525,7 @@ export default function Florida14HourContinuingEducationPage() {
             marginBottom: "82px",
           }}
         >
-          <p className="eyebrow">WHO NEEDS 14-HOUR continuing education?</p>
+          <p className="eyebrow">WHO NEEDS 14-HOUR CONTINUING EDUCATION?</p>
 
           <h2
             style={{
