@@ -228,6 +228,18 @@ export function ContactForm() {
               Continuing education
             </option>
 
+            <option value="Timeshare or vacation ownership education">
+              Timeshare or vacation ownership education
+            </option>
+
+            <option value="Instructor continuing education">
+              Instructor continuing education
+            </option>
+
+            <option value="Choosing a course">
+              Help choosing the right course
+            </option>
+
             <option value="Broker education">
               Becoming a broker
             </option>
