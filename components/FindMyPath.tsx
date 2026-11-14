@@ -1679,6 +1679,40 @@ export function FindMyPath({
                 spellCheck={false}
               />
 
+              {licenseNumber && (
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "10px",
+                    alignItems: "center",
+                    marginTop: "10px",
+                  }}
+                >
+                  <span style={{ color: "#6e6b65", fontSize: "0.82rem", lineHeight: 1.5 }}>
+                    Greyson can remember your last license number in this browser.
+                  </span>
+                  <button
+                    type="button"
+                    className="path-text-button"
+                    onClick={() => {
+                      try {
+                        window.localStorage.removeItem(SAVED_LICENSE_KEY);
+                        window.localStorage.removeItem(SAVED_RENEWAL_KEY);
+                      } catch {
+                        // Still clear the current form if browser storage is blocked.
+                      }
+                      setLicenseNumber("");
+                      setRenewalAnswer(null);
+                      setError("");
+                      setRefreshNotice("");
+                    }}
+                  >
+                    Clear saved number
+                  </button>
+                </div>
+              )}
+
               <div className="path-actions">
                 <button
                   className="path-primary"
