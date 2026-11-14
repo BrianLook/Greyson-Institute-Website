@@ -69,7 +69,7 @@ const renewalPaths = [
       "After the initial post-license renewal, active Florida real estate licensees generally move into the regular 14-hour continuing-education cycle.",
     href: "/florida-14-hour-real-estate-continuing-education",
     linkText:
-      "Understand the 14-hour CE requirement",
+      "Understand the 14-hour continuing education requirement",
   },
   {
   eyebrow: "INSTRUCTOR PERMIT",
@@ -81,7 +81,7 @@ const renewalPaths = [
     "Florida real estate school instructors generally renew their instructor permit with 3 hours of Core Law and 4 hours of Teaching Techniques during each permit period.",
   href: "/florida-real-estate-instructor-continuing-education",
   linkText:
-    "Understand Instructor CE",
+    "Understand Instructor Continuing Education",
 },
 ];
 
@@ -686,7 +686,7 @@ renewal.
             If you have never renewed this
             Florida license before, do not
             automatically enroll in a 14-hour
-            CE course.
+            continuing education course.
           </p>
 
           <p
@@ -845,7 +845,7 @@ renewal.
               than two years automatically
               expires and becomes null and void.
               Do not purchase a normal 14-hour
-              CE course based only on the old
+              continuing education course based only on the old
               expiration date. Verify your
               record and next licensing path
               directly with DBPR.
