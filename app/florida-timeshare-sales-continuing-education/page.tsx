@@ -18,7 +18,7 @@ const pathways = [
   {
     hours: "14",
     eyebrow: "SECOND & LATER RENEWALS",
-    title: "I need regular license renewal Continuing Education.",
+    title: "I need continuing education for my license renewal.",
     detail:
       "For eligible sales associates, broker associates, and brokers who have already met their first-renewal requirements.",
     coursework: "3 Core Law + 3 Ethics & Business Practices + 8 specialty",
