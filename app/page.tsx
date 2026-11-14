@@ -181,6 +181,90 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section
+        aria-labelledby="greyson-get-started-title"
+        style={{
+          padding: "clamp(40px, 6vw, 72px) 0",
+          borderBottom: "1px solid rgba(17, 23, 23, 0.16)",
+        }}
+      >
+        <div className="container" style={{ maxWidth: "1080px", minWidth: 0 }}>
+          <p className="eyebrow">HOW TO GET STARTED</p>
+          <h2
+            id="greyson-get-started-title"
+            style={{
+              fontSize: "clamp(2rem, 3.7vw, 3rem)",
+              maxWidth: "820px",
+              marginBottom: "16px",
+            }}
+          >
+            Find your course. Know what you're buying.
+          </h2>
+          <p
+            style={{
+              color: "#4d4b46",
+              maxWidth: "810px",
+              marginBottom: "28px",
+            }}
+          >
+            Greyson helps you navigate Florida's education requirements
+            and compare your options before you enroll with our course partner.
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 235px), 1fr))",
+              gap: "16px",
+            }}
+          >
+            <article style={{ padding: "22px", border: "1px solid rgba(17,23,23,.18)", minWidth: 0 }}>
+              <p className="eyebrow" style={{ marginBottom: "10px" }}>01 / FIND YOUR PATH</p>
+              <h3 style={{ fontSize: "1.55rem", marginBottom: "8px" }}>Check your requirement.</h3>
+              <p style={{ margin: 0, color: "#4d4b46", fontSize: "0.93rem" }}>
+                Use our licensing guides or Find My Exact Path, and confirm
+                your official status with Florida DBPR.
+              </p>
+            </article>
+            <article style={{ padding: "22px", border: "1px solid rgba(17,23,23,.18)", minWidth: 0 }}>
+              <p className="eyebrow" style={{ marginBottom: "10px" }}>02 / COMPARE</p>
+              <h3 style={{ fontSize: "1.55rem", marginBottom: "8px" }}>Choose your course.</h3>
+              <p style={{ margin: 0, color: "#4d4b46", fontSize: "0.93rem" }}>
+                Review required hours, package options, and current prices
+                before deciding what fits your situation.
+              </p>
+            </article>
+            <article style={{ padding: "22px", border: "1px solid rgba(17,23,23,.18)", minWidth: 0 }}>
+              <p className="eyebrow" style={{ marginBottom: "10px" }}>03 / ENROLL</p>
+              <h3 style={{ fontSize: "1.55rem", marginBottom: "8px" }}>Finish with The CE Shop.</h3>
+              <p style={{ margin: 0, color: "#4d4b46", fontSize: "0.93rem" }}>
+                Our course links open The CE Shop, which handles payment,
+                student access, coursework, and course-specific support.
+              </p>
+            </article>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "14px",
+              flexWrap: "wrap",
+              marginTop: "24px",
+            }}
+          >
+            <Link className="button" href="/courses#choose-your-course">
+              Compare Course Options →
+            </Link>
+            <Link className="text-link" href="/faq">
+              Questions before enrolling? <span>→</span>
+            </Link>
+          </div>
+          <p style={{ color: "#6e6b65", fontSize: "0.82rem", maxWidth: "840px", marginBottom: 0 }}>
+            Education provided by The CE Shop. Greyson may earn a commission
+            from eligible purchases made through partner enrollment links.
+          </p>
+        </div>
+      </section>
+
       <CeShopAutomatedPromo />
 
       <section className="section section--cream-darkline">
