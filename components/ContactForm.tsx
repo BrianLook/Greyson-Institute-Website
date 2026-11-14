@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 const FORM_ENDPOINT = "https://formspree.io/f/xgavkvzg";
 
@@ -91,12 +92,66 @@ export function ContactForm() {
           question and get back to you as soon as possible.
         </p>
 
+        <p
+          style={{
+            color: "#4d4b46",
+            lineHeight: 1.65,
+            margin: "0 0 16px",
+          }}
+        >
+          While you wait, you can check your likely Florida education
+          requirement or compare available courses. There&apos;s no need to
+          submit your question again.
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            gap: "12px",
+          }}
+        >
+          <Link className="button" href="/find-my-path">
+            Find My Education Path →
+          </Link>
+          <Link
+            href="/courses#choose-your-course"
+            style={{
+              minHeight: "48px",
+              padding: "12px 18px",
+              border: "1px solid #111717",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "14px",
+              fontWeight: 650,
+              lineHeight: 1.5,
+              textAlign: "center",
+            }}
+          >
+            Compare Courses →
+          </Link>
+        </div>
+
         <button
           type="button"
-          className="button"
           onClick={() => setStatus("idle")}
+          style={{
+            display: "inline-block",
+            marginTop: "24px",
+            padding: 0,
+            border: 0,
+            background: "transparent",
+            color: "#111717",
+            fontSize: "14px",
+            fontWeight: 650,
+            cursor: "pointer",
+            textDecoration: "underline",
+            textUnderlineOffset: "4px",
+          }}
         >
-          Send Another Message
+          Send another message
         </button>
       </div>
     );
