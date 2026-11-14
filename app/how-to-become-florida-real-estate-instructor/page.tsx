@@ -286,7 +286,7 @@ export default function InstructorPathPage() {
             className="button"
             href="/florida-real-estate-instructor-continuing-education"
           >
-            Understand Instructor CE →
+            Understand Instructor Continuing Education →
           </Link>
         </div>
 
