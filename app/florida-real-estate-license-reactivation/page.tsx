@@ -358,7 +358,8 @@ export default function FloridaRealEstateLicenseReactivationPage() {
             requirement for your sales associate license. Check your
             exact license status, renewal history, and eligibility before purchasing. The CE Shop
             handles payment, course delivery, support, certificates, and
-            applicable completion reporting.
+            applicable completion reporting. Greyson may earn a commission
+            when you purchase through our CE Shop partner links.
           </p>
 
           <p
