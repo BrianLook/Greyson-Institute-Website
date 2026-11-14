@@ -88,7 +88,7 @@ const guides = [
     stage: "TIMESHARE & VACATION OWNERSHIP",
     title: "Florida Timeshare Sales Continuing Education",
     description:
-      "For licensed timeshare and vacation ownership sales professionals: choose the right 14-hour CE, 45-hour first-renewal, or broker education path.",
+      "For licensed timeshare and vacation ownership sales professionals: choose the right 14-hour continuing education, 45-hour first-renewal, or broker education path.",
     href: "/florida-timeshare-sales-continuing-education",
   },
   {
