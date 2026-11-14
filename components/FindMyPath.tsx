@@ -2386,7 +2386,7 @@ export function FindMyPath({
                     className="path-primary"
                     href="/florida-14-hour-real-estate-continuing-education"
                   >
-                    Return to 14-Hour CE →
+                    Return to 14-Hour Continuing Education →
                   </Link>
                 ) : (
                   <Link
@@ -2398,7 +2398,7 @@ export function FindMyPath({
                       textUnderlineOffset: "3px",
                     }}
                   >
-                    View 14-hour CE information anyway
+                    View 14-hour continuing education information anyway
                   </Link>
                 )}
               </div>
