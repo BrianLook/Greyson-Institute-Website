@@ -169,8 +169,8 @@ export function ContactForm() {
     >
       <input
         type="hidden"
-        name="_subject"
-        value="New Greyson Institute Website Inquiry"
+        name="subject"
+        value="Greyson Institute Inquiry — {{ help_with }}"
       />
 
       <input
