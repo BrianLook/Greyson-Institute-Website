@@ -270,7 +270,8 @@ export default function CoursesPage() {
         <p style={{ color: "#4d4b46", maxWidth: "760px", lineHeight: 1.7 }}>
           Go straight to Greyson&apos;s package comparisons, then review the
           individual product and current checkout price on our co-branded The
-          CE Shop storefront. Education is provided by The CE Shop.
+          CE Shop storefront. Education is provided by The CE Shop. Greyson
+          may earn a commission if you enroll through our CE Shop links.
         </p>
         <div
           style={{
@@ -405,7 +406,7 @@ export default function CoursesPage() {
 
             <div>
               <p style={{ color: "#d6bd9c", fontWeight: 700 }}>02</p>
-              <h3 style={{ color: "#f5f0e7" }}>Open the tracked course page</h3>
+              <h3 style={{ color: "#f5f0e7" }}>Open your course page</h3>
               <p style={{ color: "rgba(245, 240, 231, 0.82)" }}>
                 Use Greyson&apos;s enrollment buttons to open the corresponding
                 course catalog or pricing page on our co-branded The CE Shop website.
