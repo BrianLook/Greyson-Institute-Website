@@ -15,7 +15,7 @@ const guidePath =
   "/florida-real-estate-instructor-continuing-education";
 
 export const metadata: Metadata = {
-  title: "Florida Real Estate Instructor CE",
+  title: "Florida Real Estate Instructor Continuing Education",
   description: guideDescription,
 };
 
@@ -77,7 +77,7 @@ const faqItems = [
     question:
       "Can I complete all seven instructor continuing-education hours through The CE Shop?",
     answer:
-      "That is not confirmed. The CE Shop lists a 3-hour Florida Core Law course, but its partner team has said they do not believe they offer the separate 4-hour Teaching Techniques course. The provider recommended checking with customer support. Core Law alone does not ordinarily fulfill the seven-hour instructor CE requirement. Verify available approved courses and your individual renewal needs before enrolling.",
+      "That is not confirmed. The CE Shop lists a 3-hour Florida Core Law course, but its partner team has said they do not believe they offer the separate 4-hour Teaching Techniques course. The provider recommended checking with customer support. Core Law alone does not ordinarily fulfill the seven-hour instructor continuing education requirement. Verify available approved courses and your individual renewal needs before enrolling.",
   },
   {
     question:
@@ -685,7 +685,7 @@ export default function FloridaInstructorContinuingEducationPage() {
               marginBottom: "36px",
             }}
           >
-            Florida instructor CE questions
+            Florida instructor continuing education questions
           </h2>
 
           <div
@@ -750,7 +750,7 @@ export default function FloridaInstructorContinuingEducationPage() {
               marginRight: "auto",
             }}
           >
-            Complete instructor CE enrollment
+            Complete instructor continuing education enrollment
             is not confirmed through The CE Shop.
           </h2>
 
@@ -770,7 +770,7 @@ export default function FloridaInstructorContinuingEducationPage() {
             may not be offered and recommends
             checking with customer support.
             We are not advertising a complete
-            7-hour instructor CE program through
+            7-hour instructor continuing education program through
             this partner. Verify your instructor
             permit and approved course options
             with DBPR before purchasing.
@@ -787,7 +787,7 @@ export default function FloridaInstructorContinuingEducationPage() {
           >
             <PartnerEnrollmentButton
               course="floridaInstructorCE"
-              pendingLabel="Full 7-hour instructor CE option not confirmed"
+              pendingLabel="Full 7-hour instructor continuing education option not confirmed"
               dark
             />
 
