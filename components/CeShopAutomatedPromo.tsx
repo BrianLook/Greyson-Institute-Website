@@ -22,8 +22,9 @@ export function CeShopAutomatedPromo() {
             The CE Shop.
           </p>
           <p className="ce-shop-automated-promo__disclosure">
-            Education provided by The CE Shop. Offers and eligibility
-            are subject to provider terms.
+            Education provided by The CE Shop. Greyson may earn a commission
+            from qualifying purchases made through these links. Offers
+            and eligibility are subject to provider terms.
           </p>
         </div>
 
