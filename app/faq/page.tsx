@@ -44,6 +44,26 @@ const faqs = [
       "That depends on the course. Greyson will explain the likely next licensing step, while the course provider handles the classroom, course completion, certificate, and applicable regulatory reporting. Completing required education does not by itself complete every DBPR renewal or licensing step.",
   },
   {
+    question: "What happens when I click an enrollment button?",
+    answer:
+      "Greyson opens the selected course or package on our co-branded The CE Shop storefront in a new tab. You can review the course details and current price before deciding whether to add anything to your cart. Clicking a Greyson course link is not a purchase.",
+  },
+  {
+    question: "How do I access my course after enrolling?",
+    answer:
+      "The CE Shop manages student accounts, checkout confirmation, course access, and the online learning experience. Follow the instructions provided during checkout and in your enrollment communications. For login, classroom, or payment issues, contact The CE Shop's customer support.",
+  },
+  {
+    question: "Can I use a promotional discount code?",
+    answer:
+      "The CE Shop controls promotional prices and discount eligibility. If a promotion applies to your selected course, follow the instructions in The CE Shop's cart. Verify the final total at checkout, because offers may change and some courses or packages may not qualify.",
+  },
+  {
+    question: "What if I choose the wrong course?",
+    answer:
+      "Before purchasing, verify your license type, renewal history, and live Florida DBPR record. If you already enrolled and think you selected the wrong course, contact The CE Shop promptly about its cancellation, refund, or course-change policies. Greyson can help you understand the likely education path, but the provider handles changes to purchased courses.",
+  },
+  {
     question: "Who will charge me for a partner course?",
     answer:
       "Payment and checkout for courses offered through Greyson's co-branded The CE Shop links are handled by The CE Shop. Greyson directs you to the partner course page rather than collecting your course payment.",
@@ -59,9 +79,9 @@ const faqs = [
       "No. Completing required education is only one part of many Florida renewal or licensing paths. You may still need to complete DBPR account steps, pay renewal fees, satisfy application or examination requirements, or complete another state requirement. Always verify your live DBPR record.",
   },
   {
-    question: "Why should I use the Greyson enrollment link?",
+    question: "Why start at Greyson Institute before enrolling?",
     answer:
-      "Greyson's co-branded enrollment links help attribute eligible purchases to our affiliate partnership. Use the course link provided on GreysonInstitute.com rather than searching for the course separately.",
+      "Greyson helps you find the education that likely applies to your Florida license, compare relevant packages, and open the selected course on our co-branded The CE Shop storefront. Greyson may earn a commission from eligible purchases made through those partner links. The CE Shop provides the courses and processes payment.",
   },
   {
     question: "What is the 63-hour Florida real estate pre-licensing course?",
