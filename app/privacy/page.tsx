@@ -20,7 +20,7 @@ export default function PrivacyPage() {
         </p>
 
         <p className="muted">
-          Last updated: November 13, 2026
+          Last updated: November 14, 2026
         </p>
 
         <h2>Information We Collect</h2>
@@ -36,6 +36,26 @@ export default function PrivacyPage() {
           Our website hosting, analytics, and service providers may also
           process limited technical and usage information necessary to operate,
           secure, measure, and improve the website.
+        </p>
+
+        <h2>Florida License Lookup and Saved Browser Details</h2>
+
+        <p>
+          Greyson&apos;s Find My Exact Path tool uses public Florida DBPR
+          license information to provide general education guidance.
+          To make returning easier, the tool may remember the license
+          number you entered and your renewal answer in this browser&apos;s
+          local storage. On the license entry screen, you can select
+          &quot;Clear saved number&quot; to remove these saved details.
+          This is especially helpful on a shared device.
+        </p>
+
+        <p>
+          When you search for a license by name, the name and any
+          additional search filters you provide are sent to Greyson&apos;s
+          website to find matching public license records. Greyson&apos;s
+          lookup is not a live DBPR determination; verify the official
+          record before choosing or purchasing education.
         </p>
 
         <h2>Contact Form and Formspree</h2>
